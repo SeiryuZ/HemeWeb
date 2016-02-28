@@ -1,6 +1,5 @@
 # **Plan for HemelWeb (Tentative)**
 
----
 ## Important Dates
 1. **15th April 2016**, Due date of Informatics Research Proposal
 2. **31st March 2016**, Due date of AWS research grant
@@ -18,36 +17,39 @@ a)  (Alan asked) Do we even need docker container? Yes, the purpose of having He
 ### 2) Orchestrate the deployment of HemelB cluster
 
 We need tools to deploy HemelB core as a compute server in AWS easily. There are few possible tools:
-a) CfnClusters, basically python CLI with boto lib, optimized for HPC, [doc](http://cfncluster.readthedocs.org/en/latest/hello_world.html)
-b) Ansible, more general-purpose system automation, [Ansible-Docker](https://www.ansible.com/docker)
-c) Chef [doc](https://www.chef.io/chef/)
-d) Other deployment tools
+
+1. CfnClusters, basically python CLI with boto lib, optimized for HPC, [doc](http://cfncluster.readthedocs.org/en/latest/hello_world.html)
+2. Ansible, more general-purpose system automation, [Ansible-Docker](https://www.ansible.com/docker)
+3. Chef [doc](https://www.chef.io/chef/)
+4. Other deployment tools
 
 **Decision Point!**
 Decide which tools is more appropriate for the task of deploying the cluster
 
-### 3) Decide which implementation we are going to use
+### 3) Decide on which implementation we are going to use
 
 Depending on the time frame and the technical difficulties, we need to decide on which implementation we should aim for:
 
 #### A) *HemelB core on the cloud, setup on desktop (Hybrid)*
 * **Succes criteria**: The simulation is done in the cloud, while the setup process is still done in the user's own desktop:
-	1) User process the blood vessel microscopig image on their desktop
-	2) Upload the output from the setup tools (STL & Profile files) to the web interface
-	3) Simulation will be run with the input from step #2
-	4) User got an email that simulation is done
-	5) User can download the simulation result to be viewed on desktop
+
+1. User process the blood vessel microscopig image on their desktop
+2. Upload the output from the setup tools (STL & Profile files) to the web interface
+3. Simulation will be run with the input from step 2
+4. User got an email that simulation is done
+5. User can download the simulation result to be viewed on desktop
 
 
 
 #### B) *The whole Blood Simulation running as a web service*
 * **Success criteria**: The whole simulation workflow is done via web browser:
+
 1. User upload the blood vessel microscopic image to the web interface
 2. Web server build the blood vessels' 3d model from the uploaded image (utilizing a cluster of AWS GPU instances)
 3. User got an email that tells them that their blood vessel model is ready
 4. User then set inlet and outlet of blood for the models using web browser and set few parameters to be used for the simulation then click simulate
 5. The setup tools will create few files (STL and profile files) for the HemelB core
-6. The HemelB core clusters will run with input produced from step #5
+6. The HemelB core clusters will run with input produced from step 5
 7. User got an email that simulation is done
 8. User can view the result on the simulation on browser, or download the file for desktop viewing
 
