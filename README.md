@@ -1,4 +1,4 @@
-# **Plan for HemelWeb (Tentative Name)**
+# **Plan for HemeWeb (Tentative Name)**
 
 ## Important Dates
 1. **15th April 2016**, Due date of Informatics Research Proposal
@@ -8,15 +8,15 @@
 ## Plan of Attack
 From the discussion on 24th February 2016, basically these are the steps roughly we are going to take for this project:
 
-### 1) Separate HemelB core into its own container
-This is a straight-forward step. Whatever the implementation in the end, having HemelB on its own container, separately from the container which contains the whole workflow from setup step is better. We want to have a HemelB-core only clusters that do not need other part.
+### 1) Separate HemeLB core into its own container
+This is a straight-forward step. Whatever the implementation in the end, having HemeLB on its own container, separately from the container which contains the whole workflow from setup step is better. We want to have a HemeLB-core only clusters that do not need other part.
 
 **Decision Point!**
-a)  (Alan asked) Do we even need docker container? Yes, the purpose of having HemelB core packaged into its own container on dockerhub is that people can easily install HemelB core on their own. It's not a required step for this project to be successful, but it will benefit the community for easy distribution of HemelB core.
+a)  (Alan asked) Do we even need docker container? Yes, the purpose of having HemeLB core packaged into its own container on dockerhub is that people can easily install HemeLB core on their own. It's not a required step for this project to be successful, but it will benefit the community for easy distribution of HemeLB core.
 
-### 2) Orchestrate the deployment of HemelB cluster
+### 2) Orchestrate the deployment of HemeLB cluster
 
-We need tools to deploy HemelB core as a compute server in AWS easily. There are few possible tools:
+We need tools to deploy HemeLB core as a compute server in AWS easily. There are few possible tools:
 
 1. CfnClusters, basically python CLI with boto lib, optimized for HPC, [doc](http://cfncluster.readthedocs.org/en/latest/hello_world.html)
 2. Ansible, more general-purpose system automation, [Ansible-Docker](https://www.ansible.com/docker)
@@ -30,7 +30,7 @@ Decide which tools is more appropriate for the task of deploying the cluster
 
 Depending on the time frame and the technical difficulties, we need to decide on which implementation we should aim for:
 
-#### A) *HemelB core on the cloud, setup on desktop (Hybrid)*
+#### A) *HemeLB core on the cloud, setup on desktop (Hybrid)*
 * **Succes criteria**: The simulation is done in the cloud, while the setup process is still done in the user's own desktop:
 
 1. User process the blood vessel microscopic image on their desktop
@@ -48,15 +48,15 @@ Depending on the time frame and the technical difficulties, we need to decide on
 2. Web server build the blood vessels' 3d model from the uploaded image (utilizing a cluster of AWS GPU instances)
 3. User got an email that tells them that their blood vessel model is ready
 4. User then set inlet and outlet of blood for the models using web browser and set few parameters to be used for the simulation then click simulate
-5. The setup tools will create few files (STL and profile files) for the HemelB core
-6. The HemelB core clusters will run with input produced from step 5
+5. The setup tools will create few files (STL and profile files) for the HemeLB core
+6. The HemeLB core clusters will run with input produced from step 5
 7. User got an email that simulation is done
 8. User can view the result on the simulation on browser, or download the file for desktop viewing
 
 * **What I don't know currently**:
 	* How to use AWS GPU instance, what makes it different
 	* Paraview server configuration (Paraview Web is just a python webserver that communicate with paraview to provide data to javascript library in the browser)
-	* How HemelB setup process use paraview
+	* How HemeLB setup process use paraview
 	* How the setup process model the blood vessel, can it be done in the AWS GPU instance?
 
 * **Related Resources**:
@@ -86,7 +86,7 @@ my estimate of the workload of each approach fit the timeframe.
 ## Other related issues
 
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
-I have to make sure that we are on the clear on the IP issues. HemelB is in LGPL3, so HemelWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them in the future.
+I have to make sure that we are on the clear on the IP issues. HemeLB is in LGPL3, so HemeWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them in the future.
 
 **Status**
 Still waiting for response from the IG
