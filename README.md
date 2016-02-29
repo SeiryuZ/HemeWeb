@@ -90,7 +90,7 @@ angle (As to make it easier for people to use HemelB)
 ## Other related issues
 
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
-I have to make sure that we are on the clear on the IP issues. HemelB is in LGPL3, so HemelWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them.
+I have to make sure that we are on the clear on the IP issues. HemelB is in LGPL3, so HemelWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them in the future.
 
 **Status**
 Still waiting for response from the IG
