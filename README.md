@@ -82,10 +82,6 @@ as it is only dependant on me being familiar with the tools and whether
 my estimate of the workload of each approach fit the timeframe.
 
 
-At this point, I think we should decide whether to take the research
-from a virtualization technology angle or human computer interaction
-angle (As to make it easier for people to use HemelB)
-
 
 ## Other related issues
 
