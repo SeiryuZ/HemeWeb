@@ -75,7 +75,14 @@ Depending on the time frame and the technical difficulties, we need to decide on
 	* Someone running Witcher 3 on AWS GPU Instance and stream the session to macbook http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
 
 
-## Other related issues 
+**Decision Point!**
+Decide which approach we are going to take.  I don't really think
+choosing which approach to take will merit its own literature review(?),
+as it is only dependant on me being familiar with the tools and whether
+my estimate of the workload of each approach fit the timeframe.
+
+
+## Other related issues
 
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
 I have to make sure that we are on the clear on the IP issues. HemelB is in LGPL3, so HemelWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them.
