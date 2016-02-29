@@ -1,4 +1,4 @@
-# **Plan for HemelWeb (Tentative)**
+# **Plan for HemelWeb (Tentative Name)**
 
 ## Important Dates
 1. **15th April 2016**, Due date of Informatics Research Proposal
@@ -6,7 +6,7 @@
 
 
 ## Plan of Attack
-From the discussion on 24th February 2016, basically we agreed that these are the steps we are going to take for this project:
+From the discussion on 24th February 2016, basically these are the steps roughly we are going to take for this project:
 
 ### 1) Separate HemelB core into its own container
 This is a straight-forward step. Whatever the implementation in the end, having HemelB on its own container, separately from the container which contains the whole workflow from setup step is better. We want to have a HemelB-core only clusters that do not need other part.
@@ -33,7 +33,7 @@ Depending on the time frame and the technical difficulties, we need to decide on
 #### A) *HemelB core on the cloud, setup on desktop (Hybrid)*
 * **Succes criteria**: The simulation is done in the cloud, while the setup process is still done in the user's own desktop:
 
-1. User process the blood vessel microscopig image on their desktop
+1. User process the blood vessel microscopic image on their desktop
 2. Upload the output from the setup tools (STL & Profile files) to the web interface
 3. Simulation will be run with the input from step 2
 4. User got an email that simulation is done
@@ -53,7 +53,7 @@ Depending on the time frame and the technical difficulties, we need to decide on
 7. User got an email that simulation is done
 8. User can view the result on the simulation on browser, or download the file for desktop viewing
 
-* **What I don't know currently**: 
+* **What I don't know currently**:
 	* How to use AWS GPU instance, what makes it different
 	* Paraview server configuration (Paraview Web is just a python webserver that communicate with paraview to provide data to javascript library in the browser)
 	* How HemelB setup process use paraview
@@ -62,18 +62,18 @@ Depending on the time frame and the technical difficulties, we need to decide on
 * **Related Resources**:
   * [AWS GPU instance information](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cluster_computing.html)
   * [Paraview Web is just paraview with python server](http://www.paraview.org/ParaView3/Doc/Nightly/www/js-doc/index.html#!/guide/quick_start)
-  
+
 
 #### C) *Stream the whole simulation from AWS GPU instance*
 * **Success criteria**: The whole simulation is packaged as a desktop enabled container and run on AWS GPU instance. User then stream the desktop environment on AWS to their own desktop
 
-* **What I don't know currently**: 
+* **What I don't know currently**:
 	* Streaming technology
 
 
 * **Related Resources**:
 	* Someone running Witcher 3 on AWS GPU Instance and stream the session to macbook http://lg.io/2015/07/05/revised-and-much-faster-run-your-own-highend-cloud-gaming-service-on-ec2.html
-	  
+
 
 ## Other related issues 
 
