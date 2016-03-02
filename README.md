@@ -12,7 +12,7 @@ From the discussion on 24th February 2016, basically these are the steps roughly
 This is a straight-forward step. Whatever the implementation in the end, having HemeLB on its own container, separately from the container which contains the whole workflow from setup step is better. We want to have a HemeLB-core only clusters that do not need other part.
 
 **Decision Point!**
-a)  (Alan asked) Do we even need docker container? Yes, the purpose of having HemeLB core packaged into its own container on dockerhub is that people can easily install HemeLB core on their own. It's not a required step for this project to be successful, but it will benefit the community for easy distribution of HemeLB core.
+a)  (Adam asked) Do we even need docker container? Yes, the purpose of having HemeLB core packaged into its own container on dockerhub is that people can easily install HemeLB core on their own. It's not a required step for this project to be successful, but it will benefit the community for easy distribution of HemeLB core.
 
 ### 2) Orchestrate the deployment of HemeLB cluster
 
