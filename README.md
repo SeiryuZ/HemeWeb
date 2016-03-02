@@ -37,6 +37,12 @@ fed to the HemeLB core clusters. After simulation is done, an .xpf file
 will be available for download to the user.
 
 
+### Checkpoint
+
+The system should look like this:
+
+![alt text](https://github.com/SeiryuZ/HemeWeb/raw/master/src/resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+
 
 
 ## Other related issues
