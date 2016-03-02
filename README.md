@@ -1,8 +1,12 @@
 # **Plan for HemeWeb (Tentative Name)**
 
 ## Important Dates
-1. **15th April 2016**, Due date of Informatics Research Proposal
-2. **31st March 2016**, Due date of AWS research grant
+
+1. **31st March 2016**, Due date of AWS research grant
+2. **15th April 2016**, Due date of Informatics Research Proposal
+3. **2nd June 2016**, Official start of work on the projects
+4. **Early July**, Presentation of project progress to peer
+5. **19th August 2016**, Noon, deadline for dissertation submission
 
 
 ## Plan of Attack
