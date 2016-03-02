@@ -41,7 +41,7 @@ will be available for download to the user.
 
 The system should look like this:
 
-![alt text](https://github.com/SeiryuZ/HemeWeb/raw/master/src/resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+![alt text](resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
 
 
