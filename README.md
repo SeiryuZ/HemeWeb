@@ -107,7 +107,7 @@ The system should look like this at this point:
 ### 5) Extends HemeWeb to handle domain definition step or even Viewing of HemeLB simulation result
 
 There are two possible extension possible at this point. First, we
-accomodate even farther the pre-processing step. Allowing tuser to
+accomodate even farther the pre-processing step. Allowing users to
 generate the STL file only and do the domain definition step (GPU
 Intensive) to generate .stl + .pr2 files that is used in step 4). Or
 alternatively, we could do the post-processing step that allow the user
@@ -137,7 +137,7 @@ geometry generations. This way, we could plan for the project to
 
 ## Other related issues
 
-### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
+### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP)
 I have to make sure that we are on the clear on the IP issues. HemeLB is in LGPL3, so HemeWeb should also be LGPL3. Will the Indonesia Endowment Fund for Education be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesia Endowment Fund for Education(LPDP)"*)? Technically, as per license, they can not prevent somebody working on them in the future.
 
 Also the source of funding, will research grant from AWS be a problem?
