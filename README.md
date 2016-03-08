@@ -1,7 +1,7 @@
 # **Plan for HemeWeb (Tentative Name)**
 
 # Shortcut / Table of Contents
-* [Important Dates](https://github.com/SeiryuZ/HemeWeb#important-dates)
+* [Important Dates](#important-dates)
 * [Motivation](https://github.com/SeiryuZ/HemeWeb#motivation)
 * [Current Workflow](https://github.com/SeiryuZ/HemeWeb#current-workflow)
 * [Plan of Attack](https://github.com/SeiryuZ/HemeWeb#plan-of-attack)
