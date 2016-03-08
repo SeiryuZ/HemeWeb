@@ -9,6 +9,34 @@
 4. **Early July**, Presentation of project progress to peer
 5. **19th August 2016**, Noon, deadline for dissertation submission
 
+## Motivation
+
+[HemeLB](https://github.com/UCL/hemelb) currently run on ARCHER super
+computer. The exclusitivity of the resource coupled with the long list
+of dependencies and technical know-how limit the access of doing the
+simulation.
+
+This project is the arrangement to solve this problem. Decouple the
+components of the simulation and provide a web interface so that people
+could upload necessary files easily and do the simulation without
+knowing the technical know-how. Also, running it on the cloud will also
+means that this project is capable to be run on the commodity servers
+that people could easily replicate the simulation or workflow on any
+other capable fleet of servers without resorting to supercomputers.
+
+
+# Current Workflow
+
+To understand how we could improve the workflow better, we need to
+understand the current workflow.
+
+### Current life cycle of the workflow
+
+
+![alt text](resources/images/HemeLB-workflow.png "HemeLB current workflow")
+
+
+
 
 ## Plan of Attack
 These are the steps we are going to take for this project:
