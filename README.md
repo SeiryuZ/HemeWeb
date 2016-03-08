@@ -64,7 +64,7 @@ The system should look like this at this point:
 ![alt text](resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
 
-### 5) Extends HemeWeb to handle domain definition step or even Viewing of HemeLBsimulation result
+### 5) Extends HemeWeb to handle domain definition step or even Viewing of HemeLB simulation result
 
 There are two possible extension possible at this point. First, we
 accomodate even farther the pre-processing step. Allowing tuser to
