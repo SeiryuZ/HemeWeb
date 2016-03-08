@@ -61,7 +61,7 @@ will be fed into the HemeLB cluster to run the simulation.
 
 The system should look like this at this point:
 
-![alt text](resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+![alt text](resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
 
 
