@@ -56,7 +56,11 @@ If it is a problem, I should use the allocated budget for my
 dissertation, but then will that be okay?
 
 **Status**
-Still trying to contact them
+Got through the Customer Service Officer, She explained that they would
+prefer for me to use my allocated budget for dissertation. But when
+asked about the IP related questions, she referred me to the higher ups.
+
+Waiting for email reply from the higher up now.
 
 
 
