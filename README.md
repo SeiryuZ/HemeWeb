@@ -2,7 +2,8 @@
 
 ## Important Dates
 
-1. **31st March 2016**, Due date of AWS research grant
+1. **31st March 2016**, Due date of AWS research grant, See other
+   related issue A)
 2. **15th April 2016**, Due date of Informatics Research Proposal
 3. **2nd June 2016**, Official start of work on the projects
 4. **Early July**, Presentation of project progress to peer
@@ -50,8 +51,12 @@ The system should look like this:
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
 I have to make sure that we are on the clear on the IP issues. HemeLB is in LGPL3, so HemeWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them in the future.
 
+Also the source of funding, will research grant from AWS be a problem?
+If it is a problem, I should use the allocated budget for my
+dissertation, but then will that be okay?
+
 **Status**
-Still waiting for response from the IG
+Still trying to contact them
 
 
 
