@@ -1,5 +1,15 @@
 # **Plan for HemeWeb (Tentative Name)**
 
+# Shortcut / Table of Contents
+* [Important Dates](https://github.com/SeiryuZ/HemeWeb#important-dates)
+* [Motivation](https://github.com/SeiryuZ/HemeWeb#motivation)
+* [Current Workflow](https://github.com/SeiryuZ/HemeWeb#current-workflow)
+* [Plan of Attack](https://github.com/SeiryuZ/HemeWeb#plan-of-attack)
+* [Risks](https://github.com/SeiryuZ/HemeWeb#risks)
+* [Other Related Issues](https://github.com/SeiryuZ/HemeWeb#other-related-issues)
+* [Resources](https://github.com/SeiryuZ/HemeWeb#resources)
+
+
 ## Important Dates
 
 1. **31st March 2016**, Due date of AWS research grant, See other
@@ -8,6 +18,8 @@
 3. **2nd June 2016**, Official start of work on the projects
 4. **Early July**, Presentation of project progress to peer
 5. **19th August 2016**, Noon, deadline for dissertation submission
+
+
 
 ## Motivation
 
@@ -153,4 +165,3 @@ Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=61234
 ---
 * http://dl.acm.org/citation.cfm?id=2287045  << Down, at time of writing
 * CFD Direct, [link](http://cfd.direct/cloud/) << Not sure what to do with this yet
-	
