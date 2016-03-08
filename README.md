@@ -13,10 +13,10 @@
 
 [HemeLB](https://github.com/UCL/hemelb) currently run on ARCHER super
 computer. The exclusitivity of the resource coupled with the long list
-of dependencies and technical know-how limit the access of doing the
-simulation.
+of dependencies and technical know-how, limit the access of doing the
+simulation by the domain experts like scientist or doctor.
 
-This project is the arrangement to solve this problem. Decouple the
+This project is an arrangement to solve this problem. Decouple the
 components of the simulation and provide a web interface so that people
 could upload necessary files easily and do the simulation without
 knowing the technical know-how. Also, running it on the cloud will also
