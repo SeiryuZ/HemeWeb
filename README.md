@@ -104,6 +104,25 @@ directly.
 
 
 
+
+## Risks
+
+As with all projects with limited time and budget, there are risks
+involved in planning the project. Result of the project does not always
+accurately fit what we have planned.
+
+This project is structured in such a way that minimize the
+risk of having nothing at the end of the dissertation period. We
+decoupled the components and plan on working the most important
+component first, the HemeLB container cluster and web interface.
+
+After we finished the first phase, have everything working, then we
+could take a crack at other components of the workflow, which is the
+geometry generations. This way, we could plan for the project to
+"degrade gracefully" if the plan does not work perfectly.
+
+
+
 ## Other related issues
 
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
