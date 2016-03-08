@@ -155,6 +155,8 @@ Waiting for email reply from the higher up now.
 
 ## Resources
 
+### Papers
+
 * ✓ [Shifter Paper](https://www.nersc.gov/assets/Uploads/cug2015udi.pdf)
 * ✓ [Shifter Press release](https://www.nersc.gov/news-publications/nersc-news/nersc-center-news/2015/shifter-makes-container-based-hpc-a-breeze/)
 * ✓ [Nekkloud: A Software Environment for High-order
@@ -163,5 +165,12 @@ Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/
 Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
 
 ---
+### Filesystem related stuff
+
+* [sshfs](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh)
+* [aws elastic file storage, preview state](https://aws.amazon.com/efs/)
+
+---
+### Others
 * http://dl.acm.org/citation.cfm?id=2287045  << Down, at time of writing
 * CFD Direct, [link](http://cfd.direct/cloud/) << Not sure what to do with this yet
