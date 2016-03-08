@@ -64,6 +64,17 @@ The system should look like this at this point:
 ![alt text](resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
 
+### 5) Extends HemeWeb to handle domain definition step or even Viewing of HemeLBsimulation result
+
+There are two possible extension possible at this point. First, we
+accomodate even farther the pre-processing step. Allowing tuser to
+generate the STL file only and do the domain definition step (GPU
+Intensive) to generate .stl + .pr2 files that is used in step 4). Or
+alternatively, we could do the post-processing step that allow the user
+to view the result of the simulation to be viewed on the browser
+directly.
+
+
 
 ## Other related issues
 
