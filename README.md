@@ -2,12 +2,12 @@
 
 # Shortcut / Table of Contents
 * [Important Dates](#important-dates)
-* [Motivation](https://github.com/SeiryuZ/HemeWeb#motivation)
-* [Current Workflow](https://github.com/SeiryuZ/HemeWeb#current-workflow)
-* [Plan of Attack](https://github.com/SeiryuZ/HemeWeb#plan-of-attack)
-* [Risks](https://github.com/SeiryuZ/HemeWeb#risks)
-* [Other Related Issues](https://github.com/SeiryuZ/HemeWeb#other-related-issues)
-* [Resources](https://github.com/SeiryuZ/HemeWeb#resources)
+* [Motivation](#motivation)
+* [Current Workflow](#current-workflow)
+* [Plan of Attack](#plan-of-attack)
+* [Risks](#risks)
+* [Other Related Issues](#other-related-issues)
+* [Resources](#resources)
 
 
 ## Important Dates
