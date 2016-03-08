@@ -45,11 +45,30 @@ The system should look like this:
 ![alt text](resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
 
+### 4) Extends HemeWeb to handle geometry generation workflow
+
+The planned approach is for the web interface to receive upload from the
+user in forms of .stl and .pr2 files. The web server then will spun up
+a docker container in a new EC2 instance or some kind of reserved
+instances specially used for docker containers. User will then get
+access to the docker container via [noVNC](https://github.com/kanaka/noVNC) 
+and proceed to do geometry generation inside the container.
+
+Once the geometry generation is done, the resulting .xml and .gmy file
+will be fed into the HemeLB cluster to run the simulation.
+
+### Checkpoint
+
+The system should look like this at this point:
+
+![alt text](resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+
+
 
 ## Other related issues
 
 ### A) Intellectual Property issues with Indonesia Endowment Fund for Education(LPDP/ Indonesian Government)
-I have to make sure that we are on the clear on the IP issues. HemeLB is in LGPL3, so HemeWeb should also be LGPL3. Will the Indonesian Government be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesian Government"*)? Technically, as per license, they can not prevent somebody working on them in the future.
+I have to make sure that we are on the clear on the IP issues. HemeLB is in LGPL3, so HemeWeb should also be LGPL3. Will the Indonesia Endowment Fund for Education be okay with having their name on the web interface and my dissertation report (Some kind of *"This project is supported/funded by the Indonesia Endowment Fund for Education(LPDP)"*)? Technically, as per license, they can not prevent somebody working on them in the future.
 
 Also the source of funding, will research grant from AWS be a problem?
 If it is a problem, I should use the allocated budget for my
