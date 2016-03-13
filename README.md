@@ -149,7 +149,12 @@ Got through the Customer Service Officer, She explained that they would
 prefer for me to use my allocated budget for dissertation. But when
 asked about the IP related questions, she referred me to the higher ups.
 
-Waiting for email reply from the higher up now.
+The higher ups are "not sure" since she didn't really understand legal
+repercussion of open source software, but in her opinion, it should not
+be a problem, and she prefered me to use my allocated budget for
+disertation. She will check with the legal team first before writing
+formal response to my email.
+
 
 
 
