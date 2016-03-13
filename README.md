@@ -177,6 +177,7 @@ Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=61234
 
 * [sshfs](https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh)
 * [aws elastic file storage, preview state](https://aws.amazon.com/efs/)
+* ✓ [NFS](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-12-04) -- This works, but might not be the "best" solution
 
 ---
 ### Others
