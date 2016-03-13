@@ -173,6 +173,10 @@ formal response to my email.
 * ✓ [Shifter Press release](https://www.nersc.gov/news-publications/nersc-news/nersc-center-news/2015/shifter-makes-container-based-hpc-a-breeze/)
 * ✓ [Nekkloud: A Software Environment for High-order Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/wp-content/uploads/2013/09/nekkloud.pdf)
 * ✓ [An Introduction to High Performance Computing on AWS](https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf)
+* [Models and Simulations as a Service: Exploring the Use of Galaxy for Delivering Computational Models](http://www.sciencedirect.com/science/article/pii/S0006349516000886)
+* [Cloud Computing and Grid Computing 360-Degree Compared](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=4738445&tag=1) -- Definition of cloud and grid computing
+* [Scientific Cloud Computing: Early Definition and Experience](http://cyberaide.googlecode.com/svn/trunk/papers/08-cloud/vonLaszewski-08-cloud.pdf)
+* [Cost-benefit analysis of Cloud Computing versus desktop grids](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5160911&tag=1)
 
 ---
 ### Filesystem related stuff
