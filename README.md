@@ -169,6 +169,8 @@ Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/
 * ✓ [Massively parallel fluid simulations on
 Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
 * ✓ [Performance Evaluation of Amazon EC2 for NASA HPC Applications ](http://dl.acm.org/citation.cfm?id=2287045)
+* ✓ [An Introduction to High Performance Computing on
+  AWS](https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf)
 
 ---
 ### Filesystem related stuff
