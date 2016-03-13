@@ -163,6 +163,7 @@ Waiting for email reply from the higher up now.
 Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/wp-content/uploads/2013/09/nekkloud.pdf)
 * [Massively parallel fluid simulations on
 Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
+* ✓ [Performance Evaluation of Amazon EC2 for NASA HPC Applications ](http://dl.acm.org/citation.cfm?id=2287045)
 
 ---
 ### Filesystem related stuff
@@ -172,5 +173,4 @@ Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=61234
 
 ---
 ### Others
-* http://dl.acm.org/citation.cfm?id=2287045  << Down, at time of writing
 * CFD Direct, [link](http://cfd.direct/cloud/) << Not sure what to do with this yet
