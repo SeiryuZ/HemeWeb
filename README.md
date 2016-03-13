@@ -166,7 +166,7 @@ formal response to my email.
 * ✓ [Shifter Press release](https://www.nersc.gov/news-publications/nersc-news/nersc-center-news/2015/shifter-makes-container-based-hpc-a-breeze/)
 * ✓ [Nekkloud: A Software Environment for High-order
 Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/wp-content/uploads/2013/09/nekkloud.pdf)
-* [Massively parallel fluid simulations on
+* ✓ [Massively parallel fluid simulations on
 Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
 * ✓ [Performance Evaluation of Amazon EC2 for NASA HPC Applications ](http://dl.acm.org/citation.cfm?id=2287045)
 
