@@ -160,17 +160,19 @@ formal response to my email.
 
 ## Resources
 
+### Other instances where HPC applications are run on AWS specifically
+
+* ✓ Computational Fluid Dynamic[CFD] Direct, [link](http://cfd.direct/cloud/aws), this simulation is done on AWS
+* ✓ [Massively parallel fluid simulations on Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
+* ✓ [Performance Evaluation of Amazon EC2 for NASA HPC Applications ](http://dl.acm.org/citation.cfm?id=2287045)
+
+
 ### Papers
 
 * ✓ [Shifter Paper](https://www.nersc.gov/assets/Uploads/cug2015udi.pdf)
 * ✓ [Shifter Press release](https://www.nersc.gov/news-publications/nersc-news/nersc-center-news/2015/shifter-makes-container-based-hpc-a-breeze/)
-* ✓ [Nekkloud: A Software Environment for High-order
-Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/wp-content/uploads/2013/09/nekkloud.pdf)
-* ✓ [Massively parallel fluid simulations on
-Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6123441)
-* ✓ [Performance Evaluation of Amazon EC2 for NASA HPC Applications ](http://dl.acm.org/citation.cfm?id=2287045)
-* ✓ [An Introduction to High Performance Computing on
-  AWS](https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf)
+* ✓ [Nekkloud: A Software Environment for High-order Finite Element Analysis on Clusters and Clouds](https://www.chriscantwell.co.uk/wp-content/uploads/2013/09/nekkloud.pdf)
+* ✓ [An Introduction to High Performance Computing on AWS](https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf)
 
 ---
 ### Filesystem related stuff
@@ -181,4 +183,3 @@ Amazon’s HPC cloud](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=61234
 
 ---
 ### Others
-* CFD Direct, [link](http://cfd.direct/cloud/) << Not sure what to do with this yet
