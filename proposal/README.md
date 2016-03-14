@@ -2,22 +2,23 @@
 
 ## Motivation
 
-High Performance Computing (HPC) is traditionally done in a high
-performance computing infrastructures like cluster of computation nodes or
-supercomputers. This setup allows some complex computation, for example
-scientific computation like blood flow simulation, to be done in a high
-performing fashion that normal consumer desktip computers cannot achieve.
+High Performance Computing (HPC) requires high performing infrastructures
+like supercomputers or huge clusters of compute node to be run effectively.
+This computational setup allows some complex computation,
+usually a scientific computation simulation, to be done in a high
+performing fashion that traditional consumer desktop computers cannot achieve.
+However acquiring access to this computation resources are not easy, nor
+cheap, i.e, you have to be member of a university, government
+institute, licensed, or build your own cluster.
 
-Due to this high startup cost, many computation on a scientific research scenario are tied down to the
-setup that the research is done on, for example HemeLB paper that run
-the simulation on Cray XT3 MPP TerraGrid Machine located on Pittsburgh,
-and Cray XT4 at University of Edinburgh[1]. To validate the result of the
-research, People need to have access to the similar computational resources
-which is often gated by institutions toward their members, like
-government or university, or highly costly if want to be replicated
-privately. Moreover, complex setup process and toolings provided further
-discourage people from replicating scientific computing research
-results.
+In scientific community, especially in scientific computation,
+researchers utilize these infrastructures for their research. For
+example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,
+and Cray XT4 at University of Edinburgh[1]. These infrastructures,
+unfortunately often not available to most people or unfeasible to
+replicate. Moreover, complex setup process and toolings needed further
+discourage people from replicating computations from these researches.
+
 
 Some research have tried to overcome this limitations by utilizing the
 power of cloud computing. Galaxy[2], for example tried to be
@@ -73,7 +74,7 @@ replicability
 **How to support this claim** Theoritical ? Experimental?
 
 
-## Expected Outcome
+## Expected Outcome/ Success Criteria
 
 Working prototype that enable HPC computing to be done in the cloud,
 that enable the computations to be done easily (usable), shared
