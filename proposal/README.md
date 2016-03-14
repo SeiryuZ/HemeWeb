@@ -63,11 +63,22 @@ bogged down with tools and variables of all projects.
 
 ## Background
 
-This has been the condition for past decades [?] because access of
-computational power is hard to acquire back then [?]. Currently, with
-the introduction of new computational service such as Infrastructure as
-A Service, Hardware as a Service, cloud computing has allowed people to
-acquire this resources easily and dynamically.
+* History of Research Computing
+* - Grid Computing
+* - Cloud Computing
+
+* Scientific Computing
+* - Reproducible research
+* - Science code manifesto
+* - Example of scientific computing
+
+
+
+<!--This has been the condition for past decades [?] because access of-->
+<!--computational power is hard to acquire back then [?]. Currently, with-->
+<!--the introduction of new computational service such as Infrastructure as-->
+<!--A Service, Hardware as a Service, cloud computing has allowed people to-->
+<!--acquire this resources easily and dynamically.-->
 
 
 ## Methodology
