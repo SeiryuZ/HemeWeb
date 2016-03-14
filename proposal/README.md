@@ -37,24 +37,45 @@ on Galaxy, require python script.
 <!--computations configurations are limited to the resources that are available to the-->
 <!--computing infrastructure and tools provided by Galaxy project.-->
 
-We need a better way to compose our high performance computing resources
-so that we are not restrained by what exist on the running
-infrastructure or tools provided by said project. Docker container could
-be the answer for this problem. Docker container is virtualized linux
-container that can be shared easily. Computing resources or tools could
-be easily baked into a docker container image, pushed to the docker hub
-and duplicated by everyone easily. This is a perfect answer to the problem of 
-composing computational research scenario. Researchers should be able to
-package all of their tools into a docker container, publish it and run
-it on the cloud to produce the desired results. This scenario then can
-be shared, via url, to the scientific community so that people could run
-their own computation with the exact same resources. Or, more
-importantly, people could inspect the tools and settings so that they
-can fiddle around to understand the research better.
+Limitation above is the impetus for this project. In an ideal scenario,
+researchers do not need to port their computation project to the provided toolings,
+environment of an infrastructure of a computational models provider.
+Researchers could just compose their computation project with whatever
+tools and environment they are comfortable with and run with it. And
+this is where docker comes into the picture. Docker allows us to compose
+our computation environment and tools as we wanted and allow it to be
+shared easily. Our project will utilize this unique trait of docker to
+allow researchers compose their computational project as they see fit.
 
-Using docker container, allows the running infrastructure to simply
-don't care what the underlying implementation details of the
-computations. User could just run
+There will be a web interface to set the running parameter of the computations
+and to run the project utilizing cloud computing resources. This allows
+researchers to be free from tools that they are not familiar with or
+specific implementations which is a barrier for replication of project.
+Infrastructure choice also become agnostic, our computational node do
+not have to install dependencies or tools that each project needs
+because it is already packaged in the containers, making the
+computational node reusable with different projects without getting
+bogged down with tools and variables of all projects.
+
+
+<!--We need a better way to compose our high performance computing resources-->
+<!--so that we are not restrained by what exist on the running-->
+<!--infrastructure or tools provided by said project. Docker container could-->
+<!--be the answer for this problem. Docker container is virtualized linux-->
+<!--container that can be shared easily. Computing resources or tools could-->
+<!--be easily baked into a docker container image, pushed to the docker hub-->
+<!--and duplicated by everyone easily. This is a perfect answer to the problem of -->
+<!--composing computational research scenario. Researchers should be able to-->
+<!--package all of their tools into a docker container, publish it and run-->
+<!--it on the cloud to produce the desired results. This scenario then can-->
+<!--be shared, via url, to the scientific community so that people could run-->
+<!--their own computation with the exact same resources. Or, more-->
+<!--importantly, people could inspect the tools and settings so that they-->
+<!--can fiddle around to understand the research better.-->
+
+<!--Using docker container, allows the running infrastructure to simply-->
+<!--don't care what the underlying implementation details of the-->
+<!--computations. User could just run-->
 
 
 
