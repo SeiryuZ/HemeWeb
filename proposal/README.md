@@ -19,14 +19,23 @@ unfortunately often not available to most people or unfeasible to
 replicate. Moreover, complex setup process and toolings needed further
 discourage people from replicating computations from these researches.
 
+Galaxy[2], a web-based reproducible research platform is developed to
+answer to these issues. It allows its user to compose, customize, run
+and share their simulations utilizing cloud computing resources.
+However, these computational models are limited to the tools provided by
+the web application, Galaxy, and the infrastructures that it rans on
+(i.e, OS) which require researches/ computational researches to
+understand/ have experience with the toolings provided or create their
+own based on the restriction. For example, most of the tools that is ran
+on Galaxy, require python script.
 
-Some research have tried to overcome this limitations by utilizing the
-power of cloud computing. Galaxy[2], for example tried to be
-the web-based reproducible research platform that
-allows everyon to compose, run, and share results of the research to
-everyone using the power of cloud computing. However, the degree of the
-computations configurations are limited to the resources that are available to the
-computing infrastructure and tools provided by Galaxy project.
+<!--Some research have tried to overcome this limitations by utilizing the-->
+<!--power of cloud computing. Galaxy[2], for example tried to be-->
+<!--the web-based reproducible research platform that-->
+<!--allows everyon to compose, run, and share results of the research to-->
+<!--everyone using the power of cloud computing. However, the degree of the-->
+<!--computations configurations are limited to the resources that are available to the-->
+<!--computing infrastructure and tools provided by Galaxy project.-->
 
 We need a better way to compose our high performance computing resources
 so that we are not restrained by what exist on the running
