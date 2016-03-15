@@ -103,7 +103,25 @@ Microsoft and etc for a price. This price also been reduced multiple times [9][1
 that comes with economies of scale, making it financially less demanding to
 run HPC applications without in-house resources. In fact, few HPC
 applications has been run on the cloud, such as the nekkloud
-project[12], NASA HPC Applications[13], and few other case study [14].
+project[12], NASA HPC Applications[13], and few other case study [14]
+that shows that it is feasible to run HPC applications on the cloud,
+albeit with performance overhead.
+
+This development have make it possible for people or institutions with
+enough financial means to do some heavy computations without having
+access to this traditionally expensive in-house computing resources.
+
+[need better transition from cloud computing HPC to the push for
+reproducibility]
+In scientific computing, there has been a push to make a computational
+results reproducible even if it is complex. This push make sures that
+research results adhere to scientific method, that is reproducible by
+our peers. As traditionally, HPC resources are in-house, this hinders
+the reproducibility aspect of the research. However, with cloud, this
+enable people to access this resources more easily, for example:
+Galaxy[2].
+
+
 
 
 
@@ -179,3 +197,5 @@ HemeLB.
 [13] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
 
 [14] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
+
+[15] Marwick, Ben. "Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation." Journal of Archaeological Method and Theory (2016): 1-27.
