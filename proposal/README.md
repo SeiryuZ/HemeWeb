@@ -63,6 +63,28 @@ bogged down with tools and variables of all projects.
 
 ## Background
 
+In dealing with High Performance Computing, infrastructures are
+typically required to be able to handle multi-core operations easily[4].
+Be it parallel workload or distributed system workload. This has lead to
+two separate computing paradigm we know as grid and cluster computing.
+
+Cluster computing is a paradigm where two or more computing resources
+are connected and used concurrently to run a single applications, often
+the computing resources are made of highly homogenous or similar
+computing unit mounted in a rack. The type of application run on cluster typically require highly parallel
+computation like modelling and simulation. This type of application benefits
+from having a highly interconnected node and data locality that clusters
+provide[4].
+
+On the other hand, Grid computing is a different beast altogether. It
+allows heterogeneous computing resources, often geographically
+distributed, to cooperate for a common goals. It is highly dynamic and
+promis scaling infinitely without regards of physical location of the
+computing resources[6]. In the UK, grid computing often utilzed under
+the banner of e-science[7], where they provide common middleware,
+software, and services for scientists to collaborate on their project regardless of physical
+locations.
+
 * History of Research Computing
 * - Grid Computing
 * - Cloud Computing
@@ -96,7 +118,7 @@ replicability
 
 ## Expected Outcome/ Success Criteria
 
-Working prototype that enable HPC computing to be done in the cloud,
+Working prototype that enable docker based HPC computing to be done in the cloud,
 that enable the computations to be done easily (usable), shared
 (replicable), and inspected (openness).
 
@@ -110,3 +132,11 @@ HemeLB.
 [2] Galaxy: Data intesive science for everyone - https://github.com/galaxyproject/galaxy
 
 [3] Docker - http://www.docker.com/
+
+[4] Whitepaper: Intro to HPC on AWS - https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf
+
+[5] Cloud Computing and Grid Computing 360-Degree Compared  - I. Foster, Y. Zhao, I. Raicu and S. Lu, "Cloud Computing and Grid Computing 360-Degree Compared," Grid Computing Environments Workshop, 2008. GCE '08, Austin, TX, 2008, pp. 1-10.  doi: 10.1109/GCE.2008.4738445
+
+[6] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
+
+[7] Hey, Tony, and Anne E. Trefethen. "Cyberinfrastructure for e-Science." Science 308.5723 (2005): 817-821.
