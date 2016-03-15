@@ -126,8 +126,10 @@ project[12], NASA HPC Applications[13], and few other case study [14].
 
 
 ## Methodology
+Work in progress
 
 ## Main Claim
+Work in progress
 
 X is better than Y on task Z along some dimension W
 
@@ -139,6 +141,7 @@ replicability
 
 
 ## Expected Outcome/ Success Criteria
+Work in progress
 
 Working prototype that enable docker based HPC computing to be done in the cloud,
 that enable the computations to be done easily (usable), shared
