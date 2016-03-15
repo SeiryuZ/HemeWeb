@@ -80,19 +80,41 @@ On the other hand, Grid computing is a different beast altogether. It
 allows heterogeneous computing resources, often geographically
 distributed, to cooperate for a common goals. It is highly dynamic and
 promis scaling infinitely without regards of physical location of the
-computing resources[6]. In the UK, grid computing often utilzed under
+computing resources[6]. In the UK, grid computing often utilized under
 the banner of e-science[7], where they provide common middleware,
 software, and services for scientists to collaborate on their project regardless of physical
 locations.
 
-* History of Research Computing
-* - Grid Computing
-* - Cloud Computing
+Both of this type of HPC computing are traditionally done in an in-house
+manner. Where Universities or government institutions set up a cluster of
+computing resources or even a supercomputer to do HPC task. Grid
+computations are also done on in house manner or even utilize public's
+desktop computer for computational resources, example are the
+folding@ home and genome@ home projects[8]. Currently however, computing
+resources are available in the cheap. Cloud computing has entered into
+the pictures and allow computing resources to be available with a
+price tag attached to it. It is massively scalable, allow abstract
+encapsulation of computing resources, dynamically configured,
+delivered on-demand and driven by economies of scale[5].
 
-* Scientific Computing
-* - Reproducible research
-* - Science code manifesto
-* - Example of scientific computing
+Cloud computing allowed institutions to offload their pain in procuring
+and maintaining computing resources to the vendors like Amazon, Google,
+Microsoft and etc for a price. This price also been reduced multiple times [9][10][11]
+that comes with economies of scale, making it financially less demanding to
+run HPC applications without in-house resources. In fact, few HPC
+applications has been run on the cloud, such as the nekkloud
+project[12], NASA HPC Applications[13], and few other case study [14].
+
+
+
+<!--* History of Research Computing-->
+<!--* - Grid Computing-->
+<!--* - Cloud Computing-->
+
+<!--* Scientific Computing-->
+<!--* - Reproducible research-->
+<!--* - Science code manifesto-->
+<!--* - Example of scientific computing-->
 
 
 
@@ -127,9 +149,9 @@ HemeLB.
 
 ## References
 
-[1] HemeLB: A high performance parallel lattice-Boltzmann code for large scale fluid flow in complex geometries
+[1] Mazzeo, Marco D., and Peter V. Coveney. "HemeLB: A high performance parallel lattice-Boltzmann code for large scale fluid flow in complex geometries." Computer Physics Communications 178.12 (2008): 894-914.
 
-[2] Galaxy: Data intesive science for everyone - https://github.com/galaxyproject/galaxy
+[2] Goecks et al.: Galaxy: a comprehensive approach for supporting accessible, reproducible, and transparent computational research in the life sciences. Genome Biology 2010 11:R86.
 
 [3] Docker - http://www.docker.com/
 
@@ -140,3 +162,17 @@ HemeLB.
 [6] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
 
 [7] Hey, Tony, and Anne E. Trefethen. "Cyberinfrastructure for e-Science." Science 308.5723 (2005): 817-821.
+
+[8] Larson, Stefan M., et al. "Folding@ Home and Genome@ Home: Using distributed computing to tackle previously intractable problems in computational biology." arXiv preprint arXiv:0901.0866 (2009).
+
+[9] https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/
+
+[10] https://azure.microsoft.com/en-us/blog/storage-price-match/
+
+[11] http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
+
+[12] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
+
+[13] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
+
+[14] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
