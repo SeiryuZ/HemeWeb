@@ -114,12 +114,13 @@ access to this traditionally expensive in-house computing resources.
 [need better transition from cloud computing HPC to the push for
 reproducibility]
 In scientific computing, there has been a push to make a computational
-results reproducible even if it is complex. This push make sures that
+results reproducible even if it is complex[15]. This push make sures that
 research results adhere to scientific method, that is reproducible by
 our peers. As traditionally, HPC resources are in-house, this hinders
 the reproducibility aspect of the research. However, with cloud, this
 enable people to access this resources more easily, for example:
-Galaxy[2].
+Galaxy[2] that enable people to compose, run, and share their
+modelling simulation.
 
 
 
