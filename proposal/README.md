@@ -7,16 +7,16 @@ like supercomputers or huge clusters of compute node to be run effectively.
 This computational setup allows some complex computation,
 usually a scientific computation simulation, to be done in a high
 performing fashion that traditional consumer desktop computers cannot achieve.
-However acquiring access to this computation resources are not easy, nor
-cheap, i.e, you have to be member of a university, government
-institute, licensed, or build your own cluster.
+However, acquiring access to this computation resources are neither easy, nor
+cheap. To acquire access to these resources, you have to be member of a university,
+government institute, scientists group, or alternatively, build your own cluster.
 
 In scientific community, especially in scientific computation,
 researchers utilize these infrastructures for their research. For
 example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,
 and Cray XT4 at University of Edinburgh[1]. These infrastructures,
-unfortunately often not available to most people or unfeasible to
-replicate. Moreover, complex setup process and toolings needed further
+unfortunately, are not available to most people or unfeasible to
+replicate. Moreover, complex setup process, configuration and toolings further
 discourage people from replicating computations from these researches.
 
 Galaxy[2], a web-based reproducible research platform is developed to
@@ -53,9 +53,10 @@ researchers to be free from tools that they are not familiar with or
 specific implementations which is a barrier for replication of project.
 Infrastructure choice also become agnostic, our computational node do
 not have to install dependencies or tools that each project needs
-because it is already packaged in the containers, making the
-computational node reusable with different projects without getting
-bogged down with tools and variables of all projects.
+because it is already packaged in the containers and "clean" from each
+other's dependencies, making the computational node reusable
+for different projects without getting bogged down with tools
+and environment variables of all projects.
 
 
 
