@@ -14,12 +14,12 @@ government institute, scientists group, or alternatively, build your own cluster
 In scientific community, especially in scientific computation,
 researchers utilize these infrastructures for their research. For
 example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,
-and Cray XT4 at University of Edinburgh[1]. These infrastructures,
+and Cray XT4 at University of Edinburgh [1]. These infrastructures,
 unfortunately, are not available to most people or unfeasible to
 replicate. Moreover, complex setup process, configuration and toolings further
 discourage people from replicating computations from these researches.
 
-Galaxy[2], a web-based reproducible research platform is developed to
+Galaxy [2], a web-based reproducible research platform is developed to
 answer to these issues. It allows its user to compose, customize, run
 and share their simulations utilizing cloud computing resources.
 However, these computational models are limited to the tools provided by
@@ -42,7 +42,7 @@ researchers do not need to port their computation project to the provided toolin
 environment of an infrastructure of a computational models provider.
 Researchers could just compose their computation project with whatever
 tools and environment they are comfortable with and run with it. And
-this is where docker[3] comes into the picture. Docker allows us to compose
+this is where docker [3] comes into the picture. Docker allows us to compose
 our computation environment and tools as we wanted and allow it to be
 shared easily. Our project will utilize this unique trait of docker to
 allow researchers compose their computational project as they see fit.
@@ -65,7 +65,7 @@ and environment variables of all projects.
 ## Background
 
 In dealing with High Performance Computing, infrastructures are
-typically required to be able to handle multi-core operations easily[4].
+typically required to be able to handle multi-core operations easily [4].
 Be it parallel workload or distributed system workload. This has lead to
 two separate computing paradigm we know as grid and cluster computing.
 
@@ -75,14 +75,14 @@ the computing resources are made of highly homogenous or similar
 computing unit mounted in a rack. The type of application run on cluster typically require highly parallel
 computation like modelling and simulation. This type of application benefits
 from having a highly interconnected node and data locality that clusters
-provide[4].
+provide [4].
 
 On the other hand, Grid computing is a different beast altogether. It
 allows heterogeneous computing resources, often geographically
 distributed, to cooperate for a common goals. It is highly dynamic and
 promis scaling infinitely without regards of physical location of the
-computing resources[6]. In the UK, grid computing often utilized under
-the banner of e-science[7], where they provide common middleware,
+computing resources [6]. In the UK, grid computing often utilized under
+the banner of e-science [7], where they provide common middleware,
 software, and services for scientists to collaborate on their project regardless of physical
 locations.
 
@@ -91,12 +91,12 @@ manner. Where Universities or government institutions set up a cluster of
 computing resources or even a supercomputer to do HPC task. Grid
 computations are also done on in house manner or even utilize public's
 desktop computer for computational resources, example are the
-folding@ home and genome@ home projects[8]. Currently however, computing
+folding@ home and genome@ home projects [8]. Currently however, computing
 resources are available in the cheap. Cloud computing has entered into
 the pictures and allow computing resources to be available with a
 price tag attached to it. It is massively scalable, allow abstract
 encapsulation of computing resources, dynamically configured,
-delivered on-demand and driven by economies of scale[5].
+delivered on-demand and driven by economies of scale [5].
 
 Cloud computing allowed institutions to offload their pain in procuring
 and maintaining computing resources to the vendors like Amazon, Google,
@@ -104,7 +104,7 @@ Microsoft and etc for a price. This price also been reduced multiple times [9][1
 that comes with economies of scale, making it financially less demanding to
 run HPC applications without in-house resources. In fact, few HPC
 applications has been run on the cloud, such as the nekkloud
-project[12], NASA HPC Applications[13], and few other case study [14]
+project [12], NASA HPC Applications [13], and few other case study [14]
 that shows that it is feasible to run HPC applications on the cloud,
 albeit with performance overhead.
 
@@ -115,12 +115,12 @@ access to this traditionally expensive in-house computing resources.
 [need better transition from cloud computing HPC to the push for
 reproducibility]
 In scientific computing, there has been a push to make a computational
-results reproducible even if it is complex[15]. This push make sures that
+results reproducible even if it is complex [15]. This push make sures that
 research results adhere to scientific method, that is reproducible by
 our peers. As traditionally, HPC resources are in-house, this hinders
 the reproducibility aspect of the research. However, with cloud, this
 enable people to access this resources more easily, for example:
-Galaxy[2] that enable people to compose, run, and share their
+Galaxy [2] that enable people to compose, run, and share their
 modelling simulation.
 
 
