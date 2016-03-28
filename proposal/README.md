@@ -11,10 +11,16 @@ could varies widely in performance requirement, from normal computational proces
 that could be done in normal consumer desktop processor to
 high-performance scneario that needs to be run on a cluster of computers
 or even supercomputer. One example of this type of project is HemeLB, a
-vascular blood flow simulation. HemeLB have different processes in the
-workflow that requires different computing power, from the setup process
-which can be run on consumer-level computer, to the simulation process
-that run on ARCHER supercomputer [17].
+vascular blood flow simulation that is used for the study of blood flow [17].
+HemeLB have different processes in the workflow that requires different computing power,
+from the setup process which can be run on consumer-level computer, to the simulation process
+that run on ARCHER supercomputer due to its processing power requirement [17].
+
+Current problem - Open Science, Usability, Isolation
+
+Current situation - How GalaxyWeb address
+
+To showcase the proposed solution, I will develop HemeWeb.
 
 <!--High Performance Computing (HPC) requires high performing infrastructures-->
 <!--like supercomputers or huge clusters of compute node to be run effectively.-->
