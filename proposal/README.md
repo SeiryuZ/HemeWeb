@@ -1,7 +1,7 @@
 # HemeWeb: Container based high performance computing in the cloud
 
 
-## Introduction
+## Purpose
 
 <!--Introduction to computational biology and HemeLB-->
 Computational biology and bioinformatics are research area that use
@@ -81,9 +81,24 @@ that run on ARCHER supercomputer due to its processing power requirement [17].
 <!--for different projects without getting bogged down with tools-->
 <!--and environment variables of all projects.-->
 
+## Main Claim
+
+This paper will argue that the current HemeLB workflow can be improved
+by using a container based HPC in cloud infrastructure approach. This
+approach will be better for HemeLB project because it is better in
+reproducibility, isolation, openness, and usability.
+
+**Reproducibility**
 
 
+**Isolation**
 
+**Openness**
+
+**Usability**
+
+
+**How to support this claim** Theoritical ? Experimental?
 
 ## Background
 
@@ -171,14 +186,7 @@ modelling simulation.
 ## Methodology
 Work in progress
 
-## Main Claim
 
-Container based High Performance Computing in cloud infrastructure is a better
-workflow than the current workflow for HemeLB use case because of
-reproducibility, isolation, openness, and usability.
-
-
-**How to support this claim** Theoritical ? Experimental?
 
 
 ## Expected Outcome/ Success Criteria
