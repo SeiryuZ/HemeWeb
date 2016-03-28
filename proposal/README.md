@@ -96,20 +96,25 @@ hands on the simulation configuration and run the simulation on a similar comput
 resources like ARCHER supercomputer which is not easy to replicate nor
 cheap. The proposed approach, on the other hand, will store every simulation scenario and
 configurations that are run via the web application. These scenarios can be shared
-and re-run easily, offering reproducibility to HemeLB computation.
+and re-run easily, offering reproducibility to HemeLB computation. In a
+more general situation, using container technology also allows reproducibility in
+the tools used by computational workflow. This allow computation
+workflow to be reproduced in any computing resources, not only tied into
+the implementation this paper will create.
 
 **Isolation** [Need further discussion]
 Second, proposed approach will be better for isolation issue in HemeLB
 computation. Container approach will allow better isolation between
 simulation and isolation with the computing environment. This also
 demonstrate benefits of using container technology toward the
-reproducible computation research push in general.
+reproducible computation research in general.
 
 **Openness**
 Third, proposed approach will allow open development of HemeLB
 simulation workflow. In developing the blood flow scenario, configuration for the
 computation process, everything will be logged and can be scrutinized by
-interested parties.
+interested parties. Container also allow anyone to inspect the
+tools used in the simulation.
 
 **Usability**
 Lastly, HemeWeb will allow better usability in running blood flow
@@ -120,8 +125,13 @@ to focus more on the simulation parameters and results rather than
 worrying about configurations of the resources.
 
 
+To support the claim, the author will develop an experimental system for
+HemeLB called HemeWeb which will use container based HPC in cloud
+infrastructure. The implementation will be a proof of concept that
+container based HPC workflow is viable, specifically in the context of
+blood flow simulation with HemeLB, docker as containerization technology
+and AWS as the cloud provider.
 
-**How to support this claim** Theoritical ? Experimental?
 
 ## Background
 
