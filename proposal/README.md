@@ -3,19 +3,7 @@
 
 ## Purpose
 
-<!--Introduction to computational biology and HemeLB-->
-Computational biology and bioinformatics are research area that use
-mathematical and computational approaches in answering questions and
-experiments in biology [16]. These approaches typically involves a
-computational workflow which, depending on the type of work,
-could varies widely in performance requirement, from normal computational process
-that could be done in normal consumer desktop processor to
-high-performance scneario that needs to be run on a cluster of computers
-or even supercomputer. One example of this type of project is HemeLB, a
-vascular blood flow simulation that is used for the study of blood flow [17].
-HemeLB have different processes in the workflow that requires different computing power,
-from the setup process which can be run on consumer-level computer, to the simulation process
-that run on ARCHER supercomputer due to its processing power requirement [17].
+
 
 <!--Current problem - Open Science, Usability, Isolation-->
 
@@ -126,73 +114,87 @@ worrying about configurations of the resources.
 
 
 To support the claim, the author will develop an experimental system for
-HemeLB called HemeWeb which will use container based HPC in cloud
-infrastructure. The implementation will be a proof of concept that
+HemeLB called HemeWeb which will use container technology in cloud
+infrastructure to run HPC workflow. The implementation will be a proof of concept that
 container based HPC workflow is viable, specifically in the context of
-blood flow simulation with HemeLB, docker as containerization technology
+blood flow simulation with HemeLB, docker as the containerization technology
 and AWS as the cloud provider.
 
 
 ## Background
 
-In dealing with High Performance Computing, infrastructures are
-typically required to be able to handle multi-core operations easily [4].
-Be it parallel workload or distributed system workload. This has lead to
-two separate computing paradigm we know as grid and cluster computing.
+<!--Introduction to computational biology and HemeLB-->
+Computational biology and bioinformatics are research area that use
+mathematical and computational approaches in answering questions and
+experiments in biology [16]. These approaches typically involves a
+computational workflow which, depending on the type of work,
+could varies widely in performance requirement, from normal computational process
+that could be done in normal consumer desktop processor to
+high-performance scneario that needs to be run on a cluster of computers
+or even supercomputer. One example of this type of project is HemeLB, a
+vascular blood flow simulation that is used for the study of blood flow [17].
+HemeLB have different processes in the workflow that requires different computing power,
+from the setup process which can be run on consumer-level computer, to the simulation process
+that run on ARCHER supercomputer due to its processing power requirement [17].
 
-Cluster computing is a paradigm where two or more computing resources
-are connected and used concurrently to run a single applications, often
-the computing resources are made of highly homogenous or similar
-computing unit mounted in a rack. The type of application run on cluster typically require highly parallel
-computation like modelling and simulation. This type of application benefits
-from having a highly interconnected node and data locality that clusters
-provide [4].
+<!--In dealing with High Performance Computing, infrastructures are-->
+<!--typically required to be able to handle multi-core operations easily [4].-->
+<!--Be it parallel workload or distributed system workload. This has lead to-->
+<!--two separate computing paradigm we know as grid and cluster computing.-->
 
-On the other hand, Grid computing is a different beast altogether. It
-allows heterogeneous computing resources, often geographically
-distributed, to cooperate for a common goals. It is highly dynamic and
-promis scaling infinitely without regards of physical location of the
-computing resources [6]. In the UK, grid computing often utilized under
-the banner of e-science [7], where they provide common middleware,
-software, and services for scientists to collaborate on their project regardless of physical
-locations.
+<!--Cluster computing is a paradigm where two or more computing resources-->
+<!--are connected and used concurrently to run a single applications, often-->
+<!--the computing resources are made of highly homogenous or similar-->
+<!--computing unit mounted in a rack. The type of application run on cluster typically require highly parallel-->
+<!--computation like modelling and simulation. This type of application benefits-->
+<!--from having a highly interconnected node and data locality that clusters-->
+<!--provide [4].-->
 
-Both of this type of HPC computing are traditionally done in an in-house
-manner. Where Universities or government institutions set up a cluster of
-computing resources or even a supercomputer to do HPC task. Grid
-computations are also done on in house manner or even utilize public's
-desktop computer for computational resources, example are the
-folding@ home and genome@ home projects [8]. Currently however, computing
-resources are available in the cheap. Cloud computing has entered into
-the pictures and allow computing resources to be available with a
-price tag attached to it. It is massively scalable, allow abstract
-encapsulation of computing resources, dynamically configured,
-delivered on-demand and driven by economies of scale [5].
+<!--On the other hand, Grid computing is a different beast altogether. It-->
+<!--allows heterogeneous computing resources, often geographically-->
+<!--distributed, to cooperate for a common goals. It is highly dynamic and-->
+<!--promis scaling infinitely without regards of physical location of the-->
+<!--computing resources [6]. In the UK, grid computing often utilized under-->
+<!--the banner of e-science [7], where they provide common middleware,-->
+<!--software, and services for scientists to collaborate on their project regardless of physical-->
+<!--locations.-->
 
-Cloud computing allowed institutions to offload their pain in procuring
-and maintaining computing resources to the vendors like Amazon, Google,
-Microsoft and etc for a price. This price also been reduced multiple times [9][10][11]
-that comes with economies of scale, making it financially less demanding to
-run HPC applications without in-house resources. In fact, few HPC
-applications has been run on the cloud, such as the nekkloud
-project [12], NASA HPC Applications [13], and few other case study [14]
-that shows that it is feasible to run HPC applications on the cloud,
-albeit with performance overhead.
+<!--Both of this type of HPC computing are traditionally done in an in-house-->
+<!--manner. Where Universities or government institutions set up a cluster of-->
+<!--computing resources or even a supercomputer to do HPC task. Grid-->
+<!--computations are also done on in house manner or even utilize public's-->
+<!--desktop computer for computational resources, example are the-->
+<!--folding@ home and genome@ home projects [8]. Currently however, computing-->
+<!--resources are available in the cheap. Cloud computing has entered into-->
+<!--the pictures and allow computing resources to be available with a-->
+<!--price tag attached to it. It is massively scalable, allow abstract-->
+<!--encapsulation of computing resources, dynamically configured,-->
+<!--delivered on-demand and driven by economies of scale [5].-->
 
-This development have make it possible for people or institutions with
-enough financial means to do some heavy computations without having
-access to this traditionally expensive in-house computing resources.
+<!--Cloud computing allowed institutions to offload their pain in procuring-->
+<!--and maintaining computing resources to the vendors like Amazon, Google,-->
+<!--Microsoft and etc for a price. This price also been reduced multiple times [9][10][11]-->
+<!--that comes with economies of scale, making it financially less demanding to-->
+<!--run HPC applications without in-house resources. In fact, few HPC-->
+<!--applications has been run on the cloud, such as the nekkloud-->
+<!--project [12], NASA HPC Applications [13], and few other case study [14]-->
+<!--that shows that it is feasible to run HPC applications on the cloud,-->
+<!--albeit with performance overhead.-->
 
-[need better transition from cloud computing HPC to the push for
-reproducibility]
-In scientific computing, there has been a push to make a computational
-results reproducible even if it is complex [15]. This push make sures that
-research results adhere to scientific method, that is reproducible by
-our peers. As traditionally, HPC resources are in-house, this hinders
-the reproducibility aspect of the research. However, with cloud, this
-enable people to access this resources more easily, for example:
-Galaxy [2] that enable people to compose, run, and share their
-modelling simulation.
+<!--This development have make it possible for people or institutions with-->
+<!--enough financial means to do some heavy computations without having-->
+<!--access to this traditionally expensive in-house computing resources.-->
+
+<!--[need better transition from cloud computing HPC to the push for-->
+<!--reproducibility]-->
+<!--In scientific computing, there has been a push to make a computational-->
+<!--results reproducible even if it is complex [15]. This push make sures that-->
+<!--research results adhere to scientific method, that is reproducible by-->
+<!--our peers. As traditionally, HPC resources are in-house, this hinders-->
+<!--the reproducibility aspect of the research. However, with cloud, this-->
+<!--enable people to access this resources more easily, for example:-->
+<!--Galaxy [2] that enable people to compose, run, and share their-->
+<!--modelling simulation.-->
 
 
 
