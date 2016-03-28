@@ -1,4 +1,4 @@
-# HemeWeb: Container based high performance computing in the cloud
+# HemeWeb: Container based high performance computing scenario for HemeLB
 
 
 ## Purpose
@@ -98,13 +98,27 @@ cheap. The proposed approach, on the other hand, will store every simulation sce
 configurations that are run via the web application. These scenarios can be shared
 and re-run easily, offering reproducibility to HemeLB computation.
 
-
-
-**Isolation**
+**Isolation** [Need further discussion]
+Second, proposed approach will be better for isolation issue in HemeLB
+computation. Container approach will allow better isolation between
+simulation and isolation with the computing environment. This also
+demonstrate benefits of using container technology toward the
+reproducible computation research push in general.
 
 **Openness**
+Third, proposed approach will allow open development of HemeLB
+simulation workflow. In developing the blood flow scenario, configuration for the
+computation process, everything will be logged and can be scrutinized by
+interested parties.
 
 **Usability**
+Lastly, HemeWeb will allow better usability in running blood flow
+simulation. Currently, to run the simulation, one have to configure and
+install many dependencies which requires technical dependencies that not everyone have.
+Having the workflow moved into its own web application will allow people
+to focus more on the simulation parameters and results rather than
+worrying about configurations of the resources.
+
 
 
 **How to support this claim** Theoritical ? Experimental?
