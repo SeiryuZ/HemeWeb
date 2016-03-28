@@ -1,33 +1,48 @@
-# Informatic Research Proposal - Docker-based high performance computing in the cloud
+# Informatic Research Proposal
+# HemeWeb: Container based high performance computing in the cloud
 
-## Motivation
 
-High Performance Computing (HPC) requires high performing infrastructures
-like supercomputers or huge clusters of compute node to be run effectively.
-This computational setup allows some complex computation,
-usually a scientific computation simulation, to be done in a high
-performing fashion that traditional consumer desktop computers cannot achieve.
-However, acquiring access to this computation resources are neither easy, nor
-cheap. To acquire access to these resources, you have to be member of a university,
-government institute, scientists group, or alternatively, build your own cluster.
+## Introduction
 
-In scientific community, especially in scientific computation,
-researchers utilize these infrastructures for their research. For
-example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,
-and Cray XT4 at University of Edinburgh [1]. These infrastructures,
-unfortunately, are not available to most people or unfeasible to
-replicate. Moreover, complex setup process, configuration and toolings further
-discourage people from replicating computations from these researches.
+Computational biology and bioinformatics are research area that use
+mathematical and computational approaches in answering questions and
+experiments in biology [16]. These approaches typically involves a
+computational workflow which, depending on the type of work,
+could varies widely in performance requirement, from normal computational process
+that could be done in normal consumer desktop processor to
+high-performance scneario that needs to be run on a cluster of computers
+or even supercomputer. One example of this type of project is HemeLB, a
+vascular blood flow simulation. HemeLB have different processes in the
+workflow that requires different computing power, from the setup process
+which can be run on consumer-level computer, to the simulation process
+that run on ARCHER supercomputer [17].
 
-Galaxy [2], a web-based reproducible research platform is developed to
-answer to these issues. It allows its user to compose, customize, run
-and share their simulations utilizing cloud computing resources.
-However, these computational models are limited to the tools provided by
-the web application, Galaxy, and the infrastructures that it rans on
-(i.e, OS) which require researches/ computational researches to
-understand/ have experience with the toolings provided or create their
-own based on the restriction. For example, most of the tools that is ran
-on Galaxy, require python script.
+<!--High Performance Computing (HPC) requires high performing infrastructures-->
+<!--like supercomputers or huge clusters of compute node to be run effectively.-->
+<!--This computational setup allows some complex computation,-->
+<!--usually a scientific computation simulation, to be done in a high-->
+<!--performing fashion that traditional consumer desktop computers cannot achieve.-->
+<!--However, acquiring access to this computation resources are neither easy, nor-->
+<!--cheap. To acquire access to these resources, you have to be member of a university,-->
+<!--government institute, scientists group, or alternatively, build your own cluster.-->
+
+<!--In scientific community, especially in scientific computation,-->
+<!--researchers utilize these infrastructures for their research. For-->
+<!--example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,-->
+<!--and Cray XT4 at University of Edinburgh [1]. These infrastructures,-->
+<!--unfortunately, are not available to most people or unfeasible to-->
+<!--replicate. Moreover, complex setup process, configuration and toolings further-->
+<!--discourage people from replicating computations from these researches.-->
+
+<!--Galaxy [2], a web-based reproducible research platform is developed to-->
+<!--answer to these issues. It allows its user to compose, customize, run-->
+<!--and share their simulations utilizing cloud computing resources.-->
+<!--However, these computational models are limited to the tools provided by-->
+<!--the web application, Galaxy, and the infrastructures that it rans on-->
+<!--(i.e, OS) which require researches/ computational researches to-->
+<!--understand/ have experience with the toolings provided or create their-->
+<!--own based on the restriction. For example, most of the tools that is ran-->
+<!--on Galaxy, require python script.-->
 
 <!--Some research have tried to overcome this limitations by utilizing the-->
 <!--power of cloud computing. Galaxy[2], for example tried to be-->
@@ -37,26 +52,26 @@ on Galaxy, require python script.
 <!--computations configurations are limited to the resources that are available to the-->
 <!--computing infrastructure and tools provided by Galaxy project.-->
 
-Limitation above is the impetus for this project. In an ideal scenario,
-researchers do not need to port their computation project to the provided toolings,
-environment of an infrastructure of a computational models provider.
-Researchers could just compose their computation project with whatever
-tools and environment they are comfortable with and run with it. And
-this is where docker [3] comes into the picture. Docker allows us to compose
-our computation environment and tools as we wanted and allow it to be
-shared easily. Our project will utilize this unique trait of docker to
-allow researchers compose their computational project as they see fit.
+<!--Limitation above is the impetus for this project. In an ideal scenario,-->
+<!--researchers do not need to port their computation project to the provided toolings,-->
+<!--environment of an infrastructure of a computational models provider.-->
+<!--Researchers could just compose their computation project with whatever-->
+<!--tools and environment they are comfortable with and run with it. And-->
+<!--this is where docker [3] comes into the picture. Docker allows us to compose-->
+<!--our computation environment and tools as we wanted and allow it to be-->
+<!--shared easily. Our project will utilize this unique trait of docker to-->
+<!--allow researchers compose their computational project as they see fit.-->
 
-There will be a web interface to set the running parameter of the computations
-and to run the project utilizing cloud computing resources. This allows
-researchers to be free from tools that they are not familiar with or
-specific implementations which is a barrier for replication of project.
-Infrastructure choice also become agnostic, our computational node do
-not have to install dependencies or tools that each project needs
-because it is already packaged in the containers and "clean" from each
-other's dependencies, making the computational node reusable
-for different projects without getting bogged down with tools
-and environment variables of all projects.
+<!--There will be a web interface to set the running parameter of the computations-->
+<!--and to run the project utilizing cloud computing resources. This allows-->
+<!--researchers to be free from tools that they are not familiar with or-->
+<!--specific implementations which is a barrier for replication of project.-->
+<!--Infrastructure choic1e also become agnostic, our computational node do-->
+<!--not have to install dependencies or tools that each project needs-->
+<!--because it is already packaged in the containers and "clean" from each-->
+<!--other's dependencies, making the computational node reusable-->
+<!--for different projects without getting bogged down with tools-->
+<!--and environment variables of all projects.-->
 
 
 
@@ -201,3 +216,7 @@ HemeLB.
 [14] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
 
 [15] Marwick, Ben. "Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation." Journal of Archaeological Method and Theory (2016): 1-27.
+
+[16] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.On the workflow
+
+[17] Itani, Mohamed A., et al. "An automated multiscale ensemble simulation approach for vascular blood flow." Journal of Computational Science 9 (2015): 150-155.
