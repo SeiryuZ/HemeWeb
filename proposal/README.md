@@ -16,7 +16,7 @@ One should have the configurations for the simulation and run
 the simulation with computing resources similar to ARCHER supercomputer,
 which is not easy to find or acquire access to.
 
-With recent push for reproducible computing research [2][3][4], HemeLB
+With pushes for reproducible computing research [2][3][4][5], HemeLB
 needs to further improve its reproducible computing aspect to further
 improve the transparency and trustworthiness of simulations done with it.
 
@@ -24,7 +24,8 @@ improve the transparency and trustworthiness of simulations done with it.
 In this project, the author will focus on creating an "extension" to
 HemeLB called HemeWeb that addresses this reproducible computing
 research aspect so that simulations done with HemeLB have an added
-transparency and trustworthiness.
+transparency and trustworthiness. This extension will use the
+containerization technology, Docker, to address the reproducible aspect [6]
 
 
 <!--Current problem - Open Science, Usability, Isolation-->
@@ -288,7 +289,6 @@ HemeLB.
 
 <!--[15] Marwick, Ben. "Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation." Journal of Archaeological Method and Theory (2016): 1-27.-->
 
-<!--[16] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.On the workflow-->
 
 [1] Itani, M. A., Schiller, U. D., Schmieschek, S., Hetherington, J., Bernabeu, M. O., Chandrashekar, H., ... & Groen, D. (2015). An automated multiscale ensemble simulation approach for vascular blood flow. Journal of Computational Science, 9, 150-155.
 Chicago
@@ -298,3 +298,7 @@ Chicago
 [3] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.
 
 [4] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
+
+[5] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.On the workflow
+
+[6] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
