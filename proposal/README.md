@@ -3,6 +3,7 @@
 
 ## Introduction
 
+<!--Introduction to computational biology and HemeLB-->
 Computational biology and bioinformatics are research area that use
 mathematical and computational approaches in answering questions and
 experiments in biology [16]. These approaches typically involves a
@@ -16,11 +17,13 @@ HemeLB have different processes in the workflow that requires different computin
 from the setup process which can be run on consumer-level computer, to the simulation process
 that run on ARCHER supercomputer due to its processing power requirement [17].
 
-Current problem - Open Science, Usability, Isolation
+<!--Current problem - Open Science, Usability, Isolation-->
 
-Current situation - How GalaxyWeb address
 
-To showcase the proposed solution, I will develop HemeWeb.
+<!--Current situation - How GalaxyWeb address-->
+
+<!--To showcase the proposed solution, I will develop HemeWeb.-->
+
 
 <!--High Performance Computing (HPC) requires high performing infrastructures-->
 <!--like supercomputers or huge clusters of compute node to be run effectively.-->
@@ -169,13 +172,11 @@ modelling simulation.
 Work in progress
 
 ## Main Claim
-Work in progress
 
-X is better than Y on task Z along some dimension W
+Container based High Performance Computing in cloud infrastructure is a better
+workflow than the current workflow for HemeLB use case because of
+reproducibility, isolation, openness, and usability.
 
-Docker-based HPC computing in cloud is better than supercomputer on
-scientific computing along some dimension of usability, openess,
-replicability
 
 **How to support this claim** Theoritical ? Experimental?
 
