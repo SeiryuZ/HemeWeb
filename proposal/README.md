@@ -89,6 +89,15 @@ approach will be better for HemeLB project because it is better in
 reproducibility, isolation, openness, and usability.
 
 **Reproducibility**
+The proposed approach will be better for reproducibility, allowing a
+computing process and scenario to be duplicated more easily than status quo.
+Currently, to reproduce the computational process, one must get their
+hands on the simulation configuration and run the simulation on a similar computing
+resources like ARCHER supercomputer which is not easy to replicate nor
+cheap. The proposed approach, on the other hand, will store every simulation scenario and
+configurations that are run via the web application. These scenarios can be shared
+and re-run easily, offering reproducibility to HemeLB computation.
+
 
 
 **Isolation**
