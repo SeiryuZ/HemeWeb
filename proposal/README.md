@@ -1,4 +1,3 @@
-# Informatic Research Proposal
 # HemeWeb: Container based high performance computing in the cloud
 
 
