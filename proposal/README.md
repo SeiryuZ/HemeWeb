@@ -205,11 +205,9 @@ ARCHER [11]. Another example is PRACE [12], the Partnership for Advanced Computi
 that allows researcher to access supercomputers accross europe after a
  vetting process. This theoritically allow people with the credentials
 to gain access to these resources with the correct motives. However,
-reproducing research computation that already been run might not fit the
-purpose of these HPC facilities when gaining access itself needs vetting
-process which will choose the important project. Reproducing research
-computation is still not the top priority of these facilities.
-
+reproducing research computation that already been run might not be the
+top priority of these facilities when there are many other research
+projects that depend on access to these limited resources.
 
 **Cloud Computing**
 
