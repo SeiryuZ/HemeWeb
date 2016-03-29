@@ -114,6 +114,7 @@ approach will be better for HemeLB project because it is better in
 reproducibility, isolation, openness, and usability.
 
 **Reproducibility**
+
 The proposed approach will be better for reproducibility, allowing a
 computing process and scenario to be duplicated more easily than status quo.
 Currently, to reproduce the computational process, one must get their
@@ -128,6 +129,7 @@ workflow to be reproduced in any computing resources, not only tied into
 the implementation this paper will create.
 
 **Isolation** [Need further discussion]
+
 Second, proposed approach will be better for isolation issue in HemeLB
 computation. Container approach will allow better isolation between
 simulation and isolation with the computing environment. This also
@@ -136,6 +138,7 @@ reproducible computation research in general [8], although with limitation as
 complete isolation is not possible without hardware virtualization.
 
 **Openness**
+
 Third, proposed approach will allow open development of HemeLB
 simulation workflow. In developing the blood flow scenario, configuration for the
 computation process, everything will be logged and can be scrutinized by
@@ -143,6 +146,7 @@ interested parties. Container also allow anyone to inspect the
 tools used in the simulation.
 
 **Usability**
+
 Lastly, HemeWeb will allow better usability in running blood flow
 simulation. Currently, to run the simulation, one have to configure and
 install many dependencies which requires technical dependencies that not everyone have.
@@ -162,7 +166,7 @@ and AWS as the cloud provider.
 ## Background
 
 
-** HemeLB and HPC **
+**HemeLB and HPC**
 
 <!--Introduction to computational biology and HemeLB-->
 Computational biology and bioinformatics are research area that use
@@ -207,11 +211,11 @@ process which will choose the important project. Reproducing research
 computation is still not the top priority of these facilities.
 
 
-**  Cloud Computing **
+**Cloud Computing**
 
 
 
-**  Containerization technology  **
+**Containerization technology**
 
 
 <!--In dealing with High Performance Computing, infrastructures are-->
