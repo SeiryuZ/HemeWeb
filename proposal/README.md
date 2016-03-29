@@ -19,22 +19,27 @@ This feat however is not easy, because acquiring acquire access to or
 building computing resources similar to original simulation might be
 infeasible.
 
-With pushes for reproducible computing research [2][3][4][5] in general, HemeLB
+With pushes for reproducible computing research in general [2][3][4][5], HemeLB
 needs to improve its reproducible computing aspect for the benefit of
-the simulations run with it. HemeLB Simulations will adhere to a higher
+the simulations that run with it. HemeLB Simulations should  adhere to a higher
 standard of validation from the community, making it more transparent
-and trustworthy in general. This trustworthiness is especially more important
-when this research area is described in media as "integral" part in
+and trustworthy. This trustworthiness is especially more important
+when this research area is described in media as an "integral" part in
 clinicial decision in the future [6].
 
+In adhering to the reproducible aspect,
+the author propose on creating an "extension" to HemeLB called HemeWeb.
+HemeWeb will be a web application for HemeLB simulation workflow that
+allows interested party to configure and run blood flow simulation on
+the cloud, or even, their own computing resources. This extension will
+utilize container technology, specifically Docker [7], that allows tools
+involved with the workflow to be isolated, inspected, and shared easily
+with the publicly available registry. Moreover, docker has been reviewed
+to be an appropriate tool for distributing reproducible research, albeit
+with few limitations [8]. Thus in this project, the author will create
+an experimental web application for HemeLB to address the reproducible
+computing aspect of the research.
 
-
-
-In this project, the author will focus on creating an "extension" to
-HemeLB called HemeWeb that addresses this reproducible computing
-research aspect so that simulations done with HemeLB have an added
-transparency and trustworthiness. This extension will use the
-containerization technology, Docker, to address the reproducible aspect [7]
 
 
 <!--Current problem - Open Science, Usability, Isolation-->
@@ -312,4 +317,6 @@ Chicago
 
 [6] http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
 
-[7] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
+[7] Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2.
+
+[8] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
