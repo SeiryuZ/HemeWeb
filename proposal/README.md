@@ -165,6 +165,11 @@ and AWS as the cloud provider.
 
 ## Background
 
+The proposed system will consists of few key technologies and concept in order to be
+working as intended. These key technologies are HemeLB itself,
+Cloud computing, and Containerization technology. In this section,
+the author will provide a short overview of these technologies and concepts.
+
 
 **HemeLB and HPC**
 
