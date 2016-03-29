@@ -10,16 +10,16 @@ degree of computational power on each steps. Most notably, the simulation part
 of HemeLB requires high performing computing resources like
 ARCHER supercomputer [1] to run effectively, while the
 setup process for the simulation can be done in consumer-grade computing
-resources. Exclusivity of computing resources and the overhead of documentation
-make simulation results done with HemeLB a bit hard to be reproduced.
-If anyone want to replicate a simulation, one should have the configurations
-for the simulation exactly the same and run the simulation with similar
+resources. Exclusivity of computing resources on certain step of the workflow
+and the overhead of documentation make simulation results done with HemeLB non-trivial to be reproduced.
+If anyone want to replicate a simulation, one should have the exact same configurations
+for the simulation  and run the simulation with similar
 computing resources to the original simulation to replicate it closely.
 This feat however is not easy, because acquiring acquire access to or
 building computing resources similar to original simulation might be
 infeasible.
 
-With pushes for reproducible computing research in general [2][3][4][5], HemeLB
+With pushes for reproducible computing research in general [2][3][4], HemeLB
 needs to improve its reproducible computing aspect for the benefit of
 the simulations that run with it. HemeLB Simulations should  adhere to a higher
 standard of validation from the community, making it more transparent
@@ -38,7 +38,7 @@ with the publicly available registry. Moreover, docker has been reviewed
 to be an appropriate tool for distributing reproducible research, albeit
 with few limitations [8]. Thus in this project, the author will create
 an experimental web application for HemeLB to address the reproducible
-computing aspect of the research.
+computing aspect of the research using docker.
 
 
 
@@ -123,7 +123,7 @@ cheap. The proposed approach, on the other hand, will store every simulation sce
 configurations that are run via the web application. These scenarios can be shared
 and re-run easily, offering reproducibility to HemeLB computation. In a
 more general situation, using container technology also allows reproducibility in
-the tools used by computational workflow. This allow computation
+the tools used by any computational workflow. This allow computation
 workflow to be reproduced in any computing resources, not only tied into
 the implementation this paper will create.
 
@@ -132,7 +132,8 @@ Second, proposed approach will be better for isolation issue in HemeLB
 computation. Container approach will allow better isolation between
 simulation and isolation with the computing environment. This also
 demonstrate benefits of using container technology toward the
-reproducible computation research in general.
+reproducible computation research in general [8], although with limitation as
+complete isolation is not possible without hardware virtualization.
 
 **Openness**
 Third, proposed approach will allow open development of HemeLB
@@ -163,16 +164,30 @@ and AWS as the cloud provider.
 <!--Introduction to computational biology and HemeLB-->
 Computational biology and bioinformatics are research area that use
 mathematical and computational approaches in answering questions and
-experiments in biology [16]. These approaches typically involves a
+experiments in biology [5]. These approaches typically involves a
 computational workflow which, depending on the type of work,
 could varies widely in performance requirement, from normal computational process
 that could be done in normal consumer desktop processor to
 high-performance scneario that needs to be run on a cluster of computers
 or even supercomputer. One example of this type of project is HemeLB, a
-vascular blood flow simulation that is used for the study of blood flow [17].
+vascular blood flow simulation that is used for the study of blood flow [1].
 HemeLB have different processes in the workflow that requires different computing power,
 from the setup process which can be run on consumer-level computer, to the simulation process
-that run on ARCHER supercomputer due to its processing power requirement [17].
+that run on ARCHER supercomputer due to its processing power requirement [1].
+
+This simulation require a highly paralel capabilities of the computing
+resources that falls under the category of High Performance Computing.
+Traditionally, large computing process could be tackled by two separate
+computing paradigm depending on the type of work it needs to do. They
+are High Performance Computing and High Throughput Computing. High
+performance computing typically involves multiple computing nodes
+connected with a high bandwidth network, performing a well-defined
+computations that use message passing interface to communicate between
+nodes. HPC are typically performed using computer clusters, GPUs, or
+even supercomputer. High troughput computing, on the other hand, is a different
+paradigm. It allows highly heteregenous computing resources,
+often geographically distributed, to cooperate for common goals which
+involves different independent computation that can be scheduled independently[9].
 
 <!--In dealing with High Performance Computing, infrastructures are-->
 <!--typically required to be able to handle multi-core operations easily [4].-->
@@ -283,7 +298,6 @@ HemeLB.
 
 <!--[5] Cloud Computing and Grid Computing 360-Degree Compared  - I. Foster, Y. Zhao, I. Raicu and S. Lu, "Cloud Computing and Grid Computing 360-Degree Compared," Grid Computing Environments Workshop, 2008. GCE '08, Austin, TX, 2008, pp. 1-10.  doi: 10.1109/GCE.2008.4738445-->
 
-<!--[6] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.-->
 
 <!--[7] Hey, Tony, and Anne E. Trefethen. "Cyberinfrastructure for e-Science." Science 308.5723 (2005): 817-821.-->
 
@@ -305,7 +319,6 @@ HemeLB.
 
 
 [1] Itani, M. A., Schiller, U. D., Schmieschek, S., Hetherington, J., Bernabeu, M. O., Chandrashekar, H., ... & Groen, D. (2015). An automated multiscale ensemble simulation approach for vascular blood flow. Journal of Computational Science, 9, 150-155.
-Chicago
 
 [2] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.
 
@@ -313,10 +326,12 @@ Chicago
 
 [4] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
 
-[5] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.On the workflow
+[5] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.
 
 [6] http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
 
 [7] Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2.
 
 [8] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
+
+[9] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
