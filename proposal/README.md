@@ -113,9 +113,9 @@ by using a container based HPC in cloud infrastructure approach. This
 approach will be better for HemeLB project because it is better in
 reproducibility, isolation, openness, and usability.
 
-**Reproducibility**
+* **Reproducibility**
 
-The proposed approach will be better for reproducibility, allowing a
+  The proposed approach will be better for reproducibility, allowing a
 computing process and scenario to be duplicated more easily than status quo.
 Currently, to reproduce the computational process, one must get their
 hands on the simulation configuration and run the simulation on a similar computing
@@ -128,9 +128,9 @@ the tools used by any computational workflow. This allow computation
 workflow to be reproduced in any computing resources, not only tied into
 the implementation this paper will create.
 
-**Isolation** [Need further discussion]
+* **Isolation** [Need further discussion]
 
-Second, proposed approach will be better for isolation issue in HemeLB
+  Second, proposed approach will be better for isolation issue in HemeLB
 computation. Container approach will allow better isolation between
 simulation and isolation with the computing environment. This also
 demonstrate benefits of using container technology toward the
@@ -154,6 +154,7 @@ Having the workflow moved into its own web application will allow people
 to focus more on the simulation parameters and results rather than
 worrying about configurations of the resources.
 
+---------------
 
 To support the claim, the author will develop an experimental system for
 HemeLB called HemeWeb which will use container technology in cloud
