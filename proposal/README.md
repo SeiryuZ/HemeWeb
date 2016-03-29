@@ -189,6 +189,21 @@ paradigm. It allows highly heteregenous computing resources,
 often geographically distributed, to cooperate for common goals which
 involves different independent computation that can be scheduled independently[9].
 
+Both of these computing paradigm typically requires huge
+computing resources available to perform its task effectively. HPC task
+like HemeLB especially, are often run on supercomputers, for example ARCHER
+supercomputer. This supercomputers requires you to be academics /
+researchers with clear proposal, for example how epcc give access to
+ARCHER [11]. Another example is PRACE [12], the Partnership for Advanced Computing in Europe,
+that allows researcher to access supercomputers accross europe after a
+ vetting process. This theoritically allow people with the credentials
+to gain access to these resources with the correct motives. However,
+reproducing research computation that already been run might not fit the
+purpose of these HPC facilities when gaining access itself needs vetting
+process which will choose the important project. Reproducing research
+computation is still not the top priority of these facilities.
+
+
 <!--In dealing with High Performance Computing, infrastructures are-->
 <!--typically required to be able to handle multi-core operations easily [4].-->
 <!--Be it parallel workload or distributed system workload. This has lead to-->
@@ -335,3 +350,7 @@ HemeLB.
 [8] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
 
 [9] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
+
+[10] http://www.archer.ac.uk/access/
+
+[12] http://www.prace-project.eu/
