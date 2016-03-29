@@ -199,14 +199,16 @@ nodes. HPC are typically performed using computer clusters, GPUs, or
 even supercomputer. High troughput computing, on the other hand, is a different
 paradigm. It allows highly heteregenous computing resources,
 often geographically distributed, to cooperate for common goals which
-involves different independent computation that can be scheduled independently[9].
+involves different independent computation that can be scheduled independently
+and later aggregated on one of the nodes. [Citations on this paragraph
+need to be fixed]
 
 Both of these computing paradigm typically requires huge
 computing resources available to perform its task effectively. HPC task
 like HemeLB especially, are often run on supercomputers, for example ARCHER
 supercomputer. This supercomputers requires you to be academics /
 researchers with clear proposal, for example how epcc give access to
-ARCHER [11]. Another example is PRACE [12], the Partnership for Advanced Computing in Europe,
+ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,
 that allows researcher to access supercomputers accross europe after a
  vetting process. This theoritically allow people with the credentials
 to gain access to these resources with the correct motives. However,
@@ -215,6 +217,40 @@ top priority of these facilities when there are many other research
 projects that depend on access to these limited resources.
 
 **Cloud Computing**
+
+In answering huge computational power required by researchers and
+academics concept called grid computing is envisioned in 1990s [12].
+This vision consider computing resources analogous to power grid, where
+user should not care from where the resources are acquired and how it is
+delivered to the user. What user should see is that there are computing
+resources available and it could come from anywhere and in any form.
+This paradigm is mainly developed with the interest of researchers and
+academia that the business models caters to the most [13]. Grid
+computing typically give CPU hours based on the proposal that is vetted
+by the institutions. Example of this institution is TeraGrid which
+operates until 2011 [14].
+
+Cloud computing share similar vision with grid computing paradigm on how the
+computing resources are acquired and delivered are invisible to the
+users, but different on the execution of the business model. It is
+massively scalable, allow abstract encapsulation of computing resources,
+dynamicaly configured and delivered on-demand and most importantly,
+driven by economies of scale [13]. Since it is driven by economies of
+scale, it is in the interest of cloud providers to provide features
+that users actually needs and want to pay for, therefore creating a
+tight feedback loop between users and the providers to develop the
+platform better than how grid computing handle feature developments.
+
+This has allowed cloud vendors to grow significantly, that in 2013 it
+was noted that some cloud vendors could reach more than 90% growth per annum
+[15]. These growth further fuels demand and allow them to cut pricing
+for their service multiple times [16][17][18] and create more demands.
+This development has allowed business or institutions to offload their
+computational need to the cloud vendors for a price rather than building their own
+infrastructure. This scenario could also be used for our purpose of
+reproducing computational research without needing to worry about
+preventing other researches getting their share of computational
+resource.
 
 
 
@@ -335,11 +371,6 @@ HemeLB.
 
 <!--[8] Larson, Stefan M., et al. "Folding@ Home and Genome@ Home: Using distributed computing to tackle previously intractable problems in computational biology." arXiv preprint arXiv:0901.0866 (2009).-->
 
-<!--[9] https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/-->
-
-<!--[10] https://azure.microsoft.com/en-us/blog/storage-price-match/-->
-
-<!--[11] http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/-->
 
 <!--[12] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.-->
 
@@ -370,4 +401,18 @@ HemeLB.
 
 [10] http://www.archer.ac.uk/access/
 
-[12] http://www.prace-project.eu/
+[11] http://www.prace-project.eu/
+
+[12] Foster, I., & Kesselman, C. (Eds.). (2003). The Grid 2: Blueprint for a new computing infrastructure. Elsevier.
+
+[13] Foster, I., Zhao, Y., Raicu, I., & Lu, S. (2008, November). Cloud computing and grid computing 360-degree compared. In Grid Computing Environments Workshop, 2008. GCE'08 (pp. 1-10). Ieee.
+
+[14] TeraGrid Archive https://www.xsede.org/tg-archives
+
+[15] http://www.fsn.co.uk/channel_outsourcing/the_economy_is_flat_so_why_are_financials_cloud_vendors_growing_at_more_than_90_percent_per_annum#.UbmtsPlJPGA/
+
+[16] https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/
+
+[17] https://azure.microsoft.com/en-us/blog/storage-price-match/
+
+[18] http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
