@@ -6,26 +6,35 @@
 
 HemeLB, a fluid dynamic simulation project that is used for the study of
 blood flow, currently have workflow that requires varying
-degree of computational power to run on each steps. Most notably, the simulation part
-of HemeLB which requires a high performing computing resources,
-currently run on ARCHER supercomputer [1], while the
+degree of computational power on each steps. Most notably, the simulation part
+of HemeLB requires high performing computing resources like
+ARCHER supercomputer [1] to run effectively, while the
 setup process for the simulation can be done in consumer-grade computing
-resources. Exclusivity of resources and the overhead of documenting
+resources. Exclusivity of computing resources and the overhead of documentation
 make simulation results done with HemeLB a bit hard to be reproduced.
-One should have the configurations for the simulation and run
-the simulation with computing resources similar to ARCHER supercomputer,
-which is not easy to find or acquire access to.
+If anyone want to replicate a simulation, one should have the configurations
+for the simulation exactly the same and run the simulation with similar
+computing resources to the original simulation to replicate it closely.
+This feat however is not easy, because acquiring acquire access to or
+building computing resources similar to original simulation might be
+infeasible.
 
-With pushes for reproducible computing research [2][3][4][5], HemeLB
-needs to further improve its reproducible computing aspect to further
-improve the transparency and trustworthiness of simulations done with it.
+With pushes for reproducible computing research [2][3][4][5] in general, HemeLB
+needs to improve its reproducible computing aspect for the benefit of
+the simulations run with it. HemeLB Simulations will adhere to a higher
+standard of validation from the community, making it more transparent
+and trustworthy in general. This trustworthiness is especially more important
+when this research area is described in media as "integral" part in
+clinicial decision in the future [6].
+
+
 
 
 In this project, the author will focus on creating an "extension" to
 HemeLB called HemeWeb that addresses this reproducible computing
 research aspect so that simulations done with HemeLB have an added
 transparency and trustworthiness. This extension will use the
-containerization technology, Docker, to address the reproducible aspect [6]
+containerization technology, Docker, to address the reproducible aspect [7]
 
 
 <!--Current problem - Open Science, Usability, Isolation-->
@@ -301,4 +310,6 @@ Chicago
 
 [5] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.On the workflow
 
-[6] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
+[6] http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
+
+[7] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
