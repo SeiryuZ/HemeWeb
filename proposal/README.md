@@ -137,24 +137,23 @@ demonstrate benefits of using container technology toward the
 reproducible computation research in general [8], although with limitation as
 complete isolation is not possible without hardware virtualization.
 
-**Openness**
+* **Openness**
 
-Third, proposed approach will allow open development of HemeLB
+  Third, proposed approach will allow open development of HemeLB
 simulation workflow. In developing the blood flow scenario, configuration for the
 computation process, everything will be logged and can be scrutinized by
 interested parties. Container also allow anyone to inspect the
 tools used in the simulation.
 
-**Usability**
+* **Usability**
 
-Lastly, HemeWeb will allow better usability in running blood flow
+  Lastly, HemeWeb will allow better usability in running blood flow
 simulation. Currently, to run the simulation, one have to configure and
 install many dependencies which requires technical dependencies that not everyone have.
 Having the workflow moved into its own web application will allow people
 to focus more on the simulation parameters and results rather than
 worrying about configurations of the resources.
 
----------------
 
 To support the claim, the author will develop an experimental system for
 HemeLB called HemeWeb which will use container technology in cloud
