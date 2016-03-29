@@ -252,6 +252,13 @@ reproducing computational research without needing to worry about
 preventing other researches getting their share of computational
 resource.
 
+Cloud vendors like amazon also capitalize on the need of computing
+resources for HPC application that they promote themselves for this capabilities [19].
+Running HPC application on cloud vendors, while incurring performance
+overhead, are a viable alternative to supercomputers as shown by
+the nekkloud project [20], NASA HPC Applications [21], and few other case study [22].
+HemeWeb project should also run perfectly fine on cloud infrastructures.
+
 
 
 **Containerization technology**
@@ -362,7 +369,6 @@ HemeLB.
 
 <!--[3] Docker - http://www.docker.com/-->
 
-<!--[4] Whitepaper: Intro to HPC on AWS - https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf-->
 
 <!--[5] Cloud Computing and Grid Computing 360-Degree Compared  - I. Foster, Y. Zhao, I. Raicu and S. Lu, "Cloud Computing and Grid Computing 360-Degree Compared," Grid Computing Environments Workshop, 2008. GCE '08, Austin, TX, 2008, pp. 1-10.  doi: 10.1109/GCE.2008.4738445-->
 
@@ -372,11 +378,7 @@ HemeLB.
 <!--[8] Larson, Stefan M., et al. "Folding@ Home and Genome@ Home: Using distributed computing to tackle previously intractable problems in computational biology." arXiv preprint arXiv:0901.0866 (2009).-->
 
 
-<!--[12] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.-->
 
-<!--[13] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.-->
-
-<!--[14] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.-->
 
 <!--[15] Marwick, Ben. "Computational Reproducibility in Archaeological Research: Basic Principles and a Case Study of Their Implementation." Journal of Archaeological Method and Theory (2016): 1-27.-->
 
@@ -416,3 +418,11 @@ HemeLB.
 [17] https://azure.microsoft.com/en-us/blog/storage-price-match/
 
 [18] http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
+
+[19] Whitepaper: Intro to HPC on AWS - https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf
+
+[20] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
+
+[21] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
+
+[22] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
