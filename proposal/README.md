@@ -106,61 +106,7 @@ computing aspect of the research using docker.
 <!--for different projects without getting bogged down with tools-->
 <!--and environment variables of all projects.-->
 
-## Main Claim
 
-This paper will argue that the current HemeLB workflow can be improved
-by using a container based HPC in cloud infrastructure approach. This
-approach will be better for HemeLB project because it is better in
-reproducibility, isolation, openness, and usability.
-
-* **Reproducibility**
-
-  The proposed approach will be better for reproducibility, allowing a
-computing process and scenario to be duplicated more easily than status quo.
-Currently, to reproduce the computational process, one must get their
-hands on the simulation configuration and run the simulation on a similar computing
-resources like ARCHER supercomputer which is not easy to replicate nor
-cheap. The proposed approach, on the other hand, will store every simulation scenario and
-configurations that are run via the web application. These scenarios can be shared
-and re-run easily, offering reproducibility to HemeLB computation. In a
-more general situation, using container technology also allows reproducibility in
-the tools used by any computational workflow. This allow computation
-workflow to be reproduced in any computing resources, not only tied into
-the implementation this paper will create.
-
-* **Isolation** [Need further discussion]
-
-  Second, proposed approach will be better for isolation issue in HemeLB
-computation. Container approach will allow better isolation between
-simulation and isolation with the computing environment. This also
-demonstrate benefits of using container technology toward the
-reproducible computation research in general [8], although with limitation as
-complete isolation is not possible without hardware virtualization.
-
-* **Openness**
-
-  Third, proposed approach will allow open development of HemeLB
-simulation workflow. In developing the blood flow scenario, configuration for the
-computation process, everything will be logged and can be scrutinized by
-interested parties. Container also allow anyone to inspect the
-tools used in the simulation.
-
-* **Usability**
-
-  Lastly, HemeWeb will allow better usability in running blood flow
-simulation. Currently, to run the simulation, one have to configure and
-install many dependencies which requires technical dependencies that not everyone have.
-Having the workflow moved into its own web application will allow people
-to focus more on the simulation parameters and results rather than
-worrying about configurations of the resources.
-
-
-To support the claim, the author will develop an experimental system for
-HemeLB called HemeWeb which will use container technology in cloud
-infrastructure to run HPC workflow. The implementation will be a proof of concept that
-container based HPC workflow is viable, specifically in the context of
-blood flow simulation with HemeLB, docker as the containerization technology
-and AWS as the cloud provider.
 
 
 ## Background
@@ -376,6 +322,62 @@ Work in progress
 <!--the introduction of new computational service such as Infrastructure as-->
 <!--A Service, Hardware as a Service, cloud computing has allowed people to-->
 <!--acquire this resources easily and dynamically.-->
+
+## Main Claim
+
+This paper will argue that the current HemeLB workflow can be improved
+by using a container based HPC in cloud infrastructure approach. This
+approach will be better for HemeLB project because it is better in
+reproducibility, isolation, openness, and usability.
+
+* **Reproducibility**
+
+  The proposed approach will be better for reproducibility, allowing a
+computing process and scenario to be duplicated more easily than status quo.
+Currently, to reproduce the computational process, one must get their
+hands on the simulation configuration and run the simulation on a similar computing
+resources like ARCHER supercomputer which is not easy to replicate nor
+cheap. The proposed approach, on the other hand, will store every simulation scenario and
+configurations that are run via the web application. These scenarios can be shared
+and re-run easily, offering reproducibility to HemeLB computation. In a
+more general situation, using container technology also allows reproducibility in
+the tools used by any computational workflow. This allow computation
+workflow to be reproduced in any computing resources, not only tied into
+the implementation this paper will create.
+
+* **Isolation** [Need further discussion]
+
+  Second, proposed approach will be better for isolation issue in HemeLB
+computation. Container approach will allow better isolation between
+simulation and isolation with the computing environment. This also
+demonstrate benefits of using container technology toward the
+reproducible computation research in general [8], although with limitation as
+complete isolation is not possible without hardware virtualization.
+
+* **Openness**
+
+  Third, proposed approach will allow open development of HemeLB
+simulation workflow. In developing the blood flow scenario, configuration for the
+computation process, everything will be logged and can be scrutinized by
+interested parties. Container also allow anyone to inspect the
+tools used in the simulation.
+
+* **Usability**
+
+  Lastly, HemeWeb will allow better usability in running blood flow
+simulation. Currently, to run the simulation, one have to configure and
+install many dependencies which requires technical dependencies that not everyone have.
+Having the workflow moved into its own web application will allow people
+to focus more on the simulation parameters and results rather than
+worrying about configurations of the resources.
+
+
+To support the claim, the author will develop an experimental system for
+HemeLB called HemeWeb which will use container technology in cloud
+infrastructure to run HPC workflow. The implementation will be a proof of concept that
+container based HPC workflow is viable, specifically in the context of
+blood flow simulation with HemeLB, docker as the containerization technology
+and AWS as the cloud provider.
 
 
 ## Methodology
