@@ -260,8 +260,39 @@ the nekkloud project [20], NASA HPC Applications [21], and few other case study 
 HemeWeb project should also run perfectly fine on cloud infrastructures.
 
 
-
 **Containerization technology**
+
+Container technology originated from the virtualization technology back
+in 1960. Back then IBM PC shipped with virtualization software that
+allow multiple operating systems to be installed into one hardware.
+Linux Kernel Container is then born to handle this virtualization but on
+the kernel level, where we could have container that run its own kernel
+separated from the host. Docker is the technology that pushes the
+adoption of this technology to the roof. Docker encapsulate tools and
+commands that allow administartion of this container much easier than
+before. Making it easy for people to use container in their workflow.
+More importantly, docker has a public registry where people could
+publish their dockerfile, and share it with the public. Interested
+people could just get the file and create their own docker image based
+on the published file. This is a huge boon in helping docker become
+popular currently.
+
+
+In reproducing computing researchm docker is deeemed fit to the task,
+since it allows computing workflow to be documented, published, and
+re-run easily because everyone has the ability to scrutinize it. This
+process however, involve an overhead that the author needs to write a
+dockerfile instead of doing whatever they are doing currently. However,
+this is a small price to pay in order to make compting reproducible
+easily. On our case, using docker is a necessary tools. Because with
+docker, people could scrutinize the tools and commands used to reproduce
+the research done with HemeLB. More importantly, the tools also will
+allow us to expand not only handling HemeLB, but also to a more general
+case of any other HPC applications to be run on the cloud indepenedent
+of what the infrastructure might be.
+
+
+
 
 Work in progress
 
