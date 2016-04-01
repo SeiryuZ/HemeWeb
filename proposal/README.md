@@ -4,19 +4,17 @@
 ## Purpose
 
 
-<!-- HemeLB simulation is reproducible, but not easy  -->
+<!-- HemeLB simulation is hard to use, especially to doctors and
+scientists  -->
 HemeLB [1], a fluid dynamic simulation software that is used for the study of
-blood flow, have complex workflow that cause simulation reproduction
-challenging. Every simulation requires correctly
-configured tools and inputs which is different on each run.
-Moreover, minimum computing resources needed by each steps of the
-workflow to run efficiently also varies, from consumer-grade computing resources like personal
-PC to a highly parallel one like ARCHER supercomputer.
-These facts, coupled with the manual documentation of each simulation
-parameters render the simulation reproduction non-trivial for interested parties
-like doctors or scientists, who may not have the technological
-expertise to begin with.
-
+blood flow, have complex workflow that makes it challenging for doctors
+and scientists to use. To run a simulation, one has to configure a range of
+tools that is needed for each steps of the workflow with the correct
+parameters and inputs. Moreover, each steps require highly varying computing
+resources, from personal PC to supercomputer that is non-trivial to
+acquire access to. These facts, coupled with
+doctors and scientists who might not have the technological expertise to
+begin with, render HemeLB only accessible to few people.
 
 
 <!--HemeLB, a fluid dynamic simulation project that is used for the study of-->
@@ -35,13 +33,24 @@ expertise to begin with.
 <!--infeasible.-->
 
 <!-- To embrace open science, HemeLB needs to improve its auditability  -->
-With pushes for reproducible computing research in general [2][3][4], HemeLB
-needs to improve its reproducible computing aspect for the benefit of
-the simulations that run with it. HemeLB Simulations should  adhere to a higher
-standard of validation from the community, making it more transparent
-and trustworthy. This trustworthiness is especially more important
-when this research area is described in media as an "integral" part in
-clinicial decision in the future [6].
+In addition to being usable, HemeLB also needs to be trustworthy by
+being open and auditable. Currently HemeLB have taken steps to make sure
+this is the case. All simulations configurations, input files, and
+results are manually recorded for the purpose of reproduction. However,
+with recent pushes for reproducible computing research [2][3][4], HemeLB
+needs to improve its reproducible aspect to make sure it adhere to the
+open science standard of being open and auditable. This is even more
+important when this research area is described in media as an integral
+part of clinical decision in the future[6]
+
+
+<!--With pushes for reproducible computing research in general [2][3][4], HemeLB-->
+<!--needs to improve its reproducible computing aspect for the benefit of-->
+<!--the simulations that run with it. HemeLB Simulations should  adhere to a higher-->
+<!--standard of validation from the community, making it more transparent-->
+<!--and trustworthy. This trustworthiness is especially more important-->
+<!--when this research area is described in media as an "integral" part in-->
+<!--clinicial decision in the future [6].-->
 
 In adhering to the reproducible aspect,
 the author propose on creating an "extension" to HemeLB called HemeWeb.
