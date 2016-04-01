@@ -52,18 +52,33 @@ part of clinical decision in the future[6]
 <!--when this research area is described in media as an "integral" part in-->
 <!--clinicial decision in the future [6].-->
 
-In adhering to the reproducible aspect,
-the author propose on creating an "extension" to HemeLB called HemeWeb.
-HemeWeb will be a web application for HemeLB simulation workflow that
-allows interested party to configure and run blood flow simulation on
-the cloud, or even, their own computing resources. This extension will
-utilize container technology, specifically Docker [7], that allows tools
-involved with the workflow to be isolated, inspected, and shared easily
-with the publicly available registry. Moreover, docker has been reviewed
-to be an appropriate tool for distributing reproducible research, albeit
-with few limitations [8]. Thus in this project, the author will create
-an experimental web application for HemeLB to address the reproducible
-computing aspect of the research using docker.
+<!-- Above reasons is the impetus for my proposal -->
+For reasons above, I propose to create an extension to HemeLB called
+HemeWeb. HemeWeb will be a web application for HemeLB simulation
+workflow that hide the configuration complexity from the users. Doctors
+and Scientists, will only to deal with a web interface instead of
+installing and configuring tools by themselves. Moreover,
+containerization technology will also be used to make sure that the
+HemeLB clusters are going to be reusable, so that users can use
+whichever version of the tools they wish and the infrastructure will
+adapt automatically. The use of this containerization tools also will
+help with the open and auditable aspect of this project. By using the
+containerization technology, developers of HemeLB will automatically
+document the usage of the tools automatically and share it publicly for
+others to audit, making this project more trustworthy.
+
+<!--In adhering to the reproducible aspect,-->
+<!--the author propose on creating an "extension" to HemeLB called HemeWeb.-->
+<!--HemeWeb will be a web application for HemeLB simulation workflow that-->
+<!--allows interested party to configure and run blood flow simulation on-->
+<!--the cloud, or even, their own computing resources. This extension will-->
+<!--utilize container technology, specifically Docker [7], that allows tools-->
+<!--involved with the workflow to be isolated, inspected, and shared easily-->
+<!--with the publicly available registry. Moreover, docker has been reviewed-->
+<!--to be an appropriate tool for distributing reproducible research, albeit-->
+<!--with few limitations [8]. Thus in this project, the author will create-->
+<!--an experimental web application for HemeLB to address the reproducible-->
+<!--computing aspect of the research using docker.-->
 
 
 
