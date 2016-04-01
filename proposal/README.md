@@ -8,15 +8,14 @@
 HemeLB [1], a fluid dynamic simulation software that is used for the study of
 blood flow, have complex workflow that cause simulation reproduction
 challenging. Every simulation requires correctly
-configured tools with correct version, parameters and inputs which may be different on each run.
+configured tools and inputs which is different on each run.
 Moreover, minimum computing resources needed by each steps of the
 workflow to run efficiently also varies, from consumer-grade computing resources like personal
 PC to a highly parallel one like ARCHER supercomputer.
 These facts, coupled with the manual documentation of each simulation
-configurations, versions, and input files render the simulation
-reproduction non-trivial for interested parties. One should get access to
-similar computing resources, correctly configure tools, and exact
-duplicate of inputs before reproducing the simulation.
+parameters render the simulation reproduction non-trivial for interested parties
+like doctors or scientists, who may not have the technological
+expertise to begin with.
 
 
 
@@ -35,6 +34,7 @@ duplicate of inputs before reproducing the simulation.
 <!--building computing resources similar to original simulation might be-->
 <!--infeasible.-->
 
+<!-- To embrace open science, HemeLB needs to improve its auditability  -->
 With pushes for reproducible computing research in general [2][3][4], HemeLB
 needs to improve its reproducible computing aspect for the benefit of
 the simulations that run with it. HemeLB Simulations should  adhere to a higher
