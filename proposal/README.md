@@ -4,20 +4,36 @@
 ## Purpose
 
 
-HemeLB, a fluid dynamic simulation project that is used for the study of
-blood flow, currently have workflow that requires varying
-degree of computational power on each steps. Most notably, the simulation part
-of HemeLB requires high performing computing resources like
-ARCHER supercomputer [1] to run effectively, while the
-setup process for the simulation can be done in consumer-grade computing
-resources. Exclusivity of computing resources on certain step of the workflow
-and the overhead of documentation make simulation results done with HemeLB non-trivial to be reproduced.
-If anyone want to replicate a simulation, one should have the exact same configurations
-for the simulation  and run the simulation with similar
-computing resources to the original simulation to replicate it closely.
-This feat however is not easy, because acquiring acquire access to or
-building computing resources similar to original simulation might be
-infeasible.
+<!-- HemeLB simulation is reproducible, but not easy  -->
+HemeLB [1], a fluid dynamic simulation software that is used for the study of
+blood flow, have complex workflow that cause simulation reproduction
+challenging. Every simulation requires correctly
+configured tools with correct version, parameters and inputs which may be different on each run.
+Moreover, minimum computing resources needed by each steps of the
+workflow to run efficiently also varies, from consumer-grade computing resources like personal
+PC to a highly parallel one like ARCHER supercomputer.
+These facts, coupled with the manual documentation of each simulation
+configurations, versions, and input files render the simulation
+reproduction non-trivial for interested parties. One should get access to
+similar computing resources, correctly configure tools, and exact
+duplicate of inputs before reproducing the simulation.
+
+
+
+<!--HemeLB, a fluid dynamic simulation project that is used for the study of-->
+<!--blood flow, currently have workflow that requires varying-->
+<!--degree of computational power on each steps. Most notably, the simulation part-->
+<!--of HemeLB requires high performing computing resources like-->
+<!--ARCHER supercomputer [1] to run effectively, while the-->
+<!--setup process for the simulation can be done in consumer-grade computing-->
+<!--resources. Exclusivity of computing resources on certain step of the workflow-->
+<!--and the overhead of documentation make simulation results done with HemeLB non-trivial to be reproduced.-->
+<!--If anyone want to replicate a simulation, one should have the exact same configurations-->
+<!--for the simulation  and run the simulation with similar-->
+<!--computing resources to the original simulation to replicate it closely.-->
+<!--This feat however is not easy, because acquiring acquire access to or-->
+<!--building computing resources similar to original simulation might be-->
+<!--infeasible.-->
 
 With pushes for reproducible computing research in general [2][3][4], HemeLB
 needs to improve its reproducible computing aspect for the benefit of
