@@ -167,10 +167,12 @@ more trustworthy.
 
 ## Background
 
-The proposed system will consists of few key technologies and concept in order to be
-working as intended. These key technologies are HemeLB itself,
-Cloud computing, and Containerization technology. In this section,
-the author will provide a short overview of these technologies and concepts.
+
+In order to develop HemeWeb, few key technologies and concepts have to
+be made clear. These key technologies consists of HemeLB as an HPC
+application, Cloud Computing, and Containerization technology. In this
+section, I will provide a short overview of these technologies and
+concepts before continuing with the proposed system.
 
 
 **HemeLB and HPC**
