@@ -37,14 +37,15 @@ In addition to being usable, HemeLB simulation, which is described as an integra
 clinical decision in the future [6], also needs to be trustworthy by
 being open and auditable. One should not trust simulation result that no one could verify,
 especially if the results are used for a critical
-medical decision that might affect one's health and wellbeing. Being open and auditable will
-help the adoption of this technology signficantly. Currently HemeLB project have taken steps to be open
+medical decision that might affect one's health and wellbeing.
+Being open and auditable however, will improve this trust towards the project.
+Currently HemeLB project have taken steps to be open
 and auditable by being developed openly in the public, and making
-resources, which are recorded manually, for simulation available open request.
+manually recorded resources for simulation available upon request.
 However, with recent pushes of open science and reproducible computing research [2][3][4], there are extra
 steps that HemeLB project can take in order to further improve its
-trustworthiness, especially on recording resources needed for simulation
-automatically leading to easier reproduction of simulation.
+trustworthiness, especially on automatic record of resources needed for simulation
+leading to easier reproduction of simulation.
 
 
 <!--this is the case. All simulations configurations, input files, and-->
