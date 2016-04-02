@@ -69,16 +69,19 @@ leading to easier reproduction of simulation.
 For reasons above, I propose to create an extension to HemeLB called
 HemeWeb. HemeWeb will be a web application for HemeLB simulation
 workflow that hide the configuration complexity from the users. Doctors
-and Scientists, will only to deal with a web interface instead of
-installing and configuring tools by themselves. Moreover,
-containerization technology will also be used to make sure that the
-HemeLB clusters are going to be reusable, so that users can use
-whichever version of the tools they wish and the infrastructure will
-adapt automatically. The use of this containerization tools also will
-help with the open and auditable aspect of this project. By using the
-containerization technology, developers of HemeLB will automatically
-document the usage of the tools automatically and share it publicly for
-others to audit, making this project more trustworthy.
+and Scientists, will deal with an easier to use web interface and have to
+worry about the simulation input and result  instead of worrying about
+configuration of the tools. Moreover, with the help
+of containerization technology, all tools that are used in the
+simulations are going to be packaged in such a way that makes reusing
+computing resources easy. Configured cluster can be reused by simply
+swapping the container image of the tools, instead of reconfiguring the
+whole cluster from the start. Furthermore, containerization tool will
+also help with the project being open and auditable since it will require the
+development of the tools to be publicly shared on its registry for
+others to inspect and audit. Ultimately, The proposed extension will aim to make HemeLB
+more trustworthy.
+
 
 <!--In adhering to the reproducible aspect,-->
 <!--the author propose on creating an "extension" to HemeLB called HemeWeb.-->
