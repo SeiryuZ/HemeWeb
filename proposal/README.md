@@ -35,11 +35,12 @@ begin with, render HemeLB only accessible to few people.
 <!-- To embrace open science, HemeLB needs to improve its auditability  -->
 In addition to being usable, HemeLB simulation, which is described as an integral part of
 clinical decision in the future [6], also needs to be trustworthy by
-being open and auditable. One should not trust simulation result that no one could verify,
-especially if the results are used for a critical
-medical decision that might affect one's health and wellbeing.
-Being open and auditable however, will improve this trust towards the project.
-Currently HemeLB project have taken steps to be open
+being auditable and easily reproducible. Auditable as in the software
+can be peer-reviewed and audited to make sure it produce the correct
+result, while easily reproducible mean that the software can be easily
+re-run to make sure it produce consistent result. These aspects are
+important for the users, especially when HemeLB will be used to
+determine health and well-being of patients. Currently, HemeLB project have taken steps to be open
 and auditable by being developed openly in the public, and making
 manually recorded resources for simulation available upon request.
 However, with recent pushes of open science and more specifically,
@@ -239,12 +240,28 @@ might not have reproducibility of a research as a priority. Facilities
 that administer these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
 example how PRACE [11], the Partnership for Advanced Computing in
-Europe, and EPSRC [10] give access to their infrastructure to
+Europe, and how EPSRC [10] give access to their infrastructure to
 researcher. This means that reproducing computing research, if anyone
 are interested, have to compete with other projects for the limited
 computing hour that is given out by these institutions. Most likely, it
 will not be the top priority, hence creating barrier for reproducing
 computational research, in our case HemeLB simulation.
+
+
+Not being prioritized in these facilities create a barrier for HemeLB to
+become more trustworthy because reproduction of simulation is non-trivial.
+As iterated on the previous section, HemeLB project have taken the steps
+to address reproducibility of the simulation by manually recording all
+the configurationns, tools version, input files, parameters and result of the
+simulation. Anyone theoritically could request these documentation and
+reproduce the result with the appropriate computing resource.
+However, research facility that will prioritize more important research
+inherently will limit people that want to reproduce the computation
+result significantly.
+
+<!-- This is why cloud computing is a perfect match  -->
+
+<!-- Cloud computing is originaly envisioned as computing resource  -->
 
 
 <!--Running HPC application like HemeLB require  access to HPC-->
