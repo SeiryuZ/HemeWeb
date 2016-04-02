@@ -42,7 +42,8 @@ Being open and auditable however, will improve this trust towards the project.
 Currently HemeLB project have taken steps to be open
 and auditable by being developed openly in the public, and making
 manually recorded resources for simulation available upon request.
-However, with recent pushes of open science and reproducible computing research [2][3][4], there are extra
+However, with recent pushes of open science and more specifically,
+reproducible computing research [2][3][4], there are extra
 steps that HemeLB project can take in order to further improve its
 trustworthiness, especially on automatic record of resources needed for simulation
 leading to easier reproduction of simulation.
@@ -177,24 +178,47 @@ concepts before continuing with the proposed system.
 
 **HemeLB and HPC**
 
+
+<!--Introduction to HemeLB-->
+<!--HemeLB is a vascular blood flow simulation that is used for the study of-->
+<!--blood flow simulation [1]. It is currently being developed in the open-->
+<!--on github repository where the public can easily observe the development-->
+<!--and audit it. To use HemeLB however requires technical expertise that-->
+<!--not everyone might have. One should acquire access to -->
+
+
+
 <!--Introduction to computational biology and HemeLB-->
 Computational biology and bioinformatics are research area that use
-mathematical and computational approaches in answering questions and
-experiments in biology [5]. These approaches typically involves a
-computational workflow which, depending on the type of work,
-could varies widely in performance requirement, from normal computational process
-that could be done in normal consumer desktop processor to
-high-performance scneario that needs to be run on a cluster of computers
-or even supercomputer. One example of this type of project is HemeLB, a
-vascular blood flow simulation that is used for the study of blood flow [1].
-HemeLB have different processes in the workflow that requires different computing power,
-from the setup process which can be run on consumer-level computer, to the simulation process
-that run on ARCHER supercomputer due to its processing power requirement [1].
+mathematical and often highly-parallel computational approaches in answering questions and
+experiments in biology [5]. In order for these computational approaches
+to run efficiently, a highly parallel computating resources like
+a computer cluster or even a super computer are needed. These resources
+are needed because the consumer-grade one are not yet capable to do huge
+amount of computation that are needed for this kind of work. HemeLB [1],
+a vascular blood flow simulation software, require these highly parallel
+computing capability in order to run efficiently. Currently it ran the
+simulation on ARCHER supercomputer, while some part of the workflow like
+the configuration process can be done on consumer-grade personal
+computer.
 
-This simulation require a highly paralel capabilities of the computing
+
+ <!--These approaches typically involves a-->
+<!--computational workflow which, depending on the type of work,-->
+<!--could varies widely in performance requirement, from normal computational process-->
+<!--that could be done in normal consumer desktop processor to-->
+<!--high-performance scneario that needs to be run on a cluster of computers-->
+<!--or even supercomputer. One example of this type of project is HemeLB, a-->
+<!--vascular blood flow simulation that is used for the study of blood flow [1].-->
+<!--HemeLB have different processes in the workflow that requires different computing power,-->
+<!--from the setup process which can be run on consumer-level computer, to the simulation process-->
+<!--that run on ARCHER supercomputer due to its processing power requirement [1].-->
+
+<!-- HPC vs HTC !! CITATION NEEDS TO BE FIXED -->
+The HemeLB simulation part require a highly paralel capabilities of the computing
 resources that falls under the category of High Performance Computing.
-Traditionally, large computing process could be tackled by two separate
-computing paradigm depending on the type of work it needs to do. They
+Traditionally, large computing process could be handled by two separate
+computing paradigm depending on the type of work it needs to do. These
 are High Performance Computing and High Throughput Computing. High
 performance computing typically involves multiple computing nodes
 connected with a high bandwidth network, performing a well-defined
@@ -204,21 +228,41 @@ even supercomputer. High troughput computing, on the other hand, is a different
 paradigm. It allows highly heteregenous computing resources,
 often geographically distributed, to cooperate for common goals which
 involves different independent computation that can be scheduled independently
-and later aggregated on one of the nodes. [Citations on this paragraph
-need to be fixed]
+and later aggregated on one of the nodes. Based on these distinction,
+HemeLB simulations can be categorized as a HPC application because it performs
+a well-defined computations that are spread over multiple computing nodes with MPI.
 
-Both of these computing paradigm typically requires huge
-computing resources available to perform its task effectively. HPC task
-like HemeLB especially, are often run on supercomputers, for example ARCHER
-supercomputer. This supercomputers requires you to be academics /
-researchers with clear proposal, for example how epcc give access to
-ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,
-that allows researcher to access supercomputers accross europe after a
- vetting process. This theoritically allow people with the credentials
-to gain access to these resources with the correct motives. However,
-reproducing research computation that already been run might not be the
-top priority of these facilities when there are many other research
-projects that depend on access to these limited resources.
+
+<!-- Acquriing access to HPC infrastructure is possible but non-trivial, and maybe not a top priority for these institutes  -->
+However, running these simulations require access to HPC infrastructures that
+might not have reproducibility of a research as a priority. Facilities
+that administer these infrastructure often give out computing hour usage
+to projects based on the merit of their peer-reviewed proposal, for
+example how PRACE [11], the Partnership for Advanced Computing in
+Europe, and EPSRC [10] give access to their infrastructure to
+researcher. This means that reproducing computing research, if anyone
+are interested, have to compete with other projects for the limited
+computing hour that is given out by these institutions. Most likely, it
+will not be the top priority, hence creating barrier for reproducing
+computational research, in our case HemeLB simulation.
+
+
+<!--Running HPC application like HemeLB require  access to HPC-->
+<!--infrastructure, which are non-trivial to acquire.-->
+
+
+<!--Both of these computing paradigm typically requires huge-->
+<!--computing resources available to perform its task effectively. HPC task-->
+<!--like HemeLB especially, are often run on supercomputers, for example ARCHER-->
+<!--supercomputer. This supercomputers requires you to be academics /-->
+<!--researchers with clear proposal, for example how epcc give access to-->
+<!--ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,-->
+<!--that allows researcher to access supercomputers accross europe after a-->
+ <!--vetting process. This theoritically allow people with the credentials-->
+<!--to gain access to these resources with the correct motives. However,-->
+<!--reproducing research computation that already been run might not be the-->
+<!--top priority of these facilities when there are many other research-->
+<!--projects that depend on access to these limited resources.-->
 
 **Cloud Computing**
 
