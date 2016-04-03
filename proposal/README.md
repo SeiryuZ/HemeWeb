@@ -651,21 +651,46 @@ also improve the usability of the simulation.
 
 
 
-## Methodology
+## Methods
 Work in progress
 
 
+## Evaluation
+
+This project will be evaluated on how it can improve the usability and
+trustworthiness of the project. To accomplish this, the usability aspect will be
+measured by how many scientists or doctors prefer to run simulation
+using the current approach or the proposed approach. This binary
+measurement is needed because as it stands currently, HemeLB project are
+concerned about whether user will run simulation, not how efficient it
+could be for user to run simulation.
+
+Secondly, trustworthiness should be measured by whether user can
+reproduce simulation result at all using the proposed approach. As
+currently there are no alternatives for reproducing the simulation, we
+should also binarily measure this capability.
 
 
-## Expected Outcome/ Success Criteria
-Work in progress
+Lastly, auditable is another aspect of trustworthiness that should be
+measured. Since HemeLB currently has taken steps to make sure that all
+simulation are documented manually. I will claim that by the existence
+of the project that can automatically document the simulation, the
+auditable aspect are improved inherently because it take shorter time to
+look up for this documentation.
 
-Working prototype that enable docker based HPC computing to be done in the cloud,
-that enable the computations to be done easily (usable), shared
-(replicable), and inspected (openness).
 
-On this project, the main example of the application to be used is
-HemeLB.
+## Output
+
+This project will create a working prototype that enable HemeLB
+simulation to be run on the cloud infrastructure. This web application
+will be used by the HemeLB project to introduce HemeLB workflow to their
+peers, scientists and doctors. In addition, if time permit, this web
+application will be extended to handle more use case from the workflow,
+starting from the domain definition step to post-processing step. This
+prototype development will be used as the basis of future improvement on
+HemeLB workflow for eventual medical use.
+
+
 
 ## References
 
