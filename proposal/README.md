@@ -693,6 +693,13 @@ HemeLB workflow for eventual medical use.
 
 ## Work Plan
 
+This final section will illustrate the work plan of the project. Bulk of
+the work mostly will be on the web development for HemeWeb and the
+dissertation writing. HemeWeb scope will depend on the amount of work I
+can squeeze during the web development part, but at the very least, I
+have determined that the original scope of HemeLB simulation part will
+be achievable in the timeframe given.
+
 ![alt text](../resources/images/workplan.png "Work Plan")
 
 
