@@ -457,7 +457,6 @@ HemeWeb project should also run perfectly fine on cloud infrastructures.
 
 
 
-Work in progress
 
 
 <!--In dealing with High Performance Computing, infrastructures are-->
