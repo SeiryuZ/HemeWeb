@@ -230,7 +230,7 @@ all part of the workflow can be supported by the web application so that
 doctors and scientists can easily use the software.
 
 
-![alt text](../resources/images/HemeLB-scope1.png "HemeWeb scope 1st Phase")
+![alt text](../resources/images/HemeLB-scope-1.png "HemeWeb scope 1st Phase")
 
 
 On top of having a web application to make it usable by domain experts,
