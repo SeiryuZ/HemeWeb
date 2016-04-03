@@ -38,7 +38,8 @@ clinical decision in the future [6], also needs to be trustworthy by
 being auditable and easily reproducible. Auditable as in the software
 can be peer-reviewed and audited to make sure it produce the correct
 result, while easily reproducible mean that the software can be easily
-re-run to make sure it produce consistent result. These aspects are
+re-run to make sure it produce consistent result in different
+infrastructure. These aspects are
 important for the users, especially when HemeLB will be used to
 determine health and well-being of patients. Currently, HemeLB project have taken steps to be open
 and auditable by being developed openly in the public, and making
@@ -541,59 +542,113 @@ Work in progress
 
 ## Main Claim
 
-This paper will argue that the current HemeLB workflow can be improved
-by using a container based HPC in cloud infrastructure approach. This
-approach will be better for HemeLB project because it is better in
-reproducibility, isolation, openness, and usability.
+This project will demonstrate that by using container based approach in
+cloud infrastructure, HPC application like HemeLB will be better in
+usability, auditability, and reproducibility. In this section, I will
+formally defined what I mean by these terms.
 
-* **Reproducibility**
-
-  The proposed approach will be better for reproducibility, allowing a
-computing process and scenario to be duplicated more easily than status quo.
-Currently, to reproduce the computational process, one must get their
-hands on the simulation configuration and run the simulation on a similar computing
-resources like ARCHER supercomputer which is not easy to replicate nor
-cheap. The proposed approach, on the other hand, will store every simulation scenario and
-configurations that are run via the web application. These scenarios can be shared
-and re-run easily, offering reproducibility to HemeLB computation. In a
-more general situation, using container technology also allows reproducibility in
-the tools used by any computational workflow. This allow computation
-workflow to be reproduced in any computing resources, not only tied into
-the implementation this paper will create.
-
-* **Isolation** [Need further discussion]
-
-  Second, proposed approach will be better for isolation issue in HemeLB
-computation. Container approach will allow better isolation between
-simulation and isolation with the computing environment. This also
-demonstrate benefits of using container technology toward the
-reproducible computation research in general [8], although with limitation as
-complete isolation is not possible without hardware virtualization.
-
-* **Openness**
-
-  Third, proposed approach will allow open development of HemeLB
-simulation workflow. In developing the blood flow scenario, configuration for the
-computation process, everything will be logged and can be scrutinized by
-interested parties. Container also allow anyone to inspect the
-tools used in the simulation.
 
 * **Usability**
 
-  Lastly, HemeWeb will allow better usability in running blood flow
-simulation. Currently, to run the simulation, one have to configure and
-install many dependencies which requires technical dependencies that not everyone have.
-Having the workflow moved into its own web application will allow people
-to focus more on the simulation parameters and results rather than
-worrying about configurations of the resources.
+  Usability, in this project, will be formally defined as a binary
+choice of preference to use the software. Since this is the first
+initial implementation of the web application for HemeLB, it is more
+important to consider the improvement as people wanting to use the
+software instead of the degree of comfort in using it. Therefore, this
+project will demonstrate that more people will consider to use the
+software than before.
+
+  <!--Lastly, HemeWeb will allow better usability in running blood flow-->
+<!--simulation. Currently, to run the simulation, one have to configure and-->
+<!--install many dependencies which requires technical dependencies that not everyone have.-->
+<!--Having the workflow moved into its own web application will allow people-->
+<!--to focus more on the simulation parameters and results rather than-->
+<!--worrying about configurations of the resources.-->
+
+<!--the current HemeLB workflow can be improved-->
+<!--by using a container based HPC in cloud infrastructure approach. This-->
+<!--approach will be better for HemeLB project because it is better in-->
+<!--reproducibility, isolation, openness, and usability.-->
+
+* **Reproducibility**
+
+  Reproducibility, will be defined as the ease of reproducing of simulation
+result. In order for HemeLB to become more trustworthy, one should be
+able to consistently reproduce the correct simulation results everytime,
+this include the capability of even reproducing the results and the
+easiness of running wanted simulation. Since HemeLB have taken steps to
+make sure reproducing results are possible, HemeWeb will improve it even
+further by using cloud computing infrastructure and automatically record
+every simulation configurations for easy re-run.
+
+  This project will also demonstrate that the work done here, with
+modificaltion, can be applied in any infrastructures, not specific to
+the implementation of the infrastructure I choose. This is important,
+because reproducibility will improve the trust over the simulation
+result to provide the consistent and predictable result that allow
+people to trust it.
 
 
-To support the claim, the author will develop an experimental system for
+<!--The proposed approach will be better for reproducibility, allowing a-->
+<!--computing process and scenario to be duplicated more easily than status quo.-->
+<!--Currently, to reproduce the computational process, one must get their-->
+<!--hands on the simulation configuration and run the simulation on a similar computing-->
+<!--resources like ARCHER supercomputer which is not easy to replicate nor-->
+<!--cheap. The proposed approach, on the other hand, will store every simulation scenario and-->
+<!--configurations that are run via the web application. These scenarios can be shared-->
+<!--and re-run easily, offering reproducibility to HemeLB computation. In a-->
+<!--more general situation, using container technology also allows reproducibility in-->
+<!--the tools used by any computational workflow. This allow computation-->
+<!--workflow to be reproduced in any computing resources, not only tied into-->
+<!--the implementation this paper will create.-->
+
+
+* **Auditability**
+
+  Audibility means that the tools that are used for simulations are
+developed in the open and are available for audit. By having the tools
+available for audit, these tools can be peer-revied or even fixed by the
+public, creating more trusts with the correctness of the software used
+in the simulation. Currently, HemeLB have been developed in the open,
+but the use of containerization technology will further improve this
+auditability. This improvement come from the automatic association of
+the simulation with the version of the tools that are packaged in the
+container image. These images are also going to be published publicly in
+the public registry, making it not only the software involved that can
+be audited, but the execution of the simulation to be auditable as well.
+
+  This auditability is even more important when considering that the
+simulation result will be used as a basis of medical decision or medical
+development. Simulation result needs to be auditable so that the usage
+of HemeLB can be trusted by the user and general public.
+
+
+<!--Third, proposed approach will allow open development of HemeLB-->
+<!--simulation workflow. In developing the blood flow scenario, configuration for the-->
+<!--computation process, everything will be logged and can be scrutinized by-->
+<!--interested parties. Container also allow anyone to inspect the-->
+<!--tools used in the simulation.-->
+
+<!--* **Isolation** [Need further discussion]-->
+
+<!--Second, proposed approach will be better for isolation issue in HemeLB-->
+<!--computation. Container approach will allow better isolation between-->
+<!--simulation and isolation with the computing environment. This also-->
+<!--demonstrate benefits of using container technology toward the-->
+<!--reproducible computation research in general [8], although with limitation as-->
+<!--complete isolation is not possible without hardware virtualization.-->
+
+
+
+
+To support these claim, I will develop an experimental web application for
 HemeLB called HemeWeb which will use container technology in cloud
-infrastructure to run HPC workflow. The implementation will be a proof of concept that
-container based HPC workflow is viable, specifically in the context of
-blood flow simulation with HemeLB, docker as the containerization technology
-and AWS as the cloud provider.
+infrastructure to run blood flow simulation. The implementation will be
+a proof of concept that HemeLB simulation can be done in cloud
+infrastructure, paving way for other infrastructures that might be used
+in the future where it is used in the hospital. Not only that, it will
+also improve the usability of the simulation.
+
 
 
 ## Methodology
