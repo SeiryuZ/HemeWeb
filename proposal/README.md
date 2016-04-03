@@ -225,7 +225,7 @@ creating a web application for a well-defined part of the workflow. The scope of
 workflows that are included in this extension are limited in the first
 plan, they are the HemeLB simulation part. After finishing this part,
 another steps of the workflow can then be integrated to the web
-application, hiding more complexity in the process. Ideally, in the end,
+application, hiding more and more complexity in the process. Ideally, in the end,
 all part of the workflow can be supported by the web application so that
 doctors and scientists can easily use the software.
 
@@ -235,7 +235,7 @@ doctors and scientists can easily use the software.
 
 On top of having a web application to make it usable by domain experts,
 I also propose the usage of containerization technology to hide
-complexity.
+complexity of the workflow.
 
 
 <!--HemeLB workflow currently involve a number of steps that requires-->
@@ -285,7 +285,7 @@ the configuration process can be done on consumer-grade personal
 computer.
 
 
- <!--These approaches typically involves a-->
+<!--These approaches typically involves a-->
 <!--computational workflow which, depending on the type of work,-->
 <!--could varies widely in performance requirement, from normal computational process-->
 <!--that could be done in normal consumer desktop processor to-->
@@ -356,7 +356,7 @@ result significantly.
 <!--researchers with clear proposal, for example how epcc give access to-->
 <!--ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,-->
 <!--that allows researcher to access supercomputers accross europe after a-->
- <!--vetting process. This theoritically allow people with the credentials-->
+<!--vetting process. This theoritically allow people with the credentials-->
 <!--to gain access to these resources with the correct motives. However,-->
 <!--reproducing research computation that already been run might not be the-->
 <!--top priority of these facilities when there are many other research-->
