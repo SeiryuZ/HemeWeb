@@ -179,21 +179,76 @@ concepts before continuing with the proposed system.
 
 **HemeLB Workflow**
 
-<!--Currently HemeLB workflow is complex-->
-HemeLB workflow currently involve a number of steps that requires
-some expertise in configuring software that doctors and biologists might
-not have. These steps are a necessary part of the current workflow to
-prepare the input files into an intermediary representation that the
-simulation part of HemeLB can understand.
+
 
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
+Above image illustrate the workflow of HemeLB simulation that require
+multiple steps before results can be produced. First, a 2D image of a blood
+vessel is needed to be piped into a geometrical model
+reconstruction script to construct a 3D model of the blood vessel. This
+3D model will then need more information like blood viscocity, and inlet
+outlet placement to be used as the simulation parameter. These information are
+going to be added by the user in domain definition step. Next, the 3D
+model and the information about the simulation need to be converted into
+a file format that HemeLB can understand. After conversion, simulation
+can be finally run that eventually will output a simulation result that
+will need further pre-processing script to convert the output into a
+file format that can be viewed easily.
+
+<!--Currently HemeLB workflow is complex-->
+Not only understanding the workflow of the process, domain experts also
+need to configure tools required on each steps, making it really complex
+to use the software, especially if they don't have the expertise.
+This is not an ideal situation for the project where users are required
+to understand their non-domain expertise to use the software. A better
+condition will be where domain-experts only need to deal with their
+respective domain concern of the project. All other concern which are
+not related to their domain, in this case configuration of the tools
+needed, should be hidden from them.
+
+
+Hiding this complexity from the users is the reason why I think web
+application is the correct approach. Web application requires the user
+to interface with them using the web browser, which is currently a
+standard tools in everyday's life. Doctors and biologists could easily
+treat the simulation tools as a black box, not having to worry about
+configurations, environment, and the infrastructure the software lives
+on. The only things that they have to worry is the input file, their
+knowledge of the domain, and the simulation result.
+
+However, I have to underscore that this project will not be something
+that will make HemeLB used by every doctors and scientists when it is
+done with the time given, instead, I am trying to make it easier for them to use it by
+creating a web application for a well-defined part of the workflow. The scope of the
+workflows that are included in this extension are limited in the first
+plan, they are the HemeLB simulation part. After finishing this part,
+another steps of the workflow can then be integrated to the web
+application, hiding more complexity in the process. Ideally, in the end,
+all part of the workflow can be supported by the web application so that
+doctors and scientists can easily use the software.
+
+
+![alt text](../resources/images/HemeLB-scope1.png "HemeWeb scope 1st Phase")
+
+
+On top of having a web application to make it usable by domain experts,
+I also propose the usage of containerization technology to hide
+complexity.
+
+
+<!--HemeLB workflow currently involve a number of steps that requires-->
+<!--some expertise in configuring software that doctors and biologists might-->
+<!--not have. These steps are a necessary part of the current workflow to-->
+<!--prepare the input files into an intermediary representation that each-->
+<!--steps of the workflow needed.-->
 
 <!--Non-expert users are overwhelmed with the range of tasks needed to use it-->
 
 
 <!--Ideally users only need to deal with the task that is related to their job-->
+
 
 
 <!--This is why web application make sense for this particular use case-->
