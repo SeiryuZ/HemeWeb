@@ -670,6 +670,38 @@ are more suitable for this project, in which I have been, and continue
 to read while discussing my proposed methodologies with my peers and
 supervisors.
 
+
+After determining the technology implementation, the project will be
+developed with this plan.
+
+![alt text](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+
+This plan illustrate how the software components will interact with each
+other. The main idea is that users will only provide the web application
+with the input files (.xml + .gmy) and receive the output (.xtr) file.
+All the complexity that originally user have to deal with, will be
+replaced witht he web application component. The web app will be the one
+who will execute the HemeLB simulation by providing the input files to
+the HemeLB clusters. These clusters then will run the simulation and
+output the file that can be read by the web application to be send to
+the user. All these steps will be recorded for the audit purpose.
+
+This plan is the first phase of HemeWeb development since it only
+consist of integrating the simulation part. This is the minimum part of
+the project that will be done. If time permits, another aspect of the
+HemeLB will be integrated to the HemeWeb, which is the Domain Definition
+step which is outlined below.
+
+
+![alt text](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
+
+Plan above basically extends the original scope of HemeWeb to now
+include the domain definition. The web app are going to fire up a docker
+instance that have necessary tools to do this setup. Since this is a
+much more complex feat, this should only be considered when I have
+enough time left after completing the first phase.
+
+
 <!--Based on this criteria, software containerization technology that we are -->
 <!--going to choose need to be reviewed on further-->
 <!--to determine. -->
