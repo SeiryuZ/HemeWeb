@@ -742,6 +742,19 @@ starting from the domain definition step to post-processing step. This
 prototype development will be used as the basis of future improvement on
 HemeLB workflow for eventual medical use.
 
+# Risks
+
+As with all projects with limited time and budget, there are risks
+involved in this project. Most notably, project execution does not always
+accurately fit with what we have planned. That is why, this project is
+structured in such a way that minimize the chance of having nothing
+working at the end of the dissertaion period. The development of HemeWeb
+is tiered with the first phase being the most important and
+well-defined. This phase can stand on its own as a finished prototype,
+so that even if I fail to integrate other part to HemeWeb, the project
+is degraded gracefully.
+
+
 
 ## Work Plan
 
