@@ -177,6 +177,32 @@ section, I will provide a short overview of these technologies and
 concepts before continuing with the proposed system.
 
 
+**HemeLB Workflow**
+
+<!--Currently HemeLB workflow is complex-->
+HemeLB workflow currently involve a number of steps that requires
+some expertise in configuring software that doctors and biologists might
+not have. These steps are a necessary part of the current workflow to
+prepare the input files into an intermediary representation that the
+simulation part of HemeLB can understand.
+
+
+![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
+
+
+<!--Non-expert users are overwhelmed with the range of tasks needed to use it-->
+
+
+<!--Ideally users only need to deal with the task that is related to their job-->
+
+
+<!--This is why web application make sense for this particular use case-->
+
+
+<!--and Containerization technology can help this as well-->
+
+
+
 **HemeLB and HPC**
 
 
