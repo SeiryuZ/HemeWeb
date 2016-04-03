@@ -691,6 +691,11 @@ prototype development will be used as the basis of future improvement on
 HemeLB workflow for eventual medical use.
 
 
+## Work Plan
+
+![alt text](../resources/images/workplan.png "Work Plan")
+
+
 
 ## References
 
