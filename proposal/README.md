@@ -652,7 +652,28 @@ also improve the usability of the simulation.
 
 
 ## Methods
-Work in progress
+
+Solution used on this project must adhere to the criteria that is
+outlined in the main claim and background section of this proposal. That
+are 1) Improve usability, 2) Improve Reproducibility, 3) Improve
+auditability. These criteria added with few other criteria such as:
+* Developer familiarity
+* Ease of development
+
+will determine which implementation of the technology I will choose in
+this project. This is much more imporatnt on the software container area
+of this project, since the implementation are many and different. For
+cloud computing vendor, it is a non-issue since it will provide more or
+less same resources, but different interface and brand.
+
+First priority of the project, will be to determine which of the tools
+are more suitable for this project, in which I have been, and continue
+to read while discussing my proposed methodologies with my peers and
+supervisors.
+
+<!--Based on this criteria, software containerization technology that we are -->
+<!--going to choose need to be reviewed on further-->
+<!--to determine. -->
 
 
 ## Evaluation
