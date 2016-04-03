@@ -218,24 +218,40 @@ configurations, environment, and the infrastructure the software lives
 on. The only things that they have to worry is the input file, their
 knowledge of the domain, and the simulation result.
 
-However, I have to underscore that this project will not be something
-that will make HemeLB used by every doctors and scientists when it is
-done with the time given, instead, I am trying to make it easier for them to use it by
-creating a web application for a well-defined part of the workflow. The scope of the
-workflows that are included in this extension are limited in the first
-plan, they are the HemeLB simulation part. After finishing this part,
-another steps of the workflow can then be integrated to the web
-application, hiding more and more complexity in the process. Ideally, in the end,
-all part of the workflow can be supported by the web application so that
-doctors and scientists can easily use the software.
+However, I have to underscore that this project scope will be limited
+due to the available time. Originally, only the simulation part of the
+workflow will be included in the web application and this is the first
+step to improve the usability of the project by hiding the complexity
+on that particular steps. With more integrations, more complexity will
+be hidden in the process, paving way for an ideal condition where
+domain-experts can do all part of the workflow from the browser.
 
 
 ![alt text](../resources/images/HemeLB-scope-1.png "HemeWeb scope 1st Phase")
 
 
-On top of having a web application to make it usable by domain experts,
-I also propose the usage of containerization technology to hide
-complexity of the workflow.
+On top of having a web application to hide technical complexity from the
+domain-experts, I also propose the usage of containerization technology
+to hide the complexity of reproducing simulation results. As HemeLB is
+actively developed, simulation results might be affected by the changes
+in the components. This is why simulation needs to be tied down to a
+specific version of the tools used for the simulation. Currently, it is
+done manually and available upon requests, but with the usage of
+containerization technology, this could be improved. All associated
+tools will be documented on the container image and each version of the
+tools will have its own image. Tying down the simulation execution on
+the web application to these image is trivial and allow users to
+reproduce it easily.
+
+On top of making it easy to reproduce, containerization technology also
+allows the re-use of the resource from the infrastructure. Currently, if
+one wants to rerun simulations with different version of the tools, said
+tools need to be reconfigured to the exact version. This is not
+practical for domain-experts because now we have another concern of
+making sure the right tools are used. Container image could help in this
+aspect because all the tools are containerized already, and what the web
+application will need to do is to swap the image and we have the correct
+tools on our disposal.
 
 
 <!--HemeLB workflow currently involve a number of steps that requires-->
@@ -406,36 +422,36 @@ the nekkloud project [20], NASA HPC Applications [21], and few other case study 
 HemeWeb project should also run perfectly fine on cloud infrastructures.
 
 
-**Containerization technology**
+<!--**Containerization technology**-->
 
-Container technology originated from the virtualization technology back
-in 1960. Back then IBM PC shipped with virtualization software that
-allow multiple operating systems to be installed into one hardware.
-Linux Kernel Container is then born to handle this virtualization but on
-the kernel level, where we could have container that run its own kernel
-separated from the host. Docker is the technology that pushes the
-adoption of this technology to the roof. Docker encapsulate tools and
-commands that allow administartion of this container much easier than
-before. Making it easy for people to use container in their workflow.
-More importantly, docker has a public registry where people could
-publish their dockerfile, and share it with the public. Interested
-people could just get the file and create their own docker image based
-on the published file. This is a huge boon in helping docker become
-popular currently.
+<!--Container technology originated from the virtualization technology back-->
+<!--in 1960. Back then IBM PC shipped with virtualization software that-->
+<!--allow multiple operating systems to be installed into one hardware.-->
+<!--Linux Kernel Container is then born to handle this virtualization but on-->
+<!--the kernel level, where we could have container that run its own kernel-->
+<!--separated from the host. Docker is the technology that pushes the-->
+<!--adoption of this technology to the roof. Docker encapsulate tools and-->
+<!--commands that allow administartion of this container much easier than-->
+<!--before. Making it easy for people to use container in their workflow.-->
+<!--More importantly, docker has a public registry where people could-->
+<!--publish their dockerfile, and share it with the public. Interested-->
+<!--people could just get the file and create their own docker image based-->
+<!--on the published file. This is a huge boon in helping docker become-->
+<!--popular currently.-->
 
 
-In reproducing computing researchm docker is deeemed fit to the task,
-since it allows computing workflow to be documented, published, and
-re-run easily because everyone has the ability to scrutinize it. This
-process however, involve an overhead that the author needs to write a
-dockerfile instead of doing whatever they are doing currently. However,
-this is a small price to pay in order to make compting reproducible
-easily. On our case, using docker is a necessary tools. Because with
-docker, people could scrutinize the tools and commands used to reproduce
-the research done with HemeLB. More importantly, the tools also will
-allow us to expand not only handling HemeLB, but also to a more general
-case of any other HPC applications to be run on the cloud indepenedent
-of what the infrastructure might be.
+<!--In reproducing computing researchm docker is deeemed fit to the task,-->
+<!--since it allows computing workflow to be documented, published, and-->
+<!--re-run easily because everyone has the ability to scrutinize it. This-->
+<!--process however, involve an overhead that the author needs to write a-->
+<!--dockerfile instead of doing whatever they are doing currently. However,-->
+<!--this is a small price to pay in order to make compting reproducible-->
+<!--easily. On our case, using docker is a necessary tools. Because with-->
+<!--docker, people could scrutinize the tools and commands used to reproduce-->
+<!--the research done with HemeLB. More importantly, the tools also will-->
+<!--allow us to expand not only handling HemeLB, but also to a more general-->
+<!--case of any other HPC applications to be run on the cloud indepenedent-->
+<!--of what the infrastructure might be.-->
 
 
 
