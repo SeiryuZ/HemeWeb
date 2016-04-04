@@ -50,7 +50,8 @@ is developed openly in the public, all simulation parameters, input
 files, and results are recorded manually. These record are available
 upon request for people who are interested to reproduce it. However,
 with recent pushes of open science and more specifically,
-reproducible computing research [2][3][4], there are extra
+reproducible computing research by numerous institutions and
+publications [2][3][4][5], there are extra
 steps that HemeLB project can take in order to further improve its
 trustworthiness, especially on being automatic on recording of resources, and
 parameters needed for simulation, leading to easier reproduction of simulation.
@@ -199,8 +200,8 @@ explained before fleshing out the proposed system.
 
 Above image illustrate the workflow of HemeLB simulation that require
 multiple steps before results can be produced. First, a 2D image of a blood
-vessel is needed to be piped into a geometrical model
-reconstruction script to construct a 3D model of the blood vessel. This
+vessel is needed for a geometrical model
+reconstruction stept that construct a 3D model of the blood vessel. This
 3D model will then need more information like blood viscocity, and inlet
 outlet placement to be used as the simulation parameter. These information are
 going to be added by the user in domain definition step. Next, the 3D
@@ -211,20 +212,20 @@ will need further pre-processing script to convert the output into a
 file format that can be viewed easily.
 
 <!--Currently HemeLB workflow is complex-->
-Not only understanding the workflow of the process, domain experts also
+Not only understanding the above workflow of the process, domain experts also
 need to configure tools required on each steps, making it really complex
-to use the software, especially if they don't have the expertise.
-This is not an ideal situation for the project where users are required
-to understand their non-domain expertise to use the software. A better
-condition will be where domain-experts only need to deal with their
+to use the software. This is not an ideal situation for the project
+because users have to deal with stuff they are non-expert in before
+doing the simulation, creating friction to doing what matters to them.
+A better condition will be where domain-experts only need to deal with their
 respective domain concern of the project. All other concern which are
 not related to their domain, in this case configuration of the tools
 needed, should be hidden from them.
 
 
 Hiding this complexity from the users is the reason why I think web
-application is the correct approach. Web application requires the user
-to interface with them using the web browser, which is currently a
+application is the correct approach. Web application require users
+to interface with it using a web browser, which is currently a
 standard tools in everyday's life. Doctors and biologists could easily
 treat the simulation tools as a black box, not having to worry about
 configurations, environment, and the infrastructure the software lives
@@ -259,7 +260,9 @@ reproduce it easily.
 On top of making it easy to reproduce, containerization technology also
 allows the re-use of the resource from the infrastructure. Currently, if
 one wants to rerun simulations with different version of the tools, said
-tools need to be reconfigured to the exact version. This is not
+tools need to be reconfigured to the exact version and the
+infrastructure needs to be configured to this version, for example if
+they need a certain environment variable. This is not
 practical for domain-experts because now we have another concern of
 making sure the right tools are used. Container image could help in this
 aspect because all the tools are containerized already, and what the web
@@ -287,7 +290,7 @@ tools on our disposal.
 
 
 
-**HemeLB and HPC**
+**HPC Infrastructure and HemeLB**
 
 
 <!--Introduction to HemeLB-->
@@ -394,7 +397,7 @@ result significantly.
 **Cloud Computing**
 
 In answering huge computational power required by researchers and
-academics concept called grid computing is envisioned in 1990s [12].
+academics, concept called grid computing is envisioned in 1990s [12].
 This vision consider computing resources analogous to power grid, where
 user should not care from where the resources are acquired and how it is
 delivered to the user. What user should see is that there are computing
@@ -569,7 +572,7 @@ software instead of the degree of comfort in using it. Therefore, this
 project will demonstrate that more people will consider to use the
 software than before.
 
-  <!--Lastly, HemeWeb will allow better usability in running blood flow-->
+<!--Lastly, HemeWeb will allow better usability in running blood flow-->
 <!--simulation. Currently, to run the simulation, one have to configure and-->
 <!--install many dependencies which requires technical dependencies that not everyone have.-->
 <!--Having the workflow moved into its own web application will allow people-->
@@ -593,7 +596,7 @@ further by using cloud computing infrastructure and automatically record
 every simulation configurations for easy re-run.
 
   This project will also demonstrate that the work done here, with
-modificaltion, can be applied in any infrastructures, not specific to
+modification, can be applied in any infrastructures, not specific to
 the implementation of the infrastructure I choose. This is important,
 because reproducibility will improve the trust over the simulation
 result to provide the consistent and predictable result that allow
@@ -616,22 +619,31 @@ people to trust it.
 
 * **Auditability**
 
-  Audibility means that the tools that are used for simulations are
-developed in the open and are available for audit. By having the tools
-available for audit, these tools can be peer-revied or even fixed by the
-public, creating more trusts with the correctness of the software used
-in the simulation. Currently, HemeLB have been developed in the open,
-but the use of containerization technology will further improve this
-auditability. This improvement come from the automatic association of
-the simulation with the version of the tools that are packaged in the
-container image. These images are also going to be published publicly in
-the public registry, making it not only the software involved that can
-be audited, but the execution of the simulation to be auditable as well.
+Auditability of the simulation means that the simulation that are done
+with HemeLB will be easily audited by third parties. By having the
+tools, configurations, input files, and results open for public,
+peer-review of the simulation will be encouraged. Creating more trust
+towards the simulation result, considering that it will be used by the
+general public eventually. Currently steps are already taken so that
+this is the case, but with the usage of containerization technology,
+these auditability aspect of a simulation can be captured automatically
+by the container image and shared in public registry.
+<!--Audibility means that the tools that are used for simulations are-->
+<!--developed in the open and are available for audit. By having the tools-->
+<!--available for audit, these tools can be peer-revied or even fixed by the-->
+<!--public, creating more trusts with the correctness of the software used-->
+<!--in the simulation. Currently, HemeLB have been developed in the open,-->
+<!--but the use of containerization technology will further improve this-->
+<!--auditability. This improvement come from the automatic association of-->
+<!--the simulation with the version of the tools that are packaged in the-->
+<!--container image. These images are also going to be published publicly in-->
+<!--the public registry, making it not only the software involved that can-->
+<!--be audited, but the execution of the simulation to be auditable as well.-->
 
-  This auditability is even more important when considering that the
-simulation result will be used as a basis of medical decision or medical
-development. Simulation result needs to be auditable so that the usage
-of HemeLB can be trusted by the user and general public.
+<!--This auditability is even more important when considering that the-->
+<!--simulation result will be used as a basis of medical decision or medical-->
+<!--development. Simulation result needs to be auditable so that the usage-->
+<!--of HemeLB can be trusted by the user and general public.-->
 
 
 <!--Third, proposed approach will allow open development of HemeLB-->
@@ -650,6 +662,7 @@ of HemeLB can be trusted by the user and general public.
 <!--complete isolation is not possible without hardware virtualization.-->
 
 
+----
 
 
 To support these claim, I will develop an experimental web application for
@@ -810,6 +823,8 @@ be achievable in the timeframe given.
 [3] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.
 
 [4] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
+
+[5] Bailey, D. H., & Borwein, J. M. (2013, July 2). Set the Default to "Open": Reproducible Science in the Computer Age. Retrieved April 4, 2016, from http://www.huffingtonpost.com/david-h-bailey/set-the-default-to-open-r_b_2635850.html
 
 [5] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.
 
