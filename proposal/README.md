@@ -34,7 +34,7 @@ begin with, render HemeLB only accessible to few people.
 
 <!-- To embrace open science, HemeLB needs to improve its auditability  -->
 In addition to being usable, HemeLB simulation, which is described as an integral part of
-clinical decision in the future [6], also needs to be trustworthy by
+clinical decision in the future [9], also needs to be trustworthy by
 being auditable and easily reproducible. Auditable as in that the
 simulation itself can be audited by external parties easily; Parameters
 of simulations are publicly available and tools are available for
@@ -354,8 +354,8 @@ However, running these simulations require access to HPC infrastructures that
 might not have reproducibility of a research as a priority. Facilities
 that administer these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
-example how PRACE [11], the Partnership for Advanced Computing in
-Europe, and how EPSRC [10] give access to their infrastructure to
+example how PRACE [14], the Partnership for Advanced Computing in
+Europe, and how EPSRC [13] give access to their infrastructure to
 researcher. This means that reproducing computing research, if anyone
 are interested, have to compete with other projects for the limited
 computing hour that is given out by these institutions. Most likely, it
@@ -400,23 +400,23 @@ the picture.
 **Cloud Computing**
 
 In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s [12].
+academics, concept called grid computing is envisioned in 1990s [15].
 This vision consider computing resources analogous to power grid, where
 user should not care from where the resources are acquired and how it is
 delivered to the user. What user should see is that there are computing
 resources available and it could come from anywhere and in any form.
 This paradigm is mainly developed with the interest of researchers and
-academia that the business models caters to the most [13]. Grid
+academia that the business models caters to the most [16]. Grid
 computing typically give CPU hours based on the proposal that is vetted
 by the institutions. Example of this institution is TeraGrid which
-operates until 2011 [14].
+operates until 2011 [17].
 
 Cloud computing share similar vision with grid computing paradigm on how the
 computing resources are acquired and delivered are invisible to the
 users, but different on the execution of the business model. It is
 massively scalable, allow abstract encapsulation of computing resources,
 dynamicaly configured and delivered on-demand and most importantly,
-driven by economies of scale [13]. Since it is driven by economies of
+driven by economies of scale [16]. Since it is driven by economies of
 scale, it is in the interest of cloud providers to provide features
 that users actually needs and want to pay for, therefore creating a
 tight feedback loop between users and the providers to develop the
@@ -424,8 +424,8 @@ platform better than how grid computing handle feature developments.
 
 This has allowed cloud vendors to grow significantly, that in 2013 it
 was noted that some cloud vendors could reach more than 90% growth per annum
-[15]. These growth further fuels demand and allow them to cut pricing
-for their service multiple times [16][17][18] and create more demands.
+[18]. These growth further fuels demand and allow them to cut pricing
+for their service multiple times [19][20][21] and create more demands.
 This development has allowed business or institutions to offload their
 computational need to the cloud vendors for a price rather than building their own
 infrastructure. This scenario could also be used for our purpose of
@@ -434,11 +434,13 @@ preventing other researches getting their share of computational
 resource.
 
 Cloud vendors like amazon also capitalize on the need of computing
-resources for HPC application that they promote themselves for this capabilities [19].
+resources for HPC application that they promote themselves for this capabilities [22].
 Running HPC application on cloud vendors, while incurring performance
 overhead, are a viable alternative to supercomputers as shown by
-the nekkloud project [20], NASA HPC Applications [21], and few other case study [22].
-HemeWeb project should also run perfectly fine on cloud infrastructures.
+the nekkloud project [23], NASA HPC Applications [24], and few other case study [25].
+HemeWeb project should also run perfectly fine on cloud infrastructures
+without worrying about the merit of their reproduction of research
+interest being not a top priority.
 
 
 <!--**Containerization technology**-->
