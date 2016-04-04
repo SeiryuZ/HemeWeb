@@ -679,26 +679,25 @@ also improve the usability of the simulation.
 ## Methods
 
 Solution used on this project must adhere to the criteria that is
-outlined in the main claim and background section of this proposal. That
-are 1) Improve usability, 2) Improve Reproducibility, 3) Improve
-auditability. These criteria added with few other criteria such as:
-* Developer familiarity
-* Ease of development
+outlined in the main claim and background section of this proposal.
+Those are 1) Improve usability, 2) Improve Reproducibility, 3) Improve
+auditability. These criteria added with few other criteria such as
+developer familiarity, features and  ease of development should be the final
+comparison matrix when choosing competing implementation of solution.
 
-will determine which implementation of the technology I will choose in
-this project. This is much more imporatnt on the software container area
-of this project, since the implementation are many and different. For
-cloud computing vendor, it is a non-issue since it will provide more or
-less same resources, but different interface and brand.
+This comparison will be much more important on the software container
+implenetation of this project, since there are many competing
+implementations. For cloud computing vendor, it is a non-issue since it will
+provide more or less same resources, but different interface and brand.
 
-First priority of the project, will be to determine which of the tools
+Hence, first priority of the project, will be to determine which of the tools
 are more suitable for this project, in which I have been, and continue
 to read while discussing my proposed methodologies with my peers and
 supervisors.
 
 
 After determining the technology implementation, the project will be
-developed with this plan.
+developed with plans as follow.
 
 ![alt text](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
@@ -745,8 +744,9 @@ could be for user to run simulation.
 
 Secondly, trustworthiness should be measured by whether user can
 reproduce simulation result at all using the proposed approach. As
-currently there are no alternatives for reproducing the simulation, we
-should also binarily measure this capability.
+currently there are no alternatives for reproducing the simulation than
+running it on ARCHER supercomputer as well, we should also binarily measure
+this capability.
 
 
 Lastly, auditable is another aspect of trustworthiness that should be
