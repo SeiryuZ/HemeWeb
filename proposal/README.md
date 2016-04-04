@@ -370,7 +370,8 @@ simulation. Anyone theoritically could request these documentation and
 reproduce the result with the appropriate computing resource.
 However, research facility that will prioritize more important research
 inherently will limit people that want to reproduce the computation
-result significantly.
+result significantly. This is where cloud computing infrastructure enter
+the picture.
 
 <!-- This is why cloud computing is a perfect match  -->
 
