@@ -35,20 +35,25 @@ begin with, render HemeLB only accessible to few people.
 <!-- To embrace open science, HemeLB needs to improve its auditability  -->
 In addition to being usable, HemeLB simulation, which is described as an integral part of
 clinical decision in the future [6], also needs to be trustworthy by
-being auditable and easily reproducible. Auditable as in the software
-can be peer-reviewed and audited to make sure it produce the correct
-result, while easily reproducible mean that the software can be easily
-re-run to make sure it produce consistent result in different
-infrastructure. These aspects are
+being auditable and easily reproducible. Auditable as in that the
+simulation itself can be audited by external parties easily; Parameters
+of simulations are publicly available and tools are available for
+validation of correctness. Second, easily reproducible mean that the
+simulation can be easily reproduced for the purpose of validation of
+result, in whichever infrastructure the simulation is run on. These aspects are
 important for the users, especially when HemeLB will be used to
-determine health and well-being of patients. Currently, HemeLB project have taken steps to be open
-and auditable by being developed openly in the public, and making
-manually recorded resources for simulation available upon request.
-However, with recent pushes of open science and more specifically,
+determine health and well-being of patients.
+
+HemeLB project have taken steps to be easily reproducible and auditable,
+but extra steps can be taken to further improve it.  Currently, HemeLB
+is developed openly in the public, all simulation parameters, input
+files, and results are recorded manually. These record are available
+upon request for people who are interested to reproduce it. However,
+with recent pushes of open science and more specifically,
 reproducible computing research [2][3][4], there are extra
 steps that HemeLB project can take in order to further improve its
-trustworthiness, especially on automatic record of resources needed for simulation
-leading to easier reproduction of simulation.
+trustworthiness, especially on being automatic on recording of resources, and
+parameters needed for simulation, leading to easier reproduction of simulation.
 
 
 <!--this is the case. All simulations configurations, input files, and-->
@@ -171,11 +176,18 @@ more trustworthy.
 ## Background
 
 
-In order to develop HemeWeb, few key technologies and concepts have to
-be made clear. These key technologies consists of HemeLB as an HPC
-application, Cloud Computing, and Containerization technology. In this
-section, I will provide a short overview of these technologies and
-concepts before continuing with the proposed system.
+In order to properly develop the extension, HemeWeb, few information
+regarding the area that we need to address needs to be ellaborated.
+These are about the current HemeLB workflow, and Infrastructure that
+HemeLB ran on. In this section, these information are going to be
+explained before fleshing out the proposed system.
+
+
+<!--few key technologies and concepts have to-->
+<!--be made clear. These key technologies consists of HemeLB as an HPC-->
+<!--application, Cloud Computing, and Containerization technology. In this-->
+<!--section, I will provide a short overview of these technologies and-->
+<!--concepts before continuing with the proposed system.-->
 
 
 **HemeLB Workflow**
