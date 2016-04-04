@@ -620,7 +620,7 @@ people to trust it.
 
 * **Auditability**
 
-Auditability of the simulation means that the simulation that are done
+  Auditability of the simulation means that the simulation that are done
 with HemeLB will be easily audited by third parties. By having the
 tools, configurations, input files, and results open for public,
 peer-review of the simulation will be encouraged. Creating more trust
@@ -661,9 +661,6 @@ by the container image and shared in public registry.
 <!--demonstrate benefits of using container technology toward the-->
 <!--reproducible computation research in general [8], although with limitation as-->
 <!--complete isolation is not possible without hardware virtualization.-->
-
-
-----
 
 
 To support these claim, I will develop an experimental web application for
