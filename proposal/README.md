@@ -339,12 +339,12 @@ are High Performance Computing and High Throughput Computing. High
 performance computing typically involves multiple computing nodes
 connected with a high bandwidth network, performing a well-defined
 computations that use message passing interface to communicate between
-nodes. HPC are typically performed using computer clusters, GPUs, or
+nodes [22]. HPC are typically performed using computer clusters, GPUs, or
 even supercomputer. High troughput computing, on the other hand, is a different
 paradigm. It allows highly heteregenous computing resources,
 often geographically distributed, to cooperate for common goals which
 involves different independent computation that can be scheduled independently
-and later aggregated on one of the nodes. Based on these distinction,
+and later aggregated on one of the nodes [22]. Based on these distinction,
 HemeLB simulations can be categorized as a HPC application because it performs
 a well-defined computations that are spread over multiple computing nodes with MPI.
 
