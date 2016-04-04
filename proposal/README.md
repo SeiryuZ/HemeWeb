@@ -256,8 +256,8 @@ tools will be documented on the container image and each version of the
 tools will have its own image. Tying down the simulation execution on
 the web application to these image is trivial and allow users to
 reproduce it easily. This feature is what makes containerization
-technology really suitable to make sure research is reproducible as
-observed in [7].
+technology, especially docker [10], really suitable to make sure research is reproducible as
+observed in [7][11].
 
 On top of making it easy to reproduce, containerization technology also
 allows the re-use of the resource from the infrastructure. Currently, if
@@ -400,7 +400,7 @@ the picture.
 **Cloud Computing**
 
 In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s [15].
+academics, concept called grid computing is envisioned in 1990s [12][15].
 This vision consider computing resources analogous to power grid, where
 user should not care from where the resources are acquired and how it is
 delivered to the user. What user should see is that there are computing
