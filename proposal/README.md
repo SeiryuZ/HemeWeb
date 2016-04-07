@@ -4,172 +4,43 @@
 ## Purpose
 
 
-<!-- HemeLB simulation is hard to use, especially to doctors and
-scientists  -->
-HemeLB [1], a fluid dynamic simulation software that is used for the study of
-blood flow, have complex workflow that makes it challenging for doctors
-and scientists to use. To run a simulation, one has to configure a range of
-tools that are needed for each steps of the workflow with the correct
-parameters and inputs. Moreover, each steps require highly varying computing
-resources, from personal PC to supercomputer that is non-trivial to
-acquire access to. These facts, coupled with
-doctors and scientists who might not have the technological expertise to
-begin with, render HemeLB only accessible to few people.
+HemeLB is a fluid dynamic simulation software that is developed for the study
+of blood flow [1]. Part of the software construct a 3D blood vessels from a CT
+scan or microscopic image of vessels. This 3D blood vessels allow HemeLB to
+simulate the flow of fluid, like blood, inside it. Thus, allowing scientists
+and doctors to learn how a blood will flow in a given vessels. The developer
+of HemeLB envision that it will be an integral part of medical decisions
+in the future [9].
+
+Currently, HemeLB usage is complex and hard. It comprises of many steps in the
+workflow that need a diverse set of tools to run. Scientists and doctors need
+to configure these tools, which need various technical skills. Time and
+difficulty for this configuration limits HemeLB users to few individuals.
+
+Furthermore, HemeLB needs to improve the trustworthiness of its simulation.
+This trust, on top of HemeLB being usable, is important to make it a part of
+ any medical decision. Simulation results should be easy to audit and easy to
+ reproduce. These characteristics allow peers to review the simulation and
+ confirm the result. Currently, there are measures for HemeLB for easy
+ reproduction and audit. Its' source code are available for public on github,
+ making it easy to audit the software. Furthermore, researchers have taken a
+ manual record of simulation configurations, executions, and results. These
+steps allow peers to build the software and replicate a simulation, albeit
+ in a manual way.
 
 
-<!--HemeLB, a fluid dynamic simulation project that is used for the study of-->
-<!--blood flow, currently have workflow that requires varying-->
-<!--degree of computational power on each steps. Most notably, the simulation part-->
-<!--of HemeLB requires high performing computing resources like-->
-<!--ARCHER supercomputer [1] to run effectively, while the-->
-<!--setup process for the simulation can be done in consumer-grade computing-->
-<!--resources. Exclusivity of computing resources on certain step of the workflow-->
-<!--and the overhead of documentation make simulation results done with HemeLB non-trivial to be reproduced.-->
-<!--If anyone want to replicate a simulation, one should have the exact same configurations-->
-<!--for the simulation  and run the simulation with similar-->
-<!--computing resources to the original simulation to replicate it closely.-->
-<!--This feat however is not easy, because acquiring acquire access to or-->
-<!--building computing resources similar to original simulation might be-->
-<!--infeasible.-->
+HemeLB project can further improve its trustworthiness. Simulation record
+automation can make it even easier to reproduce and audit a simulation. Recent
+ pushes for open science and reproducible computing research [2-7] also
+justifies these steps . Allowing the project to stand in a better light
+ and in general, more trustworthy.
 
-<!-- To embrace open science, HemeLB needs to improve its auditability  -->
-In addition to being usable, HemeLB simulation, which is described as an integral part of
-clinical decision in the future [9], also needs to be trustworthy by
-being auditable and easily reproducible. Auditable as in that the
-simulation itself can be audited by external parties easily; Parameters
-of simulations are publicly available and tools are available for
-validation of correctness. Second, easily reproducible mean that the
-simulation can be easily reproduced for the purpose of validation of
-result, in whichever infrastructure the simulation is run on. These aspects are
-important for the users, especially when HemeLB will be used to
-determine health and well-being of patients.
-
-HemeLB project have taken steps to be easily reproducible and auditable,
-but extra steps can be taken to further improve it.  Currently, HemeLB
-is developed openly in the public, all simulation parameters, input
-files, and results are recorded manually. These record are available
-upon request for people who are interested to reproduce it. However,
-with recent pushes of open science and more specifically,
-reproducible computing research by numerous institutions and
-publications [2][3][4][5][6][7], there are extra
-steps that HemeLB project can take in order to further improve its
-trustworthiness, especially on being automatic on recording of resources, and
-parameters needed for simulation, leading to easier reproduction of simulation.
-
-
-<!--this is the case. All simulations configurations, input files, and-->
-<!--results are manually recorded for the purpose of reproduction. However,-->
-<!--with recent pushes for reproducible computing research [2][3][4], HemeLB-->
-<!--needs to improve its reproducible aspect to make sure it adhere to the-->
-<!--open science standard of being open and auditable. This is even more-->
-<!--important when this research area is described in media as an integral-->
-<!--part of clinical decision in the future[6]-->
-
-
-<!--With pushes for reproducible computing research in general [2][3][4], HemeLB-->
-<!--needs to improve its reproducible computing aspect for the benefit of-->
-<!--the simulations that run with it. HemeLB Simulations should  adhere to a higher-->
-<!--standard of validation from the community, making it more transparent-->
-<!--and trustworthy. This trustworthiness is especially more important-->
-<!--when this research area is described in media as an "integral" part in-->
-<!--clinicial decision in the future [6].-->
-
-<!-- Above reasons is the impetus for my proposal -->
-For reasons above, I propose to create an extension to HemeLB called
-HemeWeb. HemeWeb will be a web application for HemeLB simulation
-workflow that hide the configuration complexity from the users. Doctors
-and Scientists, will deal with an easier to use web interface and have to
-worry about the simulation input and result  instead of worrying about
-configuration of the tools. Moreover, with the help
-of containerization technology, all tools that are used in the
-simulations are going to be packaged in such a way that makes reusing
-computing resources easy. Configured cluster can be reused by simply
-swapping the container image of the tools, instead of reconfiguring the
-whole cluster from the start. Furthermore, containerization tool will
-also help with the project being open and auditable since it will require the
-development of the tools to be publicly shared on its registry for
-others to inspect and audit. Ultimately, The proposed extension will aim to make HemeLB
-more trustworthy.
-
-
-<!--In adhering to the reproducible aspect,-->
-<!--the author propose on creating an "extension" to HemeLB called HemeWeb.-->
-<!--HemeWeb will be a web application for HemeLB simulation workflow that-->
-<!--allows interested party to configure and run blood flow simulation on-->
-<!--the cloud, or even, their own computing resources. This extension will-->
-<!--utilize container technology, specifically Docker [7], that allows tools-->
-<!--involved with the workflow to be isolated, inspected, and shared easily-->
-<!--with the publicly available registry. Moreover, docker has been reviewed-->
-<!--to be an appropriate tool for distributing reproducible research, albeit-->
-<!--with few limitations [8]. Thus in this project, the author will create-->
-<!--an experimental web application for HemeLB to address the reproducible-->
-<!--computing aspect of the research using docker.-->
-
-
-
-<!--Current problem - Open Science, Usability, Isolation-->
-
-
-<!--Current situation - How GalaxyWeb address-->
-
-<!--To showcase the proposed solution, I will develop HemeWeb.-->
-
-
-<!--High Performance Computing (HPC) requires high performing infrastructures-->
-<!--like supercomputers or huge clusters of compute node to be run effectively.-->
-<!--This computational setup allows some complex computation,-->
-<!--usually a scientific computation simulation, to be done in a high-->
-<!--performing fashion that traditional consumer desktop computers cannot achieve.-->
-<!--However, acquiring access to this computation resources are neither easy, nor-->
-<!--cheap. To acquire access to these resources, you have to be member of a university,-->
-<!--government institute, scientists group, or alternatively, build your own cluster.-->
-
-<!--In scientific community, especially in scientific computation,-->
-<!--researchers utilize these infrastructures for their research. For-->
-<!--example, HemeLB that utilize Cray XT3 MPP TerraGrid Machine located on Pittsburgh,-->
-<!--and Cray XT4 at University of Edinburgh [1]. These infrastructures,-->
-<!--unfortunately, are not available to most people or unfeasible to-->
-<!--replicate. Moreover, complex setup process, configuration and toolings further-->
-<!--discourage people from replicating computations from these researches.-->
-
-<!--Galaxy [2], a web-based reproducible research platform is developed to-->
-<!--answer to these issues. It allows its user to compose, customize, run-->
-<!--and share their simulations utilizing cloud computing resources.-->
-<!--However, these computational models are limited to the tools provided by-->
-<!--the web application, Galaxy, and the infrastructures that it rans on-->
-<!--(i.e, OS) which require researches/ computational researches to-->
-<!--understand/ have experience with the toolings provided or create their-->
-<!--own based on the restriction. For example, most of the tools that is ran-->
-<!--on Galaxy, require python script.-->
-
-<!--Some research have tried to overcome this limitations by utilizing the-->
-<!--power of cloud computing. Galaxy[2], for example tried to be-->
-<!--the web-based reproducible research platform that-->
-<!--allows everyon to compose, run, and share results of the research to-->
-<!--everyone using the power of cloud computing. However, the degree of the-->
-<!--computations configurations are limited to the resources that are available to the-->
-<!--computing infrastructure and tools provided by Galaxy project.-->
-
-<!--Limitation above is the impetus for this project. In an ideal scenario,-->
-<!--researchers do not need to port their computation project to the provided toolings,-->
-<!--environment of an infrastructure of a computational models provider.-->
-<!--Researchers could just compose their computation project with whatever-->
-<!--tools and environment they are comfortable with and run with it. And-->
-<!--this is where docker [3] comes into the picture. Docker allows us to compose-->
-<!--our computation environment and tools as we wanted and allow it to be-->
-<!--shared easily. Our project will utilize this unique trait of docker to-->
-<!--allow researchers compose their computational project as they see fit.-->
-
-<!--There will be a web interface to set the running parameter of the computations-->
-<!--and to run the project utilizing cloud computing resources. This allows-->
-<!--researchers to be free from tools that they are not familiar with or-->
-<!--specific implementations which is a barrier for replication of project.-->
-<!--Infrastructure choic1e also become agnostic, our computational node do-->
-<!--not have to install dependencies or tools that each project needs-->
-<!--because it is already packaged in the containers and "clean" from each-->
-<!--other's dependencies, making the computational node reusable-->
-<!--for different projects without getting bogged down with tools-->
-<!--and environment variables of all projects.-->
+For reasons above, I propose to create an extension to HemeLB called HemeWeb.
+  HemeWeb is a web application that will hide complexity of configuration from
+ its users. Also, it will allow automatic record of simulations, making it
+ easy to reproduce simulations. I will use cloud infrastructure and
+ containerization technology to help address the issues outlined. In brief,
+ this proposal will make HemeLB simulations usable and more trustworthy.
 
 
 
