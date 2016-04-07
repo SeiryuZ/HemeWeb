@@ -32,7 +32,7 @@ steps allow peers to build the software and replicate a simulation, albeit
 HemeLB project can further improve its trustworthiness. Simulation record
 automation can make it even easier to reproduce and audit a simulation. Recent
  pushes for open science and reproducible computing research [2-7] also
-justifies these steps . Allowing the project to stand in a better light
+justifies these steps. Allowing the project to stand in a better light
  and in general, more trustworthy.
 
 For reasons above, I propose to create an extension to HemeLB called HemeWeb.
