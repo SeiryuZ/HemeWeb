@@ -1,7 +1,7 @@
 # HemeWeb: Container based high performance computing scenario for HemeLB
 
 
-## Purpose
+## Introduction
 
 
 HemeLB is a fluid dynamic simulation software that is developed for the study
