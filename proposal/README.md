@@ -94,73 +94,6 @@ not related to their domain, in this case configuration of the tools
 needed, should be hidden from them.
 
 
-Hiding this complexity from the users is the reason why I think web
-application is the correct approach. Web application require users
-to interface with it using a web browser, which is currently a
-standard tools in everyday's life. Doctors and biologists could easily
-treat the simulation tools as a black box, not having to worry about
-configurations, environment, and the infrastructure the software lives
-on. The only things that they have to worry is the input file, their
-knowledge of the domain, and the simulation result.
-
-However, I have to underscore that this project scope will be limited
-due to the available time. Originally, only the simulation part of the
-workflow will be included in the web application and this is the first
-step to improve the usability of the project by hiding the complexity
-on that particular steps. With more integrations, more complexity will
-be hidden in the process, paving way for an ideal condition where
-domain-experts can do all part of the workflow from the browser.
-
-
-![alt text](../resources/images/HemeLB-scope-1.png "HemeWeb scope 1st Phase")
-
-
-On top of having a web application to hide technical complexity from the
-domain-experts, I also propose the usage of containerization technology
-to hide the complexity of reproducing simulation results. As HemeLB is
-actively developed, simulation results might be affected by the changes
-in the components. This is why simulation needs to be tied down to a
-specific version of the tools used for the simulation. Currently, it is
-done manually and available upon requests, but with the usage of
-containerization technology, this could be improved. All associated
-tools will be documented on the container image and each version of the
-tools will have its own image. Tying down the simulation execution on
-the web application to these image is trivial and allow users to
-reproduce it easily. This feature is what makes containerization
-technology, especially docker [10], really suitable to make sure research is reproducible as
-observed in [7][11].
-
-On top of making it easy to reproduce, containerization technology also
-allows the re-use of the resource from the infrastructure. Currently, if
-one wants to rerun simulations with different version of the tools, said
-tools need to be reconfigured to the exact version and the
-infrastructure needs to be configured to this version, for example if
-they need a certain environment variable. This is not
-practical for domain-experts because now we have another concern of
-making sure the right tools are used. Container image could help in this
-aspect because all the tools are containerized already, and what the web
-application will need to do is to swap the image and we have the correct
-tools on our disposal.
-
-
-<!--HemeLB workflow currently involve a number of steps that requires-->
-<!--some expertise in configuring software that doctors and biologists might-->
-<!--not have. These steps are a necessary part of the current workflow to-->
-<!--prepare the input files into an intermediary representation that each-->
-<!--steps of the workflow needed.-->
-
-<!--Non-expert users are overwhelmed with the range of tasks needed to use it-->
-
-
-<!--Ideally users only need to deal with the task that is related to their job-->
-
-
-
-<!--This is why web application make sense for this particular use case-->
-
-
-<!--and Containerization technology can help this as well-->
-
 
 
 **HPC Infrastructure and HemeLB**
@@ -664,6 +597,57 @@ have determined that the original scope of HemeLB simulation part will
 be achievable in the timeframe given.
 
 ![alt text](../resources/images/workplan.png "Work Plan")
+
+
+The software will be developed with this plan
+
+Hiding this complexity from the users is the reason why I think web
+application is the correct approach. Web application require users
+to interface with it using a web browser, which is currently a
+standard tools in everyday's life. Doctors and biologists could easily
+treat the simulation tools as a black box, not having to worry about
+configurations, environment, and the infrastructure the software lives
+on. The only things that they have to worry is the input file, their
+knowledge of the domain, and the simulation result.
+
+However, I have to underscore that this project scope will be limited
+due to the available time. Originally, only the simulation part of the
+workflow will be included in the web application and this is the first
+step to improve the usability of the project by hiding the complexity
+on that particular steps. With more integrations, more complexity will
+be hidden in the process, paving way for an ideal condition where
+domain-experts can do all part of the workflow from the browser.
+
+
+![alt text](../resources/images/HemeLB-scope-1.png "HemeWeb scope 1st Phase")
+
+
+On top of having a web application to hide technical complexity from the
+domain-experts, I also propose the usage of containerization technology
+to hide the complexity of reproducing simulation results. As HemeLB is
+actively developed, simulation results might be affected by the changes
+in the components. This is why simulation needs to be tied down to a
+specific version of the tools used for the simulation. Currently, it is
+done manually and available upon requests, but with the usage of
+containerization technology, this could be improved. All associated
+tools will be documented on the container image and each version of the
+tools will have its own image. Tying down the simulation execution on
+the web application to these image is trivial and allow users to
+reproduce it easily. This feature is what makes containerization
+technology, especially docker [10], really suitable to make sure research is reproducible as
+observed in [7][11].
+
+On top of making it easy to reproduce, containerization technology also
+allows the re-use of the resource from the infrastructure. Currently, if
+one wants to rerun simulations with different version of the tools, said
+tools need to be reconfigured to the exact version and the
+infrastructure needs to be configured to this version, for example if
+they need a certain environment variable. This is not
+practical for domain-experts because now we have another concern of
+making sure the right tools are used. Container image could help in this
+aspect because all the tools are containerized already, and what the web
+application will need to do is to swap the image and we have the correct
+tools on our disposal.
 
 
 
