@@ -8,8 +8,8 @@ HemeLB is a fluid dynamic simulation software that is developed for the study
 of blood flow [1]. Part of the software construct a 3D blood vessels from a CT
 scan or microscopic image of vessels. This 3D blood vessels allow HemeLB to
 simulate the flow of fluid, like blood, inside it. Thus, allowing scientists
-and doctors to learn how a blood will flow in a given vessels. The developer
-of HemeLB envision that it will be an integral part of medical decisions
+and doctors to learn how a blood will flow in a given vessels.
+Developers of HemeLB envision that it will be an integral part of medical decisions
 in the future [9].
 
 Currently, HemeLB usage is complex and hard. It comprises of many steps in the
