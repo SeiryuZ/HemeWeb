@@ -499,14 +499,16 @@ look up for this documentation.
 
 ## Output
 
-This project will create a working prototype that enable HemeLB
-simulation to be run on the cloud infrastructure. This web application
-will be used by the HemeLB project to introduce HemeLB workflow to their
-peers, scientists and doctors. In addition, if time permit, this web
-application will be extended to handle more use case from the workflow,
-starting from the domain definition step to post-processing step. This
-prototype development will be used as the basis of future improvement on
-HemeLB workflow for eventual medical use.
+
+This project will create two outputs that HemeLB project will use.
+First, a working HemeWeb prototype that enable running HemeLB simulation to
+ run on cloud. Second, a usability document that HemeLB project will use to
+ further the development. HemeLB will use these two outputs as the basis
+ of future improvement on HemeLB workflow.
+
+
+
+
 
 # Risks
 
