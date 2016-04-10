@@ -47,19 +47,9 @@ For reasons above, I propose to create an extension to HemeLB called HemeWeb.
 
 ## Background
 
-
-In order to properly develop the extension, HemeWeb, few information
-regarding the area that we need to address needs to be ellaborated.
-These are about the current HemeLB workflow, and Infrastructure that
-HemeLB ran on. In this section, these information are going to be
-explained before fleshing out the proposed system.
-
-
-<!--few key technologies and concepts have to-->
-<!--be made clear. These key technologies consists of HemeLB as an HPC-->
-<!--application, Cloud Computing, and Containerization technology. In this-->
-<!--section, I will provide a short overview of these technologies and-->
-<!--concepts before continuing with the proposed system.-->
+To develop the extension with proper functions, I need to elaborate some
+ information. These are about the current HemeLB workflow, the infrastructures,
+ and containerization technology.
 
 
 **HemeLB Workflow**
