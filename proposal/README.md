@@ -542,7 +542,7 @@ This final section will elaborate the work plan for the project. The project per
 
       At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
 
-* Risks
+* **Risks**
 
   As with all projects with limited time and budget, there are risks involved
  in this project. First is the chance of project execution not running as
