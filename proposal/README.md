@@ -5,8 +5,8 @@
 
 
 HemeLB is a fluid dynamic simulation software that is developed for the study
-of blood flow [1]. Part of the software construct a 3D blood vessels from a CT
-scan or microscopic image of vessels. This 3D blood vessels allow HemeLB to
+of blood flow [1]. Part of the software construct a 3D model of blood vessels
+from a CT scan or microscopic image of them. This 3D blood vessels allow HemeLB to
 simulate the flow of fluid, like blood, inside it. Thus, allowing scientists
 and doctors to learn how a blood will flow in a given vessels.
 Developers of HemeLB envision that it will be an integral part of medical decisions
@@ -498,11 +498,18 @@ First, a working HemeWeb prototype that enable running HemeLB simulation to
 # Risks
 
 As with all projects with limited time and budget, there are risks involved
- in this project. Most notable is project execution which does not fit with the
- plan. This is why, I structure this project to allow it to gracefully degrade.
- Meaning that the project will always have a working product at each
- checkpoints. This is important to prevent having nothing at the end of the
- dissertation period.
+ in this project. First is the chance of project execution not running as
+ planned.  This is why, I structure this project to allow it to gracefully
+ degrade. Meaning that the project will always have a working product at each
+ checkpoints. This is to make sure that I always having working prototype at
+ each iteration of the software. Preventing the chance of having nothing to
+ show at the end of the project. Second, is the fact that I have to rely
+ on external parties for evaluation. Part of the evaluation of the proposed
+ system will consists of sending out questionnaires. I have to make sure that
+ respondents complete the questionnaires on time. Thus, I structured the
+ evaluation and the development part to run concurrently. Making sure I give
+ enough time for respondents and for me to remind them.
+
 
 
 ## Work Plan
