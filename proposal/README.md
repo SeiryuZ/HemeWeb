@@ -72,15 +72,11 @@ First, a geometrical model reconstruction step
 
 
 <!--Currently HemeLB workflow is complex-->
-Not only understanding the above workflow of the process, domain experts also
-need to configure tools required on each steps, making it really complex
-to use the software. This is not an ideal situation for the project
-because users have to deal with stuff they are non-expert in before
-doing the simulation, creating friction to doing what matters to them.
-A better condition will be where domain-experts only need to deal with their
-respective domain concern of the project. All other concern which are
-not related to their domain, in this case configuration of the tools
-needed, should be hidden from them.
+On  top of understanding the above workflow, users also need to configure
+ tools needed. These configurations are both complex and time-consuming.
+ Making the use case not ideal for scientists and doctors. A better situation
+ is where simulations can run without worrying about all these configurations.
+ Domain experts should only care about their input to the simulations and the outputs.
 
 
 
