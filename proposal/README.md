@@ -519,7 +519,7 @@ This final section will elaborate the work plan for the project. The project per
 
 ![alt text](../resources/images/workplan.png "Work Plan")
 
-  ## HemeWeb development plan
+* HemeWeb development plan
 
   HemeWeb will be a web application that hides the complexity of running HemeLB simulations. Web application will enable users to interface with a HemeLB simulation via internet browser. Internet browser is such a standard tools that many people can use. Allowing doctors and scientists to run simulation without worry of configurations and complexity.
 
