@@ -443,7 +443,6 @@ HemeLB will be integrated to the HemeWeb, which is the Domain Definition
 step which is outlined below.
 
 
-![alt text](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
 Plan above basically extends the original scope of HemeWeb to now
 include the domain definition. The web app are going to fire up a docker
@@ -514,65 +513,60 @@ As with all projects with limited time and budget, there are risks involved
 
 ## Work Plan
 
-This final section will illustrate the work plan of the project. Bulk of
-the work mostly will be on the web development for HemeWeb and the
-dissertation writing. HemeWeb scope will depend on the amount of work I
-can squeeze during the web development part, but at the very least, I
-have determined that the original scope of HemeLB simulation part will
-be achievable in the timeframe given.
+This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
+
+
 
 ![alt text](../resources/images/workplan.png "Work Plan")
 
+  ## HemeWeb development plan
 
-The software will be developed with this plan
+  HemeWeb will be a web application that hides the complexity of running HemeLB simulations. Web application will enable users to interface with a HemeLB simulation via internet browser. Internet browser is such a standard tools that many people can use. Allowing doctors and scientists to run simulation without worry of configurations and complexity.
 
-Hiding this complexity from the users is the reason why I think web
-application is the correct approach. Web application require users
-to interface with it using a web browser, which is currently a
-standard tools in everyday's life. Doctors and biologists could easily
-treat the simulation tools as a black box, not having to worry about
-configurations, environment, and the infrastructure the software lives
-on. The only things that they have to worry is the input file, their
-knowledge of the domain, and the simulation result.
-
-However, I have to underscore that this project scope will be limited
-due to the available time. Originally, only the simulation part of the
-workflow will be included in the web application and this is the first
-step to improve the usability of the project by hiding the complexity
-on that particular steps. With more integrations, more complexity will
-be hidden in the process, paving way for an ideal condition where
-domain-experts can do all part of the workflow from the browser.
-
+  Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable easy reproduction and easy audit for interested parties. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools easily. Allowing users to run simulation with different version of tools without worrying about configurations.
 
 ![alt text](../resources/images/HemeLB-scope-1.png "HemeWeb scope 1st Phase")
 
+  In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated above. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
 
-On top of having a web application to hide technical complexity from the
-domain-experts, I also propose the usage of containerization technology
-to hide the complexity of reproducing simulation results. As HemeLB is
-actively developed, simulation results might be affected by the changes
-in the components. This is why simulation needs to be tied down to a
-specific version of the tools used for the simulation. Currently, it is
-done manually and available upon requests, but with the usage of
-containerization technology, this could be improved. All associated
-tools will be documented on the container image and each version of the
-tools will have its own image. Tying down the simulation execution on
-the web application to these image is trivial and allow users to
-reproduce it easily. This feature is what makes containerization
-technology, especially docker [10], really suitable to make sure research is reproducible as
-observed in [7][11].
+  In the following section, I will outline how the development of HemeWeb will go. I have divided the development into 5 separate distinct steps. They are:
 
-On top of making it easy to reproduce, containerization technology also
-allows the re-use of the resource from the infrastructure. Currently, if
-one wants to rerun simulations with different version of the tools, said
-tools need to be reconfigured to the exact version and the
-infrastructure needs to be configured to this version, for example if
-they need a certain environment variable. This is not
-practical for domain-experts because now we have another concern of
-making sure the right tools are used. Container image could help in this
-aspect because all the tools are containerized already, and what the web
-application will need to do is to swap the image and we have the correct
-tools on our disposal.
+1. Separating HemeLB core into its own container
+
+Currently, users need to compile HemeLB and other tools on their own computer before using it. These configurations are complex and need simplification. Hence, developer of HemeLB created a container image with complete tools inside, https://github.com/mobernabeu/docker-hemelb. However, for HemeWeb, this is not ideal. HemeWeb should use a cluster of HemeLB instances to run the simulation. These cluster should just contain HemeLB core instead of having the full tools available. This is why, separating this HemeLB core into its own container should be my first step for this project. I will take the currently available image as a basis, and remove all the unnecessary tools. HemeLB binary should be the only concern of the image.
+
+
+
+2. Orchestrate HemeLB cluster deployment
+
+Next, I plan to create a deployment script for HemeLB. I have select preliminary tools for deploying the HemeLB image into a cluster. However, further investigation in the project execution will be necessary. These tools will configure the cluster in an automatic fashion so that it is ready for use. I will be able to configure the cluster with a script at the end of this task.
+
+
+
+3. Develop HemeWeb to do HemeLB simulation [Phase 1]
+
+This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype have the smallest scope possible, but still allow simulations to run.  The system should look like the image below.
+
+![alt text](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+
+4. Extends HemeWeb to handle geometry generation step [Phase 2]
+
+After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expects different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like the image below.
+
+![alt text](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
+
+
+5. Extends HemeWeb to handle domain definition step or post-processing step [Phase 3]
+
+At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
+
+
+
+
+
+
+
+
 
 
 
