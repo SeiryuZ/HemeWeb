@@ -484,11 +484,15 @@ look up for this documentation.
 ## Output
 
 
-This project will create two outputs that HemeLB project will use.
-First, a working HemeWeb prototype that enable running HemeLB simulation to
- run on cloud. Second, a usability document that HemeLB project will use to
- further the development. HemeLB will use these two outputs as the basis
- of future improvement on HemeLB workflow.
+This project will create two outputs that HemeLB will use. They are:
+
+1. Working HemeWeb prototype
+
+    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
+
+2. HemeWeb usability guideline
+
+    In the future, HemeWeb can be the interface for doctors to run simulations. This means that HemeWeb will need further improvement to be ready for general use. Future development can use the work done in this project as a basis for usability feature. Thus, I will create a usability document derived from the analysis done in this project.
 
 
 
