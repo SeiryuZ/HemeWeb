@@ -59,18 +59,16 @@ To develop the extension with proper functions, I need to elaborate some
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Above image illustrate the workflow of HemeLB simulation that require
-multiple steps before results can be produced. First, a 2D image of a blood
-vessel is needed for a geometrical model
-reconstruction stept that construct a 3D model of the blood vessel. This
-3D model will then need more information like blood viscocity, and inlet
-outlet placement to be used as the simulation parameter. These information are
-going to be added by the user in domain definition step. Next, the 3D
-model and the information about the simulation need to be converted into
-a file format that HemeLB can understand. After conversion, simulation
-can be finally run that eventually will output a simulation result that
-will need further pre-processing script to convert the output into a
-file format that can be viewed easily.
+Image above illustrate the current workflow of HemeLB. Currently, HemeLB need
+ many steps to run simulation. First, a geometrical model reconstruction step
+ need a 2D image of blood vessel. This step will construct a 3D model of the
+ blood vessel from given image. Next, user will give simulation parameter
+ in the domain definition step. Next, a script will convert these information
+ into a format that HemeLB understand. After all this step, one can finally
+ run HemeLB simulation. This simulation will output a file that needs further
+ pre-processing. This pre-processing steps will then output a file that a
+ graphical software like VTK can view.
+
 
 <!--Currently HemeLB workflow is complex-->
 Not only understanding the above workflow of the process, domain experts also
