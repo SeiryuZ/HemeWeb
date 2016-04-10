@@ -59,8 +59,9 @@ To develop the extension with proper functions, I need to elaborate some
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the current workflow of HemeLB. Currently, HemeLB need
- many steps to run simulation. First, a geometrical model reconstruction step
+Currently, HemeLB need many steps to run simulation.
+ Image above illustrate the current workflow of HemeLB.
+First, a geometrical model reconstruction step
  need a 2D image of blood vessel. This step will construct a 3D model of the
  blood vessel from given image. Next, user will give simulation parameter
  in the domain definition step. Next, a script will convert these information
