@@ -512,16 +512,12 @@ First, a working HemeWeb prototype that enable running HemeLB simulation to
 
 # Risks
 
-As with all projects with limited time and budget, there are risks
-involved in this project. Most notably, project execution does not always
-accurately fit with what we have planned. That is why, this project is
-structured in such a way that minimize the chance of having nothing
-working at the end of the dissertaion period. The development of HemeWeb
-is tiered with the first phase being the most important and
-well-defined. This phase can stand on its own as a finished prototype,
-so that even if I fail to integrate other part to HemeWeb, the project
-is degraded gracefully.
-
+As with all projects with limited time and budget, there are risks involved
+ in this project. Most notable is project execution which does not fit with the
+ plan. This is why, I structure this project to allow it to gracefully degrade.
+ Meaning that the project will always have a working product at each
+ checkpoints. This is important to prevent having nothing at the end of the
+ dissertation period.
 
 
 ## Work Plan
