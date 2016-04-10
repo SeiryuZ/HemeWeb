@@ -494,20 +494,7 @@ First, a working HemeWeb prototype that enable running HemeLB simulation to
 
 
 
-# Risks
 
-As with all projects with limited time and budget, there are risks involved
- in this project. First is the chance of project execution not running as
- planned.  This is why, I structure this project to allow it to gracefully
- degrade. Meaning that the project will always have a working product at each
- checkpoints. This is to make sure that I always having working prototype at
- each iteration of the software. Preventing the chance of having nothing to
- show at the end of the project. Second, is the fact that I have to rely
- on external parties for evaluation. Part of the evaluation of the proposed
- system will consists of sending out questionnaires. I have to make sure that
- respondents complete the questionnaires on time. Thus, I structured the
- evaluation and the development part to run concurrently. Making sure I give
- enough time for respondents and for me to remind them.
 
 
 
@@ -555,6 +542,20 @@ This final section will elaborate the work plan for the project. The project per
 
       At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
 
+* Risks
+
+  As with all projects with limited time and budget, there are risks involved
+ in this project. First is the chance of project execution not running as
+ planned.  This is why, I structure this project to allow it to gracefully
+ degrade. Meaning that the project will always have a working product at each
+ checkpoints. This is to make sure that I always having working prototype at
+ each iteration of the software. Preventing the chance of having nothing to
+ show at the end of the project. Second, is the fact that I have to rely
+ on external parties for evaluation. Part of the evaluation of the proposed
+ system will consists of sending out questionnaires. I have to make sure that
+ respondents complete the questionnaires on time. Thus, I structured the
+ evaluation and the development part to run concurrently. Making sure I give
+ enough time for respondents and for me to remind them.
 
 
 
