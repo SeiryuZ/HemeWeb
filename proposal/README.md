@@ -45,11 +45,10 @@ For reasons above, I propose to create an extension to HemeLB called HemeWeb.
 
 
 
-## Background
+## Current HemeLB workflow
 
 To develop the extension with proper functions, I need to elaborate some
- information. These are about the current HemeLB workflow, the infrastructures,
- and containerization technology.
+ information. These are about the current HemeLB workflow.
 
 
 **HemeLB Workflow**
@@ -78,331 +77,9 @@ On  top of understanding the above workflow, users also need to configure
  Domain experts should only care about their input to the simulations and the outputs.
 
 
+## Implementation 
 
 
-**HPC Infrastructure and HemeLB**
-
-
-Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and experiments in biology [8]. Unfortunately, these complex computations are so demanding that consumer-grade computing resources are not enough. It often need a highly parallel computing resources to run efficiently. HemeLB is the prime example of bioinformatics software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1]. These simulations are run to help various studies in the area. One such example is how HemeLB is used for the study of blood vessel development in mouse [27] and its retina [28].  And more importantly, study about blood flow abnormalities in human eye using HemeLB simulation [29]. These simulations, however,  are demanding that it need to run on supercomputers.
-
-One could categorize HemeLB software under High Performance Computing(HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing(HTC). HPC involve using many similar computing nodes to perform well-defined computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [22]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [22]. Based on these distinctions, HPC is a correct categorization of HemeLB.
-
-
-
-<!-- Acquriing access to HPC infrastructure is possible but non-trivial, and maybe not a top priority for these institutes  -->
-However, running these simulations require access to HPC infrastructures that
-might not have reproducibility of a research as a priority. Facilities
-that administer these infrastructure often give out computing hour usage
-to projects based on the merit of their peer-reviewed proposal, for
-example how PRACE [14], the Partnership for Advanced Computing in
-Europe, and how EPSRC [13] give access to their infrastructure to
-researcher. This means that reproducing computing research, if anyone
-are interested, have to compete with other projects for the limited
-computing hour that is given out by these institutions. Most likely, it
-will not be the top priority, hence creating barrier for reproducing
-computational research, in our case HemeLB simulation.
-
-
-Not being prioritized in these facilities create a barrier for HemeLB to
-become more trustworthy because reproduction of simulation is non-trivial.
-As iterated on the previous section, HemeLB project have taken the steps
-to address reproducibility of the simulation by manually recording all
-the configurationns, tools version, input files, parameters and result of the
-simulation. Anyone theoritically could request these documentation and
-reproduce the result with the appropriate computing resource.
-However, research facility that will prioritize more important research
-inherently will limit people that want to reproduce the computation
-result significantly. This is where cloud computing infrastructure enter
-the picture.
-
-<!-- This is why cloud computing is a perfect match  -->
-
-<!-- Cloud computing is originaly envisioned as computing resource  -->
-
-
-<!--Running HPC application like HemeLB require  access to HPC-->
-<!--infrastructure, which are non-trivial to acquire.-->
-
-
-<!--Both of these computing paradigm typically requires huge-->
-<!--computing resources available to perform its task effectively. HPC task-->
-<!--like HemeLB especially, are often run on supercomputers, for example ARCHER-->
-<!--supercomputer. This supercomputers requires you to be academics /-->
-<!--researchers with clear proposal, for example how epcc give access to-->
-<!--ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,-->
-<!--that allows researcher to access supercomputers accross europe after a-->
-<!--vetting process. This theoritically allow people with the credentials-->
-<!--to gain access to these resources with the correct motives. However,-->
-<!--reproducing research computation that already been run might not be the-->
-<!--top priority of these facilities when there are many other research-->
-<!--projects that depend on access to these limited resources.-->
-
-**Cloud Computing**
-
-In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s [12][15].
-This vision consider computing resources analogous to power grid, where
-user should not care from where the resources are acquired and how it is
-delivered to the user. What user should see is that there are computing
-resources available and it could come from anywhere and in any form.
-This paradigm is mainly developed with the interest of researchers and
-academia that the business models caters to the most [16]. Grid
-computing typically give CPU hours based on the proposal that is vetted
-by the institutions. Example of this institution is TeraGrid which
-operates until 2011 [17].
-
-Cloud computing share similar vision with grid computing paradigm on how the
-computing resources are acquired and delivered are invisible to the
-users, but different on the execution of the business model. It is
-massively scalable, allow abstract encapsulation of computing resources,
-dynamicaly configured and delivered on-demand and most importantly,
-driven by economies of scale [16]. Since it is driven by economies of
-scale, it is in the interest of cloud providers to provide features
-that users actually needs and want to pay for, therefore creating a
-tight feedback loop between users and the providers to develop the
-platform better than how grid computing handle feature developments.
-
-This has allowed cloud vendors to grow significantly, that in 2013 it
-was noted that some cloud vendors could reach more than 90% growth per annum
-[18]. These growth further fuels demand and allow them to cut pricing
-for their service multiple times [19][20][21] and create more demands.
-This development has allowed business or institutions to offload their
-computational need to the cloud vendors for a price rather than building their own
-infrastructure. This scenario could also be used for our purpose of
-reproducing computational research without needing to worry about
-preventing other researches getting their share of computational
-resource.
-
-Cloud vendors like amazon also capitalize on the need of computing
-resources for HPC application that they promote themselves for this capabilities [22].
-Running HPC application on cloud vendors, while incurring performance
-overhead, are a viable alternative to supercomputers as shown by
-the nekkloud project [23], NASA HPC Applications [24], and few other case study [25].
-HemeWeb project should also run perfectly fine on cloud infrastructures
-without worrying about the merit of their reproduction of research
-interest being not a top priority.
-
-
-<!--**Containerization technology**-->
-
-<!--Container technology originated from the virtualization technology back-->
-<!--in 1960. Back then IBM PC shipped with virtualization software that-->
-<!--allow multiple operating systems to be installed into one hardware.-->
-<!--Linux Kernel Container is then born to handle this virtualization but on-->
-<!--the kernel level, where we could have container that run its own kernel-->
-<!--separated from the host. Docker is the technology that pushes the-->
-<!--adoption of this technology to the roof. Docker encapsulate tools and-->
-<!--commands that allow administartion of this container much easier than-->
-<!--before. Making it easy for people to use container in their workflow.-->
-<!--More importantly, docker has a public registry where people could-->
-<!--publish their dockerfile, and share it with the public. Interested-->
-<!--people could just get the file and create their own docker image based-->
-<!--on the published file. This is a huge boon in helping docker become-->
-<!--popular currently.-->
-
-
-<!--In reproducing computing researchm docker is deeemed fit to the task,-->
-<!--since it allows computing workflow to be documented, published, and-->
-<!--re-run easily because everyone has the ability to scrutinize it. This-->
-<!--process however, involve an overhead that the author needs to write a-->
-<!--dockerfile instead of doing whatever they are doing currently. However,-->
-<!--this is a small price to pay in order to make compting reproducible-->
-<!--easily. On our case, using docker is a necessary tools. Because with-->
-<!--docker, people could scrutinize the tools and commands used to reproduce-->
-<!--the research done with HemeLB. More importantly, the tools also will-->
-<!--allow us to expand not only handling HemeLB, but also to a more general-->
-<!--case of any other HPC applications to be run on the cloud indepenedent-->
-<!--of what the infrastructure might be.-->
-
-
-
-
-
-
-<!--In dealing with High Performance Computing, infrastructures are-->
-<!--typically required to be able to handle multi-core operations easily [4].-->
-<!--Be it parallel workload or distributed system workload. This has lead to-->
-<!--two separate computing paradigm we know as grid and cluster computing.-->
-
-<!--Cluster computing is a paradigm where two or more computing resources-->
-<!--are connected and used concurrently to run a single applications, often-->
-<!--the computing resources are made of highly homogenous or similar-->
-<!--computing unit mounted in a rack. The type of application run on cluster typically require highly parallel-->
-<!--computation like modelling and simulation. This type of application benefits-->
-<!--from having a highly interconnected node and data locality that clusters-->
-<!--provide [4].-->
-
-<!--On the other hand, Grid computing is a different beast altogether. It-->
-<!--allows heterogeneous computing resources, often geographically-->
-<!--distributed, to cooperate for a common goals. It is highly dynamic and-->
-<!--promis scaling infinitely without regards of physical location of the-->
-<!--computing resources [6]. In the UK, grid computing often utilized under-->
-<!--the banner of e-science [7], where they provide common middleware,-->
-<!--software, and services for scientists to collaborate on their project regardless of physical-->
-<!--locations.-->
-
-<!--Both of this type of HPC computing are traditionally done in an in-house-->
-<!--manner. Where Universities or government institutions set up a cluster of-->
-<!--computing resources or even a supercomputer to do HPC task. Grid-->
-<!--computations are also done on in house manner or even utilize public's-->
-<!--desktop computer for computational resources, example are the-->
-<!--folding@ home and genome@ home projects [8]. Currently however, computing-->
-<!--resources are available in the cheap. Cloud computing has entered into-->
-<!--the pictures and allow computing resources to be available with a-->
-<!--price tag attached to it. It is massively scalable, allow abstract-->
-<!--encapsulation of computing resources, dynamically configured,-->
-<!--delivered on-demand and driven by economies of scale [5].-->
-
-<!--Cloud computing allowed institutions to offload their pain in procuring-->
-<!--and maintaining computing resources to the vendors like Amazon, Google,-->
-<!--Microsoft and etc for a price. This price also been reduced multiple times [9][10][11]-->
-<!--that comes with economies of scale, making it financially less demanding to-->
-<!--run HPC applications without in-house resources. In fact, few HPC-->
-<!--applications has been run on the cloud, such as the nekkloud-->
-<!--project [12], NASA HPC Applications [13], and few other case study [14]-->
-<!--that shows that it is feasible to run HPC applications on the cloud,-->
-<!--albeit with performance overhead.-->
-
-<!--This development have make it possible for people or institutions with-->
-<!--enough financial means to do some heavy computations without having-->
-<!--access to this traditionally expensive in-house computing resources.-->
-
-<!--[need better transition from cloud computing HPC to the push for-->
-<!--reproducibility]-->
-<!--In scientific computing, there has been a push to make a computational-->
-<!--results reproducible even if it is complex [15]. This push make sures that-->
-<!--research results adhere to scientific method, that is reproducible by-->
-<!--our peers. As traditionally, HPC resources are in-house, this hinders-->
-<!--the reproducibility aspect of the research. However, with cloud, this-->
-<!--enable people to access this resources more easily, for example:-->
-<!--Galaxy [2] that enable people to compose, run, and share their-->
-<!--modelling simulation.-->
-
-
-
-
-
-<!--* History of Research Computing-->
-<!--* - Grid Computing-->
-<!--* - Cloud Computing-->
-
-<!--* Scientific Computing-->
-<!--* - Reproducible research-->
-<!--* - Science code manifesto-->
-<!--* - Example of scientific computing-->
-
-
-
-<!--This has been the condition for past decades [?] because access of-->
-<!--computational power is hard to acquire back then [?]. Currently, with-->
-<!--the introduction of new computational service such as Infrastructure as-->
-<!--A Service, Hardware as a Service, cloud computing has allowed people to-->
-<!--acquire this resources easily and dynamically.-->
-
-## Main Claim
-
-In this project, I will show that the proposed approach will improve HemeLB
- project. I will measure the improvement to the project in usability,
- auditability, and reproducibility. In this section, I will define what
-I mean by these terms.
-
-
-
-
-
-* **Usability**
-
-  I will define usability in this project as the ease of use of the software.
-Scientists and doctors should be able to run HemeLB simulations with least efforts.
-Least efforts meaning that there are less cognitive load for the users
-to use the software. For example, Users will not have to worry about configurations
-and piping result from one step to another step.
-
-
-
-* **Reproducibility**
-
-  Ease of reproducing simulation instances will be the definition of
- Reproducibility in this project. Targeted users or their peers should be able
- to reproduce past simulations with ease. HemeWeb will improve the
- reproducibility steps by recording every simulation configurations in
- automatic fashion. These records will be available and used for re-running
- the specific simulation. Making it easier for people to make sure
- simulations provide consistent result.
-
-
-
-
-
-* **Auditability**
-
-  I will define auditability as the ease of other parties to confirm and audit
- a simulation. HemeWeb will record and publish tools, configurations, input
- files, and simulation results. The use of containerization technology will
- help capture and publish these information. Especially, when the
- containerization technology publish the image on a public registry.
- This in the end, will encourage peer-review which will further improve trust.
-
-
-
-To support these claim, I will develop an experimental web application called
- HemeWeb. HemeWeb will use container technology and cloud infrastructure to
- run HemeLB simulations. This implementation will show that HemeLB simulation
- can run on cloud infrastructures. Furthermore, it will be the basis of future
- deployment in other commodity hardware infrastructure. For instance,
- Hospitals would want patient-related simulations to run on their private
- infrastructures. Also, HemeWeb will be better interface for HemeLB simulations.
-
-
-
-## Methods
-
-
-In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
-
-Comparison of the tools will be the most important steps of the project. This choice will shape the underlying technology the project will take. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
-
-
-Next, I will need to select methodologies to make sure the project have good usability. This book [26] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
-
-
-## Evaluation
-
-I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [26]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
-
-Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
-
-
-## Output
-
-
-This project will create two outputs that HemeLB project will use. They are:
-
-1. Working HemeWeb prototype
-
-    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
-
-2. HemeWeb usability guideline
-
-    In the future, HemeWeb can be the interface for doctors to run simulations. This means that HemeWeb will need further improvement to be ready for general use. Future development can use the work done in this project as a basis for usability feature. Thus, I will create a usability document derived from the analysis done in this project.
-
-
-
-
-
-
-
-
-
-## Work Plan
-
-This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
-
-
-
-![alt text](../resources/images/workplan.png "Work Plan")
-
-* **HemeWeb development plan**
 
   HemeWeb will be a web application that hides the complexity of running HemeLB simulations. Web application will enable users to interface with a HemeLB simulation via internet browser. Internet browser is such a standard tools that many people can use. Allowing doctors and scientists to run simulation without worry of configurations and complexity.
 
@@ -438,9 +115,20 @@ This final section will elaborate the work plan for the project. The project per
 
       At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
 
-* **Risks**
 
-  As with all projects with limited time and budget, there are risks involved
+## Goals of the project
+
+
+## Output
+
+
+This project will create two outputs that HemeLB project will use. They are:
+
+I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
+
+## Risks
+
+As with all projects with limited time and budget, there are risks involved
  in this project. First is the chance of project execution not running as
  planned.  This is why, I structure this project to allow it to gracefully
  degrade. Meaning that the project will always have a working product at each
@@ -452,6 +140,26 @@ This final section will elaborate the work plan for the project. The project per
  respondents complete the questionnaires on time. Thus, I structured the
  evaluation and the development part to run concurrently. Making sure I give
  enough time for respondents and for me to remind them.
+
+## Work Plan
+
+This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
+
+
+
+![alt text](../resources/images/workplan.png "Work Plan")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
