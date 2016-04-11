@@ -314,6 +314,9 @@ I mean by these terms.
 
   I will define usability in this project as the ease of use of the software.
 Scientists and doctors should be able to run HemeLB simulations with least efforts.
+Least efforts meaning that there are less cognitive load for the users
+to use the software. For example, Users will not have to worry about configurations
+and piping result from one step to another step.
 
 
 
@@ -354,57 +357,10 @@ To support these claim, I will develop an experimental web application called
 
 ## Methods
 
-Solution used on this project must adhere to the criteria that is
-outlined in the main claim and background section of this proposal.
-Those are 1) Improve usability, 2) Improve Reproducibility, 3) Improve
-auditability. These criteria added with few other criteria such as
-developer familiarity, features and  ease of development should be the final
-comparison matrix when choosing competing implementation of solution.
+In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those are improving usability, reproducibility, and auditability. In addition to these criteria, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
 
-This comparison will be much more important on the software container
-implenetation of this project, since there are many competing
-implementations. For cloud computing vendor, it is a non-issue since it will
-provide more or less same resources, but different interface and brand.
+I will do this comparison first in the project as it is the most important steps. This will then shape the project with the chosen implementation. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will also discuss the proposed method with my peers and supervisors.
 
-Hence, first priority of the project, will be to determine which of the tools
-are more suitable for this project, in which I have been, and continue
-to read while discussing my proposed methodologies with my peers and
-supervisors.
-
-
-After determining the technology implementation, the project will be
-developed with plans as follow.
-
-![alt text](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
-
-This plan illustrate how the software components will interact with each
-other. The main idea is that users will only provide the web application
-with the input files (.xml + .gmy) and receive the output (.xtr) file.
-All the complexity that originally user have to deal with, will be
-replaced witht he web application component. The web app will be the one
-who will execute the HemeLB simulation by providing the input files to
-the HemeLB clusters. These clusters then will run the simulation and
-output the file that can be read by the web application to be send to
-the user. All these steps will be recorded for the audit purpose.
-
-This plan is the first phase of HemeWeb development since it only
-consist of integrating the simulation part. This is the minimum part of
-the project that will be done. If time permits, another aspect of the
-HemeLB will be integrated to the HemeWeb, which is the Domain Definition
-step which is outlined below.
-
-
-
-Plan above basically extends the original scope of HemeWeb to now
-include the domain definition. The web app are going to fire up a docker
-instance that have necessary tools to do this setup. Since this is a
-much more complex feat, this should only be considered when I have
-enough time left after completing the first phase.
-
-
-<!--Based on this criteria, software containerization technology that we are -->
-<!--going to choose need to be reviewed on further-->
-<!--to determine. -->
 
 
 ## Evaluation
