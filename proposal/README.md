@@ -357,35 +357,20 @@ To support these claim, I will develop an experimental web application called
 
 ## Methods
 
-In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those are improving usability, reproducibility, and auditability. In addition to these criteria, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
 
-I will do this comparison first in the project as it is the most important steps. This will then shape the project with the chosen implementation. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will also discuss the proposed method with my peers and supervisors.
+In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
 
+Comparison of the tools will be the most important steps of the project. This choice will shape the underlying technology the project will take. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
+
+
+Next, I will need to select methodologies to make sure the project have good usability. This book [26] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
 
 
 ## Evaluation
 
-This project will be evaluated on how it can improve the usability and
-trustworthiness of the project. To accomplish this, the usability aspect will be
-measured by how many scientists or doctors prefer to run simulation
-using the current approach or the proposed approach. This binary
-measurement is needed because as it stands currently, HemeLB project are
-concerned about whether user will run simulation, not how efficient it
-could be for user to run simulation.
+I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [26]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
 
-Secondly, trustworthiness should be measured by whether user can
-reproduce simulation result at all using the proposed approach. As
-currently there are no alternatives for reproducing the simulation than
-running it on ARCHER supercomputer as well, we should also binarily measure
-this capability.
-
-
-Lastly, auditable is another aspect of trustworthiness that should be
-measured. Since HemeLB currently has taken steps to make sure that all
-simulation are documented manually. I will claim that by the existence
-of the project that can automatically document the simulation, the
-auditable aspect are improved inherently because it take shorter time to
-look up for this documentation.
+Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
 
 
 ## Output
@@ -548,3 +533,5 @@ This final section will elaborate the work plan for the project. The project per
 [24] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
 
 [25] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
+
+[26] Sharp, H., Jenny, P., & Rogers, Y. (2007). Interaction design:: beyond human-computer interaction.
