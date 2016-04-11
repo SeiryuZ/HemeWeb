@@ -118,6 +118,20 @@ On  top of understanding the above workflow, users also need to configure
 
 ## Goals of the project
 
+As elaborated above, the project will consists of creating prototype of HemeWeb. HemeWeb will be an alternative interface to run HemeLB simulation than status quo. In an ideal scenario, HemeWeb will need to achieve feature parity with current approach. But, due to limited resources, it should fulfill set of functional requirements outlined below.
+
+First of all, HemeWeb should be able to run HemeLB simulation in the cloud. At least, user should be able to upload input files, wait, and download results. These process will run on cloud, demonstrating that HemeLB can run on other infrastructure. Furthermore, the deployment of the HemeLB core clusters will use containerization technology. These technology is a novel approach in deploying HPC application.
+
+Second, HemeWeb should then continue to integrate more steps of the workflow. In this step, HemeWeb should integrate the geometry generation of the workflow. By adding this step, one more workflow that has to be done in users' computer can run in the cloud.
+
+Finally, HemeWeb should then integrate the domain definition step or the post processing step. These steps will need different skill-set to complete. However, similar with above, this functionality is chosen to offload more workflow to cloud. Making it even more easy to run HemeLB simulations.
+
+It should be noted that I structure the project in a way that allow it to degrade gracefully. Even if HemeWeb does not meet the second or final criteria, it will still be a working prototype. Enabling scientists and doctors an alternative interface to run HemeLB simulation.
+
+
+
+
+
 
 ## Output
 
