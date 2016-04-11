@@ -44,18 +44,29 @@ workflow ]
 
 Image above illustrate the overview of the current HemeLB simulations workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on the each of the workflow steps. This is important, because it will be the basis of the implementation in the next section.
 
-1. Geometrical model reconstruction
+1. **Geometrical model reconstruction**
 
   ![alt text](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
 
   This is the initial entry point for a user wanting to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. A script will take 2D image of blood vessel  and construct its 3D model. This step is known as Geometrical model reconstruction and it outputs an .stl file. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
 
-2. Domain definition
+2. **Domain definition**
 
   ![alt text](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
 
   The next step in the pipeline is the domain definition step. In this step, users input about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect the simulation results. A graphical user interface have been developed for this purpose. This tools allow users to specify the parameters without using command line interface. Allowing doctors and users to use it easily on their own personal computer. These information are then encoded into a profile file that will be used in the next step.
 
+3. **Geometry generation**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
+
+  In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script. It can run easily on consumer-grade computing resources with a command line interface.
+
+4. **HemeLB simulation**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
+
+  This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. They are .xtr files, .dat files, .txt , and a .xml file.
 
 
 
