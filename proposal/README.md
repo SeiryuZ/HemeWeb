@@ -66,7 +66,13 @@ Image above illustrate the overview of the current HemeLB simulations workflow. 
 
   ![alt text](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
 
-  This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. They are .xtr files, .dat files, .txt , and a .xml file.
+  This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
+
+5. **Post processing**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-5.png "Post processing")
+
+  Simulation results from previous steps are encoded in a format that is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a format that can be viewed in GTK viewer. This process can run on consumer-grade hardware without problems.
 
 
 
