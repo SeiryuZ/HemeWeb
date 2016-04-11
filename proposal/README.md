@@ -3,6 +3,9 @@
 
 ## Introduction
 
+[ This will be about HemeLB, the use, urgency. Docker and HPC app in
+cloud ]
+
 
 HemeLB is a fluid dynamic simulation software that is developed for the study
 of blood flow [1]. Part of the software construct a 3D model of blood vessels
@@ -47,6 +50,9 @@ For reasons above, I propose to create an extension to HemeLB called HemeWeb.
 
 ## Current HemeLB workflow
 
+[ This will need expanding further, more emphasis on each step of
+workflow ]
+
 To develop the extension with proper functions, I need to elaborate some
  information. These are about the current HemeLB workflow.
 
@@ -77,7 +83,7 @@ On  top of understanding the above workflow, users also need to configure
  Domain experts should only care about their input to the simulations and the outputs.
 
 
-## Implementation 
+## Implementation
 
 
 
