@@ -42,7 +42,7 @@ workflow ]
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the current workflow of HemeLB simulations. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on the each of the workflow steps. This is important, because it will be the basis of the implementation in the next section.
+Image above illustrate the overview of the current HemeLB simulations workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on the each of the workflow steps. This is important, because it will be the basis of the implementation in the next section.
 
 1. Geometrical model reconstruction
 
