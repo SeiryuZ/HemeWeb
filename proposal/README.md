@@ -1,7 +1,7 @@
 # HemeWeb: Container based high performance computing scenario for HemeLB
 
 
-## Introduction
+## I. Introduction
 
 HemeLB is a fluid dynamic simulation software that is developed for the study of blood flow [1]. Researches in bioinformatic area have used HemeLB to help with their study. Some study use HemeLB to simulate blood vessel development in mouse [2] and its retina [3]. Another used HemeLB to study vascular blood flow abnormalities in human eye [4]. With these studies, it is clear that HemeLB is an important part of medical study. Furthermore, HemeLB is envisioned to be an integral part of medical decisions[5].
 
@@ -28,7 +28,7 @@ In this project, I propose to create an extension to HemeLB workflow called Heme
 
 
 
-## Current HemeLB workflow
+## II. Current HemeLB workflow
 
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
@@ -68,7 +68,7 @@ Image above illustrate the overview of the current HemeLB simulations workflow. 
 
 
 
-## Implementation
+## III. Implementation
 
 
 
@@ -107,7 +107,7 @@ Image above illustrate the overview of the current HemeLB simulations workflow. 
       At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
 
 
-## Goals of the project
+## IV. Goals of the project
 
 As elaborated above, the project will consists of creating prototype of HemeWeb. HemeWeb will be an alternative interface to run HemeLB simulation than status quo. In an ideal scenario, HemeWeb will need to achieve feature parity with current approach. But, due to limited resources, it should fulfill set of functional requirements outlined below.
 
@@ -124,14 +124,14 @@ It should be noted that I structure the project in a way that allow it to degrad
 
 
 
-## Output
+## V. Output
 
 
 This project will create two outputs that HemeLB project will use. They are:
 
 I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
 
-## Risks
+## VI. Risks
 
 As with all projects with limited time and budget, there are risks involved
  in this project. First is the chance of project execution not running as
@@ -146,7 +146,7 @@ As with all projects with limited time and budget, there are risks involved
  evaluation and the development part to run concurrently. Making sure I give
  enough time for respondents and for me to remind them.
 
-## Work Plan
+## VII. Work Plan
 
 This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
 
