@@ -30,15 +30,6 @@ In this project, I propose to create an extension to HemeLB workflow called Heme
 
 ## Current HemeLB workflow
 
-[ This will need expanding further, more emphasis on each step of
-workflow ]
-
-
-
-**HemeLB Workflow**
-
-
-
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
