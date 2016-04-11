@@ -25,8 +25,10 @@ Pros and cons of web interface for HPC applications are area that are often disc
 
 It has to be noted that HemeWeb is not the first project to use containerization technology in cloud. Galaxy [10], has a docker integration that allow tools to be packaged with it. According to their publication [10], docker allow efficiency, isolation, and portability in  the tools. However, their main focus is how the web application will support reproducible research. The usage of containerization technology are rarely detailed. 
 
-Containerization technology are often benchmarked in high performance computing area. These researches [11][12] have tried to discuss using container technology in HPC space. Also, shifter project [13] that try to unleash docker on HPC infrastructure. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where HemeWeb will try to put its focus on.
 
+Containerization technology are often benchmarked in high performance computing area. These researches [11][12] have tried to discuss using container technology in HPC space. Also, shifter project [13] that try to unleash docker on HPC infrastructure. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where HemeWeb will try to put its focus on. How container technology will help HPC application to be more trustworthy. This is even more important when there are many push for open science. More specifically, the push for easy reproduction of complex computations [15][16]. This is also where containerization technology like docker, show its benefit [17].
+
+In this project, I propose to create an extension to HemeLB workflow called HemeWeb. HemeWeb will be a web application that use containerization technology to deploy its tools. As argued before, HemeWeb will contribute to HemeLB project by providing an alternative interface. An interface that enable user without significant HPC training to run HemeLB simulations. On top of that, this project can contribute to the "HPC application in the cloud" area of research.
 
 
 
@@ -219,12 +221,13 @@ This final section will elaborate the work plan for the project. The project per
 
 [13] Jacobsen, D. M., & Canon, R. S. Contain This, Unleashing Docker for HPC.
 
+[14] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.
 
-<!--[2] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.-->
+[15] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.
 
-<!--[3] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.-->
+[16] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
 
-<!--[4] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.-->
+[17] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
 
 <!--[5] Bailey, D. H., & Borwein, J. M. (2013, July 2). Set the Default to "Open": Reproducible Science in the Computer Age. Retrieved April 4, 2016, from http://www.huffingtonpost.com/david-h-bailey/set-the-default-to-open-r_b_2635850.html-->
 
@@ -237,7 +240,6 @@ This final section will elaborate the work plan for the project. The project per
 
 <!--[10] Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2.-->
 
-<!--[11] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.-->
 
 <!--[12] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.-->
 
