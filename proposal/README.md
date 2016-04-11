@@ -3,10 +3,6 @@
 
 ## Introduction
 
-[ This will be about HemeLB, the use, urgency. Docker and HPC app in
-cloud ]
-
-
 HemeLB is a fluid dynamic simulation software that is developed for the study of blood flow [1]. Researches in bioinformatic area have used HemeLB to help with their study. Some study use HemeLB to simulate blood vessel development in mouse [2] and its retina [3]. Another used HemeLB to study vascular blood flow abnormalities in human eye [4]. With these studies, it is clear that HemeLB is an important part of medical study. Furthermore, HemeLB is envisioned to be an integral part of medical decisions[5].
 
 However, it is currently complex to configure and run simulations with it. HemeLB simulation comprises of many steps in the workflow that need a diverse set of tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, resources needed to run these workflow also varies. One part of the workflow need normal consumer-grade computing resource. Yet, another part of the workflow need a highly-parallel computing resource like ARCHER supercomputer. Not only that, interface required on each workflow also differ from one another. All these reasons limits HemeLB users to few individuals currently.
