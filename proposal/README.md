@@ -33,8 +33,6 @@ In this project, I propose to create an extension to HemeLB workflow called Heme
 [ This will need expanding further, more emphasis on each step of
 workflow ]
 
-To develop the extension with proper functions, I need to elaborate some
- information. These are about the current HemeLB workflow.
 
 
 **HemeLB Workflow**
@@ -44,23 +42,22 @@ To develop the extension with proper functions, I need to elaborate some
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the current workflow of HemeLB.
-Currently, HemeLB need many steps to run simulation.
-First, a geometrical model reconstruction step
- will construct a 3D model of the blood vessel from 2D image. Next, user will give simulation parameter
- in the domain definition step. Next, a script will convert these information
- into a format that HemeLB understand. After all this step, one can finally
- run HemeLB simulation. This simulation will output a file that needs further
- pre-processing. This pre-processing steps will then output a file that a
- graphical software like VTK can view.
+Image above illustrate the current workflow of HemeLB simulations. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on the each of the workflow steps. This is important, because it will be the basis of the implementation in the next section.
+
+1. Geometrical model reconstruction
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
+
+  This is the initial entry point for a user wanting to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. A script will take 2D image of blood vessel  and construct its 3D model. This step is known as Geometrical model reconstruction and it outputs an .stl file. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
+
+2. Domain definition
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
+
+  The next step in the pipeline is the domain definition step. In this step, users input about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect the simulation results. A graphical user interface have been developed for this purpose. This tools allow users to specify the parameters without using command line interface. Allowing doctors and users to use it easily on their own personal computer. These information are then encoded into a profile file that will be used in the next step.
 
 
-<!--Currently HemeLB workflow is complex-->
-On  top of understanding the above workflow, users also need to configure
- tools needed. These configurations are both complex and time-consuming.
- Making the use case not ideal for scientists and doctors. A better situation
- is where simulations can run without worrying about all these configurations.
- Domain experts should only care about their input to the simulations and the outputs.
+
 
 
 ## Implementation
