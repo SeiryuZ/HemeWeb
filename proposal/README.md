@@ -17,7 +17,9 @@ In past few years many complex applications have been developed in the cloud. Bu
 
 One similar project is Nekkloud [6]. Here, a web interface is developed as an alternative to their original workflow. This original workflow involves around many steps to run Nektar++ high-order finite element code. Besides being complex, acquiring resources are also hard. Nekkloud is developed to encapsulate all these difficulties while providing access to Nektar++ software. Using a web interface to provide a high level interface instead of using command line. This is parallel with how the proposed project can improve HemeLB.
 
+Another project that is tackling similar space is Galaxy [7]. Galaxy, a web-based reproducible research platform, use cloud infrastructure to run its HPC application. In illustrating its use, the developer has developed a super-resolution spark (SRS) model. This model need a supercomputing resources to execute which cloud infrastructure could handle. These capabilities are also encapsulated in an easy to use web interface. Making it easy for scientists to run, and share simulations with the public.
 
+Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the needed applications. However, this implementation on the cloud also have negative impact. Raw performance are lower than dedicated HPC infrastructures as observed in [6][8][9].  Nekkloud project consider the performance penalty is acceptable and I tend to agree. HemeWeb will also provide web interface for HemeLB simulation workflow with necessary performance penalty.
 
 
 
@@ -168,7 +170,6 @@ This final section will elaborate the work plan for the project. The project per
 
 <!--[1] Mazzeo, Marco D., and Peter V. Coveney. "HemeLB: A high performance parallel lattice-Boltzmann code for large scale fluid flow in complex geometries." Computer Physics Communications 178.12 (2008): 894-914.-->
 
-<!--[2] Goecks et al.: Galaxy: a comprehensive approach for supporting accessible, reproducible, and transparent computational research in the life sciences. Genome Biology 2010 11:R86.-->
 
 <!--[3] Docker - http://www.docker.com/-->
 
@@ -197,6 +198,12 @@ This final section will elaborate the work plan for the project. The project per
 [5] Green, C. (2014, June 14). Computer simulation could become 'integral' in the diagnosis, treatment, or prevention of disease by the end of the century | Science | News | The Independent. Retrieved April 4, 2016, from http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
 
 [6] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
+
+[7] Walker, M. A., Madduri, R., Rodriguez, A., Greenstein, J. L., & Winslow, R. L. (2016). Models and Simulations as a Service: Exploring the Use of Galaxy for Delivering Computational Models. Biophysical journal, 110(5), 1038-1043.
+
+[8] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
+
+[9] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
 
 
 <!--[2] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.-->
@@ -241,9 +248,7 @@ This final section will elaborate the work plan for the project. The project per
 <!--[22] Whitepaper: An Introduction to High Performance Computing on AWS. (2015, August). Retrieved April 4, 2016, from  https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf-->
 
 
-<!--[24] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.-->
 
-<!--[25] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.-->
 
 <!--[26] Sharp, H., Jenny, P., & Rogers, Y. (2007). Interaction design:: beyond human-computer interaction.-->
 
