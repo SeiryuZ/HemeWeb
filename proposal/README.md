@@ -21,6 +21,12 @@ Another project that is tackling similar space is Galaxy [7]. Galaxy, a web-base
 
 Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the needed applications. However, this implementation on the cloud also have negative impact. Raw performance are lower than dedicated HPC infrastructures as observed in [6][8][9].  Nekkloud project consider the performance penalty is acceptable and I tend to agree. HemeWeb will also provide web interface for HemeLB simulation workflow with necessary performance penalty.
 
+Pros and cons of web interface for HPC applications are area that are often discussed.  But, rarely deployment scenario for these HPC application in cloud infrastructure are discussed. In this project I will also use containerization technology to deploy the HPC tools. This will be the novel approach that this project will take. Not only having a web interface, deployed HPC application will use containerization technology. 
+
+It has to be noted that HemeWeb is not the first project to use containerization technology in cloud. Galaxy [10], has a docker integration that allow tools to be packaged with it. According to their publication [10], docker allow efficiency, isolation, and portability in  the tools. However, their main focus is how the web application will support reproducible research. The usage of containerization technology are rarely detailed. 
+
+Containerization technology are often benchmarked in high performance computing area. These researches [11][12] have tried to discuss using container technology in HPC space. Also, shifter project [13] that try to unleash docker on HPC infrastructure. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where HemeWeb will try to put its focus on.
+
 
 
 
@@ -204,6 +210,14 @@ This final section will elaborate the work plan for the project. The project per
 [8] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
 
 [9] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
+
+[10] Moreews, F., Sallou, O., & Bras, Y. L. (2015, July). A curated Domain centric shared Docker registry linked to the Galaxy toolshed. In Galaxy Community Conference 2015.
+
+[11] Higgins, J., Holmes, V., & Venters, C. (2015, July). Orchestrating Docker Containers in the HPC Environment. In High Performance Computing (pp. 506-513). Springer International Publishing.
+
+[12] Yu, H. E., & Huang, W. (2015). Building a Virtual HPC Cluster with Auto Scaling by the Docker. arXiv preprint arXiv:1509.08231.
+
+[13] Jacobsen, D. M., & Canon, R. S. Contain This, Unleashing Docker for HPC.
 
 
 <!--[2] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.-->
