@@ -22,7 +22,7 @@ steps allow peers to build the software and replicate a simulation, albeit
 
 HemeLB project can further improve its trustworthiness. Simulation record
 automation can make it even easier to reproduce and audit a simulation. Recent
- pushes for open science and reproducible computing research [2-7] also
+ pushes for open science and reproducible computing research [6, 7, 8] also
 justifies these steps. Allowing the project to stand in a better light
  and in general, more trustworthy.
 
@@ -88,9 +88,9 @@ Image above illustrate the overview of the current HemeLB simulations workflow. 
 **HPC Infrastructure and HemeLB**
 
 
-Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and experiments in biology [8]. Unfortunately, these complex computations are so demanding that consumer-grade computing resources are not enough. It often need a highly parallel computing resources to run efficiently. HemeLB is the prime example of bioinformatics software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1]. These simulations are run to help various studies in the area. One such example is how HemeLB is used for the study of blood vessel development in mouse [27] and its retina [28].  And more importantly, study about blood flow abnormalities in human eye using HemeLB simulation [29]. These simulations, however,  are demanding that it need to run on supercomputers.
+Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and experiments in biology [9]. Unfortunately, these complex computations are so demanding that consumer-grade computing resources are not enough. It often need a highly parallel computing resources to run efficiently. HemeLB is the prime example of bioinformatics software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1].
 
-One could categorize HemeLB software under High Performance Computing(HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing(HTC). HPC involve using many similar computing nodes to perform well-defined computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [22]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [22]. Based on these distinctions, HPC is a correct categorization of HemeLB.
+One could categorize HemeLB software under High Performance Computing(HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing(HTC). HPC involve using many similar computing nodes to perform well-defined computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [10]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [10]. Based on these distinctions, HPC is a correct categorization of HemeLB.
 
 
 
@@ -99,8 +99,8 @@ However, running these simulations require access to HPC infrastructures that
 might not have reproducibility of a research as a priority. Facilities
 that administer these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
-example how PRACE [14], the Partnership for Advanced Computing in
-Europe, and how EPSRC [13] give access to their infrastructure to
+example how PRACE [11], the Partnership for Advanced Computing in
+Europe, and how EPSRC [12] give access to their infrastructure to
 researcher. This means that reproducing computing research, if anyone
 are interested, have to compete with other projects for the limited
 computing hour that is given out by these institutions. Most likely, it
@@ -120,48 +120,27 @@ inherently will limit people that want to reproduce the computation
 result significantly. This is where cloud computing infrastructure enter
 the picture.
 
-<!-- This is why cloud computing is a perfect match  -->
-
-<!-- Cloud computing is originaly envisioned as computing resource  -->
-
-
-<!--Running HPC application like HemeLB require  access to HPC-->
-<!--infrastructure, which are non-trivial to acquire.-->
-
-
-<!--Both of these computing paradigm typically requires huge-->
-<!--computing resources available to perform its task effectively. HPC task-->
-<!--like HemeLB especially, are often run on supercomputers, for example ARCHER-->
-<!--supercomputer. This supercomputers requires you to be academics /-->
-<!--researchers with clear proposal, for example how epcc give access to-->
-<!--ARCHER [10]. Another example is PRACE [11], the Partnership for Advanced Computing in Europe,-->
-<!--that allows researcher to access supercomputers accross europe after a-->
-<!--vetting process. This theoritically allow people with the credentials-->
-<!--to gain access to these resources with the correct motives. However,-->
-<!--reproducing research computation that already been run might not be the-->
-<!--top priority of these facilities when there are many other research-->
-<!--projects that depend on access to these limited resources.-->
 
 **Cloud Computing**
 
 In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s [12][15].
+academics, concept called grid computing is envisioned in 1990s [13][14].
 This vision consider computing resources analogous to power grid, where
 user should not care from where the resources are acquired and how it is
 delivered to the user. What user should see is that there are computing
 resources available and it could come from anywhere and in any form.
 This paradigm is mainly developed with the interest of researchers and
-academia that the business models caters to the most [16]. Grid
+academia that the business models caters to the most [15]. Grid
 computing typically give CPU hours based on the proposal that is vetted
 by the institutions. Example of this institution is TeraGrid which
-operates until 2011 [17].
+operates until 2011 [16].
 
 Cloud computing share similar vision with grid computing paradigm on how the
 computing resources are acquired and delivered are invisible to the
 users, but different on the execution of the business model. It is
 massively scalable, allow abstract encapsulation of computing resources,
 dynamicaly configured and delivered on-demand and most importantly,
-driven by economies of scale [16]. Since it is driven by economies of
+driven by economies of scale [15]. Since it is driven by economies of
 scale, it is in the interest of cloud providers to provide features
 that users actually needs and want to pay for, therefore creating a
 tight feedback loop between users and the providers to develop the
@@ -169,8 +148,8 @@ platform better than how grid computing handle feature developments.
 
 This has allowed cloud vendors to grow significantly, that in 2013 it
 was noted that some cloud vendors could reach more than 90% growth per annum
-[18]. These growth further fuels demand and allow them to cut pricing
-for their service multiple times [19][20][21] and create more demands.
+[17]. These growth further fuels demand and allow them to cut pricing
+for their service multiple times [18][19][20] and create more demands.
 This development has allowed business or institutions to offload their
 computational need to the cloud vendors for a price rather than building their own
 infrastructure. This scenario could also be used for our purpose of
@@ -179,10 +158,10 @@ preventing other researches getting their share of computational
 resource.
 
 Cloud vendors like amazon also capitalize on the need of computing
-resources for HPC application that they promote themselves for this capabilities [22].
+resources for HPC application that they promote themselves for this capabilities [10].
 Running HPC application on cloud vendors, while incurring performance
 overhead, are a viable alternative to supercomputers as shown by
-the nekkloud project [23], NASA HPC Applications [24], and few other case study [25].
+the nekkloud project [21], NASA HPC Applications [22], and few other case study, one of which is [23].
 HemeWeb project should also run perfectly fine on cloud infrastructures
 without worrying about the merit of their reproduction of research
 interest being not a top priority.
@@ -193,19 +172,19 @@ interest being not a top priority.
 
 In past few years, many complex HPC software packages have been developed for the cloud.  In this section, I will highlight these projects to learn how they solve similar issues.
 
-One similar project is Nekkloud [6]. In this case, Nektar++, a complex high-order finite element code, face similar usability problems. Their original workflow was so complex that only few people can run it. People without computer expertise had a hard time to actually run computations with it. Furthermore, one should  also  get access to a HPC infrastructure to run it, which is not easy. Nekkloud project is their answer to these problems. It was developed to encapsulate most difficulties in using the software package. Using web application to provide high level interface instead of using command line.  Making it more accessible to more people without computing expertise. In addition to that, it ran on cloud infrastructures. Allowing people without dedicated HPC infrastructure to run high-order finite element computations.
+One similar project is Nekkloud [21]. In this case, Nektar++, a complex high-order finite element code, face similar usability problems. Their original workflow was so complex that only few people can run it. People without computer expertise had a hard time to actually run computations with it. Furthermore, one should  also  get access to a HPC infrastructure to run it, which is not easy. Nekkloud project is their answer to these problems. It was developed to encapsulate most difficulties in using the software package. Using web application to provide high level interface instead of using command line.  Making it more accessible to more people without computing expertise. In addition to that, it ran on cloud infrastructures. Allowing people without dedicated HPC infrastructure to run high-order finite element computations.
 
-Another project that is tackling similar space is Galaxy [7]. Galaxy, a web-based reproducible research platform, use cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process need a supercomputing resources to execute which cloud infrastructure provide. These capabilities are also encapsulated in an easy to use web interface. Making it easy for scientists to run, and share simulations with the public.
+Another project that is tackling similar space is Galaxy [24]. Galaxy, a web-based reproducible research platform, use cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process need a supercomputing resources to execute which cloud infrastructure provide. These capabilities are also encapsulated in an easy to use web interface. Making it easy for scientists to run, and share simulations with the public.
 
-Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the applications. However, this implementation on the cloud also have negative impact on the applications. Raw performances are lower than dedicated HPC infrastructures. These performance penalty was observed in [6][8][9].  Nekkloud project consider the performance penalty is acceptable, because cloud infrastructures allow flexibility.  This flexibility and the benefit of making it more usable outweigh the performance penalty.
-
-
-Pros and cons of web application for complex HPC projects are area that are often discussed.  But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment. 
-
-One of the above projects, Galaxy, support containerization technology for their tools packaging. They used docker, one implementation of linux container software. Galaxy claimed that using docker allow efficiency, isolation, and portability of their tools. These are good traits that could also be helpful for HemeLB. However, their main contribution to the literature is not on this usage. They focus more on how Galaxy can support reproducible research. Usage of containerization technology are sparsely detailed.
+Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the applications. However, this implementation on the cloud also have negative impact on the applications. Raw performances are lower than dedicated HPC infrastructures. These performance penalty was observed in [21][23][24].  Nekkloud project consider the performance penalty is acceptable, because cloud infrastructures allow flexibility.  This flexibility and the benefit of making it more usable outweigh the performance penalty.
 
 
-Containerization technology are often benchmarked in high performance computing area. These researches [11][12] have tried to discuss using container technology in HPC space. Also, shifter project [13] try to unleash docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where I envision this project could contribute on. Adding more details to the effect of containerization technology on cloud based HPC applications. Docker, in particular, are often discussed as a promising technology to support reproducible research. Complex HPC application like HemeLB is a prime example where this is a problem. Especially,  when there are many push for open science [15][16] and easy reproduction. 
+Pros and cons of web application for complex HPC projects are area that are often discussed.  But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment.
+
+One of the above projects, Galaxy, support containerization technology for their tools packaging. They used docker, one implementation of linux container software. Galaxy claimed that using docker allow efficiency, isolation, and portability of their tools [25]. These are good traits that could also be helpful for HemeLB. However, their main contribution to the literature is not on this usage. They focus more on how Galaxy can support reproducible research. Usage of containerization technology are sparsely detailed.
+
+
+Containerization technology are often benchmarked in high performance computing area. These researches [26][27] have tried to discuss using container technology in HPC space. Also, shifter project [28] try to unleash docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where I envision this project could contribute on. Adding more details to the effect of containerization technology on cloud based HPC applications. Docker, in particular, are often discussed as a promising technology to support reproducible research [29]. Complex HPC application like HemeLB is a prime example where this is a problem. Especially,  when there are many push for open science [6, 7, 8] and easy reproduction.
 
 <!--**Containerization technology**-->
 
@@ -387,12 +366,12 @@ In developing the project, there are various alternative that need consideration
 Comparison of the tools will be the most important steps of the project. This choice will shape the underlying technology the project will take. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
 
 
-Next, I will need to select methodologies to make sure the project have good usability. This book [26] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
+Next, I will need to select methodologies to make sure the project have good usability. This book [30] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
 
 
 ## V. Evaluation
 
-I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [26]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
+I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [30]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
 
 Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
 
@@ -510,58 +489,62 @@ This final section will elaborate the work plan for the project. The project per
 
 [1] Itani, M. A., Schiller, U. D., Schmieschek, S., Hetherington, J., Bernabeu, M. O., Chandrashekar, H., ... & Groen, D. (2015). An automated multiscale ensemble simulation approach for vascular blood flow. Journal of Computational Science, 9, 150-155.
 
-[2] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.
+[2] Franco, C. A., Jones, M. L., Bernabeu, M. O., Vion, A. C., Barbacena, P., Fan, J., ... & Coveney, P. V. (2016). Non-canonical Wnt signalling modulates the endothelial shear stress flow sensor in vascular remodelling. Elife, 5, e07727.
 
-[3] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.
+[3] Franco, C. A., Jones, M. L., Bernabeu, M. O., Geudens, I., Mathivet, T., Rosa, A., ... & Phng, L. K. (2015). Dynamic endothelial cell rearrangements drive developmental vessel regression. PLoS Biol, 13(4), e1002125.
 
-[4] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
+[4] Bernabeu, M. O., Lu, Y., Lammer, J., Aiello, L. P., Coveney, P. V., & Sun, J. K. (2015, August). Characterization of parafoveal hemodynamics associated with diabetic retinopathy with adaptive optics scanning laser ophthalmoscopy and computational fluid dynamics. In Engineering in Medicine and Biology Society (EMBC), 2015 37th Annual International Conference of the IEEE (pp. 8070-8073). IEEE.
 
-[5] Bailey, D. H., & Borwein, J. M. (2013, July 2). Set the Default to "Open": Reproducible Science in the Computer Age. Retrieved April 4, 2016, from http://www.huffingtonpost.com/david-h-bailey/set-the-default-to-open-r_b_2635850.html
+[5] Green, C. (2014, June 14). Computer simulation could become 'integral' in the diagnosis, treatment, or prevention of disease by the end of the century | Science | News | The Independent. Retrieved April 4, 2016, from http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
 
-[6] eScience Institute - Reproducibility and Open Science. (n.d.). Retrieved April 4, 2016, from http://escience.washington.edu/about-us/working-groups/reproducibility-and-open-science/
+[6] Donoho, D. L. (2010). An invitation to reproducible computational research. Biostatistics, 11(3), 385-388.
 
-[7] Haines, R. (2016, March 29). Reproducible Research: Citing your execution environment using Docker and a DOI | Software Sustainability Institute. Retrieved April 4, 2016, from http://www.software.ac.uk/blog/2016-03-29-reproducible-research-citing-your-execution-environment-using-docker-and-doi
+[7] Sandve, G. K., Nekrutenko, A., Taylor, J., & Hovig, E. (2013). Ten simple rules for reproducible computational research. PLoS Comput Biol, 9(10), e1003285.
 
-[8] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.
+[8] Peng, R. D. (2011). Reproducible research in computational science. Science (New York, Ny), 334(6060), 1226.
 
-[9] Green, C. (2014, June 14). Computer simulation could become 'integral' in the diagnosis, treatment, or prevention of disease by the end of the century | Science | News | The Independent. Retrieved April 4, 2016, from http://www.independent.co.uk/news/science/computer-simulation-could-become-integral-in-the-diagnosis-treatment-or-prevention-of-disease-by-the-9537730.html
+[9] Huerta, M., Downing, G., Haseltine, F., Seto, B., & Liu, Y. (2000). NIH working definition of bioinformatics and computational biology. US National Institute of Health.
 
-[10] Merkel, D. (2014). Docker: lightweight linux containers for consistent development and deployment. Linux Journal, 2014(239), 2.
+[10] Whitepaper: An Introduction to High Performance Computing on AWS. (2015, August). Retrieved April 4, 2016, from  https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf
 
-[11] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
+[11] PRACE Research Infrastructure. (n.d.). Retrieved April 4, 2016, from http://www.prace-project.eu/
 
-[12] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
+[12] ARCHER » Getting Access to ARCHER. (n.d.). Retrieved April 4, 2016, from http://www.archer.ac.uk/access/
 
-[13] ARCHER » Getting Access to ARCHER. (n.d.). Retrieved April 4, 2016, from http://www.archer.ac.uk/access/
+[13] Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing: making the global infrastructure a reality. Vol. 2. John Wiley and sons, 2003.
 
-[14] PRACE Research Infrastructure. (n.d.). Retrieved April 4, 2016, from http://www.prace-project.eu/
+[14] Foster, I., & Kesselman, C. (Eds.). (2003). The Grid 2: Blueprint for a new computing infrastructure. Elsevier.
 
-[15] Foster, I., & Kesselman, C. (Eds.). (2003). The Grid 2: Blueprint for a new computing infrastructure. Elsevier.
+[15] Foster, I., Zhao, Y., Raicu, I., & Lu, S. (2008, November). Cloud computing and grid computing 360-degree compared. In Grid Computing Environments Workshop, 2008. GCE'08 (pp. 1-10). Ieee.
 
-[16] Foster, I., Zhao, Y., Raicu, I., & Lu, S. (2008, November). Cloud computing and grid computing 360-degree compared. In Grid Computing Environments Workshop, 2008. GCE'08 (pp. 1-10). Ieee.
+[16] Extreme Science and Engineering Discovery Environment. (n.d.). XSEDE | TeraGrid Archives. Retrieved April 4, 2016, from https://www.xsede.org/tg-archives
 
-[17] Extreme Science and Engineering Discovery Environment. (n.d.). XSEDE | TeraGrid Archives. Retrieved April 4, 2016, from https://www.xsede.org/tg-archives
+[17] FSN ~ Outsourcing ~ The economy is flat so why are financials Cloud vendors growing at more than 90 percent per annum?. (2013, March 5). Retrieved April 4, 2016, from http://www.fsn.co.uk/channel_outsourcing/the_economy_is_flat_so_why_are_financials_cloud_vendors_growing_at_more_than_90_percent_per_annum#.UbmtsPlJPGA/
 
-[18] FSN ~ Outsourcing ~ The economy is flat so why are financials Cloud vendors growing at more than 90 percent per annum?. (2013, March 5). Retrieved April 4, 2016, from http://www.fsn.co.uk/channel_outsourcing/the_economy_is_flat_so_why_are_financials_cloud_vendors_growing_at_more_than_90_percent_per_annum#.UbmtsPlJPGA/
+[18] Barr, J. (2014, March 26). AWS Price Reduction #42 – EC2, S3, RDS, ElastiCache, and Elastic MapReduce | AWS Blog. Retrieved April 4, 2016, from https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/
 
-[19] Barr, J. (2014, March 26). AWS Price Reduction #42 – EC2, S3, RDS, ElastiCache, and Elastic MapReduce | AWS Blog. Retrieved April 4, 2016, from https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/
+[19] Martin, S. (2014, January 24). Announcing Reduced Pricing on Storage | Blog | Microsoft Azure. Retrieved April 4, 2016, from https://azure.microsoft.com/en-us/blog/storage-price-match/
 
-[20] Martin, S. (2014, January 24). Announcing Reduced Pricing on Storage | Blog | Microsoft Azure. Retrieved April 4, 2016, from https://azure.microsoft.com/en-us/blog/storage-price-match/
+[20] Lardinois, F. (2014, March 25). Google Announces Massive Price Drops For Its Cloud Computing Services And Storage, Introduces Sustained-Use Discounts. Retrieved April 4, 2016, from http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
 
-[21] Lardinois, F. (2014, March 25). Google Announces Massive Price Drops For Its Cloud Computing Services And Storage, Introduces Sustained-Use Discounts. Retrieved April 4, 2016, from http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
+[21] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
 
-[22] Whitepaper: An Introduction to High Performance Computing on AWS. (2015, August). Retrieved April 4, 2016, from  https://d0.awsstatic.com/whitepapers/Intro_to_HPC_on_AWS.pdf
+[22] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
 
-[23] Cohen, Johanne, et al. "Nekkloud: A software environment for high-order finite element analysis on clusters and clouds." Cluster Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
+[23] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
 
-[24] Mehrotra, Piyush, et al. "Performance evaluation of Amazon EC2 for NASA HPC applications." Proceedings of the 3rd workshop on Scientific Cloud Computing Date. ACM, 2012.
+[24] Walker, M. A., Madduri, R., Rodriguez, A., Greenstein, J. L., & Winslow, R. L. (2016). Models and Simulations as a Service: Exploring the Use of Galaxy for Delivering Computational Models. Biophysical journal, 110(5), 1038-1043.
 
-[25] He, Qiming, et al. "Case study for running HPC applications in public clouds." Proceedings of the 19th ACM International Symposium on High Performance Distributed Computing. ACM, 2010.
+[25] Moreews, F., Sallou, O., & Bras, Y. L. (2015, July). A curated Domain centric shared Docker registry linked to the Galaxy toolshed. In Galaxy Community Conference 2015.
 
-[26] Sharp, H., Jenny, P., & Rogers, Y. (2007). Interaction design:: beyond human-computer interaction.
+[26] Higgins, J., Holmes, V., & Venters, C. (2015, July). Orchestrating Docker Containers in the HPC Environment. In High Performance Computing (pp. 506-513). Springer International Publishing.
 
-[27] Franco, C. A., Jones, M. L., Bernabeu, M. O., Vion, A. C., Barbacena, P., Fan, J., ... & Coveney, P. V. (2016). Non-canonical Wnt signalling modulates the endothelial shear stress flow sensor in vascular remodelling. Elife, 5, e07727.
+[27] Yu, H. E., & Huang, W. (2015). Building a Virtual HPC Cluster with Auto Scaling by the Docker. arXiv preprint arXiv:1509.08231.
 
-[28] Franco, C. A., Jones, M. L., Bernabeu, M. O., Geudens, I., Mathivet, T., Rosa, A., ... & Phng, L. K. (2015). Dynamic endothelial cell rearrangements drive developmental vessel regression. PLoS Biol, 13(4), e1002125.
+[28] Jacobsen, D. M., & Canon, R. S. Contain This, Unleashing Docker for HPC.
 
-[29] Bernabeu, M. O., Lu, Y., Lammer, J., Aiello, L. P., Coveney, P. V., & Sun, J. K. (2015, August). Characterization of parafoveal hemodynamics associated with diabetic retinopathy with adaptive optics scanning laser ophthalmoscopy and computational fluid dynamics. In Engineering in Medicine and Biology Society (EMBC), 2015 37th Annual International Conference of the IEEE (pp. 8070-8073). IEEE.
+[29] Boettiger, C. (2015). An introduction to Docker for reproducible research. ACM SIGOPS Operating Systems Review, 49(1), 71-79.
+
+[30] Sharp, H., Jenny, P., & Rogers, Y. (2007). Interaction design:: beyond human-computer interaction.
+
+[31] Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb: Docker container with HemeLB installed. Retrieved April 11, 2016, from https://github.com/mobernabeu/docker-hemelb
