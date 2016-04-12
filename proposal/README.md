@@ -358,46 +358,11 @@ To support these claim, I will develop an experimental web application called
 
 
 
-## IV. Methods
-
-
-In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
-
-Comparison of the tools will be the most important steps of the project. This choice will shape the underlying technology the project will take. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
-
-
-Next, I will need to select methodologies to make sure the project have good usability. This book [30] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
-
-
-## V. Evaluation
-
-I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [30]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
-
-Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
-
-
-## VI. Output
-
-
-This project will create two outputs that HemeLB project will use. They are:
-
-1. Working HemeWeb prototype
-
-    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
-
-2. HemeWeb usability guideline
-
-    In the future, HemeWeb can be the interface for doctors to run simulations. This means that HemeWeb will need further improvement to be ready for general use. Future development can use the work done in this project as a basis for usability feature. Thus, I will create a usability document derived from the analysis done in this project.
 
 
 
 
-
-
-
-
-
-## VII. Work Plan
+## IV. Implementation
 
 This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
 
@@ -441,6 +406,25 @@ This final section will elaborate the work plan for the project. The project per
 
       At this point, there are two possible extensions available for HemeWeb. They are the domain definition step or post-processing step. Both of these steps need different technical expertise to complete the integration. I will decide on the project execution on which function I should tackle. This decision will depend on the difficulty, and remaining time for the project. However, it has to emphasized that even without this step, HemeWeb can still work just fine.
 
+
+
+
+**Methods**
+
+  In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
+
+  Comparison of the tools will be the most important steps of the project. This choice will shape the underlying technology the project will take. To make sure that it is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
+
+
+  Next, I will need to select methodologies to make sure the project have good usability. This book [30] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
+
+
+**Evaluation**
+
+  I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [30]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
+
+  Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
+
 * **Risks**
 
   As with all projects with limited time and budget, there are risks involved
@@ -455,6 +439,21 @@ This final section will elaborate the work plan for the project. The project per
  respondents complete the questionnaires on time. Thus, I structured the
  evaluation and the development part to run concurrently. Making sure I give
  enough time for respondents and for me to remind them.
+
+
+## V. Output
+
+
+This project will create two outputs that HemeLB project will use. They are:
+
+1. Working HemeWeb prototype
+
+    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
+
+2. HemeWeb usability guideline
+
+    In the future, HemeWeb can be the interface for doctors to run simulations. This means that HemeWeb will need further improvement to be ready for general use. Future development can use the work done in this project as a basis for usability feature. Thus, I will create a usability document derived from the analysis done in this project.
+
 
 
 
