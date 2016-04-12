@@ -1,7 +1,7 @@
 # HemeWeb: Container based high performance computing scenario for HemeLB
 
 
-## Introduction
+## I. Introduction
 
 
 HemeLB is a fluid dynamic simulation software that is developed for the study
@@ -45,37 +45,51 @@ For reasons above, I propose to create an extension to HemeLB called HemeWeb.
 
 
 
-## Background
+## II. Background
 
 To develop the extension with proper functions, I need to elaborate some
  information. These are about the current HemeLB workflow, the infrastructures,
  and containerization technology.
 
 
-**HemeLB Workflow**
-
+**Current HemeLB Workflow**
 
 
 
 ![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the current workflow of HemeLB.
-Currently, HemeLB need many steps to run simulation.
-First, a geometrical model reconstruction step
- will construct a 3D model of the blood vessel from 2D image. Next, user will give simulation parameter
- in the domain definition step. Next, a script will convert these information
- into a format that HemeLB understand. After all this step, one can finally
- run HemeLB simulation. This simulation will output a file that needs further
- pre-processing. This pre-processing steps will then output a file that a
- graphical software like VTK can view.
+Image above illustrate the overview of the current HemeLB simulations workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on each of the workflow steps. This is important, because it will be the basis of the implementation details outlined in this project.
 
+1. **Geometrical model reconstruction**
 
-<!--Currently HemeLB workflow is complex-->
-On  top of understanding the above workflow, users also need to configure
- tools needed. These configurations are both complex and time-consuming.
- Making the use case not ideal for scientists and doctors. A better situation
- is where simulations can run without worrying about all these configurations.
- Domain experts should only care about their input to the simulations and the outputs.
+  ![alt text](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
+
+  This is the initial entry point for a user wanting to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. A script will take 2D image of blood vessel  and construct its 3D model. This step is known as Geometrical model reconstruction and it outputs an .stl file. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
+
+2. **Domain definition**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
+
+  The next step in the pipeline is the domain definition step. In this step, users input about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect the simulation results. A graphical user interface have been developed for this purpose. This tools allow users to specify the parameters without using command line interface. Allowing doctors and users to use it easily on their own personal computer. These information are then encoded into a profile file that will be used in the next step.
+
+3. **Geometry generation**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
+
+  In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script. It can run easily on consumer-grade computing resources with a command line interface.
+
+4. **HemeLB simulation**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
+
+  This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
+
+5. **Post processing**
+
+  ![alt text](../resources/images/HemeLB-workflow-steps-5.png "Post processing")
+
+  Simulation results from previous steps are encoded in a format that is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a format that can be viewed in GTK viewer. This process can run on consumer-grade hardware without problems.
+
 
 
 
@@ -299,7 +313,7 @@ interest being not a top priority.
 <!--A Service, Hardware as a Service, cloud computing has allowed people to-->
 <!--acquire this resources easily and dynamically.-->
 
-## Main Claim
+## III. Main Claim
 
 In this project, I will show that the proposed approach will improve HemeLB
  project. I will measure the improvement to the project in usability,
@@ -355,7 +369,7 @@ To support these claim, I will develop an experimental web application called
 
 
 
-## Methods
+## IV. Methods
 
 
 In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
@@ -366,14 +380,14 @@ Comparison of the tools will be the most important steps of the project. This ch
 Next, I will need to select methodologies to make sure the project have good usability. This book [26] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
 
 
-## Evaluation
+## V. Evaluation
 
 I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [26]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
 
 Following this framework, I have derive a plan to evaluate the project. Two groups of users will be selected for this test. They are doctors / scientists, and peers from informatics schools. These testers will try to run HemeLB using both the current and proposed approaches. I will then observe the testers interaction with the system. Taking note of difficulties and time needed to complete the scenario. After running both approaches, I will then ask testers to fill out questionnaires. These questionnaires will be a closed-questions questionnaires measuring their experience in using the software.  Information gathered from this test will then be analyzed and used to measure success.
 
 
-## Output
+## VI. Output
 
 
 This project will create two outputs that HemeLB project will use. They are:
@@ -394,7 +408,7 @@ This project will create two outputs that HemeLB project will use. They are:
 
 
 
-## Work Plan
+## VII. Work Plan
 
 This final section will elaborate the work plan for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
 
