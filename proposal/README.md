@@ -409,7 +409,7 @@ This final section will elaborate the work plan for the project. The project per
 
 
 
-**Methods**
+* **Methods**
 
   In developing the project, there are various alternative that need consideration. The most important one is the usage of the technology. One instance where this choice is important is the choice of containerization technology.  Whatever tools I choose will have to adhere to the criteria on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. I will then select the final implementation of the solution based on these criteria.
 
@@ -419,7 +419,7 @@ This final section will elaborate the work plan for the project. The project per
   Next, I will need to select methodologies to make sure the project have good usability. This book [30] list processes in interaction design that is appropriate for this project. I will establish the usability goal of this project first before doing anything. This is important to make sure that the proposed system will address users need. Next I will develop a prototype that take the usability goals in mind. And finally, the prototype will be evaluated against the usability goals.
 
 
-**Evaluation**
+* **Evaluation**
 
   I will evaluate this project by employing a usability testing. This test will be developed by following DECIDE framework outlined in this book [30]. This framework will require me to first determine the usability goals.  These usability goals will shape the evaluation part of the project. Second, to Explore the questions. I will have to articulate the usability questions for the test. Third, I have to choose the appropriate evaluation method for this project. Will interview, questionnaires, or observation be enough for evaluating this project? Or we need combination of the methods? Fourth, to Identify potential issues with the evaluation. Fifth, Decide about ethical issues. And last, evaluate, interpret, and present the gathered data.
 
