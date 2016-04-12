@@ -3,19 +3,10 @@
 
 ## I. Introduction
 
+HemeLB is a fluid dynamic simulation software that is developed for the study of blood flow [1]. Researches in computational biology area have used HemeLB to help with their study. Some of its latest use in study are to simulate blood vessel development in mouse [2] and its retina [3]. Another study used HemeLB to study vascular blood flow abnormalities in human eye [4]. The software package work by first constructing a 3D model of blood vessels. This 3D blood allow HemeLB to simulate flow of fluid inside it. Thus, allowing scientists and doctors to learn how blood will flow in given vessel. With these studies, it is evident that HemeLB simulation is important for medical study. Furthermore, HemeLB is envisioned to be an integral part of future medical decisions[5].
 
-HemeLB is a fluid dynamic simulation software that is developed for the study
-of blood flow [1]. Part of the software construct a 3D model of blood vessels
-from a CT scan or microscopic image of them. This 3D blood vessels allow HemeLB to
-simulate the flow of fluid, like blood, inside it. Thus, allowing scientists
-and doctors to learn how a blood will flow in a given vessels.
-Developers of HemeLB envision that it will be an integral part of medical decisions
-in the future [9].
 
-Currently, HemeLB usage is complex and hard. It comprises of many steps in the
-workflow that need a diverse set of tools to run. Scientists and doctors need
-to configure these tools, which need various technical skills. Time and
-difficulty for this configuration limits HemeLB users to few individuals.
+However, it is currently complex to configure and run simulations with it. HemeLB simulation comprises of many steps in the workflow that need a diverse set of tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, resources needed to run these workflow also varies. One part of the workflow need normal consumer-grade computing resource. Yet, another part of the workflow need a highly-parallel computing resource like ARCHER supercomputer. Not only that, interface required on each workflow also differ from one another. All these reasons limits HemeLB users to few individuals currently.
 
 Furthermore, HemeLB needs to improve the trustworthiness of its simulation.
 This trust, on top of HemeLB being usable, is important to make it a part of
