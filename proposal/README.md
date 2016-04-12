@@ -197,7 +197,7 @@ without worrying about the merit of their reproduction of research
 interest being not a top priority.
 
 
-**How other HPC projects deal with similar problem**
+**How other HPC projects deal with similar problems**
 
 
 In past few years, many complex HPC software packages have been developed for the cloud.  In this section, I will highlight these projects to learn how they solve similar issues.
