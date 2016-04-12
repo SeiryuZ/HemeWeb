@@ -197,6 +197,25 @@ without worrying about the merit of their reproduction of research
 interest being not a top priority.
 
 
+**How other HPC projects deal with similar problem**
+
+
+In past few years, many complex HPC software packages have been developed for the cloud.  In this section, I will highlight these projects to learn how they solve similar issues.
+
+One similar project is Nekkloud [6]. In this case, Nektar++, a complex high-order finite element code, face similar usability problems. Their original workflow was so complex that only few people can run it. People without computer expertise had a hard time to actually run computations with it. Furthermore, one should  also  get access to a HPC infrastructure to run it, which is not easy. Nekkloud project is their answer to these problems. It was developed to encapsulate most difficulties in using the software package. Using web application to provide high level interface instead of using command line.  Making it more accessible to more people without computing expertise. In addition to that, it ran on cloud infrastructures. Allowing people without dedicated HPC infrastructure to run high-order finite element computations.
+
+Another project that is tackling similar space is Galaxy [7]. Galaxy, a web-based reproducible research platform, use cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process need a supercomputing resources to execute which cloud infrastructure provide. These capabilities are also encapsulated in an easy to use web interface. Making it easy for scientists to run, and share simulations with the public.
+
+Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the applications. However, this implementation on the cloud also have negative impact on the applications. Raw performances are lower than dedicated HPC infrastructures. These performance penalty was observed in [6][8][9].  Nekkloud project consider the performance penalty is acceptable, because cloud infrastructures allow flexibility.  This flexibility and the benefit of making it more usable outweigh the performance penalty.
+
+
+Pros and cons of web application for complex HPC projects are area that are often discussed.  But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment. 
+
+One of the above projects, Galaxy, support containerization technology for their tools packaging. They used docker, one implementation of linux container software. Galaxy claimed that using docker allow efficiency, isolation, and portability of their tools. These are good traits that could also be helpful for HemeLB. However, their main contribution to the literature is not on this usage. They focus more on how Galaxy can support reproducible research. Usage of containerization technology are sparsely detailed.
+
+
+Containerization technology are often benchmarked in high performance computing area. These researches [11][12] have tried to discuss using container technology in HPC space. Also, shifter project [13] try to unleash docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. Yet, none have discussed the effect of containerization in running HPC application in cloud. This is where I envision this project could contribute on. Adding more details to the effect of containerization technology on cloud based HPC applications. Docker, in particular, are often discussed as a promising technology to support reproducible research. Complex HPC application like HemeLB is a prime example where this is a problem. Especially,  when there are many push for open science [15][16] and easy reproduction. 
+
 <!--**Containerization technology**-->
 
 <!--Container technology originated from the virtualization technology back-->
