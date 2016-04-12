@@ -1,4 +1,4 @@
-# HemeWeb: Container based high performance computing scenario for HemeLB
+# HemeWeb: Container based high performance computing scenario in cloud infrastructure for HemeLB
 
 
 ## I. Introduction
