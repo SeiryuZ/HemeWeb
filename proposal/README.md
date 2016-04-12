@@ -304,13 +304,8 @@ Containerization technology are often benchmarked in high performance computing 
 
 ## III. Main Claim
 
-In this project, I will show that the proposed approach will improve HemeLB
- project. I will measure the improvement to the project in usability,
- auditability, and reproducibility. In this section, I will define what
-I mean by these terms.
-
-
-
+In this project, I will show that the proposed approach will help the HemeLB
+ project. By improving the workflow usability, auditability, and reproducibility. In this section, I will define what I mean by these terms and outline how I will measure success
 
 
 * **Usability**
