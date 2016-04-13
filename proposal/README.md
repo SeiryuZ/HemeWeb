@@ -306,53 +306,26 @@ Containerization technology are often benchmarked in high performance computing 
 
 ## III. Main Claim
 
-In this project, I will show that the proposed approach will help the HemeLB
- project. By improving the workflow usability, auditability, and reproducibility. In this section, I will define what I mean by these terms and outline how I will measure success
-
+In this project, I will show that the proposed approach will help the HemeLB project by improving the workflow's usability, auditability, and reproducibility. In this section, I will define what I mean by these terms and outline how I will measure success.
 
 * **Usability**
 
-  I will define usability in this project as the ease of use of the software.
-Scientists and doctors should be able to run HemeLB simulations with least efforts.
-Least efforts meaning that there are less cognitive load for the users
-to use the software. For example, Users will not have to worry about configurations
-and piping result from one step to another step.
-
+  I will define usability in this project as the ease of use of the software to run a simulation. HemeWeb will reduce cognitive efforts needed to run said simulations. Enabling non computer expert, defined as people who  never compile a C program, to run blood flow simulation with simple documentation. I will measure this usability criteria along four metrics of usability that Nielsen[32] use. These metrics are success rate, time needed, error rate, and user's satisfaction on running a simulation.
 
 
 * **Reproducibility**
 
-  Ease of reproducing simulation instances will be the definition of
- Reproducibility in this project. Targeted users or their peers should be able
- to reproduce past simulations with ease. HemeWeb will improve the
- reproducibility steps by recording every simulation configurations in
- automatic fashion. These records will be available and used for re-running
- the specific simulation. Making it easier for people to make sure
- simulations provide consistent result.
-
-
-
+  Ease of reproducing a simulation is the definition of reproducibility in this project. Users, given enough information, should be able to reproduce past simulations with ease. HemeWeb will provide reproducibility by enabling user to reproduce past simulations with simple interface. On top of that, the web application will make it easy to run a simulation with past parameters. Enabling easy reproduction of past simulations. Like how I measure usability criteria, I will also measure reproducibility along four metrics. These are success rate, time needed, error rate, and user's satisfaction on reproducing a past simulation.
 
 
 * **Auditability**
 
-  I will define auditability as the ease of other parties to confirm and audit
- a simulation. HemeWeb will record and publish tools, configurations, input
- files, and simulation results. The use of containerization technology will
- help capture and publish these information. Especially, when the
- containerization technology publish the image on a public registry.
- This in the end, will encourage peer-review which will further improve trust.
+  I will define auditability as the ease of other parties to confirm and audit a simulation. HemeWeb will record and publish tools, configurations, input files, and simulation results. The use of containerization technology will help capture and publish these information. Especially, when the containerization technology publish the image on a public registry. This in the end, will encourage peer-review which will further improve trust. The same four metrics as above criteria will be used to measure this.
 
 
+In measuring these 3 criteria, I will run a usability testing at the evaluation period. I will use direct observation, with semi-structured interview technique to capture the desired metrics. More details will be provided in the methodology section.
 
-To support these claim, I will develop an experimental web application called
- HemeWeb. HemeWeb will use container technology and cloud infrastructure to
- run HemeLB simulations. This implementation will show that HemeLB simulation
- can run on cloud infrastructures. Furthermore, it will be the basis of future
- deployment in other commodity hardware infrastructure. For instance,
- Hospitals would want patient-related simulations to run on their private
- infrastructures. Also, HemeWeb will be better interface for HemeLB simulations.
-
+Also, to support these claims, I will develop an experimental web application called HemeWeb. HemeWeb will use container technology to run HemeLB simulations on cloud infrastructure. It will be the basis of future deployment in other commodity hardware infrastructure. For instance, Hospitals would want patient-related simulations to run on their own infrastructures.
 
 
 
@@ -524,3 +497,5 @@ This project will create two outputs that HemeLB project will use. They are:
 [30] Sharp, H., Jenny, P., & Rogers, Y. (2007). Interaction design:: beyond human-computer interaction.
 
 [31] Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb: Docker container with HemeLB installed. Retrieved April 11, 2016, from https://github.com/mobernabeu/docker-hemelb
+
+[32] Nielsen, J. (2001, January 21). Usability Metrics. Retrieved April 13, 2016, from https://www.nngroup.com/articles/usability-metrics/
