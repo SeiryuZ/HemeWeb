@@ -100,7 +100,7 @@ One could categorize HemeLB software under High Performance Computing (HPC). Tra
 <!-- Acquriing access to HPC infrastructure is possible but non-trivial, and maybe not a top priority for these institutes  -->
 However, running these simulations require access to HPC infrastructures that
 might not have reproducibility of a research as a priority. Facilities
-that administer these infrastructure often give out computing hour usage
+that operate these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
 example how PRACE [11], the Partnership for Advanced Computing in
 Europe, and how EPSRC [12] give access to their infrastructure to
