@@ -49,37 +49,37 @@ To develop the extension with proper functions, I need to elaborate some
 
 
 
-![alt text](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
+![Overview of current HemeLB workflow](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
 Image above illustrate the overview of the current HemeLB simulations workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on each of the workflow steps. This is important, because it will be the basis of the implementation details outlined in this project.
 
 1. **Geometrical model reconstruction**
 
-  ![alt text](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
+  ![Geometrical model reconstruction](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
 
   This is the initial entry point for a user wanting to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. A script will take 2D image of blood vessel  and construct its 3D model. This step is known as Geometrical model reconstruction and it outputs an .stl file. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
 
 2. **Domain definition**
 
-  ![alt text](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
+  ![Domain definition](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
 
   The next step in the pipeline is the domain definition step. In this step, users input about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect the simulation results. A graphical user interface have been developed for this purpose. This tools allow users to specify the parameters without using command line interface. Allowing doctors and users to use it easily on their own personal computer. These information are then encoded into a profile file that will be used in the next step.
 
 3. **Geometry generation**
 
-  ![alt text](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
+  ![Geometry generation](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
 
   In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script. It can run easily on consumer-grade computing resources with a command line interface.
 
 4. **HemeLB simulation**
 
-  ![alt text](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
+  HemeLB simulation![](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
 
   This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
 
 5. **Post processing**
 
-  ![alt text](../resources/images/HemeLB-workflow-steps-5.png "Post processing")
+  ![Post processing step](../resources/images/HemeLB-workflow-steps-5.png "Post processing")
 
   Simulation results from previous steps are encoded in a format that is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a format that can be viewed in GTK viewer. This process can run on consumer-grade hardware without problems.
 
@@ -310,7 +310,7 @@ In this project, I will show that the proposed approach will help the HemeLB pro
 
 * **Usability**
 
-  I will define usability in this project as the ease of use of the software to run a simulation. HemeWeb will reduce cognitive efforts needed to run said simulations. Enabling non computer expert, defined as people who  never compile a C program, to run blood flow simulation with simple documentation. I will measure this usability criteria along four metrics of usability that Nielsen[32] use. These metrics are success rate, time needed, error rate, and user's satisfaction on running a simulation.
+  I will define usability in this project as the ease of use of the software to run a simulation. HemeWeb will reduce cognitive efforts needed to run said simulations. Enabling non computer expert, defined as people who  never compile a C program, to run blood flow simulation with simple documentation. I will measure this usability criteria along four metrics of usability that Nielsen [32] use. These metrics are success rate, time needed, error rate, and user's satisfaction on running a simulation.
 
 
 * **Reproducibility**
@@ -348,7 +348,7 @@ This final section will elaborate the work plan for the project. The project per
 
 
 
-![alt text](../resources/images/workplan.png "Work Plan")
+![Project Work Plan](../resources/images/workplan.png "Work Plan")
 
 * **HemeWeb development plan**
 
@@ -356,7 +356,7 @@ This final section will elaborate the work plan for the project. The project per
 
   Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable easy reproduction and easy audit for interested parties. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools easily. Allowing users to run simulation with different version of tools without worrying about configurations.
 
-  ![alt text](../resources/images/HemeWeb-scope.png "HemeWeb scope")
+  ![HemeWeb scope](../resources/images/HemeWeb-scope.png "HemeWeb scope")
 
   In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated above. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
 
@@ -374,13 +374,13 @@ This final section will elaborate the work plan for the project. The project per
 
       This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype have the smallest scope possible, but still allow simulations to run.  The system should look like the image below.
 
-      ![alt text](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
+      ![Phase 1 of HemeWeb](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
   4. **Extends HemeWeb to handle geometry generation step [Phase 2]**
 
       After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expects different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like the image below.
 
-      ![alt text](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
+      ![Phase 2 HemeWeb](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
   5. **Extends HemeWeb to handle domain definition step or post-processing step [Phase 3]**
 
