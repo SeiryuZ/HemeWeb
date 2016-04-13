@@ -5,12 +5,12 @@
 
 ## I. Introduction
 
-HemeLB is a fluid dynamic simulation software that is developed for the study of blood flow [1]. Researches in computational biology area have used HemeLB to help with their study. Some of its latest use in study are to simulate blood vessel development in mouse [2] and its retina [3]. Another study used HemeLB to study vascular blood flow abnormalities in human eye [4]. The software package work by first constructing a 3D model of blood vessels. This 3D blood allow HemeLB to simulate flow of fluid inside it. Thus, allowing scientists and doctors to learn how blood will flow in given vessel. With these studies, it is evident that HemeLB simulation is important for medical study. Furthermore, HemeLB is envisioned to be an integral part of future medical decisions[5].
+HemeLB is a fluid dynamic simulation software package that is developed for the study of blood flow [1]. Researches in computational biology area have used HemeLB to help with their study. Some of its latest use are simulating blood vessel development in mouse [2] and its retina [3]. Another study used HemeLB to study vascular blood flow abnormalities in human eye [4]. The software package work by first constructing a 3D model of blood vessels. This 3D model allow HemeLB to simulate flow of fluid, like blood, inside it. Thus, allowing scientists and doctors to learn how blood will flow in given vessels. It is evident that HemeLB simulation is important for medical study. Furthermore, HemeLB is envisioned to be an integral part of future medical decisions[5].
 
 
-However, it is currently complex to configure and run simulations with it. HemeLB simulation comprises of many steps in the workflow that need a diverse set of tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, resources needed to run these workflow also varies. One part of the workflow need normal consumer-grade computing resource. Yet, another part of the workflow need a highly-parallel computing resource like ARCHER supercomputer. Not only that, interface required on each workflow also differ from one another. All these reasons limits HemeLB users to few individuals currently.
+However, it is currently complex to configure and run the software packages. The complete workflow comprises of many steps that need many tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, resources needed to run these workflow also varies widely depending on the case. While small cases can run on laptop, complex cases will require parallel computing resources, like ARCHER supercomputers, to run. In addition, on each step of the workflow, different interfaces are required; from command line to graphical user interface. All these reasons limits HemeLB users to few individuals currently.
 
-Furthermore, HemeLB needs to improve the trustworthiness of its simulation.
+Furthermore, HemeLB project needs to improve the trustworthiness of its simulation.
 This trust, on top of HemeLB being usable, is important to make it a part of
  any medical decision. Simulation results should be easy to audit and easy to
  reproduce. These characteristics allow peers to review the simulation and
@@ -42,7 +42,8 @@ For reasons above, I propose to create an extension to HemeLB called HemeWeb.
 
 To develop the extension with proper functions, I need to elaborate some
  information. These are about the current HemeLB workflow, the infrastructures,
- and containerization technology.
+ , containerization technology, and how similar project tackle similar
+problems.
 
 
 **Current HemeLB Workflow**
@@ -51,31 +52,31 @@ To develop the extension with proper functions, I need to elaborate some
 
 ![Overview of current HemeLB workflow](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the overview of the current HemeLB simulations workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on each of the workflow steps. This is important, because it will be the basis of the implementation details outlined in this project.
+Image above illustrate the overview of the current HemeLB simulation workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on each of the workflow steps. This is important, because it will be the basis of the implementation details outlined in this project.
 
 1. **Geometrical model reconstruction**
 
   ![Geometrical model reconstruction](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
 
-  This is the initial entry point for a user wanting to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. A script will take 2D image of blood vessel  and construct its 3D model. This step is known as Geometrical model reconstruction and it outputs an .stl file. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
+  This is the initial entry point for users to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. This step, known as Geometrical model reconstruction, will take a 2D image of blood vessels and outputs a 3D reconstruction (.stl) of said vessels. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
 
 2. **Domain definition**
 
   ![Domain definition](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
 
-  The next step in the pipeline is the domain definition step. In this step, users input about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect the simulation results. A graphical user interface have been developed for this purpose. This tools allow users to specify the parameters without using command line interface. Allowing doctors and users to use it easily on their own personal computer. These information are then encoded into a profile file that will be used in the next step.
+  The next step in the pipeline is the domain definition step. In this step, users' inputs about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect how the simulationw ill run. A graphical user interface have been developed for this purpose. Allowing doctors and users to use it easily on their own personal computer without resorting to command line interface. These information are then encoded into a profile file that will be used in the next step.
 
 3. **Geometry generation**
 
   ![Geometry generation](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
 
-  In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script. It can run easily on consumer-grade computing resources with a command line interface.
+  In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script that can run easily on consumer-grade computing resources with a command line interface.
 
 4. **HemeLB simulation**
 
   HemeLB simulation![](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
 
-  This step is where the bulk of the computations are done. Informations encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are then shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
+  This step is where the bulk of the computations are done. Information encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
 
 5. **Post processing**
 
@@ -90,9 +91,9 @@ Image above illustrate the overview of the current HemeLB simulations workflow. 
 **HPC Infrastructure and HemeLB**
 
 
-Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and experiments in biology [9]. Unfortunately, these complex computations are so demanding that consumer-grade computing resources are not enough. It often need a highly parallel computing resources to run efficiently. HemeLB is the prime example of bioinformatics software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1].
+Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and understand experiments in biology [9]. While small cases can run on a laptop, more complex case demand parallel computing resources like ARCHER supercomputer. HemeLB is the prime example of computational biology software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1].
 
-One could categorize HemeLB software under High Performance Computing(HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing(HTC). HPC involve using many similar computing nodes to perform well-defined computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [10]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [10]. Based on these distinctions, HPC is a correct categorization of HemeLB.
+One could categorize HemeLB software under High Performance Computing (HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing (HTC). HPC involve using many similar computing nodes to perform tightly coupled computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [10]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [10]. Based on these distinctions, HPC is a correct categorization of HemeLB.
 
 
 
