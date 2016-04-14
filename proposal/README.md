@@ -10,15 +10,14 @@ HemeLB is a fluid dynamics simulation software package that is developed for the
 
 However, it is currently complex to configure and run the software packages. The complete workflow comprises of many steps that need many tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, the resources needed to run these workflow also varies widely depending on the case. While small cases can run on a laptop, scientifically interesting cases require parallel computing resources, like the ARCHER supercomputer, to run. In addition, for each step of the workflow, different interfaces are required; from command line to graphical user interface. These factors limits HemeLB's user to few individuals currently.
 
-Furthermore, the HemeLB project needs to improve the trustworthiness of its simulation.
-This trust, on top of HemeLB being usable, is important to make it a part of
+Furthermore, the HemeLB project needs to improve the trustworthiness of its simulation.  This trust, on top of HemeLB being usable, is important to make it a part of
  any medical decision. Simulation results should be easy to audit and easy to
  reproduce. These characteristics allow peers to review the simulation and
  confirm the result. Currently, there are some measures in HemeLB for
  reproduction and audit. Its source code is available for public on GitHub,
  making it possible to audit the software. Furthermore, the system
-includes some tools to automatically record verion sed, and the input
-parameters.  These steps allow peers to build the software and replicate a simulation, albeit in a manual way. Recent pushes for open science and reproducible computing research [6, 7, 8] also justifies these steps.
+includes some tools to automatically record version used, and the input
+parameters.  These steps allow peers to build the software and replicate a simulation, albeit in a manual way. With recent pushes for open science and reproducible computing research [6, 7, 8], an extra step for being open is justified.
 
 To address these problems, I propose to create an extension to HemeLB called HemeWeb.
   HemeWeb will be a web application that will hide the complexity of configuration from its users. Also, it will allow automatic recording of simulations, making it
