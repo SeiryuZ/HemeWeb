@@ -152,13 +152,13 @@ to demonstrate that HemeLB can run acceptably on a cloud platform.
 **How other HPC projects deal with similar problems**
 
 
-In past few years, many complex HPC software packages have been developed for the cloud.  In this section, I will highlight these projects to learn how they solve similar issues.
+In the past few years, many complex HPC software packages have been deployed to the cloud.  In this section, I will highlight these projects to learn how they solve similar issues.
 
-One similar project is Nekkloud [21]. In this case, Nektar++, a complex high-order finite element code, face similar usability problems. Their original workflow was so complex that only few people can run it. People without computer expertise had a hard time to actually run computations with it. Furthermore, one should  also  get access to a HPC infrastructure to run it, which is not easy. Nekkloud project is their answer to these problems. It was developed to encapsulate most difficulties in using the software package. Using web application to provide high level interface instead of using command line.  Making it more accessible to more people without computing expertise. In addition to that, it ran on cloud infrastructures. Allowing people without dedicated HPC infrastructure to run high-order finite element computations.
+One similar project is Nekkloud [21]. In this case, Nektar++, a complex high-order finite element code, face similar usability problems. Their original workflow was so complex that only few people can run it. People without computer expertise had a hard time to actually run computations with it. Furthermore, one should  also  get access to a HPC infrastructure to run it, which may not be easy. Nekkloud project is their answer to these problems. It was developed to encapsulate most difficulties in using the software package. Using a web application to provide high level interface instead of using the command line.  Making it more accessible to more people without computing expertise. In addition to that, it ran on cloud infrastructures. Allowing people without dedicated HPC infrastructure to run high-order finite element computations.
 
-Another project that is tackling similar space is Galaxy [24]. Galaxy, a web-based reproducible research platform, use cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process need a supercomputing resources to execute which cloud infrastructure provide. These capabilities are also encapsulated in an easy to use web interface. Making it easy for scientists to run, and share simulations with the public.
+Another project that is tackling similar space is Galaxy [24]. Galaxy, a web-based reproducible research platform, uses cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process needs a supercomputing resources to execute the cloud infrastructure provides. These capabilities are also encapsulated in an easy to use web interfaces, making it easy for scientists to run, and share simulations.
 
-Above examples illustrate that web application is a viable alternative interface for complex applications. It allows users without HPC expertise to easily run the applications. However, this implementation on the cloud also have negative impact on the applications. Raw performances are lower than dedicated HPC infrastructures. These performance penalty was observed in [21][23][24].  Nekkloud project consider the performance penalty is acceptable, because cloud infrastructures allow flexibility.  This flexibility and the benefit of making it more usable outweigh the performance penalty.
+Above examples illustrate that a web application can be a viable alternative interface for complex applications. However, this implementation on the cloud also has a negative impact on the applications. Raw performance is lower than dedicated HPC infrastructures. These performance penalty was observed in the projects mentioned already [21][23][24].  Nekkloud authors considered the performance penalty acceptable, because the cloud infrastructures allow flexibility.  This flexibility and the benefit of making it more usable will sometimes outweigh the performance penalty.
 
 
 Pros and cons of web application for complex HPC projects are area that are often discussed.  But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment.
@@ -288,6 +288,9 @@ Containerization technology are often benchmarked in high performance computing 
 
 In this project, I will show that the proposed approach will help the HemeLB project by improving the workflow's usability, auditability, and reproducibility. In this section, I will define what I mean by these terms and outline how I will measure success.
 
+Also, to support these claims, I will develop an experimental web application called HemeWeb. HemeWeb will use container technology to run HemeLB simulations on cloud infrastructure. It will be the basis of future deployment in other commodity hardware infrastructure. For instance, Hospitals would want patient-related simulations to run on their own infrastructures.
+
+
 * **Usability**
 
   I will define usability in this project as the ease of use of the software to run a simulation. HemeWeb will reduce cognitive efforts needed to run said simulations. Enabling non computer expert, defined as people who  never compile a C program, to run blood flow simulation with simple documentation. I will measure this usability criteria along four metrics of usability that Nielsen [32] use. These metrics are success rate, time needed, error rate, and user's satisfaction on running a simulation.
@@ -304,10 +307,6 @@ In this project, I will show that the proposed approach will help the HemeLB pro
 
 
 In measuring these 3 criteria, I will run a usability testing at the evaluation period. I will use direct observation, with semi-structured interview technique to capture the desired metrics. More details will be provided in the methodology section.
-
-Also, to support these claims, I will develop an experimental web application called HemeWeb. HemeWeb will use container technology to run HemeLB simulations on cloud infrastructure. It will be the basis of future deployment in other commodity hardware infrastructure. For instance, Hospitals would want patient-related simulations to run on their own infrastructures.
-
-
 
 
 
@@ -337,9 +336,11 @@ This section will elaborate the work plan and risks for the project. The project
 
   Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable easy reproduction and easy audit for interested parties. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools easily. Allowing users to run simulation with different version of tools without worrying about configurations.
 
-  ![HemeWeb scope](../resources/images/HemeWeb-scope.png "HemeWeb scope")
 
-  In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated above. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
+  In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated in figure 2. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
+
+
+  ![HemeWeb scope](../resources/images/HemeWeb-scope.png "HemeWeb scope")
 
   In the following section, I will outline how the development of HemeWeb will go. I have divided the development into 5 separate distinct steps. They are:
 
