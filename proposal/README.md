@@ -5,35 +5,26 @@
 
 ## I. Introduction
 
-HemeLB is a fluid dynamic simulation software package that is developed for the study of blood flow [1]. Researches in computational biology area have used HemeLB to help with their study. Some of its latest use are simulating blood vessel development in mouse [2] and its retina [3]. Another study used HemeLB to study vascular blood flow abnormalities in human eye [4]. The software package work by first constructing a 3D model of blood vessels. This 3D model allow HemeLB to simulate flow of fluid, like blood, inside it. Thus, allowing scientists and doctors to learn how blood will flow in given vessels. It is evident that HemeLB simulation is important for medical study. Furthermore, HemeLB is envisioned to be an integral part of future medical decisions[5].
+HemeLB is a fluid dynamics simulation software package that is developed for the study of blood flow [1]. Researches in computational biology have used HemeLB to help with their study. Some of its latest use are simulating blood vessel development in mouse [2] and its retina [3]. Another study used HemeLB to study vascular blood flow abnormalities in human eye [4]. The software package works by constructing a 3D model of blood vessels, and then approximating the equation governing fluid flow within. This allows scientists and doctors to estimate how blood will flow in the given vessels. It is evident that HemeLB simulation is important for medical study. Furthermore, HemeLB is envisioned to be an integral part of future medical decisions [5].
 
 
-However, it is currently complex to configure and run the software packages. The complete workflow comprises of many steps that need many tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, resources needed to run these workflow also varies widely depending on the case. While small cases can run on laptop, complex cases will require parallel computing resources, like ARCHER supercomputers, to run. In addition, on each step of the workflow, different interfaces are required; from command line to graphical user interface. All these reasons limits HemeLB users to few individuals currently.
+However, it is currently complex to configure and run the software packages. The complete workflow comprises of many steps that need many tools to run. Scientists and doctors might not have the capabilities to configure these tools. Furthermore, the resources needed to run these workflow also varies widely depending on the case. While small cases can run on a laptop, scientifically interesting cases require parallel computing resources, like the ARCHER supercomputer, to run. In addition, for each step of the workflow, different interfaces are required; from command line to graphical user interface. These factors limits HemeLB's user to few individuals currently.
 
-Furthermore, HemeLB project needs to improve the trustworthiness of its simulation.
+Furthermore, the HemeLB project needs to improve the trustworthiness of its simulation.
 This trust, on top of HemeLB being usable, is important to make it a part of
  any medical decision. Simulation results should be easy to audit and easy to
  reproduce. These characteristics allow peers to review the simulation and
- confirm the result. Currently, there are measures for HemeLB for easy
- reproduction and audit. Its' source code are available for public on github,
- making it easy to audit the software. Furthermore, researchers have taken a
- manual record of simulation configurations, executions, and results. These
-steps allow peers to build the software and replicate a simulation, albeit
- in a manual way.
+ confirm the result. Currently, there are some measures in HemeLB for
+ reproduction and audit. Its source code is available for public on GitHub,
+ making it possible to audit the software. Furthermore, the system
+includes some tools to automatically record verion sed, and the input
+parameters.  These steps allow peers to build the software and replicate a simulation, albeit in a manual way. Recent pushes for open science and reproducible computing research [6, 7, 8] also justifies these steps.
 
-
-HemeLB project can further improve its trustworthiness. Simulation record
-automation can make it even easier to reproduce and audit a simulation. Recent
- pushes for open science and reproducible computing research [6, 7, 8] also
-justifies these steps. Allowing the project to stand in a better light
- and in general, more trustworthy.
-
-For reasons above, I propose to create an extension to HemeLB called HemeWeb.
-  HemeWeb is a web application that will hide complexity of configuration from
- its users. Also, it will allow automatic record of simulations, making it
- easy to reproduce simulations. I will use cloud infrastructure and
+To address these problems, I propose to create an extension to HemeLB called HemeWeb.
+  HemeWeb will be a web application that will hide the complexity of configuration from its users. Also, it will allow automatic recording of simulations, making it
+ easy to examine and reproduce simulations. I will use cloud infrastructure and
  containerization technology to help address the issues outlined. In brief,
- this proposal will make HemeLB simulations usable and more trustworthy.
+ this project will make HemeLB simulations usable and more open.
 
 
 
