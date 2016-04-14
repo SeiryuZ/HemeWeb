@@ -74,24 +74,23 @@ and interface.
 **HPC Infrastructure and HemeLB**
 
 
-Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and understand experiments in biology [9]. While small cases can run on a laptop, more complex case demand parallel computing resources like ARCHER supercomputer. HemeLB is the prime example of computational biology software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1].
+Computational biology and bioinformatics often use mathematical and computation approaches in their research. They use these approaches to help answer questions and understand experiments in biology [9]. While small cases can run on a laptop, more complex case demand parallel computing resources like ARCHER supercomputer. HemeLB is a prime example of computational biology software that need these better computing resources. Its most demanding part, HemeLB simulation, currently run on ARCHER supercomputer [1].
 
-One could categorize HemeLB software under High Performance Computing (HPC). Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing (HTC). HPC involve using many similar computing nodes to perform tightly coupled computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [10]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [10]. Based on these distinctions, HPC is a correct categorization of HemeLB.
+Traditionally, there are two paradigm that tackles large computing processes. These are High Performance Computing and High Throughput Computing (HTC). HPC involve using many similar computing nodes to perform tightly coupled computations. These nodes are often placed in the same room and connected with high bandwidth network. These network allow the nodes to communicate between each other in doing the computations [10]. An example for this type of resources are computer clusters, GPUs, and supercomputers. In contrast, HTC allow  heterogeneous computing resources to cooperate for common goals. These resources are often distributed geographically and varies in type and performance. These resources will then do different independent computations that independently scheduled [10]. Based on these distinctions, HPC is a correct categorization of HemeLB.
 
 
 
 <!-- Acquriing access to HPC infrastructure is possible but non-trivial, and maybe not a top priority for these institutes  -->
-However, running these simulations require access to HPC infrastructures that
+However, running these simulations requires access to HPC infrastructures that
 might not have reproducibility of a research as a priority. Facilities
 that operate these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
 example how PRACE [11], the Partnership for Advanced Computing in
-Europe, and how EPSRC [12] give access to their infrastructure to
-researcher. This means that reproducing computing research, if anyone
-are interested, have to compete with other projects for the limited
-computing hour that is given out by these institutions. Most likely, it
+Europe, and EPSRC [12] give access to their infrastructure to
+researchers. This means that those seeking to reproduce computation of a research have to compete with other projects for the limited
+computing hours that are given out by these institutions. Most likely, it
 will not be the top priority, hence creating barrier for reproducing
-computational research, in our case HemeLB simulation.
+computational research.
 
 
 Not being prioritized in these facilities create a barrier for HemeLB to
@@ -109,48 +108,45 @@ the picture.
 
 **Cloud Computing**
 
-In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s [13][14].
-This vision consider computing resources analogous to power grid, where
+In response to the huge demand for computational power by researchers and
+academics, a concept called grid computing was envisioned in 1990s [13][14].
+This vision considered computing resources analogous to power grid, where
 user should not care from where the resources are acquired and how it is
-delivered to the user. What user should see is that there are computing
-resources available and it could come from anywhere and in any form.
-This paradigm is mainly developed with the interest of researchers and
+delivered to the user.  This paradigm was mainly developed with the interest of researchers and
 academia that the business models caters to the most [15]. Grid
 computing typically give CPU hours based on the proposal that is vetted
 by the institutions. Example of this institution is TeraGrid which
 operates until 2011 [16].
 
-Cloud computing share similar vision with grid computing paradigm on how the
+Cloud computing shares similar vision with the grid computing paradigm, in that the
 computing resources are acquired and delivered are invisible to the
 users, but different on the execution of the business model. It is
-massively scalable, allow abstract encapsulation of computing resources,
+massively scalable, allows abstract encapsulation of computing resources,
 dynamicaly configured and delivered on-demand and most importantly,
 driven by economies of scale [15]. Since it is driven by economies of
 scale, it is in the interest of cloud providers to provide features
-that users actually needs and want to pay for, therefore creating a
+that users actually need and want to pay for, therefore creating a
 tight feedback loop between users and the providers to develop the
 platform better than how grid computing handle feature developments.
 
-This has allowed cloud vendors to grow significantly, that in 2013 it
+This has allowed cloud vendors to grow significantly, for example in 2013 it
 was noted that some cloud vendors could reach more than 90% growth per annum
-[17]. These growth further fuels demand and allow them to cut pricing
+[17]. This growth further fuels demand and allow them to cut pricing
 for their service multiple times [18][19][20] and create more demands.
-This development has allowed business or institutions to offload their
+This development has allowed businesses and institutions to offload their
 computational need to the cloud vendors for a price rather than building their own
 infrastructure. This scenario could also be used for our purpose of
-reproducing computational research without needing to worry about
-preventing other researches getting their share of computational
-resource.
+performing or reproducing computational research without needing to have
+access to large HPC systems.
 
-Cloud vendors like amazon also capitalize on the need of computing
-resources for HPC application that they promote themselves for this capabilities [10].
-Running HPC application on cloud vendors, while incurring performance
-overhead, are a viable alternative to supercomputers as shown by
-the nekkloud project [21], NASA HPC Applications [22], and few other case study, one of which is [23].
-HemeWeb project should also run perfectly fine on cloud infrastructures
-without worrying about the merit of their reproduction of research
-interest being not a top priority.
+Cloud vendors like Amazon also capitalize on the need for computing
+resources for HPC applications [10].
+Running HPC applications on cloud platforms, while incurring performance
+overhead, can be a viable alternative to supercomputers as shown by
+the nekkloud project [21], NASA HPC Applications [22], and HPC
+applications benchmark in cloud case study [23]. Also, part of this project is
+to demonstrate that HemeLB can run acceptably on a cloud platform.
+
 
 
 **How other HPC projects deal with similar problems**
