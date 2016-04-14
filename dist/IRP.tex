@@ -1,10 +1,10 @@
 \documentclass[]{article}
 \usepackage{lmodern}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
-\usepackage{float}
-\usepackage[margin=1in]{geometry}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
@@ -69,77 +69,67 @@ HemeLB}\label{hemeweb-container-based-high-performance-computing-scenario-in-clo
 
 \subsection{I. Introduction}\label{i.-introduction}
 
-HemeLB is a fluid dynamic simulation software package that is developed
+HemeLB is a fluid dynamics simulation software package that is developed
 for the study of blood flow {[}1{]}. Researches in computational biology
-area have used HemeLB to help with their study. Some of its latest use
-are simulating blood vessel development in mouse {[}2{]} and its retina
+have used HemeLB to help with their study. Some of its latest use are
+simulating blood vessel development in mouse {[}2{]} and its retina
 {[}3{]}. Another study used HemeLB to study vascular blood flow
-abnormalities in human eye {[}4{]}. The software package work by first
-constructing a 3D model of blood vessels. This 3D model allow HemeLB to
-simulate flow of fluid, like blood, inside it. Thus, allowing scientists
-and doctors to learn how blood will flow in given vessels. It is evident
-that HemeLB simulation is important for medical study. Furthermore,
-HemeLB is envisioned to be an integral part of future medical
-decisions{[}5{]}.
+abnormalities in human eye {[}4{]}. The software package works by
+constructing a 3D model of blood vessels, and then approximating the
+equation governing fluid flow within. This allows scientists and doctors
+to estimate how blood will flow in the given vessels. It is evident that
+HemeLB simulation is important for medical study. Furthermore, HemeLB is
+envisioned to be an integral part of future medical decisions {[}5{]}.
 
 However, it is currently complex to configure and run the software
 packages. The complete workflow comprises of many steps that need many
 tools to run. Scientists and doctors might not have the capabilities to
-configure these tools. Furthermore, resources needed to run these
+configure these tools. Furthermore, the resources needed to run these
 workflow also varies widely depending on the case. While small cases can
-run on laptop, complex cases will require parallel computing resources,
-like ARCHER supercomputers, to run. In addition, on each step of the
-workflow, different interfaces are required; from command line to
-graphical user interface. All these reasons limits HemeLB users to few
-individuals currently.
+run on a laptop, scientifically interesting cases require parallel
+computing resources, like the ARCHER supercomputer, to run. In addition,
+for each step of the workflow, different interfaces are required; from
+command line to graphical user interface. These factors limits HemeLB's
+user to few individuals currently.
 
-Furthermore, HemeLB project needs to improve the trustworthiness of its
-simulation. This trust, on top of HemeLB being usable, is important to
-make it a part of any medical decision. Simulation results should be
+Furthermore, the HemeLB project needs to improve the trustworthiness of
+its simulation. This trust, on top of HemeLB being usable, is important
+to make it a part of any medical decision. Simulation results should be
 easy to audit and easy to reproduce. These characteristics allow peers
 to review the simulation and confirm the result. Currently, there are
-measures for HemeLB for easy reproduction and audit. Its' source code
-are available for public on github, making it easy to audit the
-software. Furthermore, researchers have taken a manual record of
-simulation configurations, executions, and results. These steps allow
-peers to build the software and replicate a simulation, albeit in a
-manual way.
+some measures in HemeLB for reproduction and audit. Its source code is
+available for public on GitHub, making it possible to audit the
+software. Furthermore, the system includes some tools to automatically
+record version used, and the input parameters. These steps allow peers
+to build the software and replicate a simulation, albeit in a manual
+way. With recent pushes for open science and reproducible computing
+research {[}6, 7, 8{]}, an extra step for being open is justified.
 
-HemeLB project can further improve its trustworthiness. Simulation
-record automation can make it even easier to reproduce and audit a
-simulation. Recent pushes for open science and reproducible computing
-research {[}6, 7, 8{]} also justifies these steps. Allowing the project
-to stand in a better light and in general, more trustworthy.
-
-For reasons above, I propose to create an extension to HemeLB called
-HemeWeb. HemeWeb is a web application that will hide complexity of
-configuration from its users. Also, it will allow automatic record of
-simulations, making it easy to reproduce simulations. I will use cloud
-infrastructure and containerization technology to help address the
-issues outlined. In brief, this proposal will make HemeLB simulations
-usable and more trustworthy.
+To address these problems, I propose to create an extension to HemeLB
+called HemeWeb. HemeWeb will be a web application that will hide the
+complexity of configuration from its users. Also, it will allow
+automatic recording of simulations, making it easy to examine and
+reproduce simulations. I will use cloud infrastructure and
+containerization technology to help address the issues outlined. In
+brief, this project will make HemeLB simulations usable and more open.
 
 \subsection{II. Background}\label{ii.-background}
 
 To develop the extension with proper functions, I need to elaborate some
 information. These are about the current HemeLB workflow, the
-infrastructures, , containerization technology, and how similar project
+infrastructures, containerization technology, and how similar project
 tackle similar problems.
 
 \textbf{Current HemeLB Workflow}
+
+Figure 1 illustrates the current steps in the HemeLB workflow. I will
+now ellaborate on each steps.
 
 \begin{figure}[H]
 \centering
 \includegraphics{../resources/images/HemeLB-workflow.png}
 \caption{Overview of current HemeLB workflow}
 \end{figure}
-
-Image above illustrate the overview of the current HemeLB simulation
-workflow. Currently there are many steps requiring different interface
-and computing resources. Making it complex for a user to run simulation.
-In this section, I will attempt to elaborate on each of the workflow
-steps. This is important, because it will be the basis of the
-implementation details outlined in this project.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -148,20 +138,12 @@ implementation details outlined in this project.
   \textbf{Geometrical model reconstruction}
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\includegraphics{../resources/images/HemeLB-workflow-steps-1.png}
-\caption{Geometrical model reconstruction}
-\end{figure}
-
-This is the initial entry point for users to run a simulation with
-HemeLB. HemeLB simulation need a 3D model of blood vessel that is
-reconstructed from 2D image. This step, known as Geometrical model
-reconstruction, will take a 2D image of blood vessels and outputs a 3D
-reconstruction (.stl) of said vessels. This process needs a
-highly-parallel computing resources that it usually run on
-supercomputers. This step, however, are outside the scope of this
-project.
+Before preparing a simulation, users require a 3D model of the vessels
+they wish to simulate. This step is out of the scope of this project but
+typically involves taking a 2D image of blood vessels or 3D CT scan data
+and constructing its 3D representation in a .stl format. This step
+typically run in a workstation with problem-dependant tools and
+interface.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -171,21 +153,13 @@ project.
   \textbf{Domain definition}
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\includegraphics{../resources/images/HemeLB-workflow-steps-2.png}
-\caption{Domain definition}
-\end{figure}
-
-The next step in the pipeline is the domain definition step. In this
-step, users' inputs about simulation parameters are needed. User need to
-configure simulation parameters like blood viscosity, inlet and outlet
-placements. These parameters are important because it will affect how
-the simulationw ill run. A graphical user interface have been developed
-for this purpose. Allowing doctors and users to use it easily on their
-own personal computer without resorting to command line interface. These
-information are then encoded into a profile file that will be used in
-the next step.
+In this step, users' inputs about simulation parameters are needed. User
+needs to configure simulation parameters like blood viscosity, inlet and
+outlet placements, and other conditions. A graphical user interface has
+been developed for this purpose. Allowing doctors and users to use it
+easily on a workstation without resorting to command line interface.
+These information are then encoded into a profile file that will be used
+in the next step.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -195,18 +169,11 @@ the next step.
   \textbf{Geometry generation}
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\includegraphics{../resources/images/HemeLB-workflow-steps-3.png}
-\caption{Geometry generation}
-\end{figure}
-
-In this step, the 3D model of blood vessel and the simulation parameters
-are converted. HemeLB are unable to parse the intermediate
-representation of data from domain definition step. Thus, conversion
-into a format that it can parse is necessary. This process is
-lightweight and done via a script that can run easily on consumer-grade
-computing resources with a command line interface.
+In this step, the 3D model of blood vessel's surface and the simulation
+parameters are combined to produce a description of the 3D domain,
+i.e.~a list of every point in space to be simulated and its properties,
+and the other simulation parameters. This step can be time consuming as
+it is currently not parallel, but can run on a workstation.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -216,19 +183,13 @@ computing resources with a command line interface.
   \textbf{HemeLB simulation}
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\includegraphics{../resources/images/HemeLB-workflow-steps-4.png}
-\caption{HemeLB simulation}
-\end{figure}
-
-This step is where the bulk of the computations are done. Information
-encoded from previous steps are used by HemeLB instances to run the
-simulation. This simulation usually run on a highly-parallel computing
-resources like ARCHER supercomputer. These input files are shared to all
-instances by means of network attached file system. This process will
-output many files that encode information about the simulation results.
-These are .xtr files, .dat files, .txt , and a .xml file.
+This step is where the bulk of the computations are done. The
+information encoded from previous steps is given as input to the main
+HemeLB application. It is an efficiently MPI-parallel SPMD program that
+can efficiently use from 1 up to 32,000 cores {[}9{]}. Typical problems
+use around 500 cores. Very simple problems can be run on a workstation,
+while demanding cases will require an HPC infrastructure. Users need to
+use command line interface to do this step.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -238,18 +199,13 @@ These are .xtr files, .dat files, .txt , and a .xml file.
   \textbf{Post processing}
 \end{enumerate}
 
-\begin{figure}[H]
-\centering
-\includegraphics{../resources/images/HemeLB-workflow-steps-5.png}
-\caption{Post processing step}
-\end{figure}
-
 Simulation results from previous steps are encoded in a format that is
-not easily viewed. To view the simulation in a graphical way, further
-processing is needed. This is where post-processing steps will do its
-work. This step will convert the files into a format that can be viewed
-in GTK viewer. This process can run on consumer-grade hardware without
-problems.
+efficient to wwrite in parallel but is not easily viewed. To view the
+simulation in a graphical way, further processing is needed. This is
+where post-processing steps will do its work. This step will convert the
+files into a VTK format, a de facto standard in computational science,
+that can be viewed with many tools such as Paraview {[}10{]} and VisIt
+{[}11{]}. This process run on workstation with a command line interface.
 
 \textbf{HPC Infrastructure and HemeLB}
 
@@ -257,18 +213,17 @@ Computational biology and bioinformatics often use mathematical and
 computation approaches in their research. They use these approaches to
 help answer questions and understand experiments in biology {[}9{]}.
 While small cases can run on a laptop, more complex case demand parallel
-computing resources like ARCHER supercomputer. HemeLB is the prime
-example of computational biology software that need these better
-computing resources. Its most demanding part, HemeLB simulation,
-currently run on ARCHER supercomputer {[}1{]}.
+computing resources like ARCHER supercomputer. HemeLB is a prime example
+of computational biology software that need these better computing
+resources. Its most demanding part, HemeLB simulation, currently run on
+ARCHER supercomputer {[}1{]}.
 
-One could categorize HemeLB software under High Performance Computing
-(HPC). Traditionally, there are two paradigm that tackles large
-computing processes. These are High Performance Computing and High
-Throughput Computing (HTC). HPC involve using many similar computing
-nodes to perform tightly coupled computations. These nodes are often
-placed in the same room and connected with high bandwidth network. These
-network allow the nodes to communicate between each other in doing the
+Traditionally, there are two paradigm that tackles large computing
+processes. These are High Performance Computing and High Throughput
+Computing (HTC). HPC involve using many similar computing nodes to
+perform tightly coupled computations. These nodes are often placed in
+the same room and connected with high bandwidth network. These network
+allow the nodes to communicate between each other in doing the
 computations {[}10{]}. An example for this type of resources are
 computer clusters, GPUs, and supercomputers. In contrast, HTC allow
 heterogeneous computing resources to cooperate for common goals. These
@@ -277,17 +232,17 @@ performance. These resources will then do different independent
 computations that independently scheduled {[}10{]}. Based on these
 distinctions, HPC is a correct categorization of HemeLB.
 
-However, running these simulations require access to HPC infrastructures
-that might not have reproducibility of a research as a priority.
-Facilities that operate these infrastructure often give out computing
-hour usage to projects based on the merit of their peer-reviewed
-proposal, for example how PRACE {[}11{]}, the Partnership for Advanced
-Computing in Europe, and how EPSRC {[}12{]} give access to their
-infrastructure to researcher. This means that reproducing computing
-research, if anyone are interested, have to compete with other projects
-for the limited computing hour that is given out by these institutions.
-Most likely, it will not be the top priority, hence creating barrier for
-reproducing computational research, in our case HemeLB simulation.
+However, running these simulations requires access to HPC
+infrastructures that might not have reproducibility of a research as a
+priority. Facilities that operate these infrastructure often give out
+computing hour usage to projects based on the merit of their
+peer-reviewed proposal, for example how PRACE {[}11{]}, the Partnership
+for Advanced Computing in Europe, and EPSRC {[}12{]} give access to
+their infrastructure to researchers. This means that those seeking to
+reproduce computation of a research have to compete with other projects
+for the limited computing hours that are given out by these
+institutions. Most likely, it will not be the top priority, hence
+creating barrier for reproducing computational research.
 
 Not being prioritized in these facilities create a barrier for HemeLB to
 become more trustworthy because reproduction of simulation is
@@ -303,88 +258,86 @@ cloud computing infrastructure enter the picture.
 
 \textbf{Cloud Computing}
 
-In answering huge computational power required by researchers and
-academics, concept called grid computing is envisioned in 1990s
-{[}13{]}{[}14{]}. This vision consider computing resources analogous to
-power grid, where user should not care from where the resources are
-acquired and how it is delivered to the user. What user should see is
-that there are computing resources available and it could come from
-anywhere and in any form. This paradigm is mainly developed with the
-interest of researchers and academia that the business models caters to
-the most {[}15{]}. Grid computing typically give CPU hours based on the
-proposal that is vetted by the institutions. Example of this institution
-is TeraGrid which operates until 2011 {[}16{]}.
+In response to the huge demand for computational power by researchers
+and academics, a concept called grid computing was envisioned in 1990s
+{[}13{]}{[}14{]}. This vision considered computing resources analogous
+to power grid, where user should not care from where the resources are
+acquired and how it is delivered to the user. This paradigm was mainly
+developed with the interest of researchers and academia that the
+business models caters to the most {[}15{]}. Grid computing typically
+give CPU hours based on the proposal that is vetted by the institutions.
+Example of this institution is TeraGrid which operates until 2011
+{[}16{]}.
 
-Cloud computing share similar vision with grid computing paradigm on how
-the computing resources are acquired and delivered are invisible to the
-users, but different on the execution of the business model. It is
-massively scalable, allow abstract encapsulation of computing resources,
-dynamicaly configured and delivered on-demand and most importantly,
-driven by economies of scale {[}15{]}. Since it is driven by economies
-of scale, it is in the interest of cloud providers to provide features
-that users actually needs and want to pay for, therefore creating a
-tight feedback loop between users and the providers to develop the
-platform better than how grid computing handle feature developments.
+Cloud computing shares similar vision with the grid computing paradigm,
+in that the computing resources are acquired and delivered are invisible
+to the users, but different on the execution of the business model. It
+is massively scalable, allows abstract encapsulation of computing
+resources, dynamicaly configured and delivered on-demand and most
+importantly, driven by economies of scale {[}15{]}. Since it is driven
+by economies of scale, it is in the interest of cloud providers to
+provide features that users actually need and want to pay for, therefore
+creating a tight feedback loop between users and the providers to
+develop the platform better than how grid computing handle feature
+developments.
 
-This has allowed cloud vendors to grow significantly, that in 2013 it
-was noted that some cloud vendors could reach more than 90\% growth per
-annum {[}17{]}. These growth further fuels demand and allow them to cut
-pricing for their service multiple times {[}18{]}{[}19{]}{[}20{]} and
-create more demands. This development has allowed business or
-institutions to offload their computational need to the cloud vendors
-for a price rather than building their own infrastructure. This scenario
-could also be used for our purpose of reproducing computational research
-without needing to worry about preventing other researches getting their
-share of computational resource.
+This has allowed cloud vendors to grow significantly, for example in
+2013 it was noted that some cloud vendors could reach more than 90\%
+growth per annum {[}17{]}. This growth further fuels demand and allow
+them to cut pricing for their service multiple times
+{[}18{]}{[}19{]}{[}20{]} and create more demands. This development has
+allowed businesses and institutions to offload their computational need
+to the cloud vendors for a price rather than building their own
+infrastructure. This scenario could also be used for our purpose of
+performing or reproducing computational research without needing to have
+access to large HPC systems.
 
-Cloud vendors like amazon also capitalize on the need of computing
-resources for HPC application that they promote themselves for this
-capabilities {[}10{]}. Running HPC application on cloud vendors, while
-incurring performance overhead, are a viable alternative to
-supercomputers as shown by the nekkloud project {[}21{]}, NASA HPC
-Applications {[}22{]}, and few other case study, one of which is
-{[}23{]}. HemeWeb project should also run perfectly fine on cloud
-infrastructures without worrying about the merit of their reproduction
-of research interest being not a top priority.
+Cloud vendors like Amazon also capitalize on the need for computing
+resources for HPC applications {[}10{]}. Running HPC applications on
+cloud platforms, while incurring performance overhead, can be a viable
+alternative to supercomputers as shown by the nekkloud project {[}21{]},
+NASA HPC Applications {[}22{]}, and HPC applications benchmark in cloud
+case study {[}23{]}. Also, part of this project is to demonstrate that
+HemeLB can run acceptably on a cloud platform.
 
 \textbf{How other HPC projects deal with similar problems}
 
-In past few years, many complex HPC software packages have been
-developed for the cloud. In this section, I will highlight these
-projects to learn how they solve similar issues.
+In the past few years, many complex HPC software packages have been
+deployed to the cloud. In this section, I will highlight these projects
+to learn how they solve similar issues.
 
 One similar project is Nekkloud {[}21{]}. In this case, Nektar++, a
 complex high-order finite element code, face similar usability problems.
 Their original workflow was so complex that only few people can run it.
 People without computer expertise had a hard time to actually run
 computations with it. Furthermore, one should also get access to a HPC
-infrastructure to run it, which is not easy. Nekkloud project is their
-answer to these problems. It was developed to encapsulate most
-difficulties in using the software package. Using web application to
-provide high level interface instead of using command line. Making it
-more accessible to more people without computing expertise. In addition
-to that, it ran on cloud infrastructures. Allowing people without
-dedicated HPC infrastructure to run high-order finite element
+infrastructure to run it, which may not be easy. Nekkloud project is
+their answer to these problems. It was developed to encapsulate most
+difficulties in using the software package. Using a web application to
+provide high level interface instead of using the command line. Making
+it more accessible to more people without computing expertise. In
+addition to that, it ran on cloud infrastructures. Allowing people
+without dedicated HPC infrastructure to run high-order finite element
 computations.
 
 Another project that is tackling similar space is Galaxy {[}24{]}.
-Galaxy, a web-based reproducible research platform, use cloud
+Galaxy, a web-based reproducible research platform, uses cloud
 infrastructure to run its HPC applications. In illustrating its use, the
 developers have developed a super-resolution spark (SRS) model. This
-modeling process need a supercomputing resources to execute which cloud
-infrastructure provide. These capabilities are also encapsulated in an
-easy to use web interface. Making it easy for scientists to run, and
-share simulations with the public.
+modeling process needs a supercomputing resources to execute the cloud
+infrastructure provides. These capabilities are also encapsulated in an
+easy to use web interfaces, making it easy for scientists to run, and
+share simulations.
 
-Above examples illustrate that web application is a viable alternative
-interface for complex applications. It allows users without HPC
-expertise to easily run the applications. However, this implementation
-on the cloud also have negative impact on the applications. Raw
-performances are lower than dedicated HPC infrastructures. These
-performance penalty was observed in {[}21{]}{[}23{]}{[}24{]}. Nekkloud
-project consider the performance penalty is acceptable, because cloud
-infrastructures allow flexibility. This flexibility and the benefit of
-making it more usable outweigh the performance penalty.
+Above examples illustrate that a web application can be a viable
+alternative interface for complex applications. However, this
+implementation on the cloud also has a negative impact on the
+applications. Raw performance is lower than dedicated HPC
+infrastructures. These performance penalty was observed in the projects
+mentioned already {[}21{]}{[}23{]}{[}24{]}. Nekkloud authors considered
+the performance penalty acceptable, because the cloud infrastructures
+allow flexibility. This flexibility and the benefit of making it more
+usable will sometimes outweigh the performance penalty.
 
 Pros and cons of web application for complex HPC projects are area that
 are often discussed. But, deployment scenario for these HPC projects in
@@ -420,6 +373,13 @@ In this project, I will show that the proposed approach will help the
 HemeLB project by improving the workflow's usability, auditability, and
 reproducibility. In this section, I will define what I mean by these
 terms and outline how I will measure success.
+
+Also, to support these claims, I will develop an experimental web
+application called HemeWeb. HemeWeb will use container technology to run
+HemeLB simulations on cloud infrastructure. It will be the basis of
+future deployment in other commodity hardware infrastructure. For
+instance, Hospitals would want patient-related simulations to run on
+their own infrastructures.
 
 \begin{itemize}
 \tightlist
@@ -472,13 +432,6 @@ In measuring these 3 criteria, I will run a usability testing at the
 evaluation period. I will use direct observation, with semi-structured
 interview technique to capture the desired metrics. More details will be
 provided in the methodology section.
-
-Also, to support these claims, I will develop an experimental web
-application called HemeWeb. HemeWeb will use container technology to run
-HemeLB simulations on cloud infrastructure. It will be the basis of
-future deployment in other commodity hardware infrastructure. For
-instance, Hospitals would want patient-related simulations to run on
-their own infrastructures.
 
 \subsection{IV. Methods}\label{iv.-methods}
 
@@ -574,18 +527,19 @@ everything. Container technology will allow HemeWeb to swap the tools
 easily. Allowing users to run simulation with different version of tools
 without worrying about configurations.
 
+In a nutshell, HemeWeb will replace part of HemeLB simulation workflow
+like illustrated in figure 3. The first phase of the development will
+make sure one of the steps to run simulation can run in the cloud. With
+more and more integrations, more part of the workflow will run in the
+cloud. This will pave ways for making the simulation workflow run
+entirely on the browser. Making it even easier for users to run
+simulation.
+
 \begin{figure}[H]
 \centering
 \includegraphics{../resources/images/HemeWeb-scope.png}
 \caption{HemeWeb scope}
 \end{figure}
-
-In a nutshell, HemeWeb will replace part of HemeLB simulation workflow
-like illustrated above. The first phase of the development will make
-sure one of the steps to run simulation can run in the cloud. With more
-and more integrations, more part of the workflow will run in the cloud.
-This will pave ways for making the simulation workflow run entirely on
-the browser. Making it even easier for users to run simulation.
 
 In the following section, I will outline how the development of HemeWeb
 will go. I have divided the development into 5 separate distinct steps.
@@ -747,97 +701,108 @@ Biol, 9(10), e1003285.
 {[}8{]} Peng, R. D. (2011). Reproducible research in computational
 science. Science (New York, Ny), 334(6060), 1226.
 
-{[}9{]} Huerta, M., Downing, G., Haseltine, F., Seto, B., \& Liu, Y.
+{[}9{]} Groen, D., Hetherington, J., Carver, H. B., Nash, R. W.,
+Bernabeu, M. O., \& Coveney, P. V. (2013). Analysing and modelling the
+performance of the HemeLB lattice-Boltzmann simulation environment.
+Journal of Computational Science, 4(5), 412-422.
+
+{[}10{]} ParaView homepage. (n.d.). Retrieved April 14, 2016, from
+http://www.paraview.org/
+
+{[}11{]} VisIt homepage. (n.d.). Retrieved April 14, 2016, from
+https://wci.llnl.gov/simulation/computer-codes/visit/
+
+{[}10{]} Huerta, M., Downing, G., Haseltine, F., Seto, B., \& Liu, Y.
 (2000). NIH working definition of bioinformatics and computational
 biology. US National Institute of Health.
 
-{[}10{]} Whitepaper: An Introduction to High Performance Computing on
+{[}11{]} Whitepaper: An Introduction to High Performance Computing on
 AWS. (2015, August). Retrieved April 4, 2016, from
 https://d0.awsstatic.com/whitepapers/Intro\_to\_HPC\_on\_AWS.pdf
 
-{[}11{]} PRACE Research Infrastructure. (n.d.). Retrieved April 4, 2016,
+{[}12{]} PRACE Research Infrastructure. (n.d.). Retrieved April 4, 2016,
 from http://www.prace-project.eu/
 
-{[}12{]} ARCHER » Getting Access to ARCHER. (n.d.). Retrieved April 4,
+{[}13{]} ARCHER » Getting Access to ARCHER. (n.d.). Retrieved April 4,
 2016, from http://www.archer.ac.uk/access/
 
-{[}13{]} Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing:
+{[}14{]} Berman, Fran, Geoffrey Fox, and Anthony JG Hey. Grid computing:
 making the global infrastructure a reality. Vol. 2. John Wiley and sons,
 2003.
 
-{[}14{]} Foster, I., \& Kesselman, C. (Eds.). (2003). The Grid 2:
+{[}15{]} Foster, I., \& Kesselman, C. (Eds.). (2003). The Grid 2:
 Blueprint for a new computing infrastructure. Elsevier.
 
-{[}15{]} Foster, I., Zhao, Y., Raicu, I., \& Lu, S. (2008, November).
+{[}16{]} Foster, I., Zhao, Y., Raicu, I., \& Lu, S. (2008, November).
 Cloud computing and grid computing 360-degree compared. In Grid
 Computing Environments Workshop, 2008. GCE'08 (pp.~1-10). Ieee.
 
-{[}16{]} Extreme Science and Engineering Discovery Environment. (n.d.).
+{[}17{]} Extreme Science and Engineering Discovery Environment. (n.d.).
 XSEDE \textbar{} TeraGrid Archives. Retrieved April 4, 2016, from
 https://www.xsede.org/tg-archives
 
-{[}17{]} FSN \textasciitilde{} Outsourcing \textasciitilde{} The economy
+{[}18{]} FSN \textasciitilde{} Outsourcing \textasciitilde{} The economy
 is flat so why are financials Cloud vendors growing at more than 90
 percent per annum?. (2013, March 5). Retrieved April 4, 2016, from
 http://www.fsn.co.uk/channel\_outsourcing/the\_economy\_is\_flat\_so\_why\_are\_financials\_cloud\_vendors\_growing\_at\_more\_than\_90\_percent\_per\_annum\#.UbmtsPlJPGA/
 
-{[}18{]} Barr, J. (2014, March 26). AWS Price Reduction \#42 -- EC2, S3,
+{[}19{]} Barr, J. (2014, March 26). AWS Price Reduction \#42 -- EC2, S3,
 RDS, ElastiCache, and Elastic MapReduce \textbar{} AWS Blog. Retrieved
 April 4, 2016, from
 https://aws.amazon.com/blogs/aws/aws-price-reduction-42-ec2-s3-rds-elasticache-and-elastic-mapreduce/
 
-{[}19{]} Martin, S. (2014, January 24). Announcing Reduced Pricing on
+{[}20{]} Martin, S. (2014, January 24). Announcing Reduced Pricing on
 Storage \textbar{} Blog \textbar{} Microsoft Azure. Retrieved April 4,
 2016, from https://azure.microsoft.com/en-us/blog/storage-price-match/
 
-{[}20{]} Lardinois, F. (2014, March 25). Google Announces Massive Price
+{[}21{]} Lardinois, F. (2014, March 25). Google Announces Massive Price
 Drops For Its Cloud Computing Services And Storage, Introduces
 Sustained-Use Discounts. Retrieved April 4, 2016, from
 http://techcrunch.com/2014/03/25/google-drops-prices-for-compute-and-app-engine-by-over-30-cloud-storage-by-68-introduces-sustained-use-discounts/
 
-{[}21{]} Cohen, Johanne, et al. ``Nekkloud: A software environment for
+{[}22{]} Cohen, Johanne, et al. ``Nekkloud: A software environment for
 high-order finite element analysis on clusters and clouds.'' Cluster
 Computing (CLUSTER), 2013 IEEE International Conference on. IEEE, 2013.
 
-{[}22{]} Mehrotra, Piyush, et al. ``Performance evaluation of Amazon EC2
+{[}23{]} Mehrotra, Piyush, et al. ``Performance evaluation of Amazon EC2
 for NASA HPC applications.'' Proceedings of the 3rd workshop on
 Scientific Cloud Computing Date. ACM, 2012.
 
-{[}23{]} He, Qiming, et al. ``Case study for running HPC applications in
+{[}24{]} He, Qiming, et al. ``Case study for running HPC applications in
 public clouds.'' Proceedings of the 19th ACM International Symposium on
 High Performance Distributed Computing. ACM, 2010.
 
-{[}24{]} Walker, M. A., Madduri, R., Rodriguez, A., Greenstein, J. L.,
+{[}25{]} Walker, M. A., Madduri, R., Rodriguez, A., Greenstein, J. L.,
 \& Winslow, R. L. (2016). Models and Simulations as a Service: Exploring
 the Use of Galaxy for Delivering Computational Models. Biophysical
 journal, 110(5), 1038-1043.
 
-{[}25{]} Moreews, F., Sallou, O., \& Bras, Y. L. (2015, July). A curated
+{[}26{]} Moreews, F., Sallou, O., \& Bras, Y. L. (2015, July). A curated
 Domain centric shared Docker registry linked to the Galaxy toolshed. In
 Galaxy Community Conference 2015.
 
-{[}26{]} Higgins, J., Holmes, V., \& Venters, C. (2015, July).
+{[}27{]} Higgins, J., Holmes, V., \& Venters, C. (2015, July).
 Orchestrating Docker Containers in the HPC Environment. In High
 Performance Computing (pp.~506-513). Springer International Publishing.
 
-{[}27{]} Yu, H. E., \& Huang, W. (2015). Building a Virtual HPC Cluster
+{[}28{]} Yu, H. E., \& Huang, W. (2015). Building a Virtual HPC Cluster
 with Auto Scaling by the Docker. arXiv preprint arXiv:1509.08231.
 
-{[}28{]} Jacobsen, D. M., \& Canon, R. S. Contain This, Unleashing
+{[}29{]} Jacobsen, D. M., \& Canon, R. S. Contain This, Unleashing
 Docker for HPC.
 
-{[}29{]} Boettiger, C. (2015). An introduction to Docker for
+{[}30{]} Boettiger, C. (2015). An introduction to Docker for
 reproducible research. ACM SIGOPS Operating Systems Review, 49(1),
 71-79.
 
-{[}30{]} Sharp, H., Jenny, P., \& Rogers, Y. (2007). Interaction
+{[}31{]} Sharp, H., Jenny, P., \& Rogers, Y. (2007). Interaction
 design:: beyond human-computer interaction.
 
-{[}31{]} Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb:
+{[}32{]} Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb:
 Docker container with HemeLB installed. Retrieved April 11, 2016, from
 https://github.com/mobernabeu/docker-hemelb
 
-{[}32{]} Nielsen, J. (2001, January 21). Usability Metrics. Retrieved
+{[}33{]} Nielsen, J. (2001, January 21). Usability Metrics. Retrieved
 April 13, 2016, from https://www.nngroup.com/articles/usability-metrics/
 
 \end{document}
