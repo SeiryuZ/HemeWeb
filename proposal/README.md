@@ -30,47 +30,33 @@ To address these problems, I propose to create an extension to HemeLB called Hem
 
 ## II. Background
 
-To develop the extension with proper functions, I need to elaborate some
- information. These are about the current HemeLB workflow, the infrastructures,
- , containerization technology, and how similar project tackle similar
-problems.
+To develop the extension with proper functions, I need to elaborate some information. These are about the current HemeLB workflow, the infrastructures, containerization technology, and how similar project tackle similar problems.
 
 
 **Current HemeLB Workflow**
 
 
+Figure 1 illustrates the current steps in the HemeLB workflow. I will now ellaborate on each steps.
 
 ![Overview of current HemeLB workflow](../resources/images/HemeLB-workflow.png "HemeLB current workflow")
 
-Image above illustrate the overview of the current HemeLB simulation workflow. Currently there are many steps requiring different interface and computing resources. Making it complex for a user to run simulation. In this section, I will attempt to elaborate on each of the workflow steps. This is important, because it will be the basis of the implementation details outlined in this project.
-
 1. **Geometrical model reconstruction**
-
-  ![Geometrical model reconstruction](../resources/images/HemeLB-workflow-steps-1.png "Geometrical model reconstruction")
 
   This is the initial entry point for users to run a simulation with HemeLB. HemeLB simulation need a 3D model of blood vessel that is reconstructed from 2D image. This step, known as Geometrical model reconstruction, will take a 2D image of blood vessels and outputs a 3D reconstruction (.stl) of said vessels. This process needs a highly-parallel computing resources that it usually run on supercomputers. This step, however, are outside the scope of this project.
 
 2. **Domain definition**
 
-  ![Domain definition](../resources/images/HemeLB-workflow-steps-2.png "Domain defiition")
-
   The next step in the pipeline is the domain definition step. In this step, users' inputs about simulation parameters are needed. User need to configure simulation parameters like blood viscosity, inlet and outlet placements. These parameters are important because it will affect how the simulationw ill run. A graphical user interface have been developed for this purpose. Allowing doctors and users to use it easily on their own personal computer without resorting to command line interface. These information are then encoded into a profile file that will be used in the next step.
 
 3. **Geometry generation**
-
-  ![Geometry generation](../resources/images/HemeLB-workflow-steps-3.png "Geometry generation")
 
   In this step, the 3D model of blood vessel and the simulation parameters are converted. HemeLB are unable to parse the intermediate representation of data from domain definition step. Thus, conversion into a format that it can parse is necessary. This process is lightweight and done via a script that can run easily on consumer-grade computing resources with a command line interface.
 
 4. **HemeLB simulation**
 
-  HemeLB simulation![](../resources/images/HemeLB-workflow-steps-4.png "HemeLB simulation")
-
   This step is where the bulk of the computations are done. Information encoded from previous steps are used by HemeLB instances to run the simulation. This simulation usually run on a highly-parallel computing resources like ARCHER supercomputer. These input files are shared to all instances by means of network attached file system. This process will output many files that encode information about the simulation results. These are .xtr files, .dat files, .txt , and a .xml file.
 
 5. **Post processing**
-
-  ![Post processing step](../resources/images/HemeLB-workflow-steps-5.png "Post processing")
 
   Simulation results from previous steps are encoded in a format that is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a format that can be viewed in GTK viewer. This process can run on consumer-grade hardware without problems.
 
