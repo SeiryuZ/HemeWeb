@@ -272,11 +272,7 @@ This section will elaborate the work plan and risks for the project. The project
  each iteration of the software. Preventing the chance of having nothing to
  show at the end of the project. Second, is the fact that I have to rely
  on external parties for evaluation. Part of the evaluation of the proposed
- system will consists of sending out questionnaires. I have to make sure that
- respondents complete the questionnaires on time. Thus, I structured the
- evaluation and the development part to run concurrently. Making sure I give
- enough time for respondents and for me to remind them.
-
+ system will consists of inviting external parties to run some tasks. I have to make sure that testers can do the test in the allocated period. Scheduling will be a challenge, and invitation to do testings should be send few weeks in advance.
 
 ## VI. Output
 
