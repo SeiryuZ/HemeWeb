@@ -163,10 +163,10 @@ Pros and cons of web application for complex HPC projects are area that are ofte
 Deploying HPC applications is considered as a time-intensive process
 [28]. For example, the ARCHER support team has 36 members [29] to support
 this process. One approach to reduce these problems is software
-containerization.  Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
+containerization.  Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use Docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
 
 
-One of the above projects, Galaxy, support containerization technology for their tools packaging. They used docker, one implementation of linux container software. Galaxy claimed that using docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB.  Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed in the literature.
+One of the above projects, Galaxy, support containerization technology for their tools packaging. They used Docker, one implementation of linux container software. Galaxy claimed that using Docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB.  Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed in the literature.
 
 
 
@@ -174,7 +174,7 @@ One of the above projects, Galaxy, support containerization technology for their
 
 In this project, I will show that the proposed approach will help the HemeLB project by improving the workflow's usability, auditability, and reproducibility. In this section, I will define what I mean by these terms and outline how I will measure success.
 
-Also, to support these claims, I will develop an experimental web application called HemeWeb. HemeWeb will use container technology to run HemeLB simulations on commercial cloud infrastructure. It will be the basis of future deployment in other commodity hardware infrastructure. For instance, Hospitals would want patient-related simulations to run on their own infrastructures. This implementation will addrees three topics outlined above.
+Also, to support these claims, I will develop an experimental web application called HemeWeb. HemeWeb will use container technology to run HemeLB simulations on commercial cloud infrastructure. It will be the basis of future deployment in other commodity hardware infrastructure. For instance, Hospitals would want patient-related simulations to run on their own infrastructures. This implementation will address three topics outlined above.
 
 
 * **Usability**
@@ -201,7 +201,9 @@ In measuring these 3 criteria, I will run a usability testing at the evaluation 
   In developing the proposed web application, I will need to make comparison the available technologies. For instance, what containerization technology to choose. To choose the appropriate tools, I will have to adhere to the criteria set on previous section. In addition to that, I will add few other criteria such as developer familiarity, features available, and ease of usage of the tools. Based on these combined criteria, I will finally select the appropriate tools to be used on the project.  To make sure that this choices is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors to gather feedback.
 
 The HemeWeb development will take most of the time during the project
-execution period. I will divide the HemeWeb development time
+execution period. It will consists of preparation for HemeWEb
+development and the devlopment itself. For the preparation, I have
+alloted a considerable duration to make sure I get it right. The preparation involve mostly about configuring HemeLB core clusters that will be used by HemeWeb. Then, HemeWeb will be developed after the preparation is done. I will divide the HemeWeb development time
 into 3 possible iterations which reflects a deliverable prototype at
 each steps. The first one focus on the HemeLB simulation part, second on
 geometry generation, and lastly the post-processing or domain definition
