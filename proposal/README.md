@@ -59,11 +59,11 @@ and interface.
 
 3. **Geometry generation**
 
-  In this step, the 3D model of blood vessel's surface and the simulation parameters are combined to produce a description of the 3D domain, i.e. a list of every point in space to be simulated and its properties, and the other simulation parameters. This step can be time consuming as it is  currently not parallel, but can run on a workstation.
+  In this step, the 3D model of blood vessel's surface and the simulation parameters are combined to produce a description of the 3D domain, i.e. a list of every point in space to be simulated and its properties, and the other simulation parameters. This step can be time-consuming as it is  currently not parallel, but can run on a workstation.
 
 4. **HemeLB simulation**
 
-  This step is where the bulk of the computations are done. The information encoded from previous steps is given as input to the main HemeLB application. It is an efficiently MPI-parallel SPMD program that can efficiently use from 1 up to 32,000 cores [9]. Typical problems use around 500 cores. Very simple problems can be run on a workstation, while demanding cases will require an HPC infrastructure. Users need to use command line interface to do this step.
+  This step is where the bulk of the computations are done. The information encoded from previous steps is given as input to the main HemeLB application. It is an efficiently MPI-parallel SPMD program that can efficiently use from 1 up to 32,000 cores [9]. Typical problems use around 500 cores. Very simple problems can be run on a workstation, while demanding cases will require HPC infrastructure. Users need to use command line interface to do this step.
 
 
 5. **Post processing**
@@ -85,7 +85,7 @@ Traditionally, there are two paradigm that tackles large computing processes. Th
 
 <!-- Acquriing access to HPC infrastructure is possible but non-trivial, and maybe not a top priority for these institutes  -->
 However, running these simulations requires access to HPC infrastructures that
-might not have reproducibility of a research as a priority. Facilities
+might not have reproducibility of research as a priority. Facilities
 that operate these infrastructure often give out computing hour usage
 to projects based on the merit of their peer-reviewed proposal, for
 example how PRACE [14], the Partnership for Advanced Computing in
@@ -104,7 +104,7 @@ the configurations, tools version, input files, parameters and result of the
 simulation. Anyone theoretically could request these documentation and
 reproduce the result with the appropriate computing resource.
 However, research facility that will prioritize more important research
-inherently will limit people that want to reproduce the computation
+inherently will limit people who want to reproduce the computation
 result significantly. This is where cloud computing infrastructure enter
 the picture.
 
@@ -210,7 +210,7 @@ Next, I have to choose appropriate method to measure success. For this, I will f
 
 I will then observe users doing their tasks. From these observations, I can capture the first three metrics. Are they giving up? How long does it take to run a simulation using one of the approach? How many times do they ask for help? Did they find out that the past simulation result is faulty? These are the kind of questions that I will capture from the observation. For the last metrics, satisfaction, I will use a semi-structured interview. This is important to first ask their satisfaction level in an objective, numerical, way. And then continue with qualitative questions to probe more about their experience. These questions are going to be designed in the evaluation preparation period.
 
-However, this usability test will have some limitations. First, these tests will take considerable amount of time, roughly 30 minutes per respondent. To run a simulation, one should go through few steps. And in the test, a user will run four simulation in total. Two for each task, comparing both approaches. Consequently, this increase of cognitive burden may influence the test results to some extends. To minimize this risk, I have to make sure that the tasks are one of the simplest one. Making it less demanding for the users to run a task. However, running these tasks will still need considerable duration that cannot be considered as short. Second limitation is the limited number of users involved in the tests. With the long required durations, the number of tests to be done will be limited. On top of that, it will be a challenge to ask a lot of doctors and scientists to do the tests. The limited number of test results will only allow the analysis to be an indicative measure of how HemeWeb improve usability, reproducibility, and auditability.
+However, this usability test will have some limitations. First, these tests will take a considerable amount of time, roughly 30 minutes per respondent. To run a simulation, one should go through few steps. And in the test, a user will run four simulation in total. Two for each task, comparing both approaches. Consequently, this increase of cognitive burden may influence the test results to some extends. To minimize this risk, I have to make sure that the tasks are one of the simplest one. Making it less demanding for the users to run a task. However, running these tasks will still need considerable duration that cannot be considered as short. Second limitation is the limited number of users involved in the tests. With the long required durations, the number of tests to be done will be limited. On top of that, it will be a challenge to ask a lot of doctors and scientists to do the tests. The limited number of test results will only allow the analysis to be an indicative measure of how HemeWeb improve usability, reproducibility, and auditability.
 
 
 
@@ -226,7 +226,7 @@ This section will elaborate the work plan and risks for the project. The project
 
   HemeWeb will be a web application that hides the complexity of running HemeLB simulations. Web application will enable users to do HemeLB simulation workflow via internet browser. Since internet browser is such a standard tools that many people can use, it allow doctors and scientists to run simulation without worry of resources needed. Furthermore, internet browser allow a single unifying interface compared to the current workflow that consists of multiple interface.
 
-  Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable interested parties to audit and reproduce simulation. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools, without reconfiguring the environment. This feature allow users to run simulation with different version of tools with minimal configurations.
+  Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable interested parties to audit and reproduce simulation. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools, without reconfiguring the environment. This feature allows users to run simulation with different version of tools with minimal configurations.
 
 
   In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated in figure 3. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
@@ -246,13 +246,13 @@ This section will elaborate the work plan and risks for the project. The project
 
   3. **Develop HemeWeb to do HemeLB simulation [Phase 1]**
 
-      This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype have the smallest scope possible, but still allow simulations to run.  The system should look like in Figure 4.
+      This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype has the smallest scope possible, but still allow simulations to run.  The system should look like in Figure 4.
 
       ![Phase 1 of HemeWeb](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
   4. **Extends HemeWeb to handle geometry generation step [Phase 2]**
 
-      After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expects different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like in Figure 5.
+      After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expect different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like in Figure 5.
 
       ![Phase 2 HemeWeb](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
@@ -272,7 +272,7 @@ This section will elaborate the work plan and risks for the project. The project
  each iteration of the software. Preventing the chance of having nothing to
  show at the end of the project. Second, is the fact that I have to rely
  on external parties for evaluation. Part of the evaluation of the proposed
- system will consists of inviting external parties to run some tasks. I have to make sure that testers can do the test in the allocated period. Scheduling will be a challenge, and invitation to do testings should be send few weeks in advance.
+ system will consist of inviting external parties to run some tasks. I have to make sure that testers can do the test in the allocated period. Scheduling will be a challenge, and invitation to do testings should be sent few weeks in advance.
 
 ## VI. Output
 
