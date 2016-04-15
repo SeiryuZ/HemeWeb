@@ -63,7 +63,7 @@ and interface.
 
 4. **HemeLB simulation**
 
-  This step is where the bulk of the computations are done. The information encoded from previous steps is given as input to the main HemeLB application. It is an efficiently MPI-parallel SPMD program that can efficiently use from 1 up to 32,000 cores [9]. Typical problems use around 500 cores. Very simple problems can be run on a workstation, while demanding cases will require HPC infrastructure. Users need to use command line interface to do this step.
+  This step is where the bulk of the computations are done. The information encoded from previous steps is given as input to the main HemeLB application. It is an efficiently MPI-parallel SPMD program that can efficiently use from 1 up to 32,000 cores [9]. Typical problems use around 200 to 2,000 cores as observed in the latest research with HemeLB [2][3][4]. Very simple problems can be run on a workstation, while demanding cases will require HPC infrastructure. Users need to use command line interface to do this step.
 
 
 5. **Post processing**
