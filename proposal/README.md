@@ -1,7 +1,10 @@
 # HemeWeb: Container based high performance computing scenario in cloud infrastructure for HemeLB
 
-## Informatics Research Proposal by Steven Steven - s1561690
+## Informatics Research Proposal
+## Steven Steven - s1561690
+## Supervised by Dr. Miguel O. Bernabeu and Dr. Rupert Nash
 
+---
 
 ## I. Introduction
 
