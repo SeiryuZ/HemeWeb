@@ -36,7 +36,7 @@ To develop the extension with proper functions, I need to elaborate some informa
 **Current HemeLB Workflow**
 
 
-Figure 1 illustrates the current steps in the HemeLB workflow. I will now ellaborate on each steps.
+Figure 1 illustrates the current steps in the HemeLB workflow. I will now ellaborate  processes, resources and interfaces needed for each steps.
 
 ![Overview of current HemeLB workflow](../resources/images/HemeLB-workflow.png "Overview of HemeLB current workflow")
 
