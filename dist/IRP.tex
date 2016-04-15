@@ -85,20 +85,19 @@ simulating blood vessel development in mouse {[}2{]} and its retina
 abnormalities in human eye {[}4{]}. The software package works by
 constructing a 3D model of blood vessels, and then approximating the
 equation governing fluid flow within. This allows scientists and doctors
-to estimate how blood will flow in the given vessels. It is evident that
-HemeLB simulation is important for medical study. Furthermore, HemeLB is
-envisioned to be an integral part of future medical decisions {[}5{]}.
+to estimate how blood will flow in the given vessels. Furthermore,
+HemeLB is envisioned to be an integral part of future medical decisions
+{[}5{]}.
 
 However, it is currently complex to configure and run the software
-packages. The complete workflow comprises of many steps that need many
-tools to run. Scientists and doctors might not have the capabilities to
-configure these tools. Furthermore, the resources needed to run these
-workflow also varies widely depending on the case. While small cases can
-run on a laptop, scientifically interesting cases require parallel
-computing resources, like the ARCHER supercomputer, to run. In addition,
-for each step of the workflow, different interfaces are required; from
-command line to graphical user interface. These factors limits HemeLB's
-user to few individuals currently.
+packages. Scientists and doctors might not have the capabilities to
+configure the tools required. Furthermore, the resources needed to run
+these workflow also varies widely depending on the case. While small
+cases can run on a laptop, scientifically interesting cases require
+parallel computing resources, like the ARCHER supercomputer, to run. In
+addition, for each step of the workflow, different interfaces are
+required; from command line to graphical user interface. These factors
+limits HemeLB's user to few individuals currently.
 
 Furthermore, the HemeLB project needs to improve the trustworthiness of
 its simulation. This trust, on top of HemeLB being usable, is important
@@ -106,12 +105,13 @@ to make it a part of any medical decision. Simulation results should be
 easy to audit and easy to reproduce. These characteristics allow peers
 to review the simulation and confirm the result. Currently, there are
 some measures in HemeLB for reproduction and audit. Its source code is
-available for public on GitHub, making it possible to audit the
+available to the public on GitHub, making it possible to audit the
 software. Furthermore, the system includes some tools to automatically
-record version used, and the input parameters. These steps allow peers
-to build the software and replicate a simulation, albeit in a manual
-way. With recent pushes for open science and reproducible computing
-research {[}6, 7, 8{]}, an extra step for being open is justified.
+record version used, and the input parameters corresponding to several
+of the publications {[}2, 3, 4{]}. These steps allow peers to build the
+software and replicate a simulation, albeit in a manual way. With recent
+pushes for open science and reproducible computing research {[}6, 7,
+8{]}, an extra step for being open is justified.
 
 To address these problems, I propose to create an extension to HemeLB
 called HemeWeb. HemeWeb will be a web application that will hide the
@@ -131,8 +131,7 @@ tackle similar problems.
 \textbf{Current HemeLB Workflow}
 
 Figure 1 illustrates the current steps in the HemeLB workflow. I will
-now ellaborate processes, resources and interfaces needed for each
-steps.
+now elaborate processes, resources and interfaces needed for each steps.
 
 \begin{figure}[H]
 \centering
@@ -151,7 +150,7 @@ Before preparing a simulation, users require a 3D model of the vessels
 they wish to simulate. This step is out of the scope of this project but
 typically involves taking a 2D image of blood vessels or 3D CT scan data
 and constructing its 3D representation in a .stl format. This step
-typically run in a workstation with problem-dependant tools and
+typically run in a workstation with problem-dependent tools and
 interface.
 
 \begin{enumerate}
@@ -165,10 +164,10 @@ interface.
 In this step, users' inputs about simulation parameters are needed. User
 needs to configure simulation parameters like blood viscosity, inlet and
 outlet placements, and other conditions. A graphical user interface has
-been developed for this purpose. Allowing doctors and users to use it
-easily on a workstation without resorting to command line interface.
-These information are then encoded into a profile file that will be used
-in the next step.
+been developed for this purpose. Allowing users to use it easily on a
+workstation without resorting to command line interface. These
+information are then encoded into a profile file that will be used in
+the next step.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -181,7 +180,7 @@ in the next step.
 In this step, the 3D model of blood vessel's surface and the simulation
 parameters are combined to produce a description of the 3D domain,
 i.e.~a list of every point in space to be simulated and its properties,
-and the other simulation parameters. This step can be time consuming as
+and the other simulation parameters. This step can be time-consuming as
 it is currently not parallel, but can run on a workstation.
 
 \begin{enumerate}
@@ -196,9 +195,10 @@ This step is where the bulk of the computations are done. The
 information encoded from previous steps is given as input to the main
 HemeLB application. It is an efficiently MPI-parallel SPMD program that
 can efficiently use from 1 up to 32,000 cores {[}9{]}. Typical problems
-use around 500 cores. Very simple problems can be run on a workstation,
-while demanding cases will require an HPC infrastructure. Users need to
-use command line interface to do this step.
+use around 200 to 2,000 cores as observed in the latest research with
+HemeLB {[}2, 3, 4{]}. Very simple problems can be run on a workstation,
+while demanding cases will require HPC infrastructure. Users need to use
+command line interface to do this step.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -209,23 +209,22 @@ use command line interface to do this step.
 \end{enumerate}
 
 Simulation results from previous steps are encoded in a format that is
-efficient to wwrite in parallel but is not easily viewed. To view the
+efficient to write in parallel but is not easily viewed. To view the
 simulation in a graphical way, further processing is needed. This is
 where post-processing steps will do its work. This step will convert the
 files into a VTK format, a de facto standard in computational science,
-that can be viewed with many tools such as Paraview {[}10{]} and VisIt
+that can be viewed with many tools such as ParaView {[}10{]} and VisIt
 {[}11{]}. This process run on workstation with a command line interface.
 
 \textbf{HPC Infrastructure and HemeLB}
 
-Computational biology and bioinformatics often use mathematical and
+The biology community is increasingly making use of mathematical and
 computation approaches in their research. They use these approaches to
 help answer questions and understand experiments in biology {[}12{]}.
 While small cases can run on a laptop, more complex case demand parallel
 computing resources like ARCHER supercomputer. HemeLB is a prime example
 of computational biology software that need these better computing
-resources. Its most demanding part, HemeLB simulation, currently run on
-ARCHER supercomputer {[}1{]}.
+resources.
 
 Traditionally, there are two paradigm that tackles large computing
 processes. These are High Performance Computing and High Throughput
@@ -242,7 +241,7 @@ computations that independently scheduled {[}13{]}. Based on these
 distinctions, HPC is a correct categorization of HemeLB.
 
 However, running these simulations requires access to HPC
-infrastructures that might not have reproducibility of a research as a
+infrastructures that might not have reproducibility of research as a
 priority. Facilities that operate these infrastructure often give out
 computing hour usage to projects based on the merit of their
 peer-reviewed proposal, for example how PRACE {[}14{]}, the Partnership
@@ -253,24 +252,19 @@ for the limited computing hours that are given out by these
 institutions. Most likely, it will not be the top priority, hence
 creating barrier for reproducing computational research.
 
-Not being prioritized in these facilities create a barrier for HemeLB to
-become more open because reproduction of simulation is non-trivial. As
-iterated on the previous section, HemeLB project have taken the steps to
-address reproducibility of the simulation by manually recording all the
-configurationns, tools version, input files, parameters and result of
-the simulation. Anyone theoritically could request these documentation
-and reproduce the result with the appropriate computing resource.
-However, research facility that will prioritize more important research
-inherently will limit people that want to reproduce the computation
-result significantly. This is where cloud computing infrastructure enter
-the picture.
+Furhtermore, most biology and biomedical research fall outside the remit
+of these organizations and their counterpart in these domains,
+e.g.~BBSRC, HRC, do not provision HPC resources at the time of writing.
+Not having access to these facilities create a barrier for HemeLB to
+become more open because reproduction of simulation is non-trivial. This
+is where cloud computing infrastructure enter the picture.
 
 \textbf{Cloud Computing}
 
 In response to the huge demand for computational power by researchers
 and academics, a concept called grid computing was envisioned in 1990s
-{[}16{]}{[}17{]}. This vision considered computing resources analogous
-to power grid, where user should not care from where the resources are
+{[}16, 17{]}. This vision considered computing resources analogous to
+power grid, where user should not care from where the resources are
 acquired and how it is delivered to the user. This paradigm was mainly
 developed with the interest of researchers and academia that the
 business models caters to the most {[}18{]}. Grid computing typically
@@ -282,7 +276,7 @@ Cloud computing shares similar vision with the grid computing paradigm,
 in that the computing resources are acquired and delivered are invisible
 to the users, but different on the execution of the business model. It
 is massively scalable, allows abstract encapsulation of computing
-resources, dynamicaly configured and delivered on-demand and most
+resources, dynamically configured and delivered on-demand and most
 importantly, driven by economies of scale {[}18{]}. Since it is driven
 by economies of scale, it is in the interest of cloud providers to
 provide features that users actually need and want to pay for, therefore
@@ -293,18 +287,18 @@ developments.
 This has allowed cloud vendors to grow significantly, for example in
 2013 it was noted that some cloud vendors could reach more than 90\%
 growth per annum {[}20{]}. This growth further fuels demand and allow
-them to cut pricing for their service multiple times
-{[}21{]}{[}22{]}{[}23{]} and create more demands. This development has
-allowed businesses and institutions to offload their computational need
-to the cloud vendors for a price rather than building their own
-infrastructure. This scenario could also be used for our purpose of
-performing or reproducing computational research without needing to have
-access to large HPC systems.
+them to cut pricing for their service multiple times {[}21, 22, 23{]}
+and create more demands. This development has allowed businesses and
+institutions to offload their computational need to the cloud vendors
+for a price rather than building their own infrastructure. This scenario
+could also be used for our purpose of performing or reproducing
+computational research without needing to have access to large HPC
+systems.
 
 Cloud vendors like Amazon also capitalize on the need for computing
 resources for HPC applications {[}13{]}. Running HPC applications on
 cloud platforms, while incurring performance overhead, can be a viable
-alternative to supercomputers as shown by the nekkloud project {[}24{]},
+alternative to supercomputers as shown by the Nekkloud project {[}24{]},
 NASA HPC Applications {[}25{]}, and HPC applications benchmark in cloud
 case study {[}26{]}. Also, part of this project is to demonstrate that
 HemeLB can run acceptably on a cloud platform.
@@ -343,10 +337,10 @@ alternative interface for complex applications. However, this
 implementation on the cloud also has a negative impact on the
 applications. Raw performance is lower than dedicated HPC
 infrastructures. These performance penalty was observed in the projects
-mentioned already {[}24{]}{[}25{]}{[}26{]}. Nekkloud authors considered
-the performance penalty acceptable, because the cloud infrastructures
-allow flexibility. This flexibility and the benefit of making it more
-usable will sometimes outweigh the performance penalty.
+mentioned already {[}24, 25, 26{]}. Nekkloud authors considered the
+performance penalty acceptable, because the cloud infrastructures allow
+flexibility. This flexibility and the benefit of making it more usable
+will sometimes outweigh the performance penalty.
 
 Pros and cons of web application for complex HPC projects are area that
 are often discussed. But, deployment scenario for these HPC projects in
@@ -358,7 +352,7 @@ Deploying HPC applications is considered as a time-intensive process
 to support this process. One approach to reduce these problems is
 software containerization. Containerization technology is developed to
 run applications or tools in an isolated environment within a kernel. It
-is more lightweight than traiditional virtualization technology that use
+is more lightweight than traditional virtualization technology that use
 hypervisors to manage virtual machines {[}30{]}. Containerization
 technology has been discussed in high performance computing area. For
 example how Docker, one of the more popular implementation of
@@ -366,19 +360,17 @@ containerization technology, is abstracting software environment in the
 HPC infrastructure {[}31{]} and used to build virtual HPC clusters
 {[}32{]}. Also, the shifter project {[}33{]} is trying to unleash Docker
 on HPC infrastructure. Meaning, allowing their HPC infrastructure to use
-docker capabilities. To date, I am not aware of any discussion on the
+Docker capabilities. To date, I am not aware of any discussion on the
 effect of containerization in running HPC application in cloud.
 
 One of the above projects, Galaxy, support containerization technology
-for their tools packaging. They used docker, one implementation of linux
-container software. Galaxy claimed that using docker allow efficiency,
+for their tools packaging. They used Docker, one implementation of linux
+container software. Galaxy claimed that using Docker allow efficiency,
 isolation, and portability of their tools {[}34{]}. These are good
-traits that could also be helpful for HemeLB. However, their main
-contribution to the literature is not on this usage. They focus more on
-how Galaxy can support reproducible research. Docker, in particular, are
+traits that could also be helpful for HemeLB. Docker, in particular, are
 often discussed as a promising technology to support reproducible
 research {[}35{]}. Usage of containerization technology, however, are
-sparsely detailed.
+sparsely detailed in the literature.
 
 \subsection{III. Main Claim}\label{iii.-main-claim}
 
@@ -389,10 +381,11 @@ terms and outline how I will measure success.
 
 Also, to support these claims, I will develop an experimental web
 application called HemeWeb. HemeWeb will use container technology to run
-HemeLB simulations on cloud infrastructure. It will be the basis of
-future deployment in other commodity hardware infrastructure. For
-instance, Hospitals would want patient-related simulations to run on
-their own infrastructures.
+HemeLB simulations on commercial cloud infrastructure. It will be the
+basis of future deployment in other commodity hardware infrastructure.
+For instance, Hospitals would want patient-related simulations to run on
+their own infrastructures. This implementation will address three topics
+outlined above.
 
 \begin{itemize}
 \tightlist
@@ -403,10 +396,10 @@ their own infrastructures.
 I will define usability in this project as the ease of use of the
 software to run a simulation. HemeWeb will reduce cognitive efforts
 needed to run said simulations. Enabling non computer expert, defined as
-people who never compile a C program, to run blood flow simulation with
-simple documentation. I will measure this usability criteria along four
-metrics of usability that Nielsen {[}37{]} use. These metrics are
-success rate, time needed, error rate, and user's satisfaction on
+people who can install and run the software without technical support,
+to run blood flow simulation. I will measure this usability criteria
+along four metrics of usability that Nielsen {[}37{]} use. These metrics
+are success rate, time needed, error rate, and user's satisfaction on
 running a simulation.
 
 \begin{itemize}
@@ -420,8 +413,8 @@ this project. Users, given enough information, should be able to
 reproduce past simulations with ease. HemeWeb will provide
 reproducibility by enabling user to reproduce past simulations with
 simple interface. On top of that, the web application will make it easy
-to run a simulation with past parameters. Enabling easy reproduction of
-past simulations. Like how I measure usability criteria, I will also
+to run a simulation with past configurations. Enabling easy reproduction
+of past simulations. Like how I measure usability criteria, I will also
 measure reproducibility along four metrics. These are success rate, time
 needed, error rate, and user's satisfaction on reproducing a past
 simulation.
@@ -451,25 +444,39 @@ provided in the methodology section.
 In developing the proposed web application, I will need to make
 comparison the available technologies. For instance, what
 containerization technology to choose. To choose the appropriate tools,
-I will have to adhere to the criteria set on previous section. Those are
-improving usability, reproducibility, and auditability. In addition to
-that, I will add few other criteria such as developer familiarity,
-features available, and ease of usage of the tools. Based on these
-combined criteria, I will finally select the appropriate tools to be
-used on the project. To make sure that this choices is appropriate, I
-have been and will continue to read about the subject. Also, I will
-discuss the proposed method with my peers and supervisors to gather
-feedback.
+I will have to adhere to the criteria set on previous section. In
+addition to that, I will add few other criteria such as developer
+familiarity, features available, and ease of usage of the tools. Based
+on these combined criteria, I will finally select the appropriate tools
+to be used on the project. To make sure that this choices is
+appropriate, I have been and will continue to read about the subject.
+Also, I will discuss the proposed method with my peers and supervisors
+to gather feedback.
 
-Next, I have to choose appropriate method to measure success. For this,
-I will follow DECIDE framework outlined in the Interaction Design book
-{[}36{]}. To measure this criteria, I will measure success rate, time
-needed, error rate, and user's satisfaction on doing tasks. Users
-testing at the evaluation period will measure these metrics. I will ask
-testers to do two task; to run and reproduce a simulation using both old
-and new approach. Running a simulation will capture usability metrics
-for both approach. While reproducing a simulation will capture metrics
-for both reproducibility and auditability.
+The HemeWeb development will take most of the time during the project
+execution period. It will consists of preparation for HemeWEb and the
+development itself. For the preparation, I have allotted a considerable
+duration to make sure I get it right. The preparation involve mostly
+about configuring HemeLB core clusters that will be used by HemeWeb.
+Then, HemeWeb will be developed after the preparation is done. I will
+divide the HemeWeb development time into 3 possible iterations which
+reflects a deliverable prototype at each steps. The first one focus on
+the HemeLB simulation part, second on geometry generation, and lastly
+the post-processing or domain definition step. I will make sure that the
+requirements needed for one iteration are fulfilled correctly before
+moving to the next iteration. This way, working prototype is guaranteed
+at every phase of the HemeWeb development.
+
+On the last few weeks of the project period, I will devise and run a
+user testings. I have to choose appropriate method to measure success.
+For this, I will follow DECIDE framework outlined in the Interaction
+Design book {[}36{]}. To measure this criteria, I will measure success
+rate, time needed, error rate, and user's satisfaction on doing tasks.
+Users testing at the evaluation period will measure these metrics. I
+will ask testers to do two task; to run and reproduce a simulation using
+both old and new approach. Running a simulation will capture usability
+metrics for both approach. While reproducing a simulation will capture
+metrics for both reproducibility and auditability.
 
 I will then observe users doing their tasks. From these observations, I
 can capture the first three metrics. Are they giving up? How long does
@@ -483,7 +490,7 @@ with qualitative questions to probe more about their experience. These
 questions are going to be designed in the evaluation preparation period.
 
 However, this usability test will have some limitations. First, these
-tests will take considerable amount of time, roughly 30 minutes per
+tests will take a considerable amount of time, roughly 30 minutes per
 respondent. To run a simulation, one should go through few steps. And in
 the test, a user will run four simulation in total. Two for each task,
 comparing both approaches. Consequently, this increase of cognitive
@@ -510,8 +517,9 @@ For example, project execution and writing overlap most of the times.
 This is intentional because these tasks can run in parallel and
 independent of each other. With this plan, I have determined that the
 scope of this project is doable in the duration given. Also, I structure
-the project to allow graceful degradation to minimize the risks
-involved.
+the project to make sure that at each iteration, a working prototype
+will always work. This is done to make sure that I always have something
+to show, even if I fail to do some part of the project.
 
 \begin{figure}[H]
 \centering
@@ -528,10 +536,10 @@ involved.
 HemeWeb will be a web application that hides the complexity of running
 HemeLB simulations. Web application will enable users to do HemeLB
 simulation workflow via internet browser. Since internet browser is such
-a standard tools that many people can use, it allow doctors and
-scientists to run simulation without worry of resources needed.
-Furthermore, internet browser allow a single unifying interface compared
-to the current workflow that consists of multiple interface.
+a standard tools that many people can use, it allow domain experts to
+run simulation without worry of resources needed. Furthermore, internet
+browser allow a single unifying interface compared to the current
+workflow that consists of multiple interface.
 
 Besides being a web application, HemeWeb will also use containerization
 technology. Allowing the web app to tie down simulation result with the
@@ -539,9 +547,7 @@ tools used. Having this automatic record will enable interested parties
 to audit and reproduce simulation. Furthermore, using container
 technology will allow HemeWeb to swap tools. Currently, to run
 simulation with different version of the tools, one should reconfigure
-everything. Container technology will allow HemeWeb to swap the tools,
-without reconfiguring the environment. This feature allow users to run
-simulation with different version of tools with minimal configurtions.
+said tools.
 
 In a nutshell, HemeWeb will replace part of HemeLB simulation workflow
 like illustrated in figure 3. The first phase of the development will
@@ -581,11 +587,13 @@ They are:
   \textbf{Orchestrate HemeLB cluster deployment}
 
   Next, I plan to create a deployment script for HemeLB. I have select
-  preliminary tools for deploying the HemeLB image into a cluster.
+  preliminary tools for deploying the HemeLB image into a cluster. These
+  tools are CfnCluster {[}39{]}, Ansible {[}40{]}, and Chef {[}41{]}.
   However, further investigation in the project execution will be
   necessary. These tools will configure the cluster in an automatic
-  fashion so that it is ready for use. I will be able to configure the
-  cluster with a script at the end of this task.
+  fashion so that it is ready for use by the HemeWeb web application.
+  The preliminary design of the cluster's interaction with HemeWeb can
+  be observed in Figure 4.
 \item
   \textbf{Develop HemeWeb to do HemeLB simulation {[}Phase 1{]}}
 
@@ -593,7 +601,7 @@ They are:
   simulations. I will develop the prototype web interface that enable
   user to run simulation. User can upload their input files, wait for
   the simulation to finish, and download the result. In this step, I
-  will have developed a working prototype. This prototype have the
+  will have developed a working prototype. This prototype has the
   smallest scope possible, but still allow simulations to run. The
   system should look like in Figure 4.
 
@@ -609,7 +617,7 @@ They are:
   After finishing with the previous step, I will extend HemeWeb to
   handle more functions. This function is the geometry generation step.
   This step will not result in a different interface for the users, but
-  it will expects different input. After this step is complete, HemeWeb
+  it will expect different input. After this step is complete, HemeWeb
   will now work with extra functionalities. The system should look like
   in Figure 5.
 
@@ -645,11 +653,10 @@ product at each checkpoints. This is to make sure that I always having
 working prototype at each iteration of the software. Preventing the
 chance of having nothing to show at the end of the project. Second, is
 the fact that I have to rely on external parties for evaluation. Part of
-the evaluation of the proposed system will consists of sending out
-questionnaires. I have to make sure that respondents complete the
-questionnaires on time. Thus, I structured the evaluation and the
-development part to run concurrently. Making sure I give enough time for
-respondents and for me to remind them.
+the evaluation of the proposed system will consist of inviting external
+parties to run some tasks. I have to make sure that testers can do the
+test in the allocated period. Scheduling will be a challenge, and
+invitation to do testings should be sent few weeks in advance.
 
 \subsection{VI. Output}\label{vi.-output}
 
@@ -830,6 +837,16 @@ April 13, 2016, from https://www.nngroup.com/articles/usability-metrics/
 {[}38{]} Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb:
 Docker container with HemeLB installed. Retrieved April 11, 2016, from
 https://github.com/mobernabeu/docker-hemelb
+
+{[}39{]} CfnCluster --- CfnCluster 1.2.1. (n.d.). Retrieved April 15,
+2016, from http://cfncluster.readthedocs.org/en/latest/
+
+{[}40{]} Ansible is Simple IT Automation. (n.d.). Retrieved April 15,
+2016, from https://www.ansible.com/
+
+{[}41{]} Chef \textbar{} IT Automation for speed and awesomeness
+\textbar{} Chef. (n.d.). Retrieved April 15, 2016, from
+https://www.chef.io/chef/
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
