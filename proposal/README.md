@@ -359,13 +359,13 @@ This section will elaborate the work plan and risks for the project. The project
 
   3. **Develop HemeWeb to do HemeLB simulation [Phase 1]**
 
-      This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype have the smallest scope possible, but still allow simulations to run.  The system should look like the image below.
+      This is the first step that HemeWeb will be able to run HemeLB simulations. I will develop the prototype web interface that enable user to run simulation. User can upload their input files, wait for the simulation to finish, and download the result.  In this step, I will have developed a working prototype. This prototype have the smallest scope possible, but still allow simulations to run.  The system should look like in Figure 4.
 
       ![Phase 1 of HemeWeb](../resources/images/HemeWeb-phase-1.png "Phase 1 of HemeWeb")
 
   4. **Extends HemeWeb to handle geometry generation step [Phase 2]**
 
-      After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expects different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like the image below.
+      After finishing with the previous step, I will extend HemeWeb to handle more functions. This function is the geometry generation step. This step will not result in a different interface for the users, but it will expects different input. After this step is complete, HemeWeb will now work with extra functionalities. The system should look like in Figure 5.
 
       ![Phase 2 HemeWeb](../resources/images/HemeWeb-phase-2.png "Phase 2 of HemeWeb")
 
