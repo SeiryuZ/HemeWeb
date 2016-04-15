@@ -375,5 +375,6 @@ This project will create two outputs that HemeLB project will use. They are:
 [38] Bernabeu, M. O. (n.d.). GitHub - mobernabeu/docker-hemelb: Docker container with HemeLB installed. Retrieved April 11, 2016, from https://github.com/mobernabeu/docker-hemelb
 
 
+---
 
-
+#### This document is available online at https://github.com/SeiryuZ/HemeWeb/tree/master/proposal
