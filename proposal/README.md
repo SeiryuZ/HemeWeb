@@ -39,7 +39,7 @@ To develop the extension with proper functions, I need to elaborate some informa
 **Current HemeLB Workflow**
 
 
-Figure 1 illustrates the current steps in the HemeLB workflow. I will now ellaborate  processes, resources and interfaces needed for each steps.
+Figure 1 illustrates the current steps in the HemeLB workflow. I will now elaborate  processes, resources and interfaces needed for each steps.
 
 ![Overview of current HemeLB workflow](../resources/images/HemeLB-workflow.png "Overview of HemeLB current workflow")
 
@@ -49,7 +49,7 @@ Figure 1 illustrates the current steps in the HemeLB workflow. I will now ellabo
 vessels they wish to simulate. This step is out of the scope of this
 project but typically involves taking a 2D image of blood vessels or 3D
 CT scan data and constructing its 3D representation in a .stl format.
-This step typically run in a workstation with problem-dependant tools
+This step typically run in a workstation with problem-dependent tools
 and interface.
 
 
@@ -68,7 +68,7 @@ and interface.
 
 5. **Post processing**
 
-  Simulation results from previous steps are encoded in a format that is efficient to wwrite in parallel but is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a VTK format, a de facto standard in computational science, that can be viewed with many tools such as Paraview [10] and VisIt [11]. This process run on workstation with a command line interface.
+  Simulation results from previous steps are encoded in a format that is efficient to write in parallel but is not easily viewed. To view the simulation in a graphical way, further processing is needed. This is where post-processing steps will do its work. This step will convert the files into a VTK format, a de facto standard in computational science, that can be viewed with many tools such as ParaView [10] and VisIt [11]. This process run on workstation with a command line interface.
 
 
 
@@ -100,8 +100,8 @@ Not being prioritized in these facilities create a barrier for HemeLB to
 become more open because reproduction of simulation is non-trivial.
 As iterated on the previous section, HemeLB project have taken the steps
 to address reproducibility of the simulation by manually recording all
-the configurationns, tools version, input files, parameters and result of the
-simulation. Anyone theoritically could request these documentation and
+the configurations, tools version, input files, parameters and result of the
+simulation. Anyone theoretically could request these documentation and
 reproduce the result with the appropriate computing resource.
 However, research facility that will prioritize more important research
 inherently will limit people that want to reproduce the computation
@@ -125,7 +125,7 @@ Cloud computing shares similar vision with the grid computing paradigm, in that 
 computing resources are acquired and delivered are invisible to the
 users, but different on the execution of the business model. It is
 massively scalable, allows abstract encapsulation of computing resources,
-dynamicaly configured and delivered on-demand and most importantly,
+dynamically configured and delivered on-demand and most importantly,
 driven by economies of scale [18]. Since it is driven by economies of
 scale, it is in the interest of cloud providers to provide features
 that users actually need and want to pay for, therefore creating a
@@ -146,7 +146,7 @@ Cloud vendors like Amazon also capitalize on the need for computing
 resources for HPC applications [13].
 Running HPC applications on cloud platforms, while incurring performance
 overhead, can be a viable alternative to supercomputers as shown by
-the nekkloud project [24], NASA HPC Applications [25], and HPC
+the Nekkloud project [24], NASA HPC Applications [25], and HPC
 applications benchmark in cloud case study [26]. Also, part of this project is
 to demonstrate that HemeLB can run acceptably on a cloud platform.
 
@@ -169,7 +169,7 @@ Pros and cons of web application for complex HPC projects are area that are ofte
 Deploying HPC applications is considered as a time-intensive process
 [28]. For example, the ARCHER support team has 36 members [29] to support
 this process. One approach to reduce these problems is software
-containerization.  Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traiditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
+containerization.  Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
 
 
 One of the above projects, Galaxy, support containerization technology for their tools packaging. They used docker, one implementation of linux container software. Galaxy claimed that using docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB.  However, their main contribution to the literature is not on this usage. They focus more on how Galaxy can support reproducible research. Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed.
@@ -226,7 +226,7 @@ This section will elaborate the work plan and risks for the project. The project
 
   HemeWeb will be a web application that hides the complexity of running HemeLB simulations. Web application will enable users to do HemeLB simulation workflow via internet browser. Since internet browser is such a standard tools that many people can use, it allow doctors and scientists to run simulation without worry of resources needed. Furthermore, internet browser allow a single unifying interface compared to the current workflow that consists of multiple interface.
 
-  Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable interested parties to audit and reproduce simulation. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools, without reconfiguring the environment. This feature allow users to run simulation with different version of tools with minimal configurtions.
+  Besides being a web application, HemeWeb will also use containerization technology. Allowing the web app to tie down simulation result with the tools used. Having this automatic record will enable interested parties to audit and reproduce simulation. Furthermore, using container technology will allow HemeWeb to swap tools. Currently, to run simulation with different version of the tools, one should reconfigure everything. Container technology will allow HemeWeb to swap the tools, without reconfiguring the environment. This feature allow users to run simulation with different version of tools with minimal configurations.
 
 
   In a nutshell, HemeWeb will replace part of HemeLB simulation workflow like illustrated in figure 3. The first phase of the development will make sure one of the steps to run simulation can run in the cloud. With more and more integrations, more part of the workflow will run in the cloud. This will pave ways for making the simulation workflow run entirely on the browser. Making it even easier for users to run simulation.
