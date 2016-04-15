@@ -97,7 +97,7 @@ computational research.
 
 
 Not being prioritized in these facilities create a barrier for HemeLB to
-become more trustworthy because reproduction of simulation is non-trivial.
+become more open because reproduction of simulation is non-trivial.
 As iterated on the previous section, HemeLB project have taken the steps
 to address reproducibility of the simulation by manually recording all
 the configurationns, tools version, input files, parameters and result of the
@@ -204,19 +204,19 @@ In measuring these 3 criteria, I will run a usability testing at the evaluation 
 
 ## IV. Methods
 
-  In developing the web application, I need to compare the available technologies. One instance where this choice is important is the choice of containerization technology. Whichever tools I choose, will have to adhere to the criteria set on previous section. Those criteria are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria to select the appropriate tools. These could be developer familiarity, features available, and ease of usage of the tools. Based on these combined criteria, I will then select the final implementation to be used on the project.  To make sure that this choices is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors.
+  In developing the proposed web application, I will need to make comparison the available technologies. For instance, what containerization technology to choose. To choose the appropriate tools, I will have to adhere to the criteria set on previous section. Those are improving usability, reproducibility, and auditability. In addition to that, I will add few other criteria such as developer familiarity, features available, and ease of usage of the tools. Based on these combined criteria, I will finally select the appropriate tools to be used on the project.  To make sure that this choices is appropriate, I have been and will continue to read about the subject. Also, I will discuss the proposed method with my peers and supervisors to gather feedback.
 
-Next, I have to make sure that the methods chosen in measuring success is appropriate. For this, I will follow DECIDE framework outlined in this book [36]. In the previous section, each criteria can be measured by 4 metrics. They are success rate, time needed, error rate, and user's satisfaction on doing tasks. Users testing at the evaluation period will be used to measure these metrics. I will ask users to do two task; to run and reproduce a simulation using both old and new approach. Running a simulation will capture usability metrics for both approach. While reproducing a simulation will capture metrics for both reproducibility and auditability.
+Next, I have to choose appropriate method to measure success. For this, I will follow DECIDE framework outlined in the Interaction Design book [36]. To measure this criteria, I will measure success rate, time needed, error rate, and user's satisfaction on doing tasks. Users testing at the evaluation period will measure these metrics. I will ask testers to do two task; to run and reproduce a simulation using both old and new approach. Running a simulation will capture usability metrics for both approach. While reproducing a simulation will capture metrics for both reproducibility and auditability.
 
 I will then observe users doing their tasks. From these observations, I can capture the first three metrics. Are they giving up? How long does it take to run a simulation using one of the approach? How many times do they ask for help? Did they find out that the past simulation result is faulty? These are the kind of questions that I will capture from the observation. For the last metrics, satisfaction, I will use a semi-structured interview. This is important to first ask their satisfaction level in an objective, numerical, way. And then continue with qualitative questions to probe more about their experience. These questions are going to be designed in the evaluation preparation period.
 
-However, this usability test will have some limitations. First, these tests will take considerable amount of time, roughly 30 minutes per respondent. To run a simulation, one should go through few steps. And in the test, a user will run four simulation in total. Two for each task, comparing both approaches. Consequently, this increase of cognitive burden may influence the test results to some extends. To minimize this risk, I have to make sure that the tasks are one of the simplest one. Making it less demanding for the users to run a task. However, running these tasks will still need considerable duration. Second limitation is the limited number of users involved in the tests. With the long required durations, the number of tests to be done will be limited. On top of that, it will be a challenge to ask a lot of doctors and scientists to do the tests. The limited number of test results will only allow the analysis to be an indicative measure of how HemeWeb improve usability, reproducibility, and auditability.
+However, this usability test will have some limitations. First, these tests will take considerable amount of time, roughly 30 minutes per respondent. To run a simulation, one should go through few steps. And in the test, a user will run four simulation in total. Two for each task, comparing both approaches. Consequently, this increase of cognitive burden may influence the test results to some extends. To minimize this risk, I have to make sure that the tasks are one of the simplest one. Making it less demanding for the users to run a task. However, running these tasks will still need considerable duration that cannot be considered as short. Second limitation is the limited number of users involved in the tests. With the long required durations, the number of tests to be done will be limited. On top of that, it will be a challenge to ask a lot of doctors and scientists to do the tests. The limited number of test results will only allow the analysis to be an indicative measure of how HemeWeb improve usability, reproducibility, and auditability.
 
 
 
 ## V. Implementation
 
-This section will elaborate the work plan and risks for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and many tasks to do. For example, project execution and evaluation will overlap from middle of July. This is intentional because these tasks can run in parallel. With this plan, I have determined that the scope of this project is doable in the duration given. Especially when I structure the project to allow graceful degradation.
+This section will elaborate the work plan and risks for the project. The project period starts from 2nd of June 2016 to 19th August 2016. In this period, I will work on 4 major tasks. They are the project preparation, execution, evaluation and dissertation writing. Each of these tasks can overlap with each other because of the limited time and number of tasks. For example, project execution and writing overlap most of the times. This is intentional because these tasks can run in parallel and independent of each other. With this plan, I have determined that the scope of this project is doable in the duration given. Also, I structure the project to allow graceful degradation to minimize the risks involved.
 
 
 
@@ -285,16 +285,11 @@ This project will create two outputs that HemeLB project will use. They are:
 
 1. Working HemeWeb prototype
 
-    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application just fine. With each iteration, I will add more functions to the prototype. The next section, work plan, will add more details on how I will develop the prototype.
+    I will develop the prototype in three phases, divided based on the functionalities. In each phase, the prototype will work as a standalone application web application. With each iteration, I will add more functions to the prototype, hiding even more complexity from the users.
 
 2. HemeWeb usability guideline
 
-    In the future, HemeWeb can be the interface for doctors to run simulations. This means that HemeWeb will need further improvement to be ready for general use. Future development can use the work done in this project as a basis for usability feature. Thus, I will create a usability document derived from the analysis done in this project.
-
-
-
-
-
+    In the future, HemeWeb may be the interface for doctors to run HemeLB simulations. Future development can use the work done in this project as a basis for usability feature development. I will create a usability document derived from the analysis done in this project.
 
 
 
