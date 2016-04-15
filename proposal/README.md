@@ -202,8 +202,8 @@ In measuring these 3 criteria, I will run a usability testing at the evaluation 
 
 The HemeWeb development will take most of the time during the project
 execution period. It will consists of preparation for HemeWEb
-development and the devlopment itself. For the preparation, I have
-alloted a considerable duration to make sure I get it right. The preparation involve mostly about configuring HemeLB core clusters that will be used by HemeWeb. Then, HemeWeb will be developed after the preparation is done. I will divide the HemeWeb development time
+ and the development itself. For the preparation, I have
+allotted a considerable duration to make sure I get it right. The preparation involve mostly about configuring HemeLB core clusters that will be used by HemeWeb. Then, HemeWeb will be developed after the preparation is done. I will divide the HemeWeb development time
 into 3 possible iterations which reflects a deliverable prototype at
 each steps. The first one focus on the HemeLB simulation part, second on
 geometry generation, and lastly the post-processing or domain definition
