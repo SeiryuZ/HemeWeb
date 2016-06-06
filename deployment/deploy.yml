@@ -77,7 +77,7 @@
     # Prepare the necessary files
     ######################################################
     - name: Copy HemeLB test files
-      copy: src={{ item.name }} dest=/shared/{{ item.name }} force=no
+      copy: src=test_data/{{ item.name }} dest=/shared/{{ item.name }} force=no
       with_items:
         - name: input.xml
         - name: 990_Example2-skeleton_corrected_tubed_smoothed.gmy
