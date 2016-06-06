@@ -1,2 +1,2 @@
-DOCKER_OPTS="-H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock   --cluster-advertise eth0:2375 --cluster-store consul://{{ hostvars[groups['hemelb-master'][0]]['ansible_eth0']['ipv4']['address'] }}:8500"
+DOCKER_OPTS="-H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock   --cluster-advertise eth1:2375 --cluster-store consul://{{ hostvars[groups['hemelb-master'][0]]['ansible_eth1']['ipv4']['address'] }}:8500"
 
