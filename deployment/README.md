@@ -18,7 +18,8 @@ sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible
 # Update the hostsfile before running this command
 # All the hosts need to be connected by private networking options,
 # or OpenMPI will complain
-.....
+vim hostsfile
+
 
 # Deploy
 export ANSIBLE_HOST_KEY_CHECKING=False; ansible-playbook -i hostsfile deploy.yml
