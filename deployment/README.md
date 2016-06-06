@@ -9,6 +9,12 @@ This is an ansible deployment script for the HemeWeb architecture.
 How to use
 
 ```bash
+
+    # install ansible on OS X
+    # see http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip
+    sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible
+
+
     # Update the hostsfile before running this command
     # All the hosts need to be connected by private networking options,
     # or OpenMPI will complain
