@@ -1,0 +1,9 @@
+{% for host in groups['hemelb-cores'] %}
+Host hemelb-node-{{ loop.index }}
+  port 24
+  IdentityFile ~/.ssh/container_key
+{% endfor %}
+
+Host *
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null

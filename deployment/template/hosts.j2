@@ -1,0 +1,11 @@
+# {{ ansible_managed }}
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+
+{{ hostvars[groups['hemelb-master'][0]]['ansible_eth1']['ipv4']['address'] }}  master
+
+{% for host in groups['hemelb-cores'] %}
+ {{ hostvars[host]['ansible_eth1']['ipv4']['address'] }} hemelb-node-{{ loop.index }}
+{% endfor %}
+
