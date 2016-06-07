@@ -6,12 +6,15 @@
     ######################################################
     # Configure SSH keys
     ######################################################
-    - name: copy hosts private key
+    - name: Copy hosts private key
       copy: src=keys/insecure_key dest=/root/.ssh/id_rsa force=yes mode=0600
-    - name: copy containers private key
+
+    - name: Copy containers private key
       copy: src=keys/container_key dest=/root/.ssh/container_key force=yes mode=0600
-    - name: copy insecure key pub to authorized key
+
+    - name: Copy insecure key pub to authorized key
       authorized_key: user=root key={{ lookup('file', 'keys/insecure_key.pub') }}
+
     - name: Configure SSH hosts config
       template: src=template/ssh_config.j2 dest=~/.ssh/config
 
@@ -24,11 +27,14 @@
       with_items:
         - name: "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe"
         - name: "deb http://us.archive.ubuntu.com/ubuntu/ trusty multiverse"
+
     - name: Add docker keyserver
       command: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+
     - name: Add docker repository to apt
       shell: sh -c "echo 'deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -sc) main' | cat > /etc/apt/sources.list.d/docker.list"
-    - name: update apt cache
+
+    - name: Update apt cache
       apt: update_cache=yes
 
 
@@ -39,7 +45,7 @@
       apt: name=linux-image-generic-lts-vivid
       register: kernel_install
 
-    - name: restart machine
+    - name: Restart all nodes
       shell: sleep 2 && shutdown -r now "Ansible updates triggered"
       async: 1
       poll: 0
@@ -47,7 +53,7 @@
       become: true
       when: kernel_install.changed
 
-    - name: waiting for server to come back
+    - name: Waiting for all nodes to come back
       local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=5 timeout=300
       become: false
       when: kernel_install.changed
@@ -56,12 +62,16 @@
     ######################################################
     # Install softwares
     ######################################################
-    - name: install needed software
+    - name: Install needed software
       apt: name={{ item.name }} state=latest
       with_items:
         - name: python
         - name: openmpi-bin
         - name: docker-engine
+
+    - name: Upgrade packages
+      apt: upgrade=yes
+
     - name: Create shared folder
       file: path=/shared state=directory
 
@@ -114,6 +124,7 @@
     - name: Run consul docker container
       command: docker run -d -p "8500:8500" -h "consul" progrium/consul -server -bootstrap
       ignore_errors: true
+
     - name: Check consul is running
       command: docker ps -q
       register: consul_result
@@ -134,12 +145,15 @@
     - name: Configure docker daemon options
       template: src=template/docker.conf.j2 dest=/etc/default/docker
       register: docker_configuration
-    - name: restart docker
+
+    - name: Restart docker
       service: name=docker state=restarted
       when: docker_configuration.changed
+
     - name: Create hemelb network overlay for containers
       command: docker network create -d overlay hemelb-overlay
       ignore_errors: true
+
     - name: Check if network overlay is created
       command: docker network ls
       register: docker_network_result
@@ -151,8 +165,9 @@
     ######################################################
     - name: Install NFS client
       apt: name=nfs-common state=latest
+
     - name: Mount NFS for shared volume
-      shell: mount {{ master_ip }}:/shared /shared
+      mount: name=/shared src={{ master_ip }}:/shared fstype=nfs state=mounted
       ignore_errors: true
 
 
@@ -161,12 +176,15 @@
     ######################################################
     - name: Pull HemeLB core image
       command: docker pull seiryuz/hemelb-core:0.0.1
+
     - name: Check running docker container
       command: docker ps -q
       register: docker_result
+
     - name: Stop running docker container
       command: docker stop {{ docker_result.stdout }}
       when: docker_result.stdout != ""
+
     - name: Run HemeLB core container
       command: docker run -p 24:22 -d --net=hemelb-overlay -v /shared:/shared -v /root/.ssh/config:/root/.ssh/config -v /root/.ssh/container_key:/root/.ssh/container_key seiryuz/hemelb-core:0.0.1
 
