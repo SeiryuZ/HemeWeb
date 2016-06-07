@@ -18,11 +18,16 @@ CMD ["/sbin/my_init"]
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty universe" && \
-    add-apt-repository "deb http://us.archive.ubuntu.com/ubuntu/ trusty multiverse" && \
     apt-get update
 
 # CppUnit fails to compile if downloaded by HemeLB's CMake, install it system-wide
-RUN apt-get install -y git cmake libcppunit-dev libcgal-dev libvtk5-dev python-vtk vmtk python-wxtools python-wxversion swig openmpi-bin libctemplate-dev
+RUN apt-get install -y \
+  git \
+  cmake \
+  libcppunit-dev \
+  build-essential \
+  libopenmpi-dev \
+  openmpi-bin
 
 ##
 # Download and install HemeLB
@@ -36,6 +41,8 @@ RUN mkdir hemelb/build && \
 
 VOLUME /data
 
+
+# Enable SSH
 RUN rm -f /etc/service/sshd/down
 
 # Regenerate SSH host keys. baseimage-docker does not contain any, so you
@@ -51,6 +58,13 @@ RUN /usr/sbin/enable_insecure_key
 # Set root password
 RUN echo "root:Docker!" | chpasswd
 
+# Clean up packages
+RUN apt-get purge -y \
+  git \
+  build-essential \
+  cmake \
+  libopenmpi-dev \
+  libcppunit-dev
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
