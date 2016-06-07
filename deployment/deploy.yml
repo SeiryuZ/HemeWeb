@@ -5,11 +5,11 @@
     # Configure SSH keys
     ######################################################
     - name: copy hosts private key
-      copy: src=insecure_key dest=/root/.ssh/id_rsa force=yes mode=0600
+      copy: src=keys/insecure_key dest=/root/.ssh/id_rsa force=yes mode=0600
     - name: copy containers private key
-      copy: src=container_key dest=/root/.ssh/container_key force=yes mode=0600
+      copy: src=keys/container_key dest=/root/.ssh/container_key force=yes mode=0600
     - name: copy insecure key pub to authorized key
-      authorized_key: user=root key={{ lookup('file', 'insecure_key.pub') }}
+      authorized_key: user=root key={{ lookup('file', 'keys/insecure_key.pub') }}
     - name: Configure SSH hosts config
       template: src=template/ssh_config.j2 dest=~/.ssh/config
 
