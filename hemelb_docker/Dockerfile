@@ -1,3 +1,8 @@
+# Taken from Miguels docker file for the docker-hemelb vnc
+# https://github.com/mobernabeu/docker-hemelb/blob/master/Dockerfile
+
+
+
 # Use phusion/baseimage as base image. See
 # http://phusion.github.io/baseimage-docker/
 FROM phusion/baseimage:0.9.18
@@ -7,8 +12,7 @@ CMD ["/sbin/my_init"]
 
 # ...put your own build instructions here...
 
-# Taken from Miguels docker file for the docker-hemelb vnc
-# https://github.com/mobernabeu/docker-hemelb/blob/master/Dockerfile
+
 
 
 ##
@@ -27,6 +31,7 @@ RUN apt-get install -y \
   libcppunit-dev \
   build-essential \
   libopenmpi-dev \
+  libctemplate-dev \
   openmpi-bin
 
 ##
@@ -58,12 +63,11 @@ RUN /usr/sbin/enable_insecure_key
 # Set root password
 RUN echo "root:Docker!" | chpasswd
 
-# Clean up packages
+# Clean up packages, except libctemplate-dev and openmpi-bin
 RUN apt-get purge -y \
   git \
   build-essential \
   cmake \
-  libopenmpi-dev \
   libcppunit-dev
 
 # Clean up APT when done.
