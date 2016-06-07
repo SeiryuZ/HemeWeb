@@ -1,6 +1,8 @@
 ---
 - hosts: all
   tasks:
+
+
     ######################################################
     # Configure SSH keys
     ######################################################
@@ -12,6 +14,7 @@
       authorized_key: user=root key={{ lookup('file', 'keys/insecure_key.pub') }}
     - name: Configure SSH hosts config
       template: src=template/ssh_config.j2 dest=~/.ssh/config
+
 
     ######################################################
     # Configure APT repositories
@@ -45,7 +48,7 @@
       when: kernel_install.changed
 
     - name: waiting for server to come back
-      local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=5 timeout=100
+      local_action: wait_for host={{ inventory_hostname }} port=22 state=started delay=5 timeout=300
       become: false
       when: kernel_install.changed
 
@@ -58,10 +61,10 @@
       with_items:
         - name: python
         - name: openmpi-bin
-        - name: sshfs
         - name: docker-engine
     - name: Create shared folder
       file: path=/shared state=directory
+
 
     ######################################################
     # Update /etc/hosts file
@@ -71,10 +74,32 @@
       template: src=template/hosts.j2 dest=/etc/hosts
 
 
+
 - hosts: hemelb-master
   tasks:
+
+
     ######################################################
-    # Prepare the necessary files
+    # Prepare shared directory
+    ######################################################
+    - name: Install NFS Server
+      apt: name=nfs-kernel-server state=latest
+
+    - name: Configure NFS server to accept mount from our nodes
+      template: src=template/exports.j2 dest=/etc/exports force=yes
+      register: nfs_configuration
+
+    - name: Export NFS Table
+      command: exportfs -a
+      when: nfs_configuration.changed
+
+    - name: Restart NFS server
+      service: name=nfs-kernel-server state=restarted
+      when: nfs_configuration.changed
+
+
+    ######################################################
+    # Prepare HemeLB files to run
     ######################################################
     - name: Copy HemeLB test files
       copy: src=test_data/{{ item.name }} dest=/shared/{{ item.name }} force=no
@@ -101,16 +126,17 @@
     master_ip: "{{ hostvars[groups['hemelb-master'][0]]['ansible_eth1']['ipv4']['address'] }}"
   tasks:
 
+
     ######################################################
     # Configure docker daemon on each node to point to
     # consul service on manager node
     ######################################################
     - name: Configure docker daemon options
       template: src=template/docker.conf.j2 dest=/etc/default/docker
-      register: docker_configuration_result
+      register: docker_configuration
     - name: restart docker
       service: name=docker state=restarted
-      when: docker_configuration_result.changed
+      when: docker_configuration.changed
     - name: Create hemelb network overlay for containers
       command: docker network create -d overlay hemelb-overlay
       ignore_errors: true
@@ -120,12 +146,13 @@
       failed_when: "'hemelb-overlay' not in docker_network_result.stdout"
 
 
-
     ######################################################
-    # Configure each node to mount the SSHFS volume
+    # Configure each node to mount the NFS volume
     ######################################################
-    - name: Mount sshfs
-      shell: sshfs -o allow_other -o reconnect root@{{ master_ip }}:/shared /shared
+    - name: Install NFS client
+      apt: name=nfs-common state=latest
+    - name: Mount NFS for shared volume
+      shell: mount {{ master_ip }}:/shared /shared
       ignore_errors: true
 
 
@@ -143,56 +170,3 @@
     - name: Run HemeLB core container
       command: docker run -p 24:22 -d --net=hemelb-overlay -v /shared:/shared -v /root/.ssh/config:/root/.ssh/config -v /root/.ssh/container_key:/root/.ssh/container_key seiryuz/hemelb-core:0.0.1
 
-
-
-
-    #- name: Prepare sources folder
-      #file: path=/sources state=directory
-    #- name: Clone hemelb
-      #git: repo=https://github.com/UCL/hemelb.git dest=/sources/hemelb
-    #- name: Create hemelb build folder
-      #file: path=/sources/hemelb/build state=directory
-    #- name: Cmake
-      #command: cmake -DHEMELB_STEERING_LIB=none -DHEMELB_USE_SSE3=ON ../
-      #args:
-        #chdir: /sources/hemelb/build
-    #- name: make
-      #command: make
-      #args:
-        #chdir: /sources/hemelb/build
-
-    #- name: Get master keyscan for ssh/known_hosts
-      #shell: ssh-keyscan {{ master_ip }}
-      #register: ssh_key_master
-    #- name: Add master to ssh/known_hosts
-      #known_hosts: path="~/.ssh/known_hosts"
-                   #name="{{ master_ip }}"
-                   #key="{{ ssh_key_master.stdout }}"
-
-    # TODO: we need something to create user with appropriate permission
-    #- name: Create appropriate user
-      #user: name=hemelb comment="HemeLB user" state=present
-      #
-      #
-    #- name: Prepare sources folder
-      #file: path=/sources state=directory
-    #- name: Clone hemelb
-      #git: repo=https://github.com/UCL/hemelb.git dest=/sources/hemelb
-    #- name: Create hemelb build folder
-      #file: path=/sources/hemelb/build state=directory
-    #- name: Cmake
-      #command: cmake -DHEMELB_STEERING_LIB=none -DHEMELB_USE_SSE3=ON ../
-      #args:
-        #chdir: /sources/hemelb/build
-    #- name: make
-      #command: make
-      #args:
-        #chdir: /sources/hemelb/build
-
-#- host: all
-  #tasks:
-# We need something to distribute the ssh keys of the master core
-#- hosts: hemelb-master
-  #tasks:
-    #- name: copy private key
-      #copy src=/Users/steven/.ssh/id_rsa dest=/root/.ssh/id_rsa force=no
