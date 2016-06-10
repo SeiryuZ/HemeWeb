@@ -12,3 +12,6 @@ cryptography==1.4
 # Jinja2 packaged with ansible is broken, markupsafe is not included
 markupsafe==0.23
 
+# Setup tools packaged with ansible is also broken
+distribute==0.7.3
+

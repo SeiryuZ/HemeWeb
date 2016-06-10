@@ -1,22 +1,30 @@
 ---
 - hosts: all
+  become: true  # allow priviledge escalation
   tasks:
+
+    - debug: var=manager_hosts_ip
+    - fail:
 
 
     ######################################################
     # Configure SSH keys
     ######################################################
     - name: Copy hosts private key
-      copy: src=keys/insecure_key dest=/root/.ssh/id_rsa force=yes mode=0600
+      copy: src=keys/insecure_key dest=~/.ssh/id_rsa force=yes mode=0600
+      become: false
 
     - name: Copy containers private key
-      copy: src=keys/container_key dest=/root/.ssh/container_key force=yes mode=0600
+      copy: src=keys/container_key dest=~/.ssh/container_key force=yes mode=0600
+      become: false
 
     - name: Copy insecure key pub to authorized key
-      authorized_key: user=root key={{ lookup('file', 'keys/insecure_key.pub') }}
+      authorized_key: user={{ ansible_user_id }} key={{ lookup('file', 'keys/insecure_key.pub') }}
+      become: false
 
     - name: Configure SSH hosts config
-      template: src=template/ssh_config.j2 dest=~/.ssh/config
+      become: false
+      template: src=template/ssh_config.j2 dest=~/.ssh/config force=yes
 
 
     ######################################################
@@ -50,7 +58,6 @@
       async: 1
       poll: 0
       ignore_errors: true
-      become: true
       when: kernel_install.changed
 
     - name: Waiting for all nodes to come back
@@ -68,15 +75,12 @@
         - name: python
         - name: openmpi-bin
         - name: docker-engine
-      become: true
 
     - name: Upgrade packages
       apt: upgrade=yes
-      become: true
 
     - name: Create shared folder
       file: path=/shared state=directory
-      become: true
 
 
     ######################################################
@@ -88,7 +92,8 @@
 
 
 
-- hosts: hemelb-master
+- hosts: "{{ manager_hosts_group  }}"
+  become: true
   tasks:
 
 
@@ -135,9 +140,10 @@
 
 
 
-- hosts: hemelb-cores
+- hosts: "{{ worker_hosts_group }}"
+  become: true
   vars:
-    master_ip: "{{ hostvars[groups['hemelb-master'][0]]['ansible_eth1']['ipv4']['address'] }}"
+    master_ip: "{{ hostvars[groups[master_hosts_group][0]][ preferred_ansible_interface ]['address'] }}"
   tasks:
 
 

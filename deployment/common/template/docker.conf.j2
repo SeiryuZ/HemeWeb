@@ -1,0 +1,2 @@
+DOCKER_OPTS="-H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock   --cluster-advertise {{ preferred_network_interface }}:2375 --cluster-store consul://{{ hostvars[groups[ master_hosts_group ][0]][ preferred_ansible_interface ]['address'] }}:8500"
+

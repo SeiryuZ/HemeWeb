@@ -21,6 +21,8 @@ mkvirtualenv hemeweb_deploy
 pip install -r requirements.txt
 
 
+
+# This if for manual stuff
 # Update the hostsfile before running this command
 # All the hosts need to be connected by private networking options,
 # or OpenMPI will complain

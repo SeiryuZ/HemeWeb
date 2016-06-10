@@ -1,0 +1,43 @@
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    - master_node_count: 1
+    - worker_node_count: 2
+    - master_instance_type: m4.large
+    - worker_instance_type: m4.xlarge
+
+  tasks:
+
+    - name: Provision master node
+      ec2:
+        region: eu-west-1
+        image: ami-f95ef58a
+        instance_type: "{{ master_instance_type }}"
+        key_name: hemeweb
+        groups:
+          - default
+          - ssh
+        wait: true
+        count_tag:
+          name: master
+        exact_count: "{{ master_node_count }}"
+        instance_tags:
+          name: master
+
+    - name: Provision worker nodes
+      ec2:
+        region: eu-west-1
+        image: ami-f95ef58a
+        instance_type: "{{ worker_instance_type }}"
+        key_name: hemeweb
+        groups:
+          - default
+          - ssh
+        wait: true
+        count_tag:
+          name: worker
+        exact_count: "{{ worker_node_count }}"
+        instance_tags:
+          name: worker
