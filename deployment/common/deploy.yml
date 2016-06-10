@@ -3,8 +3,8 @@
   become: true  # allow priviledge escalation
   tasks:
 
-    - debug: var=manager_hosts_ip
-    - fail:
+    #- debug: var=ansible_ssh_user
+    #- fail:
 
 
     ######################################################
@@ -19,8 +19,8 @@
       become: false
 
     - name: Copy insecure key pub to authorized key
-      authorized_key: user={{ ansible_user_id }} key={{ lookup('file', 'keys/insecure_key.pub') }}
       become: false
+      authorized_key: user={{ ansible_ssh_user }} key={{ lookup('file', 'keys/insecure_key.pub') }}
 
     - name: Configure SSH hosts config
       become: false
@@ -92,7 +92,7 @@
 
 
 
-- hosts: "{{ manager_hosts_group  }}"
+- hosts: "{{ master_hosts_group  }}"
   become: true
   tasks:
 

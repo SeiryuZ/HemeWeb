@@ -4,6 +4,7 @@ ansible==2.1.0.0
 
 # If we use AWS we need boto
 boto==2.39.0
+dopy==0.3.6
 
 
 # To speed up crytographic tools
