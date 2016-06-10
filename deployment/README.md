@@ -10,9 +10,15 @@ How to use
 
 ```bash
 
-# install ansible on OS X
-# see http://docs.ansible.com/ansible/intro_installation.html#latest-releases-via-pip
-sudo CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments pip install ansible
+# Install required openssl on your system
+
+
+# Make virtual env for the development environment (optional)
+mkvirtualenv hemeweb_deploy
+
+
+# Install all the needed tools for deployment
+pip install -r requirements.txt
 
 
 # Update the hostsfile before running this command

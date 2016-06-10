@@ -1,0 +1,14 @@
+# Deployment package
+ansible==2.1.0.0
+
+
+# If we use AWS we need boto
+boto==2.39.0
+
+
+# To speed up crytographic tools
+cryptography==1.4
+
+# Jinja2 packaged with ansible is broken, markupsafe is not included
+markupsafe==0.23
+
