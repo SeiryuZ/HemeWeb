@@ -1,8 +1,0 @@
-[hemelb-master]
-188.166.151.128 ansible_user=root
-
-[hemelb-cores]
-188.166.170.26    ansible_user=root
-188.166.173.24    ansible_user=root
-188.166.173.44  ansible_user=root
-188.166.173.63  ansible_user=root
