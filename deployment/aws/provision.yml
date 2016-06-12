@@ -10,6 +10,28 @@
 
   tasks:
 
+    - name: Create ssh security group
+      ec2_group:
+        name: ssh
+        description: HemeWeb - Security group that allow SSH from public IP
+        region: eu-west-1
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+
+    - name: Create web security group
+      ec2_group:
+        name: web
+        description: HemeWeb - Security group that allow web traffic
+        region: eu-west-1
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+
     - name: Provision master node
       ec2:
         region: eu-west-1
@@ -19,6 +41,7 @@
         groups:
           - default
           - ssh
+          - web
         wait: true
         count_tag:
           name: master
