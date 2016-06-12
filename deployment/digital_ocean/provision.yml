@@ -3,43 +3,54 @@
   connection: local
   gather_facts: false
   vars:
-    - master_node_count: 1
-    - worker_node_count: 2
-    - master_instance_type: m4.large
-    - worker_instance_type: m4.xlarge
+    - image_slug: ubuntu-14-04-x64
+    - droplet_size: 8gb
+    - region_id: lon1
+    - ssh_key_id:  1732394 # Enter your ssh key id from digital ocean API
+
 
   tasks:
 
     - name: Provision master node
       digital_ocean:
+        id: 9999
         name: master
+        unique_name: true
         state: present
         command: droplet
-        size_id: 8gb
-        region_id: lon1
-        image_id: ubuntu-14.04.4-x64
+        size_id: "{{ droplet_size }}"
+        region_id: "{{ region_id }}"
+        image_id: "{{ image_slug }}"
         private_networking: yes
-        wait_timeout: 300
+        wait: false
+        ssh_key_ids: "{{ ssh_key_id }}"
+
 
     # TODO: Loop these
     - name: Provision worker nodes
       digital_ocean:
         id: 1
+        name: worker1
+        unique_name: true
         state: present
         command: droplet
-        size_id: 8gb
-        region_id: lon1
-        image_id: ubuntu-14.04.4-x64
+        region_id: "{{ region_id }}"
+        size_id: "{{ droplet_size }}"
+        image_id: "{{ image_slug }}"
         private_networking: yes
-        wait_timeout: 300
+        wait: false
+        ssh_key_ids: "{{ ssh_key_id }}"
 
     - name: Provision worker nodes
       digital_ocean:
         id: 2
+        name: worker2
+        unique_name: true
         state: present
         command: droplet
-        size_id: 8gb
-        region_id: lon1
-        image_id: ubuntu-14.04.4-x64
+        region_id: "{{ region_id }}"
+        size_id: "{{ droplet_size }}"
+        image_id: "{{ image_slug }}"
         private_networking: yes
-        wait_timeout: 300
+        wait: false
+        ssh_key_ids: "{{ ssh_key_id }}"
