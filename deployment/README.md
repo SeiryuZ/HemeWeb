@@ -7,5 +7,7 @@ This is an ansible deployment script for the HemeWeb architecture.
 
 
 aws - AWS specific deployment scripts
+
 common - Deployment scripts common to all providers
+
 digital_ocean - Digital Ocean specific scripts
