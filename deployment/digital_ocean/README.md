@@ -4,6 +4,7 @@ specific for Digital Ocean.
 
 
 
+
 How to use
 
 ```bash
@@ -16,20 +17,27 @@ export DO_API_TOKEN=<put access key>
 export ANSIBLE_HOST_KEY_CHECKING=False
 
 
-# Provision EC2 instances
+# Provision droplet instances
 ansible-playbook provision.yml
 
 
 # You can dynamically query hostfile with this script
-./ec2.py --list
+./digital_ocean.py --list
+
+
+# However, because we cannot put tags on the droplets, we have to do
+# some post processing to the dynamic query script
+./hemeweb_digital_ocean.py
+
+# Script above will update / create hosts file to use for our deployment
 
 
 # Configure all instances
-ansible-playbook -i ./ec2.py --private-key=<path to private key>  -u ubuntu deploy.yml
+ansible-playbook -i hostsfile  deploy.yml
 
 
 # SSH to manager node
-ssh -i <path to private key> ubuntu@<public-dns-ip-of-manager-node>
+ssh root@<ip of master>
 
 
 # run HemeLB

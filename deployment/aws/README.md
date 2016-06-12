@@ -30,7 +30,7 @@ ansible-playbook -i ./ec2.py --private-key=<path to private key>  -u ubuntu depl
 
 
 # SSH to manager node
-ssh -i <path to private key> ubuntu@<public-dns-ip-of-manager-node>
+ssh -i <path to private key> ubuntu@<public-dns-ip-of-master-node>
 
 
 # run HemeLB
