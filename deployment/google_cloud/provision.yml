@@ -27,7 +27,7 @@
 
     - name: Provision worker nodes
       gce:
-        image: "{{ image }}"
+        image: "hemeweb-worker-node"
         machine_type: "{{ worker_instance_type }}"
         instance_names: worker1,worker2
         project_id: "{{ hemeweb_project_id  }}"
