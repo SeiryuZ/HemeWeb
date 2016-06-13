@@ -4,7 +4,12 @@ ansible==2.1.0.0
 
 # If we use AWS we need boto
 boto==2.39.0
+
+# Digital Ocean
 dopy==0.3.6
+
+# Google Cloud
+apache-libcloud==0.20.1
 
 
 # To speed up crytographic tools

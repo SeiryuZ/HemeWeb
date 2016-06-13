@@ -18,7 +18,7 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 
 
 # Provision EC2 instances
-ansible-playbook provision.aws.yml
+ansible-playbook provision.yml
 
 
 # You can dynamically query hostfile with this script
@@ -29,7 +29,7 @@ ansible-playbook provision.aws.yml
 ansible-playbook -i ./ec2.py --private-key=<path to private key>  -u ubuntu deploy.yml
 
 
-# SSH to manager node
+# SSH to master node
 ssh -i <path to private key> ubuntu@<public-dns-ip-of-master-node>
 
 

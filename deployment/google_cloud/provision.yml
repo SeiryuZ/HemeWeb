@@ -1,0 +1,38 @@
+
+- hosts: localhost
+  connection: local
+  gather_facts: false
+  vars:
+    - hemeweb_project_id: 127280593056
+    - image: "ubuntu-1404-trusty-v20160610"  # https://console.cloud.google.com/compute/images?_ga=1.221098584.1390118076.1465823354&project=hemeweb&filter=name:ubuntu*
+    - region: "europe-west1-b"
+    - master_node_count: 1
+    - worker_node_count: 2
+    # https://cloud.google.com/compute/docs/machine-types#standard_machine_types
+    - master_instance_type: n1-standard-1
+    - worker_instance_type: n1-standard-2
+
+  tasks:
+
+
+    - name: Provision master node
+      gce:
+        image: "{{ image }}"
+        machine_type: "{{ master_instance_type }}"
+        instance_names: master
+        project_id: "{{ hemeweb_project_id  }}"
+        state: active
+        tags: master
+        zone: "{{ region }}"
+
+    - name: Provision worker nodes
+      gce:
+        image: "{{ image }}"
+        machine_type: "{{ worker_instance_type }}"
+        instance_names: worker1,worker2
+        project_id: "{{ hemeweb_project_id  }}"
+        state: active
+        tags: workers
+        zone: "{{ region }}"
+
+

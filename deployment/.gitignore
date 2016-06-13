@@ -1,2 +1,4 @@
 *hostsfile*
 *.retry
+
+*/secrets.py*

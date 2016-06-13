@@ -1,0 +1,9 @@
+---
+
+- include: ../common/deploy.yml
+  vars:
+    master_hosts_group: "tag_master"
+    worker_hosts_group: "tag_workers"
+    preferred_network_interface: "eth0"
+    preferred_ansible_interface: "ansible_default_ipv4"
+

@@ -36,7 +36,7 @@ ansible-playbook provision.yml
 ansible-playbook -i hostsfile  deploy.yml
 
 
-# SSH to manager node
+# SSH to master node
 ssh root@<ip of master>
 
 
