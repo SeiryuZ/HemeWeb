@@ -12,4 +12,9 @@
 
 - name: Install nginx
   apt: name=nginx state=latest
+  register: install_result
+
+- name: Restart nginx
+  service: name=nginx state=restarted
+  when: install_result.changed
 
