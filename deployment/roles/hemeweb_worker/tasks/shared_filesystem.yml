@@ -1,0 +1,30 @@
+#
+# Configure shared file system for master node
+# This part should be swappable
+#
+
+---
+
+############
+#   NFS    #
+############
+
+- name: Install NFS client
+  apt: name=nfs-common state=latest
+
+- name: Mount NFS for shared volume
+  mount: name=/shared src={{ master_ip }}:/shared fstype=nfs state=mounted
+  ignore_errors: true
+
+
+
+
+############
+#  SSHFS   #
+############
+
+
+# - name: Mount sshfs
+#   shell: sshfs -o allow_other -o reconnect root@{{ master_ip }}:/shared /shared
+#   ignore_errors: true
+

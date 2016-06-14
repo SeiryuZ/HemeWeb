@@ -1,0 +1,26 @@
+#
+# Configuration specific for hemeweb master node
+#
+
+---
+
+- include: shared_filesystem.yml
+- include: docker.yml
+
+######################################################
+# Run HemeLB container on each node
+######################################################
+- name: Pull HemeLB core image
+  command: docker pull seiryuz/hemelb-core:0.0.1
+
+- name: Check running docker container
+  command: docker ps -q
+  register: docker_result
+
+- name: Stop running docker container
+  command: docker stop {{ docker_result.stdout }}
+  when: docker_result.stdout != ""
+
+- name: Run HemeLB core container
+  command: docker run -p 24:22 -d --net=hemelb-overlay -v /shared:/shared -v /root/.ssh/config:/root/.ssh/config -v /root/.ssh/container_key:/root/.ssh/container_key seiryuz/hemelb-core:0.0.1
+

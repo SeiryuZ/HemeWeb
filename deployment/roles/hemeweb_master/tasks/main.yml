@@ -1,0 +1,15 @@
+#
+# Configuration specific for hemeweb master node
+#
+
+---
+
+- include: shared_filesystem.yml
+- include: docker.yml
+
+
+- name: Copy HemeLB test files
+  copy: src={{ item.name }} dest=/shared/{{ item.name }} force=no
+  with_items:
+    - name: input.xml
+    - name: 990_Example2-skeleton_corrected_tubed_smoothed.gmy

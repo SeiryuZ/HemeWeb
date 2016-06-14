@@ -1,0 +1,13 @@
+#
+# Common tasks to be run on the entire architecture
+# Configuration tasks
+#
+
+---
+
+- include: ssh.yml
+- include: apt.yml
+- include: hosts.yml
+
+- name: Create shared Folder
+  file: path=/shared state=directory

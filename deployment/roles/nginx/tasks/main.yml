@@ -1,0 +1,15 @@
+#
+# Configuration specific for Nginx
+#
+
+---
+
+- name: Add nginx ppa
+  apt_repository: repo='ppa:nginx/stable'
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install nginx
+  apt: name=nginx state=latest
+

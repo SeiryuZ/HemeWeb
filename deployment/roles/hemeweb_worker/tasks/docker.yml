@@ -1,0 +1,29 @@
+#
+# Docker configuration/tasks specific for hemeweb worker node
+#
+
+---
+
+
+######################################################
+# Configure docker daemon on each node to point to
+# consul service on manager node
+######################################################
+- name: Configure docker daemon options
+  template: src=docker.conf.j2 dest=/etc/default/docker
+  register: docker_configuration
+
+- name: Restart docker
+  service: name=docker state=restarted
+  when: docker_configuration.changed
+
+- name: Create hemelb network overlay for containers
+  command: docker network create -d overlay hemelb-overlay
+  ignore_errors: true
+
+- name: Check if network overlay is created
+  command: docker network ls
+  register: docker_network_result
+  failed_when: "'hemelb-overlay' not in docker_network_result.stdout"
+
+

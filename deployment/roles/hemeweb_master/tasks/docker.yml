@@ -1,0 +1,18 @@
+#
+# Docker configuration/tasks specific for hemeweb master node
+#
+
+---
+
+
+# Run a consul container to become the key/value store that handle network service
+# between containers
+
+- name: Run consul docker container
+  command: docker run -d -p "8500:8500" -h "consul" progrium/consul -server -bootstrap
+  ignore_errors: true
+
+- name: Check consul container is running
+  command: docker ps -q
+  register: consul_result
+  failed_when: "consul_result.stdout == ''"

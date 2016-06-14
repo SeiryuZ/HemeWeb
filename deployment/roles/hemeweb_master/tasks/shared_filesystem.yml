@@ -1,0 +1,34 @@
+#
+# Configure shared file system for master node
+# This part should be swappable
+#
+
+---
+
+############
+#   NFS    #
+############
+
+- name: Install NFS Server
+  apt: name=nfs-kernel-server state=latest
+
+- name: Configure NFS server to accept mount from our nodes
+  template: src=exports.j2 dest=/etc/exports force=yes
+  register: nfs_configuration
+
+- name: Export NFS Table
+  command: exportfs -a
+  when: nfs_configuration.changed
+
+- name: Restart NFS server
+  service: name=nfs-kernel-server state=restarted
+  when: nfs_configuration.changed
+
+
+
+############
+#  SSHFS   #
+############
+
+# - name: Install SSHFS
+#   apt: name=sshfs state=latest
