@@ -22,7 +22,7 @@
         instance_names: master
         project_id: "{{ hemeweb_project_id  }}"
         state: active
-        tags: master
+        tags: master,http
         zone: "{{ region }}"
 
     - name: Provision worker nodes
