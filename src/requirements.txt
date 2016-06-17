@@ -3,6 +3,16 @@
 #  Web framework
 Django==1.9.7
 
+# Database adapter
+psycopg2==2.6.1
+
 
 # Queing with redis
 django-rq==0.9.1
+
+
+# Utilities
+django-extensions==1.6.7
+
+# I usually use ./manage.py runserver_plus from werkzeug with django-extensions
+# werkzeug
