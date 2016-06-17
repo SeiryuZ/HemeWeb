@@ -1,0 +1,8 @@
+
+
+#  Web framework
+Django==1.9.7
+
+
+# Queing with redis
+django-rq==0.9.1
