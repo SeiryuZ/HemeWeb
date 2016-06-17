@@ -2,5 +2,5 @@ from django.apps import AppConfig
 
 
 class JobConfig(AppConfig):
-    name = 'job'
-    verbose_name = 'HemeLB Job'
+    name = 'jobs'
+    verbose_name = 'HemeLB Jobs'

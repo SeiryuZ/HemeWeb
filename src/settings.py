@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # HemeWeb specific django app
+    'jobs',
+
     # Third parties
     'django_extensions',
 ]
