@@ -24,7 +24,14 @@ class JobAdd(View):
                           files=request.FILES or None)
 
         if form.is_valid():
-            form.save(commit=True)
+            job = form.save(commit=True)
+
+            job.prepare_directories()
+            job.status = job.QUEUED
+            job.save(update_fields=['status'])
+
+            job.enqueue_job()
+
             return redirect('jobs:index')
 
         return render(request, 'jobs/add.html', context={'form': form})

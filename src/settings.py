@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     # Third parties
     'django_extensions',
+    'django_rq',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -127,8 +128,20 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+##############################################################################
 # Custom settings
+##############################################################################
 JOB_FILES_UPLOAD_DIR = 'JOB_FILES'
+
+RQ_SHOW_ADMIN_LINK = True
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        'DEFAULT_TIMEOUT': 360,
+    },
+}
 
 
 # Import all the settings changed locally

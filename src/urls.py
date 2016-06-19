@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^', include('jobs.urls', namespace='jobs')),
     url(r'^admin/', admin.site.urls),
+    url(r'^admin/rq', include('django_rq.urls')),
 ]
