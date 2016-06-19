@@ -1,6 +1,7 @@
 import uuid
 import os
 
+from django.conf import settings
 from django.db import models
 
 
@@ -9,7 +10,7 @@ def job_directory_path(instance, filename):
         Every job should have its own folder
         <upload_dir>/<hex-id-of-job>/<filename>
     """
-    return os.path.join('tmp', instance.id.hex, filename)
+    return os.path.join(settings.JOB_FILES_UPLOAD_DIR, instance.id.hex, filename)
 
 
 class Job(models.Model):

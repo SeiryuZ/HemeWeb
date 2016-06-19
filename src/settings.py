@@ -127,6 +127,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
+# Custom settings
+JOB_FILES_UPLOAD_DIR = 'JOB_FILES'
+
+
 # Import all the settings changed locally
 try:
     from local_settings import *  # noqa
