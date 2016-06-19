@@ -6,3 +6,4 @@ from .models import Job
 class JobAdmin(admin.ModelAdmin):
     list_display = ('id', 'status', 'created', 'updated')
     readonly_fields = ('id', 'created', 'updated', 'status')
+    ordering = ('-created',)
