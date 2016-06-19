@@ -1,13 +1,16 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
+from django.views.generic.list import ListView
 
 from .forms import AddJobForm
+from .models import Job
 
 
-class JobIndex(View):
+class JobIndex(ListView):
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'jobs/index.html')
+    model = Job
+    template_name = 'jobs/index.html'
+    paginate_by = 20
 
 
 class JobAdd(View):

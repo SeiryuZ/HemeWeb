@@ -37,5 +37,8 @@ class Job(models.Model):
     )
     status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
+    def __str__(self):
+        return self.__repr__()
+
     def __repr__(self):
         return self.id.hex

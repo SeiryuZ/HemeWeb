@@ -6,4 +6,25 @@
 
 <a href="{% url 'jobs:add' %}">Add new job</a>
 
+<hr>
+
+<ul>
+  {% for job in object_list %}
+    <li> {{ job }} </li>
+  {% empty %}
+    <li>No Jobs submitted</li>
+  {% endfor %}
+</ul>
+
+{% if is_paginated %}
+  {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+  {% endif %}
+  <a>{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</a>
+
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">next</a>
+  {% endif %}
+{% endif %}
+
 {% endblock %}
