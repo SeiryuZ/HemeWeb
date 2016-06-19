@@ -10,7 +10,10 @@ def job_directory_path(instance, filename):
         Every job should have its own folder
         <upload_dir>/<hex-id-of-job>/<filename>
     """
-    return os.path.join(settings.JOB_FILES_UPLOAD_DIR, instance.id.hex, filename)
+    return os.path.join(settings.JOB_FILES_UPLOAD_DIR,
+                        instance.id.hex,
+                        'inputs',
+                        filename)
 
 
 class Job(models.Model):
@@ -21,6 +24,18 @@ class Job(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    ADDED = 1
+    QUEUED = 2
+    DONE = 3
+    FAILED = 0
+    STATUS_CHOICES = (
+        (ADDED, 'Added'),
+        (QUEUED, 'Queued'),
+        (DONE, 'Done'),
+        (FAILED, 'Failed'),
+    )
+    status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
     def __repr__(self):
         return self.id.hex

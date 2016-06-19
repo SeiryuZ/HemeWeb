@@ -4,5 +4,5 @@ from .models import Job
 
 @admin.register(Job)
 class JobAdmin(admin.ModelAdmin):
-    list_display = ('id', 'created', 'updated')
-    readonly_fields = ('id', 'created', 'updated')
+    list_display = ('id', 'status', 'created', 'updated')
+    readonly_fields = ('id', 'created', 'updated', 'status')
