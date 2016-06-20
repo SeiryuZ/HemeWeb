@@ -9,10 +9,18 @@ psycopg2==2.6.1
 
 # Queing with redis
 django-rq==0.9.1
+django-redis-cache==1.6.5
 
 
 # Utilities
 django-extensions==1.6.7
 
+
+
+# Development package
+
 # I usually use ./manage.py runserver_plus from werkzeug with django-extensions
 # werkzeug
+# bpython
+# django-debug-toolbar
+

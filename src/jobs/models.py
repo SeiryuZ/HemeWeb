@@ -3,6 +3,7 @@ import subprocess
 import uuid
 
 from django.conf import settings
+from django.core.cache import cache
 from django.db import models
 
 from django_rq import job
@@ -84,6 +85,28 @@ class Job(models.Model):
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
                             log_type)
+
+    def get_output(self, log_type):
+        key = "%s:log:%s".format(self.id.hex, log_type)
+
+        # Hit the cache first
+        output = cache.get(key)
+
+        # Cache Miss
+        if output is None:
+
+            # Read from the file, this is slow
+            with open(self.get_log_file_path(log_type), 'r') as _file:
+                output = _file.read()
+
+            # Save it to the cache, depending on the likelihood of the content
+            # being updated
+            if self.status != self.DONE and self.status != self.FAILED:
+                cache.set(key, output, timeout=5)
+            else:
+                cache.set(key, output, timeout=5000)
+
+        return output
 
     def prepare_directories(self):
         os.makedirs(self.get_log_directory_path())

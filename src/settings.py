@@ -144,6 +144,13 @@ RQ_QUEUES = {
 }
 
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+    },
+}
+
 # Import all the settings changed locally
 try:
     from local_settings import *  # noqa
