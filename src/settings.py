@@ -151,7 +151,8 @@ CACHES = {
     },
 }
 
-# Import all the settings changed locally
+# Import all the local settings
+# See local_settings.py.template
 try:
     from local_settings import *  # noqa
 except:
