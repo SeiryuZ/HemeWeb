@@ -47,6 +47,7 @@
   apt: name={{ item.name }} state=latest
   with_items:
     - name: python
+    - name: python3
     - name: openmpi-bin
     - name: docker-engine
 

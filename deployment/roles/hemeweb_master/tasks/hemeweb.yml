@@ -1,0 +1,26 @@
+#
+# Configure HemeWeb web application
+#
+
+---
+
+
+- name: Install pip
+  apt: name=python-pip state=latest
+
+- name: Install python header
+  apt: name=python3-dev state=latest
+
+- name: Install virtualenv
+  become: true
+  command: pip install virtualenv
+
+- name: Clone source code
+  git: clone=true accept_hostkey=yes repo=https://github.com/SeiryuZ/HemeWeb.git
+       update=true dest=/var/www/hemeweb
+
+
+- name: Create virtualenv
+  pip: virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python3
+       requirements=/var/www/hemeweb/src/requirements.txt
+

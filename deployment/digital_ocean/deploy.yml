@@ -1,6 +1,6 @@
 ---
 
-- include: ../common/deploy.yml
+- include: ../deploy.yml
   vars:
     master_hosts_group: "master"
     worker_hosts_group: "workers"

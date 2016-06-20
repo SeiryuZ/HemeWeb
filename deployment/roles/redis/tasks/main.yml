@@ -1,0 +1,20 @@
+#
+# Configuration specific for Nginx
+#
+
+---
+
+- name: Add redis ppa
+  apt_repository: repo='ppa:chris-lea/redis-server'
+
+- name: Update apt cache
+  apt: update_cache=yes
+
+- name: Install redis-server
+  apt: name=redis-server state=latest
+  register: install_result
+
+- name: Restart redis
+  service: name=redis-server state=restarted
+  when: install_result.changed
+

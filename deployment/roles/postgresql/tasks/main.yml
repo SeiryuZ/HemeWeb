@@ -1,0 +1,28 @@
+#
+# Configuration specific for Nginx
+#
+
+---
+
+- name: Install postgresql
+  apt: name={{ item.name }} state=latest
+  with_items:
+    - name: postgresql
+    - name: postgresql-contrib
+    - name: postgresql-server-dev-all
+  register: install_result
+
+- name: Restart postgreql
+  service: name=postgresql state=restarted
+  when: install_result.changed
+
+# This is ugly because becoming an unpriviledged user 'postgres' is problematic
+# http://docs.ansible.com/ansible/become.html
+- name: Create superuser
+  become: True
+  command: sudo -u postgres createuser --superuser $USER
+  ignore_errors: true
+
+- name: Create database
+  command: createdb hemeweb
+  ignore_errors: true

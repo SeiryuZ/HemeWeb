@@ -10,8 +10,10 @@
 - hosts: "{{ master_hosts_group  }}"
   become: true
   roles:
-    - hemeweb_master
     - nginx
+    - redis
+    - postgresql
+    - hemeweb_master
 
 
 # Specific to worker nodes
