@@ -10,7 +10,7 @@
 
 <ul>
   {% for job in object_list %}
-    <li> {{ job }} </li>
+  <li> <a href="{% url 'jobs:details' job.id %}"> {{ job.id }} </a> </li>
   {% empty %}
     <li>No Jobs submitted</li>
   {% endfor %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<h1>Job {{ object.id }}</h1>
+
+<hr>
+
+<h3>Stdout</h3>
+<pre>
+  {{ stdout|linebreaksbr }}
+</pre>
+
+<h3>Stderr</h3>
+<pre>
+  {{ stderr|linebreaksbr }}
+</pre>
+
+
+
+
+{% endblock %}

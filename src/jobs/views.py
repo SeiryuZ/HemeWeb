@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from .forms import AddJobForm
 from .models import Job
@@ -11,6 +12,17 @@ class JobIndex(ListView):
     model = Job
     template_name = 'jobs/index.html'
     paginate_by = 20
+
+
+class JobDetails(DetailView):
+    model = Job
+    template_name = 'jobs/details.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(JobDetails, self).get_context_data(**kwargs)
+        context['stdout'] = self.object.get_output('stdout')
+        context['stderr'] = self.object.get_output('stderiir')
+        return context
 
 
 class JobAdd(View):
