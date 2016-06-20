@@ -24,3 +24,14 @@
   pip: virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python3
        requirements=/var/www/hemeweb/src/requirements.txt
 
+- name: Copy settings_local
+  copy: remote_src=True src=/var/www/hemeweb/src/local_settings.py.template
+        dest=/var/www/hemeweb/src/local_settings.py force=False
+
+
+# TODO: This is super ugly, find a better way
+- name: Update settings_local
+  replace: dest=/var/www/hemeweb/src/local_settings.py
+           regexp="USER\'\:\ \'\'"
+           replace="USER\':\'{{ ansible_ssh_user }}\'"
+
