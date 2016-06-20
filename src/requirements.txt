@@ -1,4 +1,5 @@
-
+# WSGI HTTP Server
+gunicorn==19.6.0
 
 #  Web framework
 Django==1.9.7
