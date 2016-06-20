@@ -15,7 +15,7 @@
   become: true
   command: pip install virtualenv
 
-- name: Clone source code
+- name: Clone hemeweb source code
   git: clone=true accept_hostkey=yes repo=https://github.com/SeiryuZ/HemeWeb.git
        update=true dest=/var/www/hemeweb
 
@@ -35,3 +35,7 @@
            regexp="USER\'\:\ \'\'"
            replace="USER\':\'{{ ansible_ssh_user }}\'"
 
+- name: Migrate database
+  shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py migrate
+
+# TODO: create hemeweb superuser
