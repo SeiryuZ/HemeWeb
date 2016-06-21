@@ -28,9 +28,20 @@ def run_job(job_instance):
             piped into the correct files
         """
         # TODO: replace this with the correct hemelb command
+        # command = [
+            # 'cat',
+            # job_instance.configuration_file.name,
+        # ]
         command = [
-            'cat',
+            'mpirun.openmpi',
+            '--mca btl_tcp_if_include eth0',
+            '-np 8',
+            '--host hemelb-node-1,hemelb-node-2',
+            'hemelb',
+            '-in',
             job_instance.configuration_file.name,
+            '-out',
+            job_instance.get_result_directory_path(),
         ]
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
@@ -81,6 +92,10 @@ class Job(models.Model):
     def get_log_directory_path(self):
         return os.path.join(self.get_job_directory_path(),
                             'logs')
+
+    def get_result_directory_path(self):
+        return os.path.join(self.get_job_directory_path(),
+                            'result')
 
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
