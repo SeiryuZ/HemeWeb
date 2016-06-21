@@ -35,9 +35,9 @@ def run_job(job_instance):
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
-                completed = subprocess.run(command,
-                                           stdout=stdout_file,
-                                           stderr=stderr_file)
+                completed = subprocess.call(command,
+                                            stdout=stdout_file,
+                                            stderr=stderr_file)
 
                 # Update the status of job accordingly
                 if completed.returncode == 0:
