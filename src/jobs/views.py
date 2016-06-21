@@ -1,3 +1,6 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.views.generic.list import ListView
@@ -23,6 +26,17 @@ class JobDetails(DetailView):
         context['stdout'] = self.object.get_output('stdout')
         context['stderr'] = self.object.get_output('stderr')
         return context
+
+
+class JobOutput(View):
+
+    def get(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        output = {}
+        output['stdout'] = job.get_output('stdout')
+        output['stderr'] = job.get_output('stderr')
+
+        return HttpResponse(json.dumps(output), content_type='application/json')
 
 
 class JobAdd(View):

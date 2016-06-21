@@ -7,16 +7,40 @@
 <hr>
 
 <h3>Stdout</h3>
-<pre class="pre-scrollable">
+<pre class="pre-scrollable" id="stdout">
   {{ stdout|linebreaksbr }}
 </pre>
 
 <h3>Stderr</h3>
-<pre class="pre-scrollable">
+<pre class="pre-scrollable" id="stderr">
   {{ stderr|linebreaksbr }}
 </pre>
 
 
 
 
+{% endblock %}
+
+
+{% block extra_javascript %}
+<script type="text/javascript" >
+
+
+  var objectId = "{{ object.id }}",
+      $stdout = $('#stdout'),
+      $stderr = $('#stderr');
+
+  $stdout.scrollTop(999999999);
+  $stderr.scrollTop(999999999);
+
+  $(document).ready(function(){
+    setInterval(function(){
+      $.get('/' + objectId + '/output.json', function(data){
+        $stdout.text(data.stdout).scrollTop(999999999);
+        $stderr.text(data.stderr).scrollTop(999999999);
+
+      });
+    }, 10000);
+  });
+</script>
 {% endblock %}
