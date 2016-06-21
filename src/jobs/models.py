@@ -80,6 +80,9 @@ class Job(models.Model):
     )
     status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
+    class Meta:
+        ordering = ["-created"]
+
     def __str__(self):
         return self.__repr__()
 
