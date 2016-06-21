@@ -27,6 +27,9 @@ class Command(BaseCommand):
         user = User.objects.create_user(
             username=kwargs.get('user'),
             password=kwargs.get('password'),
-            email=kwargs.get('email')
+            email=kwargs.get('email'),
+            is_staff=True,
+            is_superuser=True,
+            is_active=True
         )
         user.save()
