@@ -32,7 +32,8 @@ def run_job(job_instance):
             # 'cat',
             # job_instance.configuration_file.name,
         # ]
-        command = [
+
+        command = "{} {} {} {} {} {} {} {} {}".format(
             'mpirun.openmpi',
             '--mca btl_tcp_if_include eth0',
             '-np 8',
@@ -42,7 +43,7 @@ def run_job(job_instance):
             job_instance.configuration_file.name,
             '-out',
             job_instance.get_result_directory_path(),
-        ]
+        )
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
