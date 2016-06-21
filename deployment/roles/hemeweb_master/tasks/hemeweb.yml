@@ -41,7 +41,10 @@
 - name: Collect static files
   shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py collectstatic -l --no-input
 
-# TODO: create hemeweb superuser
+
+- name: Create super user
+  shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py add_super_user --user=admin --password=admin --email=admin@admin.com
+  ignore_errors: True
 
 
 - name: Create upstart script to run hemeweb
@@ -50,4 +53,9 @@
 
 - name: Restart hemeweb app
   service: name=hemeweb state=restarted
-  when: upstart_configuration.changed
+
+- name: Create upstart script to run hemeweb_worker (RQworker)
+  template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker.conf
+
+- name: Restart hemeweb_worker app
+  service: name=hemeweb_worker state=restarted
