@@ -4,7 +4,9 @@ import uuid
 
 from django.conf import settings
 from django.core.cache import cache
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.db import transaction
 
 from django_rq import job
 
@@ -47,10 +49,17 @@ def run_job(job_instance):
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
+                # Update the status first
+                with transaction.atomic():
+                    job_instance.status = job_instance.RUNNING
+                    job_instance.save(update_fields=['status'])
+
+                # Run long running job
                 completed = subprocess.call(command,
                                             stdout=stdout_file,
                                             stderr=stderr_file,
                                             shell=True)
+
                 # Update the status of job accordingly
                 if completed == 0:
                     job_instance.status = job_instance.DONE
@@ -70,11 +79,13 @@ class Job(models.Model):
 
     ADDED = 1
     QUEUED = 2
+    RUNNING = 10
     DONE = 3
     FAILED = 0
     STATUS_CHOICES = (
         (ADDED, 'Added'),
         (QUEUED, 'Queued'),
+        (RUNNING, 'Running'),
         (DONE, 'Done'),
         (FAILED, 'Failed'),
     )
@@ -88,6 +99,9 @@ class Job(models.Model):
 
     def __repr__(self):
         return self.id.hex
+
+    def get_absolute_url(self):
+        return reverse('jobs:details', kwargs={"pk": str(self.id)})
 
     def get_job_directory_path(self):
         return os.path.join(settings.JOB_FILES_UPLOAD_DIR,

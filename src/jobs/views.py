@@ -58,6 +58,6 @@ class JobAdd(View):
 
             job.enqueue_job()
 
-            return redirect('jobs:index')
+            return redirect(job)
 
         return render(request, 'jobs/add.html', context={'form': form})
