@@ -14,7 +14,11 @@
   apt: name=nginx state=latest
   register: install_result
 
+- name: Configre nginx
+  template: src=default.j2 dest=/etc/nginx/sites-available/default force=True
+  register: configuration_update
+
 - name: Restart nginx
   service: name=nginx state=restarted
-  when: install_result.changed
+  when: install_result.changed or configuration_update.changed
 

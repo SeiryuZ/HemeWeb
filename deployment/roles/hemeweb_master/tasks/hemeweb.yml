@@ -38,4 +38,16 @@
 - name: Migrate database
   shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py migrate
 
+- name: Collect static files
+  shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py collectstatic -l --no-input
+
 # TODO: create hemeweb superuser
+
+
+- name: Create upstart script to run hemeweb
+  template: force=True src=hemeweb.j2 dest=/etc/init/hemeweb.conf
+  register: upstart_configuration
+
+- name: Restart hemeweb app
+  service: name=hemeweb state=restarted
+  when: upstart_configuration.changed
