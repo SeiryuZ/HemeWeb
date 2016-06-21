@@ -10,4 +10,4 @@
 - include: hosts.yml
 
 - name: Create shared Folder
-  file: path=/shared state=directory
+  file: path=/shared state=directory owner={{ ansible_ssh_user }} group={{ ansible_ssh_user }}

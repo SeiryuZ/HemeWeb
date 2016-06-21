@@ -58,4 +58,4 @@
   template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker.conf
 
 - name: Restart hemeweb_worker app
-  service: name=hemeweb_worker state=restarted
+  service: name=hemeweb_worker state=started
