@@ -8,13 +8,32 @@
 
 <hr>
 
-<ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Job ID</td>
+      <td>Submission time</td>
+      <td>Status</td>
+    </tr>
+  </thead>
+  <tbody>
   {% for job in object_list %}
-  <li> <a href="{% url 'jobs:details' job.id %}"> {{ job.id }} </a> </li>
+  <tr>
+    <td>
+      <a href="{% url 'jobs:details' job.id %}"> {{ job.id }} </a>
+    </td>
+    <td>
+      {{ job.created }}
+    </td>
+    <td>
+      {{ job.get_status_display }}
+    </td>
+  </tr>
   {% empty %}
-    <li>No Jobs submitted</li>
+    <tr><td colspan="3">No Jobs submitted</td></tr>
   {% endfor %}
-</ul>
+  </tbody>
+</table>
 
 {% if is_paginated %}
   {% if page_obj.has_previous %}
