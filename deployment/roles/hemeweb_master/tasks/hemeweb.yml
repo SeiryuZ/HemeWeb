@@ -28,12 +28,8 @@
   copy: remote_src=True src=/var/www/hemeweb/src/local_settings.py.template
         dest=/var/www/hemeweb/src/local_settings.py force=False
 
-
-# TODO: This is super ugly, find a better way
 - name: Update settings_local
-  replace: dest=/var/www/hemeweb/src/local_settings.py
-           regexp="USER\'\:\ \'\'"
-           replace="USER\':\'{{ ansible_ssh_user }}\'"
+  template: force=True src=local_settings.j2 dest=/var/www/hemeweb/src/local_settings.py
 
 - name: Migrate database
   shell: /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py migrate
@@ -57,5 +53,7 @@
 - name: Create upstart script to run hemeweb_worker (RQworker)
   template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker.conf
 
-- name: Restart hemeweb_worker app
+
+# TODO: Figure out how to restart the worker safely when there are running jobs
+- name: Start hemeweb_worker app
   service: name=hemeweb_worker state=started

@@ -1,0 +1,16 @@
+from django.conf import settings
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hemeweb',
+        'USER': '{{ ansible_ssh_user }}',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
+    }
+}
+
+JOB_FILES_UPLOAD_DIR = '/shared'
+MEDIA_ROOT = '/shared'

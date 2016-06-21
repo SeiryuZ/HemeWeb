@@ -14,11 +14,15 @@
   apt: name=nginx state=latest
   register: install_result
 
-- name: Configre nginx
+- name: Configure nginx
+  template: src=nginx.j2 dest=/etc/nginx/nginx.conf force=True
+  register: nginx_configuration
+
+- name: Configure reverse proxy for HemeWeb
   template: src=default.j2 dest=/etc/nginx/sites-available/default force=True
-  register: configuration_update
+  register: sites_available
 
 - name: Restart nginx
   service: name=nginx state=restarted
-  when: install_result.changed or configuration_update.changed
+  when: install_result.changed or nginx_configuration.changed or sites_available.changed
 
