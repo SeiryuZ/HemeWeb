@@ -87,7 +87,7 @@ class Job(models.Model):
                             log_type)
 
     def get_output(self, log_type):
-        key = "%s:log:%s".format(self.id.hex, log_type)
+        key = "{}:log:{}".format(self.id.hex, log_type)
 
         # Hit the cache first
         output = cache.get(key)
