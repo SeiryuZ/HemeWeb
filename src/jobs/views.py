@@ -21,7 +21,7 @@ class JobDetails(DetailView):
     def get_context_data(self, **kwargs):
         context = super(JobDetails, self).get_context_data(**kwargs)
         context['stdout'] = self.object.get_output('stdout')
-        context['stderr'] = self.object.get_output('stderiir')
+        context['stderr'] = self.object.get_output('stderr')
         return context
 
 
