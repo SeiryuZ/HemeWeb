@@ -40,7 +40,7 @@ def run_job(job_instance):
                                             stderr=stderr_file)
 
                 # Update the status of job accordingly
-                if completed.returncode == 0:
+                if completed == 0:
                     job_instance.status = job_instance.DONE
                 else:
                     job_instance.status = job_instance.FAILED
