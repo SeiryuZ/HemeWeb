@@ -1,9 +1,9 @@
 ---
 # Configure all nodes
-- hosts: all
-  become: true  # allow priviledge escalation
-  roles:
-    - common
+#- hosts: all
+  #become: true  # allow priviledge escalation
+  #roles:
+    #- common
 
 
 # Specific to master node

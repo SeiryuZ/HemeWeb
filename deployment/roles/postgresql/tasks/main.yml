@@ -12,17 +12,21 @@
     - name: postgresql-server-dev-all
   register: install_result
 
+- name: Allow postgresql to trust 127.0.0.1
+  template: src=pg_hba.j2 dest=/etc/postgresql/9.3/main/pg_hba.conf force=True
+  register: config_update
+
 - name: Restart postgreql
   service: name=postgresql state=restarted
-  when: install_result.changed
+  when: install_result.changed or config_update.changed
 
 # This is ugly because becoming an unpriviledged user 'postgres' is problematic
 # http://docs.ansible.com/ansible/become.html
 - name: Create superuser
-  become: True
-  command: sudo -u postgres createuser --superuser $USER
+  command: sudo -u postgres createuser --superuser {{ ansible_ssh_user }}
   ignore_errors: true
 
 - name: Create database
+  become: false
   command: createdb hemeweb
   ignore_errors: true
