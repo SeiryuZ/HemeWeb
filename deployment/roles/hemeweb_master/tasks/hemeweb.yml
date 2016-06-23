@@ -9,7 +9,7 @@
   apt: name=python-pip state=latest
 
 - name: Install python header
-  apt: name=python3-dev state=latest
+  apt: name=python-dev state=latest
 
 - name: Install virtualenv
   become: true
@@ -21,7 +21,7 @@
 
 
 - name: Create virtualenv
-  pip: virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python3
+  pip: virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python2
        requirements=/var/www/hemeweb/src/requirements.txt
 
 - name: Copy settings_local
