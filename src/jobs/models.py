@@ -30,23 +30,42 @@ def run_job(job_instance):
             piped into the correct files
         """
 
-        command = "{} {} {} {} {} {} {} {} {}".format(
-            'mpirun.openmpi',
-            '--mca btl_tcp_if_include eth0',
-            '-np 8',
-            '--host hemelb-node-1,hemelb-node-2',
-            'hemelb',
-            '-in',
+        command = "export ANSIBLE_HOST_KEY_CHECKING=False;\
+        export AWS_SECRET_ACCESS_KEY={};\
+        export AWS_ACCESS_KEY_ID={};\
+        ansible-playbook --private-key=/Users/steven/Downloads/hemeweb.pem.txt\
+        -u ubuntu\
+        --extra-vars 'image={} worker_node_count=2 master_ip={} instance_tags={} input={} output={} '\
+        jobs/scripts/aws_ec2.yml\
+        ".format(
+            settings.AWS_SECRET_ACCESS_KEY,
+            settings.AWS_ACCESS_KEY_ID,
+            settings.HEMEWEB_IMAGE_ID,
+            settings.HOST_IP,
+            "job-{}".format(job_instance.id),
             job_instance.configuration_file.name,
-            '-out',
-            job_instance.get_result_directory_path(),
+            job_instance.get_result_directory_path()
         )
+
+
+        # command = "{} {} {} {} {} {} {} {} {}".format(
+            # 'mpirun.openmpi',
+            # '--mca btl_tcp_if_include eth0',
+            # '-np 8',
+            # '--host hemelb-node-1,hemelb-node-2',
+            # 'hemelb',
+            # '-in',
+            # job_instance.configuration_file.name,
+            # '-out',
+            # job_instance.get_result_directory_path(),
+        # )
+
         # command = "{} {}".format(
             # 'cat',
             # job_instance.configuration_file.name,
         # )
 
-        print command
+        # print command
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
