@@ -29,11 +29,6 @@ def run_job(job_instance):
             and make sure that the stdout and stderr of the command is correctly
             piped into the correct files
         """
-        # TODO: replace this with the correct hemelb command
-        # command = [
-            # 'cat',
-            # job_instance.configuration_file.name,
-        # ]
 
         command = "{} {} {} {} {} {} {} {} {}".format(
             'mpirun.openmpi',
@@ -46,6 +41,12 @@ def run_job(job_instance):
             '-out',
             job_instance.get_result_directory_path(),
         )
+        # command = "{} {}".format(
+            # 'cat',
+            # job_instance.configuration_file.name,
+        # )
+
+        print command
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
