@@ -4,8 +4,8 @@ start on (filesystem)
 stop on runlevel [016]
 
 respawn
-setuid {{ ansible_ssh_user }}
-setgid {{ ansible_ssh_user }}
+setuid root
+setgid root
 chdir /var/www/hemeweb/src
 
 exec /var/www/hemeweb/virtualenv/bin/python /var/www/hemeweb/src/manage.py rqworker

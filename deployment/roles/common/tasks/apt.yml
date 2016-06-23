@@ -50,6 +50,7 @@
     - name: python3
     - name: openmpi-bin
     - name: docker-engine
+    - name: libffi-dev
 
 - name: Upgrade packages
   apt: upgrade=yes
