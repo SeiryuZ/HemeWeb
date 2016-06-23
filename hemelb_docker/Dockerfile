@@ -59,6 +59,9 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Enable insecure key
 RUN /usr/sbin/enable_insecure_key
 
+COPY container_key /root/.ssh/id_rsa
+COPY ssh_config /root/.ssh/config
+
 
 # Set root password
 RUN echo "root:Docker!" | chpasswd
