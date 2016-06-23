@@ -33,7 +33,7 @@ def run_job(job_instance):
         command = "export ANSIBLE_HOST_KEY_CHECKING=False;\
         export AWS_SECRET_ACCESS_KEY={};\
         export AWS_ACCESS_KEY_ID={};\
-        ansible-playbook --private-key=/Users/steven/Downloads/hemeweb.pem.txt\
+        /var/www/hemeweb/virtualenv/bin/ansible-playbook --private-key=/Users/steven/Downloads/hemeweb.pem.txt\
         -u ubuntu\
         --extra-vars 'image={} worker_node_count=2 master_ip={} instance_tags={} input={} output={} '\
         jobs/scripts/aws_ec2.yml\
