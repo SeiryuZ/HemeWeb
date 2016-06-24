@@ -33,8 +33,8 @@
       add_host: hostname={{ item.public_ip }} groups=worker_nodes
       with_items: '{{ ec2.instances }}'
 
-    - name: Waiting for all nodes to come back
-      local_action: wait_for host={{ item.public_ip }} port=22 state=started timeout=300
+    - name: Waiting for all nodes to finish booting
+      local_action: wait_for host={{ item.public_ip }} port=22 state=started timeout=500
       with_items: '{{ ec2.instances }}'
       become: false
 
