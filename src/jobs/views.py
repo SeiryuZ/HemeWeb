@@ -25,6 +25,7 @@ class JobDetails(DetailView):
         context = super(JobDetails, self).get_context_data(**kwargs)
         context['stdout'] = self.object.get_output('stdout')
         context['stderr'] = self.object.get_output('stderr')
+        context['hemelb'] = self.object.get_output('hemelb')
         return context
 
 
@@ -51,7 +52,7 @@ class JobAdd(View):
                           files=request.FILES or None)
 
         if form.is_valid():
-            job = form.save(commit=True)
+            job = form.save()
 
             job.prepare_directories()
             job.status = job.QUEUED

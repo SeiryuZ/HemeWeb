@@ -10,3 +10,11 @@ class AddJobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['configuration_file', 'input_file', 'instance_count']
+
+    def save(self, *args, **kwargs):
+        kwargs['commit'] = False
+        job = super(AddJobForm, self).save(*args, **kwargs)
+        job.instance_type = self.cleaned_data['instance_type']
+        job.save()
+        return job
+
