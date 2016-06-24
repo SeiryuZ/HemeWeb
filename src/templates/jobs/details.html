@@ -20,6 +20,11 @@
 {{ stderr|linebreaksbr }}
 </pre>
 
+<h3>HemeLB output</h3>
+<pre class="pre-scrollable" id="hemelb">
+{{ hemelb|linebreaksbr }}
+</pre>
+
 
 
 
@@ -32,16 +37,19 @@
 
   var objectId = "{{ object.id }}",
       $stdout = $('#stdout'),
-      $stderr = $('#stderr');
+      $stderr = $('#stderr'),
+      $hemelb = $('#hemelb');
 
   $stdout.scrollTop(999999999);
   $stderr.scrollTop(999999999);
+  $hemelb.scrollTop(999999999);
 
   $(document).ready(function(){
     setInterval(function(){
       $.get('/' + objectId + '/output.json', function(data){
         $stdout.text(data.stdout).scrollTop(999999999);
         $stderr.text(data.stderr).scrollTop(999999999);
+        $hemelb.text(data.hemelb).scrollTop(999999999);
 
       });
     }, 10000);

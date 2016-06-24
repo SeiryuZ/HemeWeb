@@ -34,7 +34,7 @@
       with_items: '{{ ec2.instances }}'
 
     - name: Waiting for all nodes to finish booting
-      local_action: wait_for host={{ item.private_ip }} port=22 state=started timeout=500
+      local_action: wait_for host={{ item.private_ip }} port=22 state=started delay=5 timeout=500
       with_items: '{{ ec2.instances }}'
       become: false
 
@@ -79,10 +79,11 @@
       set_fact:
         container_ips: "{% for host in groups['worker_nodes'] %}{{ hostvars[host]['container_ip']['stdout'] }} {% endfor %}"
 
-    - pause: seconds=5
+    - name: Pause to give time for ssh in container to work
+      pause: seconds=5
 
     - name: Run HemeLB job
-      shell: docker exec {{ container_instance_id.stdout }} mpirun.openmpi --mca btl_tcp_if_include eth0  -np 8  --host {{ container_ips | trim | replace(' ', ',') }} hemelb -in {{ input }} -out {{ output }} 1> /shared/log 2>&1
+      shell: docker exec {{ container_instance_id.stdout }} mpirun.openmpi --mca btl_tcp_if_include eth0  -np 8  --host {{ container_ips | trim | replace(' ', ',') }} hemelb -in {{ input }} -out {{ output }} 1> {{ log_file }} 2>&1
       ignore_errors: true
 
 
