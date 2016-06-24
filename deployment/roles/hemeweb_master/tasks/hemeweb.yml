@@ -20,9 +20,11 @@
        update=true dest=/var/www/hemeweb
 
 
-- name: Create virtualenv
-  pip: virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python2
-       requirements=/var/www/hemeweb/src/requirements.txt
+- name: Install hemeweb requirements
+  pip:  virtualenv=/var/www/hemeweb/virtualenv virtualenv_python=python2  requirements={{ item }}
+  with_items:
+    - /var/www/hemeweb/src/requirements.txt
+    - /var/www/hemeweb/deployment/requirements.txt
 
 - name: Copy settings_local
   copy: remote_src=True src=/var/www/hemeweb/src/local_settings.py.template
@@ -59,4 +61,4 @@
 
 # TODO: Figure out how to restart the worker safely when there are running jobs
 - name: Start hemeweb_worker app
-  service: name=hemeweb_worker state=started
+  service: name=hemeweb_worker state=restarted

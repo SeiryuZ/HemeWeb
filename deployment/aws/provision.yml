@@ -5,8 +5,8 @@
   vars:
     - region: eu-west-1
     - master_node_count: 1
-    - worker_node_count: 1
-    - master_instance_type: m4.large
+    - worker_node_count: 0
+    - master_instance_type: t2.medium
     - worker_instance_type: m4.xlarge
 
   tasks:

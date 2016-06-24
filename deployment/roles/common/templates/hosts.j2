@@ -5,7 +5,10 @@
 
 {{ hostvars[groups[ master_hosts_group ][0]][ preferred_ansible_interface  ]['address'] }}  master
 
-{% for host in groups[ worker_hosts_group ] %}
- {{ hostvars[host][ preferred_ansible_interface ]['address'] }} hemelb-node-{{ loop.index }}
-{% endfor %}
+
+{% if worker_hosts_group in groups %}
+  {% for host in groups[ worker_hosts_group ] %}
+   {{ hostvars[host][ preferred_ansible_interface ]['address'] }} hemelb-node-{{ loop.index }}
+  {% endfor %}
+{% endif %}
 

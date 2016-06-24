@@ -1,9 +1,12 @@
-{% for host in groups[ worker_hosts_group ] %}
-Host hemelb-node-{{ loop.index }}
-  user root
-  port 24
-  IdentityFile ~/.ssh/container_key
-{% endfor %}
+
+{% if worker_hosts_group in groups %}
+  {% for host in groups[ worker_hosts_group ] %}
+  Host hemelb-node-{{ loop.index }}
+    user root
+    port 24
+    IdentityFile ~/.ssh/container_key
+  {% endfor %}
+{% endif %}
 
 Host *
    StrictHostKeyChecking no
