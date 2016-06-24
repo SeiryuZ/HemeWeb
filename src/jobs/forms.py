@@ -14,7 +14,6 @@ class AddJobForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
         job = super(AddJobForm, self).save(*args, **kwargs)
-        job.instance_type = self.cleaned_data['instance_type']
+        job.instance_type = int(self.cleaned_data['instance_type'])
         job.save()
         return job
-
