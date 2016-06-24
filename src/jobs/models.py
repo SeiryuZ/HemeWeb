@@ -5,6 +5,7 @@ import uuid
 from django.conf import settings
 from django.core.cache import cache
 from django.core.urlresolvers import reverse
+from django.core.validators import MaxValueValidator
 from django.db import models
 from django.db import transaction
 
@@ -35,20 +36,22 @@ def run_job(job_instance):
         export AWS_ACCESS_KEY_ID={}; \
         /var/www/hemeweb/virtualenv/bin/ansible-playbook \
         -u ubuntu \
-        --extra-vars 'image={} worker_node_count=2 master_ip={} \
+        --extra-vars 'image={} master_ip={} worker_node_count={}  \
         instance_tags={} input={} output={} \
-        worker_instance_type={} log_file={}' \
+        worker_instance_type={} log_file={} core_count={}' \
         jobs/scripts/aws_ec2.yml\
         ".format(
             settings.AWS_SECRET_ACCESS_KEY,
             settings.AWS_ACCESS_KEY_ID,
             settings.HEMEWEB_IMAGE_ID,
             settings.HOST_IP,
+            job_instance.instance_count,
             "job-{}".format(job_instance.id),
             job_instance.configuration_file.name,
             job_instance.get_result_directory_path(),
-            "t2.micro",
-            job_instance.get_log_file_path('hemelb')
+            job_instance.get_instance_id(),
+            job_instance.get_log_file_path('hemelb'),
+            job_instance.get_core_count()
         )
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
@@ -75,11 +78,22 @@ def run_job(job_instance):
 class Job(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    configuration_file = models.FileField(upload_to=job_directory_path)
-    input_file = models.FileField(upload_to=job_directory_path)
+    configuration_file = models.FileField(upload_to=job_directory_path,
+                                          verbose_name="Config (.xml)")
+    input_file = models.FileField(upload_to=job_directory_path,
+                                  verbose_name="Input (.gmy)")
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    INSTANCE_CHOICES = (
+        (2, '2 Cores'),
+        (4, '4 Cores'),
+        (8, '8 Cores'),
+        (16, '16 Cores'),
+    )
+    instance_type = models.IntegerField(INSTANCE_CHOICES, default=2)
+    instance_count = models.IntegerField(default=1, validators=[MaxValueValidator(36)])
 
     ADDED = 1
     QUEUED = 2
@@ -122,6 +136,19 @@ class Job(models.Model):
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
                             log_type)
+
+    def get_instance_id(self):
+        if self.instance_type == 2:
+            return 'c4.large'
+        elif self.instance_type == 4:
+            return 'c4.xlarge'
+        elif self.instance_type == 8:
+            return 'c4.2xlarge'
+        elif self.instance_type == 16:
+            return 'c4.4xlarge'
+
+    def get_core_count(self):
+        return self.instance_count * self.instance_type
 
     def get_output(self, log_type):
         key = "{}:log:{}".format(self.id.hex, log_type)

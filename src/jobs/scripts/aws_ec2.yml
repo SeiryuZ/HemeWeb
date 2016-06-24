@@ -83,7 +83,7 @@
       pause: seconds=5
 
     - name: Run HemeLB job
-      shell: docker exec {{ container_instance_id.stdout }} mpirun.openmpi --mca btl_tcp_if_include eth0  -np 8  --host {{ container_ips | trim | replace(' ', ',') }} hemelb -in {{ input }} -out {{ output }} 1> {{ log_file }} 2>&1
+      shell: docker exec {{ container_instance_id.stdout }} mpirun.openmpi --mca btl_tcp_if_include eth0  -np {{ core_count }}  --host {{ container_ips | trim | replace(' ', ',') }} hemelb -in {{ input }} -out {{ output }} 1> {{ log_file }} 2>&1
       ignore_errors: true
 
 
