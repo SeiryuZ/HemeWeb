@@ -6,7 +6,7 @@ from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from .forms import AddJobForm
+from .forms import AddJobForm, AddPreviousJobForm
 from .models import Job
 
 
@@ -45,13 +45,22 @@ class JobAdd(View):
 
     def get(self, request, *args, **kwargs):
         form = AddJobForm()
-        return render(request, 'jobs/add.html', context={'form': form})
+
+        previous_job_form = AddPreviousJobForm()
+        context = {
+            'new_job_form': form,
+            'previous_job_form': previous_job_form
+        }
+        return render(request, 'jobs/new_add.html', context=context)
 
     def post(self, request, *args, **kwargs):
         form = AddJobForm(data=request.POST or None,
                           files=request.FILES or None)
 
+        previous_job_form = AddPreviousJobForm(data=request.POST or None)
+
         if form.is_valid():
+            raise
             job = form.save()
 
             job.prepare_directories()
@@ -62,4 +71,13 @@ class JobAdd(View):
 
             return redirect(job)
 
-        return render(request, 'jobs/add.html', context={'form': form})
+        if previous_job_form.is_valid():
+            # Copy all necessary files from previous jobs
+            job = previous_job_form.copy_configuration_files()
+            return redirect(job)
+
+        context = {
+            'new_job_form': form,
+            'previous_job_form': previous_job_form
+        }
+        return render(request, 'jobs/new_add.html', context=context)

@@ -126,6 +126,10 @@ class Job(models.Model):
         return os.path.join(settings.JOB_FILES_UPLOAD_DIR,
                             self.id.hex)
 
+    def get_input_directory_path(self):
+        return os.path.join(self.get_job_directory_path(),
+                            'inputs')
+
     def get_log_directory_path(self):
         return os.path.join(self.get_job_directory_path(),
                             'logs')
@@ -174,6 +178,7 @@ class Job(models.Model):
         return output
 
     def prepare_directories(self):
+        os.makedirs(self.get_input_directory_path())
         os.makedirs(self.get_log_directory_path())
         open(self.get_log_file_path('stdout'), 'a').close()
         open(self.get_log_file_path('stderr'), 'a').close()
