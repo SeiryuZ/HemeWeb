@@ -176,6 +176,7 @@ class Job(models.Model):
         os.makedirs(self.get_log_directory_path())
         open(self.get_log_file_path('stdout'), 'a').close()
         open(self.get_log_file_path('stderr'), 'a').close()
+        open(self.get_log_file_path('hemelb'), 'a').close()
 
     def enqueue_job(self, async=True):
         """ Function to queue job execution to background worker.
