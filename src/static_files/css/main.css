@@ -3,6 +3,17 @@
   text-align: center;
 }
 
-.job-add .panel {
-  /*padding: 10px;*/
+.right {
+  text-align: right;
+}
+
+.bottom-padding {
+  padding-bottom: 10px;
+}
+
+
+#editor {
+  height: 500px;
+  max-height: 100%;
+  max-width: 100%;
 }

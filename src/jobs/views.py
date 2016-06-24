@@ -1,12 +1,14 @@
 import json
+import os
 
+from django.core.files.base import ContentFile
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from .forms import AddPreviousJobForm, AddNewJobForm
+from .forms import AddPreviousJobForm, AddNewJobForm, ConfigureJobForm
 from .models import Job
 
 
@@ -39,6 +41,52 @@ class JobOutput(View):
         output['hemelb'] = job.get_output('hemelb')
 
         return HttpResponse(json.dumps(output), content_type='application/json')
+
+
+class JobConfiguration1(View):
+
+    def get(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        context = {
+            'config_file': job.configuration_file.read(),
+            'job': job
+        }
+        return render(request, 'jobs/configure_1.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        filename = os.path.basename(job.configuration_file.name)
+        job.configuration_file.delete()
+        job.configuration_file.save(filename, ContentFile(request.POST['content']))
+
+        output = {"content": job.configuration_file.read()}
+        return HttpResponse(json.dumps(output), content_type='application/json')
+
+
+class JobConfiguration2(View):
+
+    def get(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        form = ConfigureJobForm(instance=job)
+        context = {
+            'job': job,
+            'form': form
+        }
+        return render(request, 'jobs/configure_2.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        form = ConfigureJobForm(instance=job, data=request.POST)
+
+        if form.is_valid():
+            job = form.save()
+            return redirect(job)
+
+        context = {
+            'job': job,
+            'form': form
+        }
+        return render(request, 'jobs/configure_2.html', context=context)
 
 
 class JobAdd(View):
