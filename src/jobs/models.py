@@ -143,9 +143,9 @@ class Job(models.Model):
             return 'c4.large'
         elif int(self.instance_type) == 4:
             return 'c4.xlarge'
-        elif (self.instance_type) == 8:
+        elif int(self.instance_type) == 8:
             return 'c4.2xlarge'
-        elif (self.instance_type) == 16:
+        elif int(self.instance_type) == 16:
             return 'c4.4xlarge'
 
     def get_core_count(self):
