@@ -23,6 +23,20 @@ class AddJobForm(forms.ModelForm):
         return job
 
 
+class AddNewJobForm(forms.ModelForm):
+
+    class Meta:
+        model = Job
+        fields = ['configuration_file', 'input_file']
+
+    def save(self, *args, **kwargs):
+        kwargs['commit'] = False
+        job = super(AddNewJobForm, self).save(*args, **kwargs)
+        job.prepare_directories()
+        job.save()
+        return job
+
+
 class AddPreviousJobForm(forms.Form):
     job_id = forms.CharField(label=("Job ID (xxxxxxxx-xxx-xxx-xxxxxx):"))
 
@@ -51,6 +65,5 @@ class AddPreviousJobForm(forms.Form):
         # Is the only file that can change between job execution
         job.configuration_file = self.copy_file(self.previous_job.configuration_file)
         job.input_file = self.copy_file(self.previous_job.input_file)
-
         job.save()
         return job
