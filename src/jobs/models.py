@@ -53,6 +53,7 @@ def run_job(job_instance):
             job_instance.get_log_file_path('hemelb'),
             job_instance.get_core_count()
         )
+        print command
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
@@ -138,17 +139,17 @@ class Job(models.Model):
                             log_type)
 
     def get_instance_id(self):
-        if self.instance_type == 2:
+        if int(self.instance_type) == 2:
             return 'c4.large'
-        elif self.instance_type == 4:
+        elif int(self.instance_type) == 4:
             return 'c4.xlarge'
-        elif self.instance_type == 8:
+        elif (self.instance_type) == 8:
             return 'c4.2xlarge'
-        elif self.instance_type == 16:
+        elif (self.instance_type) == 16:
             return 'c4.4xlarge'
 
     def get_core_count(self):
-        return self.instance_count * self.instance_type
+        return int(self.instance_count) * int(self.instance_type)
 
     def get_output(self, log_type):
         key = "{}:log:{}".format(self.id.hex, log_type)
