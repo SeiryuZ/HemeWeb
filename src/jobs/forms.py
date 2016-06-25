@@ -17,6 +17,15 @@ class ConfigureJobForm(forms.ModelForm):
         model = Job
         fields = ['instance_count']
 
+    def __init__(self, *args, **kwargs):
+        super(ConfigureJobForm, self).__init__(*args, **kwargs)
+
+        # Sort based on the choice value, not index
+        sorted_container_choices = sorted(Job.CONTAINER_CHOICES,
+                                          key=lambda x: x[1],
+                                          reverse=True)
+        self.fields['container_image'].choices = sorted_container_choices
+
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
         job = super(ConfigureJobForm, self).save(*args, **kwargs)
