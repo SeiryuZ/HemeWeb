@@ -41,7 +41,8 @@
       <div class="panel-body">
         <p>
           Instance type:  {{ job.get_instance_type_display }} <br/> <br/>
-          Instance count: {{ job.instance_count }}
+          Instance count: {{ job.instance_count }} <br/><br/>
+          Container Image: <a target="_blank" href="{{ job.get_container_image_url }}">{{ job.get_container_image_display }}</a>
         </p>
       </div>
     </div>

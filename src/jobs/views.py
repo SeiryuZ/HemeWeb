@@ -69,7 +69,13 @@ class JobConfiguration2(View):
 
     def get(self, request, *args, **kwargs):
         job = Job.objects.get(id=self.kwargs['pk'])
-        form = ConfigureJobForm(instance=job, initial={'instance_type': job.instance_type})
+        form = ConfigureJobForm(
+            instance=job,
+            initial={
+                'instance_type': job.instance_type,
+                'container_image': job.container_image
+            }
+        )
         context = {
             'job': job,
             'form': form,

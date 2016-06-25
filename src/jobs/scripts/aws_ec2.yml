@@ -62,7 +62,7 @@
       ignore_errors: true
 
     - name: Run hemelb containers
-      command: docker run -d --net=hemelb-overlay  -v /shared:/shared seiryuz/hemelb-core:0.0.2
+      command: docker run -d --net=hemelb-overlay  -v /shared:/shared {{ container_image }}
       register: container_instance_id
 
     - name: Get the container ip

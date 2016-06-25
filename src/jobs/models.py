@@ -38,7 +38,7 @@ def run_job(job_instance):
         -u ubuntu \
         --extra-vars 'image={} master_ip={} worker_node_count={}  \
         instance_tags={} input={} output={} \
-        worker_instance_type={} log_file={} core_count={}' \
+        worker_instance_type={} log_file={} core_count={} container_image={}' \
         jobs/scripts/aws_ec2.yml\
         ".format(
             settings.AWS_SECRET_ACCESS_KEY,
@@ -51,9 +51,9 @@ def run_job(job_instance):
             job_instance.get_result_directory_path(),
             job_instance.get_instance_id(),
             job_instance.get_log_file_path('hemelb'),
-            job_instance.get_core_count()
+            job_instance.get_core_count(),
+            job_instance.get_container_image_display(),
         )
-        print command
 
         with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
             with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
@@ -86,6 +86,12 @@ class Job(models.Model):
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
+
+    CONTAINER_CHOICES = (
+        (1, 'seiryuz/hemelb-core:0.0.2'),
+        (2, 'seiryuz/hemelb-core:0.0.3'),
+    )
+    container_image = models.IntegerField(choices=CONTAINER_CHOICES, default=1)
 
     INSTANCE_CHOICES = (
         (2, '2 Cores'),
@@ -147,6 +153,10 @@ class Job(models.Model):
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
                             log_type)
+
+    def get_container_image_url(self):
+        container_string = self.get_container_image_display().split(':')[0]
+        return "http://hub.docker.com/r/{}".format(container_string)
 
     def get_instance_id(self):
         if int(self.instance_type) == 2:

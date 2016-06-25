@@ -10,6 +10,8 @@ from .models import Job
 class ConfigureJobForm(forms.ModelForm):
     instance_type = forms.ChoiceField(widget=forms.Select,
                                       choices=Job.INSTANCE_CHOICES)
+    container_image = forms.ChoiceField(widget=forms.Select,
+                                        choices=Job.CONTAINER_CHOICES)
 
     class Meta:
         model = Job
@@ -19,6 +21,7 @@ class ConfigureJobForm(forms.ModelForm):
         kwargs['commit'] = False
         job = super(ConfigureJobForm, self).save(*args, **kwargs)
         job.instance_type = int(self.cleaned_data['instance_type'])
+        job.container_image = int(self.cleaned_data['container_image'])
         job.save()
         return job
 
@@ -67,5 +70,7 @@ class AddPreviousJobForm(forms.Form):
         job.input_file = self.copy_file(self.previous_job.input_file)
         job.instance_type = self.previous_job.instance_type
         job.instance_count = self.previous_job.instance_count
+        job.container_image = self.previous_job.container_image
+
         job.save()
         return job
