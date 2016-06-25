@@ -19,17 +19,3 @@
 - name: Configure SSH hosts config
   become: false
   template: src=ssh_config.j2 dest=~/.ssh/config force=yes
-
-# TODO: temporary HACK! because web and bg worker is run with root currently
-- name: Copy hosts private key
-  copy: src=insecure_key dest=~/.ssh/id_rsa force=yes mode=0600
-  become: true
-
-- name: Copy containers private key
-  copy: src=container_key dest=~/.ssh/container_key force=yes mode=0600
-  become: true
-
-- name: Configure SSH hosts config
-  become: true
-  template: src=ssh_config.j2 dest=~/.ssh/config force=yes
-

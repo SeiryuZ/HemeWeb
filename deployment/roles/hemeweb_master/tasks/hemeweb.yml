@@ -3,7 +3,10 @@
 #
 
 ---
-
+- name: Get home path
+  become: false
+  shell: echo $HOME
+  register: home_path
 
 - name: Install pip
   apt: name=python-pip state=latest
@@ -45,7 +48,6 @@
   ignore_errors: True
 
 
-# TODO: UNSAFE PERMISSION
 - name: Create upstart script to run hemeweb
   template: force=True src=hemeweb.j2 dest=/etc/init/hemeweb.conf
   register: upstart_configuration
@@ -54,7 +56,6 @@
   service: name=hemeweb state=restarted
 
 
-# TODO: UNSAFE PERMISSION
 - name: Create upstart script to run hemeweb_worker (RQworker)
   template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker.conf
 
