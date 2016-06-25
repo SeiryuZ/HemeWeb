@@ -132,7 +132,7 @@ class JobAdd(View):
 
         if form.is_valid():
             job = form.save()
-            return redirect(job)
+            return redirect(job.get_next_step_url())
 
         if previous_job_form.is_valid():
             # Copy all necessary files from previous jobs
