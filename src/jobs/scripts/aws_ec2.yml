@@ -20,7 +20,6 @@
         key_name: hemeweb
         groups:
           - default
-          - ssh
         wait: true
         count_tag:
           name: "{{ instance_tags }}"
