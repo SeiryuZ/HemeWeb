@@ -57,7 +57,7 @@ class AddPreviousJobForm(forms.Form):
         new_file.name = os.path.basename(old_file.name)
         return new_file
 
-    def copy_configuration_files(self):
+    def copy_previous_job_config(self):
         job = Job.objects.create()
         job.prepare_directories()
 
@@ -65,5 +65,7 @@ class AddPreviousJobForm(forms.Form):
         # Is the only file that can change between job execution
         job.configuration_file = self.copy_file(self.previous_job.configuration_file)
         job.input_file = self.copy_file(self.previous_job.input_file)
+        job.instance_type = self.previous_job.instance_type
+        job.instance_count = self.previous_job.instance_count
         job.save()
         return job

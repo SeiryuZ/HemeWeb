@@ -136,7 +136,7 @@ class JobAdd(View):
 
         if previous_job_form.is_valid():
             # Copy all necessary files from previous jobs
-            job = previous_job_form.copy_configuration_files()
+            job = previous_job_form.copy_previous_job_config()
             return redirect(job.get_next_step_url())
 
         context = {
