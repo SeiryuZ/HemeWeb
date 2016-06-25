@@ -93,7 +93,7 @@ class Job(models.Model):
         (8, '8 Cores'),
         (16, '16 Cores'),
     )
-    instance_type = models.IntegerField(INSTANCE_CHOICES, default=2)
+    instance_type = models.IntegerField(choices=INSTANCE_CHOICES, default=2)
     instance_count = models.IntegerField(default=1, validators=[MaxValueValidator(36)])
 
     ADDED = 1
@@ -121,6 +121,12 @@ class Job(models.Model):
 
     def get_absolute_url(self):
         return reverse('jobs:details', kwargs={"pk": str(self.id)})
+
+    def get_next_step_url(self):
+        if self.status == self.ADDED:
+            return reverse('jobs:configure1', kwargs={"pk": str(self.id)})
+        else:
+            return self.get_absolute_url()
 
     def get_job_directory_path(self):
         return os.path.join(settings.JOB_FILES_UPLOAD_DIR,

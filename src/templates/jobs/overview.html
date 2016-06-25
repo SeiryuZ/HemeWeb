@@ -1,0 +1,65 @@
+{% extends "jobs/detail_base.html" %}
+{% load addcss %}
+
+{% block body_class %}  Overview {% endblock %}
+
+{% block body_detail %}
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Job Overview  {% if job.status == job.ADDED %} <small> We're almost done</h2> {% endif %}
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">HemeLB config</h2>
+      </div>
+      <div class="panel-body">
+        <p>
+          Input file(.gmy):  {{ job.input_file.name }} <br/>
+          Config file(.xml): {{ job.configuration_file.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">Job config</h2>
+      </div>
+      <div class="panel-body">
+        <p>
+          Instance type:  {{ job.get_instance_type_display }} <br/>
+          Instance count: {{ job.instance_count }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% if job.status == job.ADDED %}
+<div class="row">
+  <div class="col-lg-12">
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="queue" id="queue" value="queue">
+      <button class="btn btn-primary"> All good! Queue job </button>
+
+    </form>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

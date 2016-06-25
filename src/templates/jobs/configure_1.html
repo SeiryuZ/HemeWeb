@@ -1,20 +1,9 @@
-{% extends "base.html" %}
+{% extends "jobs/detail_base.html" %}
 
 {% block body_class %} configure_job_1 {% endblock %}
 
-{% block body %}
+{% block body_detail %}
 
-
-<div class="row">
-  <div class="col-lg-12">
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="{% url 'jobs:configure1' job.id %}">HemeLB Config</a></li>
-      <li role="presentation"><a href="{% url 'jobs:configure2' job.id %}">Job config</a></li>
-      <li role="presentation"><a href="#">Overview</a></li>
-      <li role="presentation"><a href="{% url 'jobs:details' job.id %}">Detail</a></li>
-    </ul>
-  </div>
-</div>
 
 <div class="row">
   <div class="col-lg-12">

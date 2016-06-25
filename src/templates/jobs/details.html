@@ -1,14 +1,9 @@
-{% extends "base.html" %}
+{% extends "jobs/detail_base.html" %}
 
-{% block body %}
+{% block body_detail %}
 
-<a href="{% url 'jobs:index' %}">Index</a>
 
-<hr>
 
-<h1>Job {{ object.id }}</h1>
-
-<hr>
 
 <h3>Stdout</h3>
 <pre class="pre-scrollable" id="stdout">

@@ -28,6 +28,7 @@ class JobDetails(DetailView):
         context['stdout'] = self.object.get_output('stdout')
         context['stderr'] = self.object.get_output('stderr')
         context['hemelb'] = self.object.get_output('hemelb')
+        context['view'] = 'detail'
         return context
 
 
@@ -49,7 +50,8 @@ class JobConfiguration1(View):
         job = Job.objects.get(id=self.kwargs['pk'])
         context = {
             'config_file': job.configuration_file.read(),
-            'job': job
+            'job': job,
+            'view': 'configure1',
         }
         return render(request, 'jobs/configure_1.html', context=context)
 
@@ -67,10 +69,11 @@ class JobConfiguration2(View):
 
     def get(self, request, *args, **kwargs):
         job = Job.objects.get(id=self.kwargs['pk'])
-        form = ConfigureJobForm(instance=job)
+        form = ConfigureJobForm(instance=job, initial={'instance_type': job.instance_type})
         context = {
             'job': job,
-            'form': form
+            'form': form,
+            'view': 'configure2',
         }
         return render(request, 'jobs/configure_2.html', context=context)
 
@@ -80,13 +83,32 @@ class JobConfiguration2(View):
 
         if form.is_valid():
             job = form.save()
-            return redirect(job)
+            return redirect('jobs:overview', str(job.id))
 
         context = {
             'job': job,
-            'form': form
+            'form': form,
+            'view': 'configure2',
         }
         return render(request, 'jobs/configure_2.html', context=context)
+
+
+class JobOverview(View):
+
+    def get(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        context = {
+            'job': job,
+            'view': 'overview',
+        }
+        return render(request, 'jobs/overview.html', context=context)
+
+    def post(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        job.enqueue_job()
+        job.status = job.QUEUED
+        job.save(update_fields=['status'])
+        return redirect(job)
 
 
 class JobAdd(View):
@@ -114,7 +136,7 @@ class JobAdd(View):
         if previous_job_form.is_valid():
             # Copy all necessary files from previous jobs
             job = previous_job_form.copy_configuration_files()
-            return redirect(job)
+            return redirect(job.get_next_step_url())
 
         context = {
             'new_job_form': form,
