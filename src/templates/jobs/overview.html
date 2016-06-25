@@ -1,5 +1,5 @@
 {% extends "jobs/detail_base.html" %}
-{% load addcss %}
+{% load hemeweb_tags %}
 
 {% block body_class %}  Overview {% endblock %}
 
@@ -21,9 +21,10 @@
       </div>
       <div class="panel-body">
         <p>
-          Input file(.gmy):  {{ job.input_file.name }} <br/>
+        Input file(.gmy): <a target="_blank" href="{{ job.input_file.url }}">{{ job.input_file.name }} ({{ job.input_file.size | humanize }})</a><br/><br/>
           Config file(.xml): {{ job.configuration_file.name }}
         </p>
+        <div id="editor">{{ config_file }}</div>
       </div>
     </div>
   </div>
@@ -39,7 +40,7 @@
       </div>
       <div class="panel-body">
         <p>
-          Instance type:  {{ job.get_instance_type_display }} <br/>
+          Instance type:  {{ job.get_instance_type_display }} <br/> <br/>
           Instance count: {{ job.instance_count }}
         </p>
       </div>
@@ -61,5 +62,26 @@
 </div>
 {% endif %}
 
+
+{% endblock %}
+
+
+{% block extra_javascript %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/mode-xml.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/theme-solarized_dark.js"></script>
+
+
+<script type="text/javascript" charset="utf-8">
+
+  // Configure editor
+  var editor = ace.edit("editor");
+  editor.setTheme("ace/theme/solarized_dark");
+  editor.getSession().setMode("ace/mode/xml");
+  editor.getSession().setUseWrapMode(true);
+  editor.setReadOnly(true);
+
+</script>
 
 {% endblock %}

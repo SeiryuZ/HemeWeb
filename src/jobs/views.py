@@ -99,6 +99,7 @@ class JobOverview(View):
         job = Job.objects.get(id=self.kwargs['pk'])
         context = {
             'job': job,
+            'config_file': job.configuration_file.read(),
             'view': 'overview',
         }
         return render(request, 'jobs/overview.html', context=context)

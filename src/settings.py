@@ -130,6 +130,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static_files"),
 ]
 
+MEDIA_URL = '/media/'
+
 
 ##############################################################################
 # Custom settings
