@@ -33,10 +33,17 @@ def run_setup(job_instance):
     /var/src/hemelb/Tools/setuptool/scripts/hemelb-setup-nogui \
     --stl {} {} ".format(job_instance.stl_file.name, job_instance.profile_file.name)
 
-    subprocess.call(command, shell=True)
-    job_instance.status = job_instance.ADDED
-    job_instance.save(update_fields=['status'])
+    completed = subprocess.call(command, shell=True)
 
+    if completed == 0:
+        # Assign generated .gmy and .xml to the correct fields
+        job_instance.configuration_file.name = job_instance.stl_file.name.replace('.stl', '.xml')
+        job_instance.input_file.name = job_instance.stl_file.name.replace('.stl', '.gmy')
+        job_instance.status = job_instance.ADDED
+    else:
+        job_instance.status = job_instance.FAILED
+
+    job_instance.save()
 
 @job
 def run_job(job_instance):
