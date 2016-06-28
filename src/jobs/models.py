@@ -92,11 +92,35 @@ def run_job(job_instance):
                                             shell=True)
 
                 # Update the status of job accordingly
-                if completed == 0:
-                    job_instance.status = job_instance.DONE
-                else:
+                if completed != 0:
                     job_instance.status = job_instance.FAILED
-                job_instance.save(update_fields=['status'])
+                    job_instance.save(update_fields=['status'])
+                    return
+
+        command = "/var/src/hemelb/virtualenv/bin/python \
+        /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
+        {} {} ".format(job_instance.configuration_file.name,
+                       job_instance.get_output_path())
+
+        completed = subprocess.call(command, shell=True)
+        if completed == 0:
+            job_instance.status = job_instance.FAILED
+            job_instance.save(update_fields=['status'])
+            return
+
+        command = "/var/src/hemelb/virtualenv/bin/python \
+        /var/src/hemelb/Tools/hemeTools/converters/ExtractedPropertyUnstructuredGridReader.py \
+        {} {} ".format(job_instance.get_output_path(),
+                       job_instance.get_result_extracted_directory_path())
+
+        completed = subprocess.call(command, shell=True)
+        if completed == 0:
+            job_instance.status = job_instance.FAILED
+            job_instance.save(update_fields=['status'])
+            return
+
+        job_instance.status = job_instance.DONE
+        job_instance.save()
 
 
 class Job(models.Model):
@@ -185,6 +209,14 @@ class Job(models.Model):
     def get_result_directory_path(self):
         return os.path.join(self.get_job_directory_path(),
                             'result')
+
+    def get_result_extracted_directory_path(self):
+        return os.path.join(self.get_result_extracted_directory_path(),
+                            'Extracted/*')
+
+    def get_output_path(self):
+        return os.path.join(self.get_result_directory_path(),
+                            '{}.vtu'.format(str(self.id)))
 
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
