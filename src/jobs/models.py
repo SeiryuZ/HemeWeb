@@ -24,6 +24,21 @@ def job_directory_path(instance, filename):
 
 
 @job
+def run_setup(job_instance):
+    """ Function to run the setup tools on HemeLB scripts to convert the profile file
+        and geometry file in form of .stl and .pr2 into the input for the job execution
+        which are .xml and .gmy
+    """
+    command = "/var/src/hemelb/virtualenv/bin/python \
+    /var/www/src/hemelb/Tools/setuptools/scripts/hemelb-setup-nogui \
+    --stl {} {} ".format(job_instance.stl_file.name, job_instance.profile_file.name)
+
+    subprocess.call(command, shell=True)
+    job_instance.status = job_instance.ADDED
+    job_instance.save(update_fields=['status'])
+
+
+@job
 def run_job(job_instance):
         """ Function to be called in the background to run the submitted job
             This function will compose the correct command for the job
@@ -84,6 +99,13 @@ class Job(models.Model):
     input_file = models.FileField(upload_to=job_directory_path,
                                   verbose_name="Input (.gmy)")
 
+    stl_file = models.FileField(upload_to=job_directory_path,
+                                verbose_name="Geometry file (.stl)",
+                                blank=True)
+    profile_file = models.FileField(upload_to=job_directory_path,
+                                    verbose_name="Profile file (.pr2)",
+                                    blank=True)
+
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -106,6 +128,7 @@ class Job(models.Model):
     QUEUED = 2
     RUNNING = 10
     DONE = 3
+    PREPROCESSING = 4
     FAILED = 0
     STATUS_CHOICES = (
         (ADDED, 'Added'),
@@ -113,6 +136,7 @@ class Job(models.Model):
         (RUNNING, 'Running'),
         (DONE, 'Done'),
         (FAILED, 'Failed'),
+        (PREPROCESSING, 'Preprocessing'),
     )
     status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
@@ -201,9 +225,17 @@ class Job(models.Model):
         open(self.get_log_file_path('hemelb'), 'a').close()
 
     def enqueue_job(self, async=True):
-        """ Function to queue job execution to background worker.
+        """ function to queue job execution to background worker.
         """
         if async:
             run_job.delay(self)
         else:
             run_job(self)
+
+    def enqueue_setup(self, async=True):
+        """ function to queue job execution to background worker.
+        """
+        if async:
+            run_setup.delay(self)
+        else:
+            run_setup(self)

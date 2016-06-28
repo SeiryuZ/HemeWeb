@@ -35,6 +35,20 @@ class ConfigureJobForm(forms.ModelForm):
         return job
 
 
+class RunJobSetupForm(forms.ModelForm):
+
+    class Meta:
+        model = Job
+        fields = ['stl_file', 'profile_file']
+
+    def save(self, *args, **kwargs):
+        kwargs['commit'] = False
+        job = super(AddNewJobForm, self).save(*args, **kwargs)
+        job.prepare_directories()
+        job.save()
+        return job
+
+
 class AddNewJobForm(forms.ModelForm):
 
     class Meta:
@@ -45,7 +59,10 @@ class AddNewJobForm(forms.ModelForm):
         kwargs['commit'] = False
         job = super(AddNewJobForm, self).save(*args, **kwargs)
         job.prepare_directories()
+        job.status = job.PREPROCESSING
         job.save()
+
+        job.enqueue_setup()
         return job
 
 
