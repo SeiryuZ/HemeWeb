@@ -63,3 +63,35 @@
 # TODO: Figure out how to restart the worker safely when there are running jobs
 - name: Start hemeweb_worker app
   service: name=hemeweb_worker state=restarted
+
+
+
+# Pre processing stuff
+- name: Clone HemeLB source code
+  git: clone=true accept_hostkey=yes repo=https://github.com/UCL/hemelb.git
+       update=true dest=/var/src/hemelb
+
+
+- name: Install necessary tools for pre-processing
+  apt: name={{ item }} state=latest
+  with_items:
+    - libcgal-dev
+    - libvtk5-dev
+    - python-vtk
+    - vmtk
+    - python-wxtools
+    - python-wxversion
+    - swig
+
+- name: Install HemeLB tools requirements
+  pip:  virtualenv=/var/src/hemelb/virtualenv virtualenv_site_packages=yes virtualenv_python=python2 name={{ item }}
+  with_items:
+    - cython
+    - numpy
+
+- name: Install HemeLB tools into python path
+  shell: chdir=/var/src/hemelb/Tools /var/src/hemelb/virtualenv/bin/python /var/src/hemelb/Tools/setup.py install
+
+- name: Install HemeLB Setup tools into python path
+  shell: chdir=/var/src/hemelb/Tools/setuptool /var/src/hemelb/virtualenv/bin/python /var/src/hemelb/Tools/setuptool/setup.py install
+
