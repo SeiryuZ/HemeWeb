@@ -45,6 +45,7 @@ def run_setup(job_instance):
 
     job_instance.save()
 
+
 @job
 def run_job(job_instance):
         """ Function to be called in the background to run the submitted job

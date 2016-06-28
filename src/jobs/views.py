@@ -57,6 +57,7 @@ class JobConfiguration1(View):
 
     def post(self, request, *args, **kwargs):
         job = Job.objects.get(id=self.kwargs['pk'])
+        # TODO: Optimize this, instead of deleting the file, just overwrite the file content
         filename = os.path.basename(job.configuration_file.name)
         job.configuration_file.delete()
         job.configuration_file.save(filename, ContentFile(request.POST['content']))
