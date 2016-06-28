@@ -43,9 +43,11 @@ class RunJobSetupForm(forms.ModelForm):
 
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
-        job = super(AddNewJobForm, self).save(*args, **kwargs)
+        job = super(RunJobSetupForm, self).save(*args, **kwargs)
         job.prepare_directories()
+        job.status = job.PREPROCESSING
         job.save()
+        job.enqueue_setup()
         return job
 
 
@@ -59,10 +61,7 @@ class AddNewJobForm(forms.ModelForm):
         kwargs['commit'] = False
         job = super(AddNewJobForm, self).save(*args, **kwargs)
         job.prepare_directories()
-        job.status = job.PREPROCESSING
         job.save()
-
-        job.enqueue_setup()
         return job
 
 

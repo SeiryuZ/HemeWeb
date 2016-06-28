@@ -131,6 +131,26 @@ class JobOverview(View):
         return redirect(job)
 
 
+class JobSetup(View):
+
+    def post(self, request, *args, **kwargs):
+        form = AddNewJobForm()
+        previous_job_form = AddPreviousJobForm()
+        preprocess_form = RunJobSetupForm(data=request.POST or None,
+                                          files=request.FILES or None)
+
+        if preprocess_form.is_valid():
+            job = preprocess_form.save()
+            return redirect(job.get_next_step_url())
+
+        context = {
+            'new_job_form': form,
+            'previous_job_form': previous_job_form,
+            'preprocess_form': preprocess_form
+        }
+        return render(request, 'jobs/new_add.html', context=context)
+
+
 class JobAdd(View):
 
     def get(self, request, *args, **kwargs):
@@ -150,21 +170,17 @@ class JobAdd(View):
                              files=request.FILES or None)
 
         previous_job_form = AddPreviousJobForm(data=request.POST or None)
-        preprocess_form = RunJobSetupForm(data=request.POST or None,
-                                          files=request.FILES or None)
+        preprocess_form = RunJobSetupForm()
 
         if form.is_valid():
             job = form.save()
             return redirect(job.get_next_step_url())
 
         if previous_job_form.is_valid():
-            # Copy all necessary files from previous jobs
+            # copy all necessary files from previous jobs
             job = previous_job_form.copy_previous_job_config()
             return redirect(job.get_next_step_url())
 
-        if preprocess_form.is_valid():
-            job = preprocess_form.save()
-            return redirect(job.get_next_step_url())
 
         context = {
             'new_job_form': form,
