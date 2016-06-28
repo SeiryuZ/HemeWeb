@@ -41,6 +41,11 @@ class RunJobSetupForm(forms.ModelForm):
         model = Job
         fields = ['stl_file', 'profile_file']
 
+    def __init__(self, *args, **kwargs):
+        super(RunJobSetupForm, self).__init__(*args, **kwargs)
+        self.fields['stl_file'].required = True
+        self.fields['profile_file'].required = True
+
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
         job = super(RunJobSetupForm, self).save(*args, **kwargs)
@@ -56,6 +61,11 @@ class AddNewJobForm(forms.ModelForm):
     class Meta:
         model = Job
         fields = ['configuration_file', 'input_file']
+
+    def __init__(self, *args, **kwargs):
+        super(AddNewJobForm, self).__init__(*args, **kwargs)
+        self.fields['configuration_file'].required = True
+        self.fields['input_file'].required = True
 
     def save(self, *args, **kwargs):
         kwargs['commit'] = False
