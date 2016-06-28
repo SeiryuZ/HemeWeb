@@ -97,6 +97,7 @@ def run_job(job_instance):
                     job_instance.save(update_fields=['status'])
                     return
 
+        # Generate VTU
         command = "/var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
         {} {} ".format(job_instance.configuration_file.name,
@@ -108,6 +109,7 @@ def run_job(job_instance):
             job_instance.save(update_fields=['status'])
             return
 
+        # Combine VTU with the Extracted image
         command = "/var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/ExtractedPropertyUnstructuredGridReader.py \
         {} {} ".format(job_instance.get_output_path(),
@@ -139,6 +141,8 @@ class Job(models.Model):
     profile_file = models.FileField(upload_to=job_directory_path,
                                     verbose_name="Profile file (.pr2)",
                                     blank=True)
+    output_file = models.FileField(upload_to=job_directory_path,
+                                   blank=True)
 
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -218,6 +222,10 @@ class Job(models.Model):
         return os.path.join(self.get_result_directory_path(),
                             '{}.vtu'.format(str(self.id)))
 
+    def get_packaged_output_path(self):
+        return os.path.join(self.get_result_directory_path(),
+                            '{}.tar.gz'.format(str(self.id)))
+
     def get_log_file_path(self, log_type):
         return os.path.join(self.get_log_directory_path(),
                             log_type)
@@ -267,6 +275,15 @@ class Job(models.Model):
         open(self.get_log_file_path('stdout'), 'a').close()
         open(self.get_log_file_path('stderr'), 'a').close()
         open(self.get_log_file_path('hemelb'), 'a').close()
+
+    def package_output(self):
+        # Combine VTU with the Extracted image
+        command = "tar {} {} ".format(self.get_packaged_output_path(),
+                                      self.get_result_extracted_directory_path())
+
+        subprocess.call(command, shell=True)
+        self.output_file.name = self.get_packaged_output_path()
+        self.save()
 
     def enqueue_job(self, async=True):
         """ function to queue job execution to background worker.
