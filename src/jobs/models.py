@@ -278,7 +278,7 @@ class Job(models.Model):
 
     def package_output(self):
         # Combine VTU with the Extracted image
-        command = "tar {} {} ".format(self.get_packaged_output_path(),
+        command = "tar -czf {} {} ".format(self.get_packaged_output_path(),
                                       self.get_result_extracted_directory_path())
 
         subprocess.call(command, shell=True)
