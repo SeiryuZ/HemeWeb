@@ -16,7 +16,7 @@
     <div class="panel-body">
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          {% for field in new_job_form.visible_fields %}
+          {% for field in preprocess_form.visible_fields %}
             <div class="form-group">
 
               <label for="{{ field.name }}">{{ field.label_tag }}</label>

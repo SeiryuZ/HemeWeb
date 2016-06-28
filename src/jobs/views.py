@@ -155,6 +155,7 @@ class JobAdd(View):
 
         context = {
             'new_job_form': form,
-            'previous_job_form': previous_job_form
+            'previous_job_form': previous_job_form,
+            'preprocess_form': preprocess_form
         }
         return render(request, 'jobs/new_add.html', context=context)
