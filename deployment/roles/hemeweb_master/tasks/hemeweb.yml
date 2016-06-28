@@ -59,10 +59,16 @@
 - name: Create upstart script to run hemeweb_worker (RQworker)
   template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker.conf
 
+- name: Create upstart script to run hemeweb_worker2 (RQworker)
+  template: force=True src=hemeweb_worker.j2 dest=/etc/init/hemeweb_worker2.conf
+
 
 # TODO: Figure out how to restart the worker safely when there are running jobs
 - name: Start hemeweb_worker app
   service: name=hemeweb_worker state=restarted
+
+- name: Start hemeweb_worker2 app
+  service: name=hemeweb_worker2 state=restarted
 
 
 
