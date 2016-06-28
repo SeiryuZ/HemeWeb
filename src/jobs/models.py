@@ -215,7 +215,7 @@ class Job(models.Model):
                             'result')
 
     def get_result_extracted_directory_path(self):
-        return os.path.join(self.get_result_extracted_directory_path(),
+        return os.path.join(self.get_result_directory_path(),
                             'Extracted/*')
 
     def get_output_path(self):
@@ -279,7 +279,7 @@ class Job(models.Model):
     def package_output(self):
         # Combine VTU with the Extracted image
         command = "tar -czf {} {} ".format(self.get_packaged_output_path(),
-                                      self.get_result_extracted_directory_path())
+                                           self.get_result_extracted_directory_path())
 
         subprocess.call(command, shell=True)
         self.output_file.name = self.get_packaged_output_path()
