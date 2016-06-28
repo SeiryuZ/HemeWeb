@@ -163,7 +163,7 @@ class JobAdd(View):
             return redirect(job.get_next_step_url())
 
         if preprocess_form.is_valid():
-            job = form.save()
+            job = preprocess_form.save()
             return redirect(job.get_next_step_url())
 
         context = {
