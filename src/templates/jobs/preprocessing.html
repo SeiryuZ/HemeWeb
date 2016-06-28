@@ -1,0 +1,27 @@
+{% extends "jobs/detail_base.html" %}
+
+{% block body_class %} configure_job_1 {% endblock %}
+
+{% block body_detail %}
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <h2>Preprocessing profile and geometry files....</h2>
+  </div>
+</div>
+
+
+{% endblock %}
+
+
+
+{% block extra_javascript %}
+<script type="text/javascript" charset="utf-8">
+  // refresh the page in 15s
+  setTimeout(function(){
+      location.reload();
+  }, 15000);
+</script>
+
+{% endblock %}

@@ -95,9 +95,11 @@ class Job(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     configuration_file = models.FileField(upload_to=job_directory_path,
-                                          verbose_name="Config (.xml)")
+                                          verbose_name="Config (.xml)",
+                                          blank=True)
     input_file = models.FileField(upload_to=job_directory_path,
-                                  verbose_name="Input (.gmy)")
+                                  verbose_name="Input (.gmy)",
+                                  blank=True)
 
     stl_file = models.FileField(upload_to=job_directory_path,
                                 verbose_name="Geometry file (.stl)",
@@ -155,6 +157,8 @@ class Job(models.Model):
     def get_next_step_url(self):
         if self.status == self.ADDED:
             return reverse('jobs:configure1', kwargs={"pk": str(self.id)})
+        if self.status == self.PREPROCESSING:
+            return reverse('jobs:preprocessing', kwargs={"pk": str(self.id)})
         else:
             return self.get_absolute_url()
 

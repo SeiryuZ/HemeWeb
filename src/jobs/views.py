@@ -65,6 +65,19 @@ class JobConfiguration1(View):
         return HttpResponse(json.dumps(output), content_type='application/json')
 
 
+class JobPreprocessing(View):
+
+    def get(self, request, *args, **kwargs):
+        job = Job.objects.get(id=self.kwargs['pk'])
+        if job.status != job.PREPROCESSING:
+            return redirect(job.get_next_step_url())
+        context = {
+            'job': job,
+            'view': 'preprocssing',
+        }
+        return render(request, 'jobs/preprocessing.html', context=context)
+
+
 class JobConfiguration2(View):
 
     def get(self, request, *args, **kwargs):

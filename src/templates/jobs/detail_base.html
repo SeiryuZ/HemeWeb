@@ -8,6 +8,7 @@
 
 <div class="row">
   <div class="col-lg-12">
+    {% if job.status != job.PREPROCESSING %}
     <ul class="nav nav-tabs">
       {% if job.status == job.ADDED %}
       <li role="presentation" class="{% if view == 'configure1' %}active{% endif %}">
@@ -27,6 +28,7 @@
       </li>
       {% endif %}
     </ul>
+    {% endif %}
   </div>
 </div>
 
