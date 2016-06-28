@@ -30,7 +30,7 @@ def run_setup(job_instance):
         which are .xml and .gmy
     """
     command = "/var/src/hemelb/virtualenv/bin/python \
-    /var/src/hemelb/Tools/setuptools/scripts/hemelb-setup-nogui \
+    /var/src/hemelb/Tools/setuptool/scripts/hemelb-setup-nogui \
     --stl {} {} ".format(job_instance.stl_file.name, job_instance.profile_file.name)
 
     subprocess.call(command, shell=True)
