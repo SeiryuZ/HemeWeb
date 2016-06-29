@@ -98,7 +98,7 @@ def run_job(job_instance):
                     return
 
         # Generate VTU
-        command = "/var/src/hemelb/virtualenv/bin/python \
+        command = "sudo /var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
         {} {} ".format(job_instance.configuration_file.name,
                        job_instance.get_output_path())
@@ -110,7 +110,7 @@ def run_job(job_instance):
             return
 
         # Combine VTU with the Extracted image
-        command = "/var/src/hemelb/virtualenv/bin/python \
+        command = "sudo /var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/ExtractedPropertyUnstructuredGridReader.py \
         {} {} ".format(job_instance.get_output_path(),
                        job_instance.get_result_extracted_directory_path())
@@ -121,6 +121,7 @@ def run_job(job_instance):
             job_instance.save(update_fields=['status'])
             return
 
+        job_instance.package_output()
         job_instance.status = job_instance.DONE
         job_instance.save()
 
@@ -278,7 +279,7 @@ class Job(models.Model):
 
     def package_output(self):
         # Combine VTU with the Extracted image
-        command = "tar -czf {} {} ".format(self.get_packaged_output_path(),
+        command = "sudo tar -czf {} {} ".format(self.get_packaged_output_path(),
                                            self.get_result_extracted_directory_path())
 
         subprocess.call(command, shell=True)
