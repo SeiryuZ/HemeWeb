@@ -332,21 +332,3 @@ class Job(models.Model):
         with open(self.get_metadata_path(), 'rb') as metadata_file:
             obj = pickle.load(metadata_file)
             obj.save()
-        # configuration_file = glob.glob("{}/*.xml".format(self.get_input_directory_path()))
-        # if configuration_file:
-            # self.configuration_file.name = configuration_file[0]
-
-        # input_file = glob.glob("{}/*.gmy".format(self.get_input_directory_path()))
-        # if input_file:
-            # self.input_file.name = input_file[0]
-
-        # geometry_file = glob.glob("{}/*.stl".format(self.get_input_directory_path()))
-        # if geometry_file:
-            # self.geometry_file.name = geometry_file[0]
-
-        # profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
-        # if profile_file:
-            # self.profile_file.name = profile_file[0]
-
-
-        # self.save()
