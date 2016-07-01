@@ -187,3 +187,4 @@ class AddPreviousJobFromURLForm(forms.Form):
         job.container_image = previous_job.container_image
 
         job.save()
+        return job

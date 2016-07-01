@@ -157,6 +157,7 @@ class JobSetup(View):
         }
         return render(request, 'jobs/new_add.html', context=context)
 
+
 class JobAddFromURL(View):
 
     def post(self, request, *args, **kwargs):
