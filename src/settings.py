@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # HemeWeb specific django app
+    'core',
     'jobs',
 
     # Third parties
@@ -155,6 +156,10 @@ CACHES = {
         'LOCATION': '127.0.0.1:6379',
     },
 }
+
+CLOUD_VENDOR = 'AWS'
+# CLOUD_VENDOR = 'DO'
+# CLOUD_VENDOR = 'GOOGLE'
 
 # Import all the local settings
 # See local_settings.py.template
