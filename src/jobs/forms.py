@@ -170,7 +170,6 @@ class AddPreviousJobFromURLForm(forms.Form):
         subprocess.call(cmd, shell=True)
 
         previous_job, _ = Job.objects.get_or_create(id=job_id, defaults={'status': Job.PREVIOUS})
-        self.previous_job = previous_job
 
         # Link the appropriate instance attribute to the file
         previous_job.sync_files()
@@ -181,10 +180,10 @@ class AddPreviousJobFromURLForm(forms.Form):
 
         # Make duplicate, Ideally we could just link the .gmy because the .xml
         # Is the only file that can change between job execution
-        job.configuration_file = self.copy_file(self.previous_job.configuration_file)
-        job.input_file = self.copy_file(self.previous_job.input_file)
-        job.instance_type = self.previous_job.instance_type
-        job.instance_count = self.previous_job.instance_count
-        job.container_image = self.previous_job.container_image
+        job.configuration_file = self.copy_file(previous_job.configuration_file)
+        job.input_file = self.copy_file(previous_job.input_file)
+        job.instance_type = previous_job.instance_type
+        job.instance_count = previous_job.instance_count
+        job.container_image = previous_job.container_image
 
         job.save()
