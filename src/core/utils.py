@@ -88,14 +88,14 @@ class PersistentStorage(object):
         # Download
         self.client.download_file(settings.PERSISTENT_STORAGE_BUCKET_NAME,
                                   job_file,
-                                  job_file)
+                                  "/tmp/{}".format(job_file))
 
         # Uncompress
-        cmd = 'sudo tar -xzf {} -C {}'.format(job_file, settings.JOB_FILES_UPLOAD_DIR)
+        cmd = 'sudo tar -xzf /tmp/{} -C {}'.format(job_file, settings.JOB_FILES_UPLOAD_DIR)
         subprocess.call(cmd, shell=True)
 
         # Delete compressed file
-        cmd = 'sudo rm {}'.format(job_file)
+        cmd = 'sudo rm /tmp/{}'.format(job_file)
         subprocess.call(cmd, shell=True)
 
         # Link the appropriate instance attribute to the file
