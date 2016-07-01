@@ -1,4 +1,5 @@
 import cPickle as pickle
+import glob
 import os
 import subprocess
 import uuid
@@ -11,7 +12,6 @@ from django.db import models
 from django.db import transaction
 
 from django_rq import job
-from redis import Redis
 
 
 def job_directory_path(instance, filename):
@@ -344,4 +344,22 @@ class Job(models.Model):
         """
         with open(self.get_metadata_path(), 'rb') as metadata_file:
             obj = pickle.load(metadata_file)
+
+            # Update the file location
+            configuration_file = glob.glob("{}/*.xml".format(self.get_input_directory_path()))
+            if configuration_file:
+                obj.configuration_file.name = configuration_file[0]
+
+            input_file = glob.glob("{}/*.gmy".format(self.get_input_directory_path()))
+            if input_file:
+                obj.input_file.name = input_file[0]
+
+            geometry_file = glob.glob("{}/*.stl".format(self.get_input_directory_path()))
+            if geometry_file:
+                obj.geometry_file.name = geometry_file[0]
+
+            profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
+            if profile_file:
+                obj.profile_file.name = profile_file[0]
+
             obj.save()
