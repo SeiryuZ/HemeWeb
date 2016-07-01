@@ -1,3 +1,4 @@
+import glob
 import os
 import subprocess
 import uuid
@@ -301,3 +302,26 @@ class Job(models.Model):
             run_setup.delay(self)
         else:
             run_setup(self)
+
+    def sync_files(self):
+        """ Function to update the attribute for file fields by seeing the
+            available file in directory
+        """
+        configuration_file = glob.glob("{}/*.xml".format(self.get_input_directory_path()))
+        if configuration_file:
+            self.configuration_file.name = configuration_file[0]
+
+        input_file = glob.glob("{}/*.gmy".format(self.get_input_directory_path()))
+        if input_file:
+            self.input_file.name = input_file[0]
+
+        geometry_file = glob.glob("{}/*.stl".format(self.get_input_directory_path()))
+        if geometry_file:
+            self.geometry_file.name = geometry_file[0]
+
+        profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
+        if profile_file:
+            self.profile_file.name = profile_file[0]
+
+
+        self.save()

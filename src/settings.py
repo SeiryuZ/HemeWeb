@@ -161,6 +161,8 @@ CLOUD_VENDOR = 'AWS'
 # CLOUD_VENDOR = 'DO'
 # CLOUD_VENDOR = 'GOOGLE'
 
+PERSISTENT_STORAGE_BUCKET_NAME = 'hemeweb-jobs'
+
 # Import all the local settings
 # See local_settings.py.template
 try:
