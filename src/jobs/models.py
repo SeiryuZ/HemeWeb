@@ -11,6 +11,7 @@ from django.db import models
 from django.db import transaction
 
 from django_rq import job
+from redis import Redis
 
 
 def job_directory_path(instance, filename):
@@ -127,6 +128,17 @@ def run_job(job_instance):
         job_instance.package_output()
         job_instance.status = job_instance.DONE
         job_instance.save()
+
+        # Only upload job if it is successful
+        upload_job.delay(job_instance)
+
+
+@job
+def upload_job(job_instance):
+    from core.utils import PersistentStorage
+    storage = PersistentStorage()
+    storage.save_job(job_instance)
+    print "uploading {}".format(job_instance.id)
 
 
 class Job(models.Model):

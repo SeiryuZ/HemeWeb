@@ -62,7 +62,7 @@ class PersistentStorage(object):
 
         # Compress the job folder
         job_file = "{}.tar.gz".format(str(job_instance.id))
-        cmd = 'tar -czf {} -C {} {}'.format(
+        cmd = 'sudo tar -czf {} -C {} {}'.format(
             job_file,
             settings.JOB_FILES_UPLOAD_DIR,
             job_instance.id.hex
