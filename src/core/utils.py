@@ -72,7 +72,8 @@ class PersistentStorage(object):
         # Upload the job file
         self.client.upload_file(job_file,
                                 settings.PERSISTENT_STORAGE_BUCKET_NAME,
-                                job_file)
+                                job_file,
+                                ExtraArgs={'ACL': 'public-read'})
 
         # Delete compressed file
         cmd = 'rm {}'.format(job_file)
@@ -99,3 +100,16 @@ class PersistentStorage(object):
 
         # Link the appropriate instance attribute to the file
         job.sync_files()
+
+    # TODO: handle other cloud provider
+    def get_job_url(self, job_id):
+        bucket_location = self.client.get_bucket_location(
+            Bucket=settings.PERSISTENT_STORAGE_BUCKET_NAME
+        )
+        job_file = "{}.tar.gz".format(str(job_id))
+        object_url = "https://s3-{0}.amazonaws.com/{1}/{2}".format(
+            bucket_location['LocationConstraint'],
+            settings.PERSISTENT_STORAGE_BUCKET_NAME,
+            job_file
+        )
+        return object_url
