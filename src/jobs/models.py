@@ -106,7 +106,7 @@ def run_job(job_instance):
         print command
 
         completed = subprocess.call(command, shell=True)
-        if completed == 0:
+        if completed != 0:
             job_instance.status = job_instance.FAILED
             job_instance.save(update_fields=['status'])
             return
@@ -119,7 +119,7 @@ def run_job(job_instance):
 
         print command
         completed = subprocess.call(command, shell=True)
-        if completed == 0:
+        if completed != 0:
             job_instance.status = job_instance.FAILED
             job_instance.save(update_fields=['status'])
             return
