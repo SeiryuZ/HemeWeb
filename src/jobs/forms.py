@@ -160,11 +160,11 @@ class AddPreviousJobFromURLForm(forms.Form):
         job_id = local_filename.strip('.tar.gz')
 
         # Uncompress
-        cmd = 'tar -xzf {} -C {}'.format(local_filename, settings.JOB_FILES_UPLOAD_DIR)
+        cmd = 'sudo tar -xzf {} -C {}'.format(local_filename, settings.JOB_FILES_UPLOAD_DIR)
         subprocess.call(cmd, shell=True)
 
         # Delete compressed file
-        cmd = 'rm {}'.format(local_filename)
+        cmd = 'sudo rm {}'.format(local_filename)
         subprocess.call(cmd, shell=True)
 
         previous_job, _ = Job.objects.get_or_create(id=job_id, defaults={'status': Job.PREVIOUS})

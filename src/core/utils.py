@@ -82,7 +82,7 @@ class PersistentStorage(object):
     def get_job(self, job_id):
         # Prepare job filename and instance
         job_id = uuid.UUID(job_id)
-        job_file = "{}.tar.gz".format(str(job_id))
+        job_file = "sudo {}.tar.gz".format(str(job_id))
         job, created = Job.objects.get_or_create(id=job_id)
 
         # Download
@@ -91,11 +91,11 @@ class PersistentStorage(object):
                                   job_file)
 
         # Uncompress
-        cmd = 'tar -xzf {} -C {}'.format(job_file, settings.JOB_FILES_UPLOAD_DIR)
+        cmd = 'sudo tar -xzf {} -C {}'.format(job_file, settings.JOB_FILES_UPLOAD_DIR)
         subprocess.call(cmd, shell=True)
 
         # Delete compressed file
-        cmd = 'rm {}'.format(job_file)
+        cmd = 'sudo rm {}'.format(job_file)
         subprocess.call(cmd, shell=True)
 
         # Link the appropriate instance attribute to the file
