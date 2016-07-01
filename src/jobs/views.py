@@ -8,7 +8,8 @@ from django.views.generic import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 
-from .forms import AddPreviousJobForm, AddNewJobForm, ConfigureJobForm, RunJobSetupForm
+from .forms import (AddPreviousJobForm, AddNewJobForm, ConfigureJobForm,
+                    RunJobSetupForm, AddPreviousJobFromURLForm)
 from .models import Job
 
 
@@ -142,6 +143,7 @@ class JobSetup(View):
         previous_job_form = AddPreviousJobForm()
         preprocess_form = RunJobSetupForm(data=request.POST or None,
                                           files=request.FILES or None)
+        url_form = AddPreviousJobFromURLForm()
 
         if preprocess_form.is_valid():
             job = preprocess_form.save()
@@ -150,7 +152,28 @@ class JobSetup(View):
         context = {
             'new_job_form': form,
             'previous_job_form': previous_job_form,
-            'preprocess_form': preprocess_form
+            'preprocess_form': preprocess_form,
+            'url_form': url_form,
+        }
+        return render(request, 'jobs/new_add.html', context=context)
+
+class JobAddFromURL(View):
+
+    def post(self, request, *args, **kwargs):
+        form = AddNewJobForm()
+        previous_job_form = AddPreviousJobForm()
+        preprocess_form = RunJobSetupForm()
+        url_form = AddPreviousJobFromURLForm(data=request.POST or None)
+
+        if url_form.is_valid():
+            job = url_form.copy_previous_job_config()
+            return redirect(job.get_next_step_url())
+
+        context = {
+            'new_job_form': form,
+            'previous_job_form': previous_job_form,
+            'preprocess_form': preprocess_form,
+            'url_form': url_form,
         }
         return render(request, 'jobs/new_add.html', context=context)
 
@@ -161,11 +184,13 @@ class JobAdd(View):
         form = AddNewJobForm()
         previous_job_form = AddPreviousJobForm()
         preprocess_form = RunJobSetupForm()
+        url_form = AddPreviousJobFromURLForm()
 
         context = {
             'new_job_form': form,
             'previous_job_form': previous_job_form,
-            'preprocess_form': preprocess_form
+            'preprocess_form': preprocess_form,
+            'url_form': url_form,
         }
         return render(request, 'jobs/new_add.html', context=context)
 
@@ -175,6 +200,7 @@ class JobAdd(View):
 
         previous_job_form = AddPreviousJobForm(data=request.POST or None)
         preprocess_form = RunJobSetupForm()
+        url_form = AddPreviousJobFromURLForm()
 
         if form.is_valid():
             job = form.save()
@@ -188,6 +214,7 @@ class JobAdd(View):
         context = {
             'new_job_form': form,
             'previous_job_form': previous_job_form,
-            'preprocess_form': preprocess_form
+            'preprocess_form': preprocess_form,
+            'url_form': url_form,
         }
         return render(request, 'jobs/new_add.html', context=context)

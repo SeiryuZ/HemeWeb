@@ -8,7 +8,7 @@
 
 <div class="row">
 
-<div class="col-lg-4">
+<div class="col-lg-3">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h2 class="panel-title">Create job from setup files</h2>
@@ -33,7 +33,7 @@
 
 
 
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title">New job config</h2>
@@ -57,7 +57,7 @@
 
 
 
-  <div class="col-lg-4">
+  <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h2 class="panel-title">Use previous job's config</h2>
@@ -66,6 +66,28 @@
           <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in previous_job_form.visible_fields %}
+              <div class="form-group">
+
+                <label for="{{ field.name }}">{{ field.label_tag }}</label>
+                {{ field|addcss:"form-control" }}
+                <span style='color:red'>{{ field.errors.as_text }}</span>
+              </div>
+            {% endfor %}
+            <button class="btn btn-primary"> Submit </button>
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Use previous job's URL</h2>
+      </div>
+      <div class="panel-body">
+          <form method="post" action="{% url 'jobs:add_from_url' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in url_form.visible_fields %}
               <div class="form-group">
 
                 <label for="{{ field.name }}">{{ field.label_tag }}</label>
