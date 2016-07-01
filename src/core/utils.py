@@ -76,7 +76,7 @@ class PersistentStorage(object):
                                 ExtraArgs={'ACL': 'public-read'})
 
         # Delete compressed file
-        cmd = 'rm {}'.format(job_file)
+        cmd = 'sudo rm {}'.format(job_file)
         subprocess.call(cmd, shell=True)
 
     def get_job(self, job_id):
