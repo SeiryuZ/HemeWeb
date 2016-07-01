@@ -170,6 +170,7 @@ class AddPreviousJobFromURLForm(forms.Form):
         subprocess.call(cmd, shell=True)
 
         previous_job, _ = Job.objects.get_or_create(id=job_id, defaults={'status': Job.PREVIOUS})
+        self.previous_job = previous_job
 
         # Link the appropriate instance attribute to the file
         previous_job.sync_files()
