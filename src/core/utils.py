@@ -82,7 +82,7 @@ class PersistentStorage(object):
     def get_job(self, job_id):
         # Prepare job filename and instance
         job_id = uuid.UUID(job_id)
-        job_file = "sudo {}.tar.gz".format(str(job_id))
+        job_file = "{}.tar.gz".format(str(job_id))
         job, created = Job.objects.get_or_create(id=job_id)
 
         # Download
