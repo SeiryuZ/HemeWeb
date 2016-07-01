@@ -25,6 +25,9 @@ class JobDetails(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(JobDetails, self).get_context_data(**kwargs)
+
+        self.object.prepare_directories()
+
         context['stdout'] = self.object.get_output('stdout')
         context['stderr'] = self.object.get_output('stderr')
         context['hemelb'] = self.object.get_output('hemelb')

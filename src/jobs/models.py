@@ -1,3 +1,4 @@
+import cPickle as pickle
 import glob
 import os
 import subprocess
@@ -169,6 +170,7 @@ class Job(models.Model):
     RUNNING = 10
     DONE = 3
     PREPROCESSING = 4
+    PREVIOUS = 5
     FAILED = 0
     STATUS_CHOICES = (
         (ADDED, 'Added'),
@@ -177,6 +179,7 @@ class Job(models.Model):
         (DONE, 'Done'),
         (FAILED, 'Failed'),
         (PREPROCESSING, 'Preprocessing'),
+        (PREVIOUS, 'Previous Job'),
     )
     status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
@@ -211,6 +214,10 @@ class Job(models.Model):
     def get_log_directory_path(self):
         return os.path.join(self.get_job_directory_path(),
                             'logs')
+
+    def get_metadata_path(self):
+        return os.path.join(self.get_job_directory_path(),
+                            'metadata')
 
     def get_result_directory_path(self):
         return os.path.join(self.get_job_directory_path(),
@@ -272,16 +279,31 @@ class Job(models.Model):
         return output
 
     def prepare_directories(self):
-        os.makedirs(self.get_input_directory_path())
-        os.makedirs(self.get_log_directory_path())
-        open(self.get_log_file_path('stdout'), 'a').close()
-        open(self.get_log_file_path('stderr'), 'a').close()
-        open(self.get_log_file_path('hemelb'), 'a').close()
+        # Do not do anything if job folder exist
+        if os.path.exists(self.get_job_directory_path()):
+            return
+
+        # Download the files if it is  previous job
+        if self.status == Job.PREVIOUS:
+            from core.utils import PersistentStorage
+            PersistentStorage().get_job(str(self.id))
+
+        # This is new job
+        else:
+            os.makedirs(self.get_input_directory_path())
+            os.makedirs(self.get_log_directory_path())
+            open(self.get_log_file_path('stdout'), 'a').close()
+            open(self.get_log_file_path('stderr'), 'a').close()
+            open(self.get_log_file_path('hemelb'), 'a').close()
+
+    def prepare_metadata(self):
+        with open(self.get_metadata_path(), 'wb') as metadata_file:
+            pickle.dump(self, metadata_file)
 
     def package_output(self):
         # Combine VTU with the Extracted image
         command = "sudo tar -czf {} {} ".format(self.get_packaged_output_path(),
-                                           self.get_result_extracted_directory_path())
+                                                self.get_result_extracted_directory_path())
 
         subprocess.call(command, shell=True)
         self.output_file.name = self.get_packaged_output_path()
@@ -307,21 +329,24 @@ class Job(models.Model):
         """ Function to update the attribute for file fields by seeing the
             available file in directory
         """
-        configuration_file = glob.glob("{}/*.xml".format(self.get_input_directory_path()))
-        if configuration_file:
-            self.configuration_file.name = configuration_file[0]
+        with open(self.get_metadata_path(), 'rb') as metadata_file:
+            obj = pickle.load(metadata_file)
+            obj.save()
+        # configuration_file = glob.glob("{}/*.xml".format(self.get_input_directory_path()))
+        # if configuration_file:
+            # self.configuration_file.name = configuration_file[0]
 
-        input_file = glob.glob("{}/*.gmy".format(self.get_input_directory_path()))
-        if input_file:
-            self.input_file.name = input_file[0]
+        # input_file = glob.glob("{}/*.gmy".format(self.get_input_directory_path()))
+        # if input_file:
+            # self.input_file.name = input_file[0]
 
-        geometry_file = glob.glob("{}/*.stl".format(self.get_input_directory_path()))
-        if geometry_file:
-            self.geometry_file.name = geometry_file[0]
+        # geometry_file = glob.glob("{}/*.stl".format(self.get_input_directory_path()))
+        # if geometry_file:
+            # self.geometry_file.name = geometry_file[0]
 
-        profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
-        if profile_file:
-            self.profile_file.name = profile_file[0]
+        # profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
+        # if profile_file:
+            # self.profile_file.name = profile_file[0]
 
 
-        self.save()
+        # self.save()

@@ -83,6 +83,10 @@ class AddPreviousJobForm(forms.Form):
 
         try:
             job = Job.objects.get(id=job_id)
+            job.prepare_directories()
+
+            # Refresh
+            job = Job.objects.get(id=job_id)
             self.previous_job = job
             return job_id
         except (ValueError, ObjectDoesNotExist):

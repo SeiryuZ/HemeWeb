@@ -58,6 +58,8 @@ class PersistentStorage(object):
     def save_job(self, job_instance):
         """ Compress job files, and upload it to the bucket
         """
+        job_instance.prepare_metadata()
+
         # Compress the job folder
         job_file = "{}.tar.gz".format(str(job_instance.id))
         cmd = 'tar -czf {} {}'.format(
