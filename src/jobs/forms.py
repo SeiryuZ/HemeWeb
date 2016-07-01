@@ -1,5 +1,6 @@
 import os
 import subprocess
+import uuid
 
 from django import forms
 from django.conf import settings
@@ -158,6 +159,7 @@ class AddPreviousJobFromURLForm(forms.Form):
         job_url = self.cleaned_data['job_url']
         local_filename = job_url.split('/')[-1]
         job_id = local_filename.strip('.tar.gz')
+        job_id = uuid.UUID(job_id)
 
         # Uncompress
         cmd = 'sudo tar -xzf /tmp/{} -C {}'.format(local_filename, settings.JOB_FILES_UPLOAD_DIR)
