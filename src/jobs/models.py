@@ -1,5 +1,4 @@
 import cPickle as pickle
-import glob
 import os
 import subprocess
 import uuid
@@ -104,6 +103,7 @@ def run_job(job_instance):
         /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
         {} {} ".format(job_instance.configuration_file.name,
                        job_instance.get_output_path())
+        print command
 
         completed = subprocess.call(command, shell=True)
         if completed == 0:
@@ -117,6 +117,7 @@ def run_job(job_instance):
         {} {} ".format(job_instance.get_output_path(),
                        job_instance.get_result_extracted_directory_path())
 
+        print command
         completed = subprocess.call(command, shell=True)
         if completed == 0:
             job_instance.status = job_instance.FAILED

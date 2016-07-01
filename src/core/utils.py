@@ -62,9 +62,10 @@ class PersistentStorage(object):
 
         # Compress the job folder
         job_file = "{}.tar.gz".format(str(job_instance.id))
-        cmd = 'tar -czf {} {}'.format(
+        cmd = 'tar -czf {} -C {} {}'.format(
             job_file,
-            job_instance.get_job_directory_path()
+            settings.JOB_FILES_UPLOAD_DIR,
+            job_instance.id.hex
         )
         subprocess.call(cmd, shell=True)
 
@@ -89,7 +90,7 @@ class PersistentStorage(object):
                                   job_file)
 
         # Uncompress
-        cmd = 'tar -xzf {} '.format(job_file)
+        cmd = 'tar -xzf {} -C {}'.format(job_file, settings.JOB_FILES_UPLOAD_DIR)
         subprocess.call(cmd, shell=True)
 
         # Delete compressed file
