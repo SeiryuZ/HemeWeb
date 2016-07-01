@@ -158,7 +158,7 @@ class AddPreviousJobFromURLForm(forms.Form):
     def copy_previous_job_config(self):
         job_url = self.cleaned_data['job_url']
         local_filename = job_url.split('/')[-1]
-        job_id = local_filename.strip('.tar.gz')
+        job_id = local_filename.split('.tar.gz')[0]
         job_id = uuid.UUID(job_id)
 
         # Uncompress
