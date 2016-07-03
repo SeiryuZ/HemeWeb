@@ -58,35 +58,14 @@ def run_job(job_instance):
 
         job_instance.run_hemelb()
 
-        # Generate VTU
-        command = "sudo /var/src/hemelb/virtualenv/bin/python \
-        /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
-        {} {} ".format(job_instance.configuration_file.name,
-                       job_instance.get_output_path())
-
-        completed = subprocess.call(command, shell=True)
-        if completed != 0:
-            job_instance.status = job_instance.FAILED
-            job_instance.save(update_fields=['status'])
-            return
-
-        # Combine VTU with the Extracted image
-        command = "sudo /var/src/hemelb/virtualenv/bin/python \
-        /var/src/hemelb/Tools/hemeTools/converters/ExtractedPropertyUnstructuredGridReader.py \
-        {} {} ".format(job_instance.get_output_path(),
-                       job_instance.get_result_extracted_directory_path())
-
-        completed = subprocess.call(command, shell=True)
-        if completed != 0:
-            job_instance.status = job_instance.FAILED
-            job_instance.save(update_fields=['status'])
-            return
-
+        job_instance.run_post_processing()
         job_instance.package_output()
-        job_instance.status = job_instance.DONE
-        job_instance.save()
 
-        # Only upload job if it is successful
+        job_instance.status = job_instance.DONE
+        job_instance.save(update_fields=['status'])
+
+        # Only upload job if it is successful, and queue it again so another
+        # worker in lower priority can take over
         upload_job.delay(job_instance)
 
 
@@ -290,8 +269,35 @@ class Job(models.Model):
                 if completed != 0:
                     self.status = self.FAILED
                     self.save(update_fields=['status'])
-                    return False
-        return True
+                    # TODO: raise a better error
+                    raise ValueError("HemeLB job execution failed")
+
+    def run_post_processing(self):
+        # Generate VTU
+        command = "sudo /var/src/hemelb/virtualenv/bin/python \
+        /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
+        {} {} ".format(self.configuration_file.name,
+                       self.get_output_path())
+
+        completed = subprocess.call(command, shell=True)
+        if completed != 0:
+            self.status = self.FAILED
+            self.save(update_fields=['status'])
+            # TODO: raise a better error
+            raise ValueError("HemeLB job execution failed")
+
+        # Combine VTU with the Extracted image
+        command = "sudo /var/src/hemelb/virtualenv/bin/python \
+        /var/src/hemelb/Tools/hemeTools/converters/ExtractedPropertyUnstructuredGridReader.py \
+        {} {} ".format(self.get_output_path(),
+                       self.get_result_extracted_directory_path())
+
+        completed = subprocess.call(command, shell=True)
+        if completed != 0:
+            self.status = self.FAILED
+            self.save(update_fields=['status'])
+            # TODO: raise a better error
+            raise ValueError("HemeLB job execution failed")
 
     def prepare_directories(self):
         # Do not do anything if job folder exist
