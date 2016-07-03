@@ -56,55 +56,13 @@ def run_job(job_instance):
             piped into the correct files
         """
 
-        command = "export ANSIBLE_HOST_KEY_CHECKING=False; \
-        export AWS_SECRET_ACCESS_KEY={}; \
-        export AWS_ACCESS_KEY_ID={}; \
-        /var/www/hemeweb/virtualenv/bin/ansible-playbook \
-        -u ubuntu \
-        --extra-vars 'image={} master_ip={} worker_node_count={}  \
-        instance_tags={} input={} output={} \
-        worker_instance_type={} log_file={} core_count={} container_image={}' \
-        jobs/scripts/aws_ec2.yml\
-        ".format(
-            settings.AWS_SECRET_ACCESS_KEY,
-            settings.AWS_ACCESS_KEY_ID,
-            settings.HEMEWEB_IMAGE_ID,
-            settings.HOST_IP,
-            job_instance.instance_count,
-            "job-{}".format(job_instance.id),
-            job_instance.configuration_file.name,
-            job_instance.get_result_directory_path(),
-            job_instance.get_instance_id(),
-            job_instance.get_log_file_path('hemelb'),
-            job_instance.get_core_count(),
-            job_instance.get_container_image_display(),
-        )
-
-        with open(job_instance.get_log_file_path('stdout'), 'w') as stdout_file:
-            with open(job_instance.get_log_file_path('stderr'), 'w') as stderr_file:
-                # Update the status first
-                with transaction.atomic():
-                    job_instance.status = job_instance.RUNNING
-                    job_instance.save(update_fields=['status'])
-
-                # Run long running job
-                completed = subprocess.call(command,
-                                            stdout=stdout_file,
-                                            stderr=stderr_file,
-                                            shell=True)
-
-                # Update the status of job accordingly
-                if completed != 0:
-                    job_instance.status = job_instance.FAILED
-                    job_instance.save(update_fields=['status'])
-                    return
+        job_instance.run_hemelb()
 
         # Generate VTU
         command = "sudo /var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
         {} {} ".format(job_instance.configuration_file.name,
                        job_instance.get_output_path())
-        print command
 
         completed = subprocess.call(command, shell=True)
         if completed != 0:
@@ -118,7 +76,6 @@ def run_job(job_instance):
         {} {} ".format(job_instance.get_output_path(),
                        job_instance.get_result_extracted_directory_path())
 
-        print command
         completed = subprocess.call(command, shell=True)
         if completed != 0:
             job_instance.status = job_instance.FAILED
@@ -290,6 +247,51 @@ class Job(models.Model):
                 cache.set(key, output, timeout=5000)
 
         return output
+
+    def run_hemelb(self):
+        command = "export ANSIBLE_HOST_KEY_CHECKING=False; \
+        export AWS_SECRET_ACCESS_KEY={}; \
+        export AWS_ACCESS_KEY_ID={}; \
+        /var/www/hemeweb/virtualenv/bin/ansible-playbook \
+        -u ubuntu \
+        --extra-vars 'image={} master_ip={} worker_node_count={}  \
+        instance_tags={} input={} output={} \
+        worker_instance_type={} log_file={} core_count={} container_image={}' \
+        jobs/scripts/aws_ec2.yml\
+        ".format(
+            settings.AWS_SECRET_ACCESS_KEY,
+            settings.AWS_ACCESS_KEY_ID,
+            settings.HEMEWEB_IMAGE_ID,
+            settings.HOST_IP,
+            self.instance_count,
+            "job-{}".format(self.id),
+            self.configuration_file.name,
+            self.get_result_directory_path(),
+            self.get_instance_id(),
+            self.get_log_file_path('hemelb'),
+            self.get_core_count(),
+            self.get_container_image_display(),
+        )
+
+        with open(self.get_log_file_path('stdout'), 'w') as stdout_file:
+            with open(self.get_log_file_path('stderr'), 'w') as stderr_file:
+                # Update the status first
+                with transaction.atomic():
+                    self.status = self.RUNNING
+                    self.save(update_fields=['status'])
+
+                # Run long running job
+                completed = subprocess.call(command,
+                                            stdout=stdout_file,
+                                            stderr=stderr_file,
+                                            shell=True)
+
+                # Update the status of job accordingly
+                if completed != 0:
+                    self.status = self.FAILED
+                    self.save(update_fields=['status'])
+                    return False
+        return True
 
     def prepare_directories(self):
         # Do not do anything if job folder exist
