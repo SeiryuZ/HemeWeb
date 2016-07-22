@@ -94,3 +94,21 @@ be given instruction on how to do both approach.
    ```bash
      openmpi.mpirun --mca btl_tcp_if_include eth0 -np 4 hemelb -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
    ```
+
+
+## Evaluation
+
+1. Which one do you prefer to use ?
+  * [ ] Command line interface
+  * [ ] Web browser
+
+2. If you choose command line, why do you prefer it?
+  * [ ] It is faster
+  * [ ] It is more flexible
+  * [ ] Others .....
+
+3. If you choose web browser, why do you prefer it ?
+  * [ ] It is faster
+  * [ ] It is easier
+  * [ ] Others .......
+
