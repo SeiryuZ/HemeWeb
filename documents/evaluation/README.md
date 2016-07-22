@@ -1,6 +1,6 @@
 ![University of Edinburgh logo](../resources/images/edinburgh-logo.png "University of Edinburgh logo")
 
-# Introduction
+## Introduction
 
 Hi there,
 
@@ -12,3 +12,15 @@ Once again, thank you for helping me with my work.
 
 
 Steven
+
+
+## About the blood flow simulation
+
+In this evaluation, you will run a blood flow simulation using
+tools named HemeLB. The software will take sets of input and run
+simulation to produce specific outputs from it.
+
+
+We will compare the usability aspect of the simulation process using two
+different approach, using command line and using web interface. You will
+be given instruction on how to do both approach.
