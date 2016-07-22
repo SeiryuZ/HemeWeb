@@ -92,7 +92,8 @@ be given instruction on how to do both approach.
 2. Run HemeLB simulation using this command
 
    ```bash
-     openmpi.mpirun --mca btl_tcp_if_include eth0 -np 4 hemelb -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
+     openmpi.mpirun --mca btl_tcp_if_include eth0 -np 4 hemelb \
+     -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
    ```
 
 
