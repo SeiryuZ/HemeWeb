@@ -30,13 +30,13 @@ be given instruction on how to do both approach.
 ## Demographic questions
 
 1. Age
-  [ ] 11 - 15
-  [ ] 16 - 20
-  [ ] 21 - 25
-  [ ] 26 - 30
-  [ ] 31 - 35
-  [ ] over 36
-  [ ] Prefer not to say
+  * [ ] 11 - 15
+  * [ ] 16 - 20
+  * [ ] 21 - 25
+  * [ ] 26 - 30
+  * [ ] 31 - 35
+  * [ ] over 36
+  * [ ] Prefer not to say
 
 2. Gender
   [ ] Male
