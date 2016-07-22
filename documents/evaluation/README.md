@@ -51,7 +51,7 @@ be given instruction on how to do both approach.
   * [ ] Yes
   * [ ] No
 
-5. Familiar with operating web browser?
+5. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
   * [ ] Yes
   * [ ] No
 
@@ -61,3 +61,36 @@ be given instruction on how to do both approach.
   * [ ] Doctor
   * [ ] Lecturer
   * [ ] Other ..................
+
+
+## Simulation A
+
+1. Open web browser, go to http://53.12.13.14
+
+2. Click on add new job
+
+3. Use the provided input files on the desktop for "New job config" form
+
+4. Configure the simulation with these parameters
+
+   ```
+      HemeLB config: No change
+      Container Image: SeiryuZ/hemelb-core:0.0.2
+      Image type: 8 core
+      Instance count: 2
+   ```
+
+5. Go to the overview tab and review the parameters one final time
+
+6. Click on run simulation
+
+
+## Simulation B
+
+1. Open terminal (cmd shift t)
+
+2. Run HemeLB simulation using this command
+
+   ```bash
+     openmpi.mpirun --mca btl_tcp_if_include eth0 -np 4 hemelb -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
+   ```
