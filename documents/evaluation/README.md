@@ -24,3 +24,35 @@ simulation to produce specific outputs from it.
 We will compare the usability aspect of the simulation process using two
 different approach, using command line and using web interface. You will
 be given instruction on how to do both approach.
+
+
+
+## Demographic questions
+
+1. Age
+  [ ] 11 - 15
+  [ ] 16 - 20
+  [ ] 21 - 25
+  [ ] 26 - 30
+  [ ] 31 - 35
+  [ ] over 36
+  [ ] Prefer not to say
+
+2. Gender
+  [ ] Male
+  [ ] Female
+  [ ] Prefer not to say
+
+3. Familiar with command line interface ?
+  [ ] Yes
+  [ ] No
+
+4. Familiar with blood flow simulation tools ?
+  [ ] Yes
+  [ ] No
+
+5. Profession?
+  [ ] Student
+  [ ] Biologist
+  [ ] Doctor
+  [ ] Other ..................
