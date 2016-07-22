@@ -39,20 +39,25 @@ be given instruction on how to do both approach.
   * [ ] Prefer not to say
 
 2. Gender
-  [ ] Male
-  [ ] Female
-  [ ] Prefer not to say
+  * [ ] Male
+  * [ ] Female
+  * [ ] Prefer not to say
 
-3. Familiar with command line interface ?
-  [ ] Yes
-  [ ] No
+3. Familiar with operating command line interface ?
+  * [ ] Yes
+  * [ ] No
 
 4. Familiar with blood flow simulation tools ?
-  [ ] Yes
-  [ ] No
+  * [ ] Yes
+  * [ ] No
 
-5. Profession?
-  [ ] Student
-  [ ] Biologist
-  [ ] Doctor
-  [ ] Other ..................
+5. Familiar with operating web browser?
+  * [ ] Yes
+  * [ ] No
+
+6. Profession?
+  * [ ] Student
+  * [ ] Biologist
+  * [ ] Doctor
+  * [ ] Lecturer
+  * [ ] Other ..................
