@@ -1,0 +1,14 @@
+![University of Edinburgh logo](../resources/images/edinburgh-logo.png "University of Edinburgh logo")
+
+# Introduction
+
+Hi there,
+
+I, Steven, am writing dissertation for my MSc of Computer Science titled "HemeWeb: Blood flow simulation on the cloud". Today, I will be conducting an evaluation on my project to measure the usability of the project compared with the original approach to run blood flow simulations using HemeLB.
+
+In this evaluation, I will need your help to run two different approach to run same blood flow simulation, followed by a short interview to measure your experience. These sessions will be recorded for evaluation purpose. It is to be noted that there are no right or wrong in running this simulation, so you do not have to worry. If in any of the process, you become uncomfortable, we will stop the session and you are free to leave.
+
+Once again, thank you for helping me with my work.
+
+
+Steven
