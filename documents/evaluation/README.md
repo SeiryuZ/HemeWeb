@@ -85,12 +85,24 @@ be given instruction on how to do both approach.
    recording software
 
 2. With the provided browser, safari, go to http://53.12.13.14
+  ![Browser](../resources/images/evaluation/browser.png "Browser")
 
 3. Click on add new job
+  ![New job](../resources/images/evaluation/new_job.png "New Job")
 
-3. Use the provided input files on the desktop for "New job config" form
+4. I have prepared two input files to be used. They are in the desktop
+   folder.
+  ```
+  \Users\steven\Desktop\input.xml
+  \Users\steven\Desktop\input.gmy
+  ```
 
-4. Configure the simulation with these parameters
+5. Use the provided input files above for "New job config" form
+  ![New job form](../resources/images/evaluation/new_job_form.png "New Job Form")
+
+6. Click "Submit"
+
+7. Configure the simulation with these parameters
 
    ```
       HemeLB config: No change
@@ -99,11 +111,11 @@ be given instruction on how to do both approach.
       Instance count: 2
    ```
 
-5. Go to the overview tab and review the parameters one final time
+8. Go to the overview tab and review the parameters one final time
 
-6. Click on run simulation
+9. Click on run simulation
 
-7. Tell me, or the person observing you, that you are finished. I will
+10. Tell me, or the person observing you, that you are finished. I will
    stop the screen recording software
 
 ====
