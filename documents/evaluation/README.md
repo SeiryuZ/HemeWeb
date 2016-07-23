@@ -110,19 +110,26 @@ be given instruction on how to do both approach.
       Image type: 8 core
       Instance count: 2
    ```
+8. In the "HemeLB config" click on next step
+  ![HemeLB config](../resources/images/evaluation/hemelb_config.png "HemeLB Config")
 
-8. Go to the overview tab and review the parameters one final time
+9. In the "Job config" change the job configuration as intended and
+   click save
+  ![Job config](../resources/images/evaluation/job_config.png "Job Config")
 
-9. Click on run simulation
+10. In the overview tab and review the parameters one final time
 
-10. Tell me, or the person observing you, that you are finished. I will
+11. Scroll to the bottom and click on "All good! Queue job"
+
+12. Tell me, or the person observing you, that you are finished. I will
    stop the screen recording software
 
 ====
 Observer notes:
-
-
-
+.
+.
+.
+.
 ====
 
 
