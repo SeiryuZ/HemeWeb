@@ -123,14 +123,6 @@ be given instruction on how to do both approach.
 12. Tell me, or the person observing you, that you are finished. I will
    stop the screen recording software
 
-====
-Observer notes:
-.
-.
-.
-.
-====
-
 
 ## Simulation A - Evaluations
 
