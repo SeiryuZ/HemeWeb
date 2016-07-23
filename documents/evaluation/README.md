@@ -113,8 +113,7 @@ be given instruction on how to do both approach.
 8. In the "HemeLB config" click on next step
   ![HemeLB config](../resources/images/evaluation/hemelb_config.png "HemeLB Config")
 
-9. In the "Job config" change the job configuration as intended and
-   click save
+9. In the "Job config" change the job configuration as specified in step 7 and click save
   ![Job config](../resources/images/evaluation/job_config.png "Job Config")
 
 10. In the overview tab and review the parameters one final time
