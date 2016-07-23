@@ -117,20 +117,32 @@ Observer notes:
 ## Simulation A - Evaluations
 
 1. How easy do you find the interface to use?
-  * [ ] Very hard [ ] Hard [ ] easy [ ] Very easy
+  * [ ] Very hard
+  * [ ] Hard
+  * [ ] easy
+  * [ ] Very easy
 
 2. Did the interface give a clear instruction on each steps of the
    process?
-  * [ ] Very unclear [ ] Unclear  [ ] Clear  [ ] Very clear
+  * [ ] Very unclear
+  * [ ] Unclear
+  * [ ] Clear
+  * [ ] Very clear
 
 3. Below are a screenshot of the homepage of the interface and the
    overview of one of the previous simulation. Do you think
    this provide clear information of pasts simulation ?
-   [ ] Very unclear  [ ] Unclear  [ ] Clear  [ ] Very Clear
+  * [ ] Very unclear
+  * [ ] Unclear
+  * [ ] Clear
+  * [ ] Very Clear
 
-   ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
-   ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
-   ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
+  Homepage
+  ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
+
+  Overview
+  ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
+  ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
 
 
 
