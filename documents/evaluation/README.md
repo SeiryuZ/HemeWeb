@@ -4,9 +4,9 @@
 
 Hi there,
 
-I, Steven, am writing dissertation for my MSc of Computer Science titled "HemeWeb: Blood flow simulation on the cloud". Today, I will be conducting an evaluation on my project to measure the usability of the project compared with the original approach to run blood flow simulations using HemeLB.
+I, Steven, am writing dissertation titled "HemeWeb: Blood flow simulation on the cloud" for my MSc. Today, I will be conducting an evaluation on my project to measure usability of the developed approach compared with the original.
 
-In this evaluation, I will need your help to run two different approach to run same blood flow simulation, followed by a short interview to measure your experience. These sessions will be recorded for evaluation purpose. It is to be noted that there are no right or wrong in running this simulation, so you do not have to worry. If in any of the process, you become uncomfortable, we will stop the session and you are free to leave.
+In this evaluation, I will need your help to run two different approaches to run same blood flow simulation, followed by a short questionaire to measure your experience. During the session, the screen will be recorded for evaluation purposes. It is to be noted that there are no right or wrong in running this simulation, so you do not have to worry. If in any of the process, you become uncomfortable, we will stop the session and you are free to leave. This session should last around X minutes.
 
 Once again, thank you for helping me with my work.
 
@@ -43,31 +43,50 @@ be given instruction on how to do both approach.
   * [ ] Female
   * [ ] Prefer not to say
 
-3. Familiar with operating command line interface ?
-  * [ ] Yes
-  * [ ] No
-
-4. Familiar with blood flow simulation tools ?
-  * [ ] Yes
-  * [ ] No
-
-5. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
-  * [ ] Yes
-  * [ ] No
-
-6. Profession?
-  * [ ] Student
+3. Profession?
+  * [ ] Student (Related with informatics)
+  * [ ] Student (Not related with informatics)
   * [ ] Biologist
   * [ ] Doctor
   * [ ] Lecturer
   * [ ] Other ..................
 
+4. Familiar with operating command line interface ?
+  * [ ] Yes
+  * [ ] No
 
-## Simulation A
+5. If familiar with command line interface. How long have you been using
+   it?
+  * [ ] < 1 years
+  * [ ] 1 - 2 years
+  * [ ] 2 - 3 years
+  * [ ] > 3 years
 
-1. Open web browser, go to http://53.12.13.14
+7. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
+  * [ ] Yes
+  * [ ] No
 
-2. Click on add new job
+8. If familiar with web browser. How long have you been using it?
+  * [ ] < 1 years
+  * [ ] 1 - 2 years
+  * [ ] 2 - 3 years
+  * [ ] > 3 years
+
+9. Familiar with blood flow simulation tools ?
+  * [ ] Yes
+  * [ ] No
+
+
+
+
+## Simulation A - Recorded session
+
+1. Tell me that you are about to start. I will start the screen
+   recording software
+
+2. With the provided browser, safari, go to http://53.12.13.14
+
+3. Click on add new job
 
 3. Use the provided input files on the desktop for "New job config" form
 
@@ -84,6 +103,36 @@ be given instruction on how to do both approach.
 
 6. Click on run simulation
 
+7. Tell me, or the person observing you, that you are finished. I will
+   stop the screen recording software
+
+====
+Observer notes:
+
+
+
+====
+
+
+## Simulation A - Evaluations
+
+1. How easy do you find the interface to use?
+  * [ ] Very hard [ ] Hard [ ] easy [ ] Very easy
+
+2. Did the interface give a clear instruction on each steps of the
+   process?
+  * [ ] Very unclear [ ] Unclear  [ ] Clear  [ ] Very clear
+
+3. Below are a screenshot of the homepage of the interface and the
+   overview of one of the previous simulation. Do you think
+   this provide clear information of pasts simulation ?
+   [ ] Very unclear  [ ] Unclear  [ ] Clear  [ ] Very Clear
+
+   ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
+   ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
+   ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
+
+
 
 ## Simulation B
 
@@ -97,7 +146,7 @@ be given instruction on how to do both approach.
    ```
 
 
-## Evaluation
+## Overall Evaluation
 
 1. Which one do you prefer to use ?
   * [ ] Command line interface
