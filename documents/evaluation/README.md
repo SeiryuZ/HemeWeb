@@ -36,12 +36,10 @@ be given instruction on how to do both approach.
   * [ ] 26 - 30
   * [ ] 31 - 35
   * [ ] over 36
-  * [ ] Prefer not to say
 
 2. Gender
   * [ ] Male
   * [ ] Female
-  * [ ] Prefer not to say
 
 3. Profession?
   * [ ] Student (Related with informatics)
@@ -158,14 +156,43 @@ be given instruction on how to do both approach.
 
 ## Simulation B
 
-1. Open terminal (cmd shift t)
+1. Tell me that you are about to start. I will start the screen
+   recording software
 
-2. Run HemeLB simulation using this command
+2. Open terminal (cmd shift t)
 
-   ```bash
-     openmpi.mpirun --mca btl_tcp_if_include eth0 -np 4 hemelb \
-     -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
+3. Your screen should look like this
+  ![Terminal](../resources/images/evaluation/terminal.png "Terminal")
+
+4. First, we are going to start two container running hemelb cores
    ```
+  docker run -i -d -v ~/Desktop/hemeweb/:/data  -t seiryuz/hemelb-core:0.0.3
+  docker run -i -d -v ~/Desktop/hemeweb/:/data  -t seiryuz/hemelb-core:0.0.3
+   ```
+  *Lines above is intended to be entered twice*
+
+5. Find out the CONTAINER ID of created containers
+   ```
+  docker ps
+   ```
+  ![docker ps](../resources/images/evaluation/docker_ps.png "docker ps")
+
+6. Find out the IP of both containers
+   ```
+  docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" <CONTAINER_ID_1>
+  docker inspect --format="{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}" <CONTAINER_ID_2>
+   ```
+  ![docker inspect](../resources/images/evaluation/docker_inspect.png "docker inspect")
+
+7. Run HemeLB simulation on both containers using this command
+   ```
+   docker exec <CONTAINER_ID_1> openmpi.mpirun --mca btl_tcp_if_include eth0 \
+   -np 4 --host <CONTAINER_IP_1>,<CONTAINER_IP_2> \
+   hemelb -in $HEMELB_INPUT -out $HEMELB_OUTPUT 1> $LOG_FILE 2>&1
+   ```
+
+8. Tell me, or the person observing you, that you are finished. I will
+   stop the screen recording software
 
 
 ## Overall Evaluation
