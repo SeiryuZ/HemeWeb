@@ -4,9 +4,9 @@
 
 Hi there,
 
-I, Steven, am writing dissertation titled "HemeWeb: Blood flow simulation on the cloud" for my MSc. Today, I will be conducting an evaluation on my project to measure usability of the developed approach compared with the original.
+I, Steven, am writing my MSc dissertation titled "HemeWeb: Blood flow simulation on the cloud". Today, I will be conducting a usability testing for the project's evaluation with your help.
 
-In this evaluation, I will need your help to run two different approaches to run same blood flow simulation, followed by a short questionaire to measure your experience. During the session, the screen will be recorded for evaluation purposes. It is to be noted that there are no right or wrong in running this simulation, so you do not have to worry. If in any of the process, you become uncomfortable, we will stop the session and you are free to leave. This session should last around X minutes.
+In this evaluation, I will ask you to run a blood flow simulation using two different approach. Following each simulation, few questions will be asked to measure your experience in using said interface. Also, during the session, your screen will be recorded for evaluation purposes. It is to be noted that there are no right or wrong in running this simulation, so you do not have to worry. If in any of the process, you become uncomfortable, we will stop the session and you are free to leave. This session should last around 20-30 minutes.
 
 Once again, thank you for helping me with my work.
 
@@ -16,26 +16,25 @@ Steven
 
 ## About the blood flow simulation
 
-In this evaluation, you will run a blood flow simulation using
-tools named HemeLB. The software will take sets of input and run
-simulation to produce specific outputs from it.
+You will run a blood flow simulation using tools called HemeLB.
+The software will take sets of input and run
+simulation to produce desired outputs from it.
 
 
 We will compare the usability aspect of the simulation process using two
-different approach, using command line and using web interface. You will
-be given instruction on how to do both approach.
+different interface; command line interface and web interface. You will
+be given instruction on how to do use both approaches. But first, some
+questions to know you better
 
 
 
 ## Demographic questions
 
 1. Age
-  * [ ] 11 - 15
-  * [ ] 16 - 20
-  * [ ] 21 - 25
-  * [ ] 26 - 30
-  * [ ] 31 - 35
-  * [ ] over 36
+  * [ ] 11 - 20
+  * [ ] 21 - 30
+  * [ ] 31 - 40
+  * [ ] over 40
 
 2. Gender
   * [ ] Male
@@ -45,8 +44,8 @@ be given instruction on how to do both approach.
   * [ ] Student (Related with informatics)
   * [ ] Student (Not related with informatics)
   * [ ] Biologist
-  * [ ] Doctor
   * [ ] Lecturer
+  * [ ] Medical practitioner
   * [ ] Other ..................
 
 4. Familiar with operating command line interface ?
@@ -70,7 +69,17 @@ be given instruction on how to do both approach.
   * [ ] 2 - 3 years
   * [ ] > 3 years
 
-9. Familiar with blood flow simulation tools ?
+9. Familiar with docker?
+  * [ ] Yes
+  * [ ] No
+
+10. If familiar with docker. How long have you been using it?
+  * [ ] < 1 years
+  * [ ] 1 - 2 years
+  * [ ] 2 - 3 years
+  * [ ] > 3 years
+
+11. Familiar with HemeLB ?
   * [ ] Yes
   * [ ] No
 
@@ -216,16 +225,52 @@ be given instruction on how to do both approach.
 ## Overall Evaluation
 
 1. Which one do you prefer to use ?
-  * [ ] Command line interface
-  * [ ] Web browser
+  * [ ] Command line interface, continue to question 2
+  * [ ] Web browser, continue to question 3
 
-2. If you choose command line, why do you prefer it?
+2. If you choose command line, why do you prefer it (You can pick more
+   than one)?
   * [ ] It is faster
   * [ ] It is more flexible
+  * [ ] It is easier
   * [ ] Others .....
 
-3. If you choose web browser, why do you prefer it ?
+3. If you choose web browser, why do you prefer it (You can pick more
+   than one) ?
   * [ ] It is faster
+  * [ ] It is more flexible
   * [ ] It is easier
   * [ ] Others .......
 
+4. The development of the web interface is to hide the complexity of the
+   process of running simulation. Do you think the web interface achieve
+   its purpose of hiding complexity from the user?
+  * [ ] Strongly disagree
+  * [ ] Disagree
+  * [ ] Agree
+  * [ ] Strongly agree
+  * [ ] Neither agree nor disagree
+
+5. Another goal of the web interface is to easily allow people to
+   inspect, reproduce and replicate simulation instances.
+   The way the web interface allow these feture is by allowing job to come from
+   previous job or other people's experiment file.
+
+  Reproduce simulation from previous
+  ![Previous simulation](../resources/images/evaluation/reproduce_previous.png "Previous Simulation")
+
+  or Reproduce simulation from others
+  ![Other people's simulation](../resources/images/evaluation/reproduce_other.png "Other people's Simulation")
+
+  Then, we can modify the previous or other people's simulation
+parameter in the next screen like how we configure the simulation
+parameter.
+  ![Modify configuration](../resources/images/evaluation/reproduce_conf1.png "Modify configuration")
+  ![Modify configuration](../resources/images/evaluation/reproduce_conf2.png "Modify configuration")
+
+   Do you think the web interface allow you to inspect, reproduce and replicate other's simulation easily?
+  * [ ] Strongly disagree
+  * [ ] Disagree
+  * [ ] Agree
+  * [ ] Strongly agree
+  * [ ] Neither agree nor disagree
