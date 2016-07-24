@@ -256,11 +256,11 @@ questions to know you better
    The way the web interface allow these feture is by allowing job to come from
    previous job or other people's experiment file.
 
-  Reproduce simulation from previous
+  Reproduce previous simulation
 
   ![Previous simulation](../resources/images/evaluation/reproduce_previous.png "Previous Simulation")
 
-  or Reproduce simulation from others
+  or Reproduce other people's simulation
 
   ![Other people's simulation](../resources/images/evaluation/reproduce_other.png "Other people's Simulation")
 
