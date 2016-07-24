@@ -77,7 +77,7 @@ be given instruction on how to do both approach.
 
 
 
-## Simulation A - Recorded session
+## Simulation Web Browser - Recorded session
 
 1. Tell me that you are about to start. I will start the screen
    recording software
@@ -122,7 +122,7 @@ be given instruction on how to do both approach.
    stop the screen recording software
 
 
-## Simulation A - Evaluations
+## Simulation Web Browser - Evaluations
 
 1. How easy do you find the interface to use?
   * [ ] Very hard
@@ -154,7 +154,7 @@ be given instruction on how to do both approach.
 
 
 
-## Simulation B
+## Simulation Command Line
 
 1. Tell me that you are about to start. I will start the screen
    recording software
@@ -169,7 +169,7 @@ be given instruction on how to do both approach.
   docker run -i -d -v ~/Desktop/hemeweb/:/data  -t seiryuz/hemelb-core:0.0.3
   docker run -i -d -v ~/Desktop/hemeweb/:/data  -t seiryuz/hemelb-core:0.0.3
    ```
-  *Lines above is intended to be entered twice*
+  *Lines above are intended to be entered twice*
 
 5. Find out the CONTAINER ID of created containers
    ```
@@ -193,6 +193,24 @@ be given instruction on how to do both approach.
 
 8. Tell me, or the person observing you, that you are finished. I will
    stop the screen recording software
+
+
+## Simulation Command Line - Evaluations
+
+1. How easy do you find the interface to use?
+  * [ ] Very hard
+  * [ ] Hard
+  * [ ] easy
+  * [ ] Very easy
+
+2. Did the interface give a clear instruction on each steps of the
+   process?
+  * [ ] Very unclear
+  * [ ] Unclear
+  * [ ] Clear
+  * [ ] Very clear
+
+
 
 
 ## Overall Evaluation
