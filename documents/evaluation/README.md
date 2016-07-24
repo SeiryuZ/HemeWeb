@@ -264,9 +264,10 @@ questions to know you better
 
   ![Other people's simulation](../resources/images/evaluation/reproduce_other.png "Other people's Simulation")
 
-  Then, we can modify the previous or other people's simulation
-parameter in the next screen like how we configure the simulation
-parameter.
+  The specified previous or other people's simulation's parameter are
+preserved and can be modified in the next screen like how we
+configure the simulation parameters.
+
   ![Modify configuration](../resources/images/evaluation/reproduce_conf1.png "Modify configuration")
   ![Modify configuration](../resources/images/evaluation/reproduce_conf2.png "Modify configuration")
 
