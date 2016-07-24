@@ -257,9 +257,11 @@ questions to know you better
    previous job or other people's experiment file.
 
   Reproduce simulation from previous
+
   ![Previous simulation](../resources/images/evaluation/reproduce_previous.png "Previous Simulation")
 
   or Reproduce simulation from others
+
   ![Other people's simulation](../resources/images/evaluation/reproduce_other.png "Other people's Simulation")
 
   Then, we can modify the previous or other people's simulation
@@ -268,7 +270,7 @@ parameter.
   ![Modify configuration](../resources/images/evaluation/reproduce_conf1.png "Modify configuration")
   ![Modify configuration](../resources/images/evaluation/reproduce_conf2.png "Modify configuration")
 
-   Do you think the web interface allow you to inspect, reproduce and replicate other's simulation easily?
+   Do you think this web interface allow you to inspect, reproduce and replicate other's simulation easily?
   * [ ] Strongly disagree
   * [ ] Disagree
   * [ ] Agree
