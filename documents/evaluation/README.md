@@ -84,6 +84,10 @@ questions to know you better
 
 ## Simulation Web Browser - Recorded session
 
+In this section, you will start a blood flow simulation using a web
+interface. You are free to ask for help from the observer, me, and skip
+this section if you find it too difficult.
+
 1. Tell me that you are about to start. I will start the screen
    recording software
 
@@ -146,6 +150,10 @@ questions to know you better
 
 
 ## Simulation Command Line
+
+In this section, you will start a blood flow simulation using a command
+line interface. You are free to ask for help from the observer, me, and skip
+this section if you find it too difficult.
 
 1. Tell me that you are about to start. I will start the screen
    recording software
