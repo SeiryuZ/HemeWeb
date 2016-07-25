@@ -97,7 +97,8 @@ questions to know you better
 1. Tell me that you are about to start. I will start the screen
    recording software
 
-2. With the provided browser, safari, go to http://53.12.13.14
+2. With the provided browser, safari, go to http://53.12.13.14 (Ignore
+   the address on the image)
   ![Browser](../resources/images/evaluation/browser.png "Browser")
 
 3. Click on add new job
