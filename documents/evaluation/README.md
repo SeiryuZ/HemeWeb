@@ -255,7 +255,6 @@ questions to know you better
   * [ ] Disagree
   * [ ] Agree
   * [ ] Strongly agree
-  * [ ] Neither agree nor disagree
 
 5. Another goal of the web interface is to easily allow people to
    inspect, reproduce and replicate simulation instances.
@@ -282,4 +281,3 @@ configure the simulation parameters.
   * [ ] Disagree
   * [ ] Agree
   * [ ] Strongly agree
-  * [ ] Neither agree nor disagree
