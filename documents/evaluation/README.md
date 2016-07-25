@@ -31,10 +31,7 @@ questions to know you better
 ## Demographic questions
 
 1. Age
-  * [ ] 18 - 20
-  * [ ] 21 - 30
-  * [ ] 31 - 40
-  * [ ] over 40
+  ... Years old
 
 2. Gender
   * [ ] Male
@@ -54,40 +51,33 @@ questions to know you better
   * [ ] Clinician
   * [ ] Other ..................
 
-5. Familiar with operating command line interface ?
-  * [ ] Yes
-  * [ ] No
+6. Your level of familiarity with command line interface ?
+  * [ ] Not at all familiar
+  * [ ] Slightly familiar
+  * [ ] Somewhat familiar
+  * [ ] Moderately familiar
+  * [ ] Extremely familiar
 
-6. If familiar with command line interface. How long have you been using
-   it?
-  * [ ] < 1 years
-  * [ ] 1 - 2 years
-  * [ ] 2 - 3 years
-  * [ ] > 3 years
+7. Your level of familiarity with  web browser (Chrome / Safari / IE / Opera)?
+  * [ ] Not at all familiar
+  * [ ] Slightly familiar
+  * [ ] Somewhat familiar
+  * [ ] Moderately familiar
+  * [ ] Extremely familiar
 
-8. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
-  * [ ] Yes
-  * [ ] No
+8. Your level of familiarity with docker?
+  * [ ] Not at all familiar
+  * [ ] Slightly familiar
+  * [ ] Somewhat familiar
+  * [ ] Moderately familiar
+  * [ ] Extremely familiar
 
-9. If familiar with web browser. How long have you been using it?
-  * [ ] < 1 years
-  * [ ] 1 - 2 years
-  * [ ] 2 - 3 years
-  * [ ] > 3 years
-
-10. Familiar with docker?
-  * [ ] Yes
-  * [ ] No
-
-11. If familiar with docker. How long have you been using it?
-  * [ ] < 1 years
-  * [ ] 1 - 2 years
-  * [ ] 2 - 3 years
-  * [ ] > 3 years
-
-12. Familiar with HemeLB ?
-  * [ ] Yes
-  * [ ] No
+9. Your level of familiarity with HemeLB ?
+  * [ ] Not at all familiar
+  * [ ] Slightly familiar
+  * [ ] Somewhat familiar
+  * [ ] Moderately familiar
+  * [ ] Extremely familiar
 
 
 
@@ -138,36 +128,21 @@ questions to know you better
    stop the screen recording software
 
 
-## Simulation Web Browser - Evaluations
+### Simulation Web Browser - Evaluations
 
-1. How easy do you find the interface to use?
-  * [ ] Very hard
-  * [ ] Hard
-  * [ ] easy
+1. How difficult do you find the interface to use?
+  * [ ] Very difficult
+  * [ ] Difficult
+  * [ ] Neutral
+  * [ ] Easy
   * [ ] Very easy
 
-2. Did the web interface give a clear direction / hint on what you should do next?
+2. Did the interface give a clear direction / hint on what you should do next?
   * [ ] Very unclear
   * [ ] Unclear
+  * [ ] Neutral
   * [ ] Clear
   * [ ] Very clear
-
-3. Below are a screenshot of the homepage of the interface and the
-   overview of one of the previous simulation.
-
-  Homepage
-  ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
-
-  Previous simulation's configuration are preserved
-  ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
-  ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
-
-   Do you think this provide clear information of pasts simulation ?
-  * [ ] Very unclear
-  * [ ] Unclear
-  * [ ] Clear
-  * [ ] Very Clear
-
 
 
 ## Simulation Command Line
@@ -213,16 +188,17 @@ questions to know you better
 
 ## Simulation Command Line - Evaluations
 
-1. How easy do you find the interface to use?
-  * [ ] Very hard
-  * [ ] Hard
-  * [ ] easy
+1. How difficult do you find the interface to use?
+  * [ ] Very difficult
+  * [ ] Difficult
+  * [ ] Neutral
+  * [ ] Easy
   * [ ] Very easy
 
-2. Did the command line interface give a clear instruction on what to do
-   next?
+2. Did the interface give a clear direction / hint on what you should do next?
   * [ ] Very unclear
   * [ ] Unclear
+  * [ ] Neutral
   * [ ] Clear
   * [ ] Very clear
 
@@ -257,7 +233,23 @@ questions to know you better
   * [ ] Agree
   * [ ] Strongly agree
 
-5. Another goal of the web interface is to easily allow people to
+5. Below are a screenshot of the homepage of the interface and the
+   overview of one of the previous simulation.
+
+  Homepage
+  ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
+
+  Previous simulation's configuration are preserved
+  ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
+  ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
+
+   Do you think this provide clear information of pasts simulation ?
+  * [ ] Very unclear
+  * [ ] Unclear
+  * [ ] Clear
+  * [ ] Very Clear
+
+6. Another goal of the web interface is to easily allow people to
    inspect, reproduce and replicate simulation instances.
    The way the web interface allow these feture is by allowing job to come from
    previous job or other people's experiment file.
