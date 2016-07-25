@@ -31,7 +31,7 @@ questions to know you better
 ## Demographic questions
 
 1. Age
-  * [ ] 11 - 20
+  * [ ] 18 - 20
   * [ ] 21 - 30
   * [ ] 31 - 40
   * [ ] over 40
@@ -40,46 +40,52 @@ questions to know you better
   * [ ] Male
   * [ ] Female
 
-3. Profession?
-  * [ ] Student (Related with informatics)
-  * [ ] Student (Not related with informatics)
-  * [ ] Biologist
+3. Career stage
+  * [ ] MSc student
+  * [ ] PhD student
+  * [ ] PDRA
   * [ ] Lecturer
-  * [ ] Medical practitioner
+  * [ ] Professor
+
+4. Discipline
+  * [ ] Informatics / CS
+  * [ ] Computational Scientist
+  * [ ] Biological Scientist
+  * [ ] Clinician
   * [ ] Other ..................
 
-4. Familiar with operating command line interface ?
+5. Familiar with operating command line interface ?
   * [ ] Yes
   * [ ] No
 
-5. If familiar with command line interface. How long have you been using
+6. If familiar with command line interface. How long have you been using
    it?
   * [ ] < 1 years
   * [ ] 1 - 2 years
   * [ ] 2 - 3 years
   * [ ] > 3 years
 
-7. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
+8. Familiar with operating web browser (Chrome / Safari / IE / Opera)?
   * [ ] Yes
   * [ ] No
 
-8. If familiar with web browser. How long have you been using it?
+9. If familiar with web browser. How long have you been using it?
   * [ ] < 1 years
   * [ ] 1 - 2 years
   * [ ] 2 - 3 years
   * [ ] > 3 years
 
-9. Familiar with docker?
+10. Familiar with docker?
   * [ ] Yes
   * [ ] No
 
-10. If familiar with docker. How long have you been using it?
+11. If familiar with docker. How long have you been using it?
   * [ ] < 1 years
   * [ ] 1 - 2 years
   * [ ] 2 - 3 years
   * [ ] > 3 years
 
-11. Familiar with HemeLB ?
+12. Familiar with HemeLB ?
   * [ ] Yes
   * [ ] No
 
@@ -139,8 +145,7 @@ questions to know you better
   * [ ] easy
   * [ ] Very easy
 
-2. Did the interface give a clear instruction on each steps of the
-   process?
+2. Did the web interface give a clear direction / hint on what you should do next?
   * [ ] Very unclear
   * [ ] Unclear
   * [ ] Clear
@@ -152,7 +157,7 @@ questions to know you better
   Homepage
   ![Homepage](../resources/images/evaluation/homepage.png "Homepage")
 
-  Overview
+  Previous simulation's configuration are preserved
   ![Overview1](../resources/images/evaluation/overview1.png "Overview-1")
   ![Overview2](../resources/images/evaluation/overview2.png "Overview-2")
 
@@ -213,8 +218,8 @@ questions to know you better
   * [ ] easy
   * [ ] Very easy
 
-2. Did the interface give a clear instruction on each steps of the
-   process?
+2. Did the command line interface give a clear instruction on what to do
+   next?
   * [ ] Very unclear
   * [ ] Unclear
   * [ ] Clear
