@@ -215,33 +215,28 @@ this section if you find it too difficult.
 
 ## Overall Evaluation
 
-1. Which one do you prefer to use ?
-  * [ ] Command line interface, continue to question 2
-  * [ ] Web browser, continue to question 3
+1. How flexible is the web browser compared to the command line
+   interface?
+  * [ ] Much worse
+  * [ ] Somewhat worse
+  * [ ] About the same
+  * [ ] Somewhat better
+  * [ ] Much better
 
-2. If you choose command line, why do you prefer it (You can pick more
-   than one)?
-  * [ ] It is faster
-  * [ ] It is more flexible
-  * [ ] It is easier
-  * [ ] Others .....
+2. How complex is the web browser compared to the command line
+   interface?
+  * [ ] Much worse (More complex)
+  * [ ] Somewhat worse
+  * [ ] About the same
+  * [ ] Somewhat better
+  * [ ] Much better (Less complex)
 
-3. If you choose web browser, why do you prefer it (You can pick more
-   than one) ?
-  * [ ] It is faster
-  * [ ] It is more flexible
-  * [ ] It is easier
-  * [ ] Others .......
+3. Overall, which interface do you prefer to use?
+  * [ ] Web interface
+  * [ ] Command line interface
 
-4. The development of the web interface is to hide the complexity of the
-   process of running simulation. Do you think the web interface achieve
-   its purpose of hiding complexity from the user?
-  * [ ] Strongly disagree
-  * [ ] Disagree
-  * [ ] Agree
-  * [ ] Strongly agree
 
-5. Below are a screenshot of the homepage of the interface and the
+4. Below are a screenshot of the homepage of the interface and the
    overview of one of the previous simulation.
 
   Homepage
@@ -257,7 +252,7 @@ this section if you find it too difficult.
   * [ ] Clear
   * [ ] Very Clear
 
-6. Another goal of the web interface is to easily allow people to
+5. Another goal of the web interface is to easily allow people to
    inspect, reproduce and replicate simulation instances.
    The way the web interface allow these feture is by allowing job to come from
    previous job or other people's experiment file.
