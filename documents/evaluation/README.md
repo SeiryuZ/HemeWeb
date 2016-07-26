@@ -65,14 +65,14 @@ questions to know you better
   * [ ] Moderately familiar
   * [ ] Extremely familiar
 
-8. Your level of familiarity with docker?
+8. Your level of familiarity with containerization technology like docker?
   * [ ] Not at all familiar
   * [ ] Slightly familiar
   * [ ] Somewhat familiar
   * [ ] Moderately familiar
   * [ ] Extremely familiar
 
-9. Your level of familiarity with HemeLB ?
+9. Your level of familiarity with blood flow simulation tools like HemeLB ?
   * [ ] Not at all familiar
   * [ ] Slightly familiar
   * [ ] Somewhat familiar
