@@ -141,33 +141,42 @@ class AddPreviousJobFromURLForm(forms.Form):
 
         return local_filename
 
-    def clean(self, *args, **kwargs):
-        cleaned_data = super(AddPreviousJobFromURLForm, self).clean(*args, **kwargs)
-
-        # TODO: need to check whether download is successful or not
-        # before proceeding
-        self.download_file(cleaned_data['job_url'])
-
-        return cleaned_data
-
     def copy_file(self, old_file):
         new_file = ContentFile(old_file.read())
         new_file.name = os.path.basename(old_file.name)
         return new_file
 
+    def cleanup_file(self):
+        """ Function to cleanup the file in tmp that might got stuck
+        """
+        # Delete compressed file
+        cmd = 'sudo rm /tmp/{}'.format(self.local_filename)
+        subprocess.call(cmd, shell=True)
+
+    def clean_job_url(self):
+
+        # TODO: need to check whether download is successful or not
+        # before proceeding
+        self.download_file(self.cleaned_data['job_url'])
+
+        # Validate its filename
+        self.local_filename = self.cleaned_data['job_url'].split('/')[-1]
+        job_id = self.local_filename.split('.tar.gz')[0]
+        try:
+            self.job_id = uuid.UUID(job_id)
+        except ValueError:
+            self.cleanup_file()
+            raise forms.ValidationError("Fail to download simulation information from URL")
+
     def copy_previous_job_config(self):
-        job_url = self.cleaned_data['job_url']
-        local_filename = job_url.split('/')[-1]
-        job_id = local_filename.split('.tar.gz')[0]
-        job_id = uuid.UUID(job_id)
+        job_id = self.job_id
+        local_filename = self.local_filename
 
         # Uncompress
         cmd = 'sudo tar -xzf /tmp/{} -C {}'.format(local_filename, settings.JOB_FILES_UPLOAD_DIR)
         subprocess.call(cmd, shell=True)
 
-        # Delete compressed file
-        cmd = 'sudo rm /tmp/{}'.format(local_filename)
-        subprocess.call(cmd, shell=True)
+        self.cleanup_file()
 
         previous_job, _ = Job.objects.get_or_create(id=job_id, defaults={'status': Job.PREVIOUS})
 

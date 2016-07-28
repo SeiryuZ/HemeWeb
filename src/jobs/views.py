@@ -170,6 +170,9 @@ class JobAddFromURL(View):
             job = url_form.copy_previous_job_config()
             return redirect(job.get_next_step_url())
 
+        print "HEY"
+        print url_form.errors
+
         context = {
             'new_job_form': form,
             'previous_job_form': previous_job_form,
