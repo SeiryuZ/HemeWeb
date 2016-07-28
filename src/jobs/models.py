@@ -136,7 +136,7 @@ class Job(models.Model):
         (DONE, 'Done'),
         (FAILED, 'Failed'),
         (PREPROCESSING, 'Preprocessing'),
-        (PREVIOUS, 'Previous Job'),
+        (PREVIOUS, 'Previous Job on S3'),
     )
     status = models.IntegerField(choices=STATUS_CHOICES, default=ADDED)
 
