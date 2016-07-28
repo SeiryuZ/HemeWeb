@@ -51,7 +51,7 @@ questions to know you better
   * [ ] Clinician
   * [ ] Other ..................
 
-6. Your level of familiarity with command line interface ?
+6. Your level of familiarity with installing software from source code ?
   * [ ] Not at all familiar
   * [ ] Slightly familiar
   * [ ] Somewhat familiar
@@ -72,7 +72,7 @@ questions to know you better
   * [ ] Moderately familiar
   * [ ] Extremely familiar
 
-9. Your level of familiarity with blood flow simulation tools like HemeLB ?
+9. Your level of familiarity with computational fluid dynamic tools like HemeLB ?
   * [ ] Not at all familiar
   * [ ] Slightly familiar
   * [ ] Somewhat familiar
