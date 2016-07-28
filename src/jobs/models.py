@@ -213,14 +213,14 @@ class Job(models.Model):
     def get_core_count(self):
         return int(self.instance_count) * int(self.instance_type)
 
-    def get_output(self, log_type):
+    def get_output(self, log_type, force=False):
         key = "{}:log:{}".format(self.id.hex, log_type)
 
         # Hit the cache first
         output = cache.get(key)
 
         # Cache Miss
-        if output is None:
+        if not output or force is True:
 
             # Read from the file, this is slow
             with open(self.get_log_file_path(log_type), 'r') as _file:
@@ -377,5 +377,9 @@ class Job(models.Model):
             profile_file = glob.glob("{}/*.pr2".format(self.get_input_directory_path()))
             if profile_file:
                 obj.profile_file.name = profile_file[0]
+
+            output_file = glob.glob("{}/*.tar.gz".format(self.get_result_directory_path()))
+            if output_file:
+                obj.output_file.name = output_file[0]
 
             obj.save()
