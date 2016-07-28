@@ -7,7 +7,10 @@
 
 <h3>Job status: {{ job.get_status_display }} {% if job.status == 'DONE' and job.output_file == '' %} preparing output... {% endif %}</h3>
 {% if job.output_file %}
-<a target="_blank" href="{{ job.output_file.url }}">{{ job.output_file.name }} ({{ job.output_file.size | humanize }})</a>
+<h3>Output file</h3>
+<pre class="pre-scrollable" id="output">
+  <a target="_blank" href="{{ job.output_file.url }}">{{ job.output_file.name }} ({{ job.output_file.size | humanize }})</a>
+</pre>
 {% endif %}
 
 <h3>Stdout</h3>
