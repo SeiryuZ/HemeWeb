@@ -10,7 +10,7 @@ class ContentTypeRestrictedFileField(models.FileField):
         * content_types - list containing allowed content_types. Example: ['application/pdf', 'image/jpeg']
     """
     def __init__(self, *args, **kwargs):
-        self.content_types = kwargs.pop("content_types")
+        self.content_types = kwargs.pop("content_types", [])
 
         super(ContentTypeRestrictedFileField, self).__init__(*args, **kwargs)
 
