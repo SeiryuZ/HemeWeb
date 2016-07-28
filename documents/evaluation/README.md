@@ -82,35 +82,30 @@ questions to know you better
 
 
 
-## Simulation Web Browser - Recorded session
+## Running a simulation job using HemeWeb - Instructions
 
-In this section, you will start a blood flow simulation using a web
-interface. You are free to ask for help from the observer, me, and skip
-this section if you find it too difficult.
+In this section, you will start a blood flow simulation using HemeWeb.
 
-1. Tell me that you are about to start. I will start the screen
-   recording software
-
-2. With the provided browser, safari, go to http://53.12.13.14 (Ignore
+1. With the provided browser, safari, go to http://53.12.13.14 (Ignore
    the address on the image)
   ![Browser](../resources/images/evaluation/browser.png "Browser")
 
-3. Click on add new job
+2. Click on add new job
   ![New job](../resources/images/evaluation/new_job.png "New Job")
 
-4. I have prepared two input files to be used. They are in the desktop
+3. I have prepared two input files to be used. They are in the desktop
    folder.
   ```
   \Users\steven\Desktop\input.xml
   \Users\steven\Desktop\input.gmy
   ```
 
-5. Use the provided input files above for "New job config" form
+4. Use the provided input files above for "New job config" form
   ![New job form](../resources/images/evaluation/new_job_form.png "New Job Form")
 
-6. Click "Submit"
+5. Click "Submit"
 
-7. Configure the simulation with these parameters
+6. Configure the simulation with these parameters
 
    ```
       HemeLB config: No change
@@ -118,21 +113,18 @@ this section if you find it too difficult.
       Image type: 8 core
       Instance count: 2
    ```
-8. In the "HemeLB config" click on next step
+7. In the "HemeLB config" click on next step
   ![HemeLB config](../resources/images/evaluation/hemelb_config.png "HemeLB Config")
 
-9. In the "Job config" change the job configuration as specified in step 7 and click save
+8. In the "Job config" change the job configuration as specified in step 7 and click save
   ![Job config](../resources/images/evaluation/job_config.png "Job Config")
 
-10. In the overview tab and review the parameters one final time
+9. In the overview tab and review the parameters one final time
 
-11. Scroll to the bottom and click on "All good! Queue job"
-
-12. Tell me, or the person observing you, that you are finished. I will
-   stop the screen recording software
+10. Scroll to the bottom and click on "All good! Queue job"
 
 
-### Simulation Web Browser - Evaluations
+### Questions
 
 1. How difficult do you find the interface to use?
   * [ ] Very difficult
