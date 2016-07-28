@@ -13,6 +13,8 @@ from django.db import transaction
 
 from django_rq import job
 
+from core.fields import ContentTypeRestrictedFileField
+
 
 def job_directory_path(instance, filename):
     """ Function to generate the correct upload path folder
@@ -80,19 +82,25 @@ def upload_job(job_instance):
 class Job(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
-    configuration_file = models.FileField(upload_to=job_directory_path,
-                                          verbose_name="Config (.xml)",
-                                          blank=True)
-    input_file = models.FileField(upload_to=job_directory_path,
-                                  verbose_name="Input (.gmy)",
-                                  blank=True)
+    configuration_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
+                                                        verbose_name="Config (.xml)",
+                                                        content_types=["text/xml"],
+                                                        blank=True)
+    input_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
+                                                verbose_name="Input (.gmy)",
+                                                content_types=["application/octet-stream"],
+                                                blank=True)
 
-    stl_file = models.FileField(upload_to=job_directory_path,
-                                verbose_name="Geometry file (.stl)",
-                                blank=True)
-    profile_file = models.FileField(upload_to=job_directory_path,
-                                    verbose_name="Profile file (.pr2)",
-                                    blank=True)
+    stl_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
+                                              verbose_name="Geometry file (.stl)",
+                                              content_types=["application/octet-stream"],
+                                              blank=True)
+
+    profile_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
+                                                  verbose_name="Profile file (.pr2)",
+                                                  content_types=["application/octet-stream"],
+                                                  blank=True)
+
     output_file = models.FileField(upload_to=job_directory_path,
                                    blank=True)
 
