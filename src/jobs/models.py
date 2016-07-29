@@ -383,3 +383,7 @@ class Job(models.Model):
                 obj.output_file.name = output_file[0]
 
             obj.save()
+
+    def get_share_url(self):
+        from core.utils import PersistentStorage
+        return PersistentStorage().get_job_url(str(self.id))
