@@ -52,7 +52,8 @@
   var objectId = "{{ object.id }}",
       $stdout = $('#stdout'),
       $stderr = $('#stderr'),
-      $hemelb = $('#hemelb');
+      $hemelb = $('#hemelb'),
+      status = "{{ job.get_status_display }}";
 
   $stdout.scrollTop(999999999);
   $stderr.scrollTop(999999999);
@@ -64,7 +65,9 @@
         $stdout.text(data.stdout).scrollTop(999999999);
         $stderr.text(data.stderr).scrollTop(999999999);
         $hemelb.text(data.hemelb).scrollTop(999999999);
-
+        if (status != data.status) {
+          location.reload();
+        }
       });
     }, 10000);
   });

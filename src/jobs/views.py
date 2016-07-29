@@ -44,6 +44,7 @@ class JobOutput(View):
         output['stdout'] = job.get_output('stdout')
         output['stderr'] = job.get_output('stderr')
         output['hemelb'] = job.get_output('hemelb')
+        output['status'] = job.get_status_display()
 
         return HttpResponse(json.dumps(output), content_type='application/json')
 
