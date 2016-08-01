@@ -62,6 +62,7 @@ RUN /usr/sbin/enable_insecure_key
 COPY container_key /root/.ssh/id_rsa
 COPY ssh_config /root/.ssh/config
 
+RUN chmod 400 /root/.ssh/id_rsa
 
 # Set root password
 RUN echo "root:Docker!" | chpasswd
