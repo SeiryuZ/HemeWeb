@@ -4,6 +4,9 @@ HemeWeb is a web application that has been developed as part of the
 HemeLB research project. Its main purpose is to allow domain experts to
 run HemeLB blood flow simulation using web browser interface.
 
+# Motivation and work plan
+See [plan](./plan.md)
+
 # License
 LGPL. See [License](./LICENSE)
 
