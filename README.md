@@ -8,7 +8,7 @@ run HemeLB blood flow simulation using web browser interface.
 See [plan](./plan.md)
 
 # License
-LGPL. See [License](./LICENSE)
+LGPL3. See [License](./LICENSE)
 
 # Acknowledgement
 
