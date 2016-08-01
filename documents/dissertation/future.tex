@@ -22,5 +22,9 @@ To better support HemeLB simulation workflow, there are some area of the project
 	
 	\item Cloud vendor abstraction on web application
 	
+	One challenge of the project was the difference between cloud vendors. Due to the time constraint, the developed web application is tied down to amazon web services only. It would be ideal if HemeWeb could work on any cloud vendors with minimal changes. This is going to be more of a reconciling the difference between cloud vendors and making an abstraction layers that HemeWeb will need to call whenever it needs to interact with the cloud vendors' feature.
+	
+	The project did achieve cloud vendor abstraction for the deployment scripts. The infrastructure can be deployed to three different cloud vendors easily. They are google cloud platform, amazon web service, and digital ocean. However, the web application needs more work to achieve the similar feat. Infrastructure can be deployed on these infrastructures, but HemeWeb still cannot work.
+	
 \end{enumerate}
 
