@@ -52,7 +52,7 @@ class PersistentStorage(object):
                 Bucket=settings.PERSISTENT_STORAGE_BUCKET_NAME
             )
             if response.get('Contents'):
-                job_ids = [content['Key'].strip('.tar.gz') for content in response['Contents']]
+                job_ids = [content['Key'][:-7] for content in response['Contents']]
         return job_ids
 
     def save_job(self, job_instance):
