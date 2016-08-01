@@ -1,0 +1,26 @@
+% Activate the following line by filling in the right side. If for example the name of the root file is Main.tex, write
+% "...root = Main.tex" if the chapter file is in the same directory, and "...root = ../Main.tex" if the chapter is in a subdirectory.
+ 
+%!TEX root =  dissertation.tex
+
+\chapter[Future work]{Future work}
+
+To better support HemeLB simulation workflow, there are some area of the project that can be further developed. They are:
+
+\begin{enumerate}
+	\item Handling simulation workflow even before geometry generation step
+	
+	There are some steps which are not included in this project due to the time constraint. One of them is the profile generation step. In this step the domain experts should generate a profile file by pointing out how the simulation will run. They will need to point where the blood will flow into the 3D  model of the vascular system, where it will flow out, the blood viscosity, and various other parameters that will affect the simulation. This process will most likely requires a graphical user interface.
+	
+	\item Viewing the result of the simulation on the browser.
+	
+	HemeLB simulation that are outputted are currently in a format that is viewable by a third party tools, ParaView. It will be more ideal if HemeWeb can be one stop solution for HemeLB simulation that domain experts does not have to bother with all other tools to view the output of it. A ParaView integration can be done in the next step of the development so that simulation result can be directly viewed on the browser so users does not have to bother with an extra tools to configure and install.
+	
+	\item Security of the simulation
+	
+	As outlined in the implementation challenge of the project, security was not the main focus of this project. However, if this project is to be an essential part of future medical decision, security will need to be addressed seriously. After all, the patient's private health information will be used for the simulation. A system using such highly private information should be better secured.
+	
+	\item Cloud vendor abstraction on web application
+	
+\end{enumerate}
+

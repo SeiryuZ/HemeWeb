@@ -1,0 +1,90 @@
+% Activate the following line by filling in the right side. If for example the name of the root file is Main.tex, write
+% "...root = Main.tex" if the chapter file is in the same directory, and "...root = ../Main.tex" if the chapter is in a subdirectory.
+ 
+%!TEX root =  dissertation.tex
+
+\chapter[Evaluation]{Evaluation}
+In this chapter, I will discuss on evaluating the success of this system. I am going to measure success by answering the questions as follow:
+
+\begin{itemize}
+    \item Can users run a simulation using our system ?
+    \item Can users reproduce past simulations using our system ?
+    \item Are users satisfied in using our system ?
+    \item Are users more likely to run a simulation using our system compared to command line ?
+    \item How does it perform compared to the existing infrastructure ?
+\end{itemize}
+
+
+These questions will be answered in two different evaluations. First an online questionnaire were sent to the target audience of HemeWeb. In the questionnaire, testers will be asked to run two scenario and answer questions to measure their experience. These answers will be the basis in answering most of the questions above. In addition to the questionnaire, I will measure the performance of HemeWeb in running HemeLB simulation by running benchmarks and comparing the raw performance number. These benchmarks will be the basis of the performance measure of the evaluation.
+
+\section{Questionnaire}
+
+I created a questionnaire that will measure user's experience in using HemeWeb. This questionnaire was created and shared using google forms. It ran online for 10 days from 1st August 2016 - 10th August 2016.
+
+
+In the questionnaire, testers are asked to answer about their background information to provide demographic insight on them. Testers are asked to fill in their background information like age, gender, job, discipline. In addition, this part also ask about testers' familiarity with browser, installing software from source code, and computational fluid dynamic software. These are required for us to determine wether our sample population is representative of the target audience of the application developed.
+
+
+The questionnaire is set to make tester run specific scenarios that HemeWeb is developed for. These scenarios are running a simulation using the web interface and reproducing past simulation with it. Testers running the scenario are given an option to skip the scenario and go straight to the questions below it to measure their experience if they find it too difficult. 
+
+The first scenario asks tester to run a simulation with given inputs. The questionnaires lists two input files, a geometry file and a HemeLB configuration file that testers will need to download to their computers. After downloading the input files, testers are asked to open their browser and go to a specific URL where HemeWeb was deployed for the evaluation purposes. In that URL, tester will then add a new simulation job with the downloaded files, configure the job, and submit the job to the queue. The scenario ends when the job is submitted.
+
+Second scenario asks tester to reproduce past simulation with a given URL that contains past simulation files. It asks testers to create a new job from the given URL instead of using files that are downloaded in the past scenario. After creating a new job, testers then will change some configuration and parameters from the past scenario and submit the job. The scenario also ends when the job is submitted.
+
+Following each scenario are questions to measure weather users skip the scenario and an after-scenario questionnaires that users have to answer. The after-scenario questionnaire is based on the usability measurement at IBM developed by James R Lewis \citep{lewis1995ibm}.  It measures users' usability satisfaction with the system with regards to given scenario. The questionnaire give 3 statements which testers should agree or disagree, they are:
+
+\begin{itemize}
+	\item Overall, I am satisfied with the ease of completing the tasks in this scenario
+	\item Overall, I am satisfied with the amount of time it took to complete the tasks in this scenario
+	\item Overall, I am satisfied with the support information (online-line help, messages, documentation) when completing the tasks
+%	\item If any, give suggestions on what could be better
+\end{itemize}
+
+In addition to above questions, there are some questions about the tester's willingness to do exactly the same tasks as the scenario, but with command line. This question will measure user's willingness in using the command line interface compared to the web interface. 
+
+
+After running both scenario, testers are then redirected to the final questionnaire. The Post Study System Usability Questionnaire which is based on the same work by James R Lewis \citep{lewis1995ibm}. In this questionnaire, testers are given 19 statements where they should agree or disagree, they are:
+\begin{itemize}
+	\item Overall, I am satisfied with how easy it is to use this system
+	\item It was simple to use this system
+	\item I can effectively complete my work using this system 
+	\item I am able to complete my work quickly using this system
+	\item I am able to efficiently complete my work using this system
+	\item I feel comfortable using this system
+	\item It was easy to learn to use this system
+	\item I believe I became productive quickly using this system
+	\item The system gives error messages that clearly tell me how to fix problems
+	\item Whenever I make a mistake using the system, I recover easily and quickly
+	\item The information (such as online help, on-screen messages, and other documentation) provided with this system is clear
+	\item It is easy to find the information I needed
+	\item The information provided for the system is easy to understand
+	\item The information is effective in helping me complete the tasks and scenarios 
+	\item The organization of information on the system screens is clear
+	\item The interface of this system is pleasant
+	\item I like using the interface of this system
+	\item This system has all the functions and capabilities I expect it to have 
+	\item Overall, I am satisfied with this system
+\end{itemize}
+
+In addition to the above questions, testers also will be asked to list the most negative aspects and positive aspects of the system if they have any. These questions will measure users satisfaction with the overall system, whether it is useful, whether the information given by the system is any good, and the interface quality.
+
+%There are 4 sections of the questionnaires. The first one is to capture the demographic of the testers. Testers are asked to fill in their background information like age, gender, job, discipline. In addition, this part also ask about testers' familiarity with browser, installing software from source code, and computational fluid dynamic software.
+
+\section{Performance benchmarks}
+
+The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like super computer. This could have an interesting impact on the performance of the system because cloud vendors, while being much more easily accessible and provisioned, have an underlying difference with the stand alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
+
+The performance benchmark will be done by the internal tooling that is baked inside HemeLB. Every HemeLB simulation will produce a report file that measure the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on four different scenario to measure the performance impact on having HemeLB simulation on the cloud with docker containers. They are:
+\begin{itemize}
+	\item{ARCHER supercomputer}
+	\item{Highly parallel computing resources}
+	\item{Cloud computing with docker}
+	\item{Cloud computing without docker}
+\end{itemize}
+
+The benchmark on ARCHER supercomputer will be the gold standard of the performance, because it's the infrastructure with the clear purpose of being used for the HPC application. It has the necessary resources and components that is tailored for it. It should be the ideal performance scenario. Next, the local computing infrastructure. This paints a picture on how HemeLB will perform on a private local infrastructure which are built to run highly parallel jobs. This will be the measure that can be used if HemeLB is to run on private infrastructure.
+
+The next two benchmark will be done to measure the performance of HemeLB simulation compared to the local infrastructure. Cloud computing vendors have an underlying difference with regards towards how the infrastructures are structured and connected together. This could have an inherent performance different with a standalone infrastructure. However an analysis will be made with regards to running HemeLB simulation with another overhead, which are docker. While docker is used to allow swapping of the HemeLB version easily, it might affect the performance of HemeLB simulation. With this benchmark, we can answer whether the flexibility of docker container can justify the performance we give with them, if there are penalty that we have to incur.
+
+
+
