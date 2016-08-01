@@ -107,7 +107,23 @@ Docker containers on the compute node will only run HemeLB core containers. The 
 After this configuration is done, then the job execution will be done by one of the compute node. It will execute an mpi job for HemeLB with internal IP of all hosts that are started for this particular job.
 
 
-\subsubsection{Job instance taxonomy}
+\subsubsection{Job instance structure}
+HemeWeb use django python library to handle the heavy weightlifting with regards to web functionalities. The way job instance is created is also dependent on django's model hierarchy. \textbf{Job} is a class that represent one instance of job simulation. It inherits from django.db.models.Model class that exist within django infrastructure. Django's model class handles the interaction with the database and with the django environment and HemeWeb's job class only need to extend this class to add its own functionality.
+
+HemeWeb's Job class has the following attributes:
+\begin{itemize}
+    \item id:  This is a unique UUID field that represent the Job ID. UUID field was chosen because it is appropriate for the possibility of sharing the job simulation files between different deployment of HemeWeb. UUID can prevent clashes of ID between these instances.
+    \item input\_file, stl\_file, profile\_file, output\_file, configuration\_file:  These attribute keep track of the files that are used by the job. It is stored as path to the file in the local file system, but with django functionalities HemeWeb can work with the file as an object.
+    \item container\_image:  This attribute determine which container of HemeLB core will be used in the simulation. Currently, this field is set manually on the code. 
+    \item instance\_type: This determines which compute node type will be started for the simulation. 
+    \item instance\_count: This attribute determines how many compute node will be started for the simulation. Currently, this is also set manually on the code. 
+    \item status: The attribute to determine Job's status, whether it is \textit{queued, added, done, failed, etc}
+    \item created: Attribute to keep track when the job is created
+    \item updated: Attribute to keep track when the job is updated 
+\end{itemize}
+
+
+
 
 
 \subsubsection{Job instance directory structure}
@@ -203,8 +219,7 @@ In this section, I will try to outline and discuss the challenges in implementin
 
 \subsubsection{Cloud vendors features and API difference}
 
-Highlight cloud vendors API difference that leads to manual part like creating image
-
+Cloud vendors each have their own API and features. This has led to some problems when trying to create a common API to do certain task. One notable problem is that the absence of image creation from running instance task from one of the cloud vendors.
 
 \vspace{1cm}
 
@@ -218,11 +233,15 @@ Highlight cloud vendors API difference that leads to manual part like creating i
 
 \vspace{1cm}
 
+Figure \ref{fig:hemeweb-challenge-1} shows how I decided to solve the problem. By instructing users to manually create image from running instance. Users have to go the web interface of cloud vendors, right-click on the running instance, and create image from it. This is a simple workaround which is less complicated than accommodating different features and API from different cloud vendors. 
 
 
-One problem that I faced on developing the web application is that currently, it is developed mainly for the use on amazon web service (AWS). Due to the limited time for the development, I haven't been able to develop the features on multiple cloud vendors. The features like, automatically uploading simulation file and restoring previous simulations, are tied in the code to the amazon infrastructure. It should be possible to abstract these features to handle multiple cloud vendors given more time.
+Another problem is time constraint. Due to the time constraint, I cannot achieve full compatibility with all cloud vendors. The development time is mainly focused on amazon web service because it has all the features HemeWeb need. However this means that the codebase is currently tied to one cloud vendors. Features like automatically reading past simulation files from cloud storage and uploading simulation files are tied to amazon infrastructure. It is possible to refactor this functionalities out to become more generic, however for the interest of time, I decided not to.
 
 \subsubsection{Security}
+
+
+
 
 Highlight inter job access
 
