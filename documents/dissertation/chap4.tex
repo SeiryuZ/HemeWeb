@@ -240,12 +240,12 @@ Another problem is time constraint. Due to the time constraint, I cannot achieve
 
 \subsubsection{Security}
 
+Another challenge that I face during the development of HemeWeb is to handle the security of the application. However, security is not the main focus of this work and is apparent in the development of the application. I will still discuss the security issues so that I can give an objective assessment on the application.
+
+The first security issues that I found is with regards to the compute node security in some cloud vendors. Digital ocean for example, does not provide a "real" private networking option within compute nodes. They have a "shared" private networking options that allow other compute nodes, which are not even under your account have network access to your node. Theoretically, this allow other people access to your private compute node if they have the credentials. In this case, I made sure that all the compute nodes have a sensible access policy to deter unauthorized access to the nodes. I only allow ssh with public key and disabled password access to ssh. Also, it is also much better to choose cloud vendors that have real private networking like AWS. In which, the compute nodes are not accessible to other nodes that are not part of your own private network. This is much more secure and sensible.
 
 
-
-Highlight inter job access
-
-Private networking on cloud vendors
+Another security issue is on how the compute nodes and master node share simulation job's files. It currently use Network File System without any security measures towards the nodes that try to mount it via the private network. There is an opportunity to secure these communication by encrypting the job files, but it is not currently done.
 
 
 
