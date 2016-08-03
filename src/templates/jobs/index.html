@@ -2,10 +2,20 @@
 
 {% block body %}
 
-
 <div class="row">
+  <div class="col-lg-6 col-lg-offset-3 ">
+    <div class="panel panel-default center">
+      <div class="panel-body">
+        <p>Welcome to HemeWeb homepage! HemeWeb aim to allow users to run blood flow simulation using HemeLB from web browser. To create a new simulation job, please press the Add new
+    job button. To view past simulation's overview please click on one of the Job IDs below.</p>
+    </div>
+      </div>
+  </div>
+</div>
+
+<div class="row bottom-padding">
 <div class="col-lg-2 col-lg-offset-10">
-  <a href="{% url 'jobs:add' %}" class="btn btn-primary"> 
+  <a href="{% url 'jobs:add' %}" class="btn btn-primary">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
     Add new job
   </a>
@@ -13,6 +23,9 @@
 </div>
 <div class="row">
   <div class="col-lg-12">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+      <div class="panel-heading">HemeWeb Job Index</div>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -39,7 +52,7 @@
       {% endfor %}
       </tbody>
     </table>
-
+    </div>
 
   </div>
 </div>
