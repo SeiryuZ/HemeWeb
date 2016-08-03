@@ -83,16 +83,16 @@ class Job(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     configuration_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
-                                                        verbose_name="Config (.xml)",
+                                                        verbose_name="HemeLB config file (.xml)",
                                                         content_types=["text/xml"],
                                                         blank=True)
     input_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
-                                                verbose_name="Input (.gmy)",
+                                                verbose_name="GMY geometry file (.gmy)",
                                                 content_types=["application/octet-stream"],
                                                 blank=True)
 
     stl_file = ContentTypeRestrictedFileField(upload_to=job_directory_path,
-                                              verbose_name="Geometry file (.stl)",
+                                              verbose_name="STL geometry file (.stl)",
                                               content_types=["application/octet-stream"],
                                               blank=True)
 

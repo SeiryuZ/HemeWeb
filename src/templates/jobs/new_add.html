@@ -18,7 +18,7 @@
 <div class="col-lg-3">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h2 class="panel-title">Create job from setup files</h2>
+      <h2 class="panel-title">Create new job from unprocessed inputs</h2>
     </div>
     <div class="panel-body">
         <form method="post" action="{% url 'jobs:setup' %}" enctype="multipart/form-data">
@@ -33,6 +33,9 @@
           {% endfor %}
           <button class="btn btn-primary"> Submit </button>
         </form>
+        <hr />
+
+        <p>Use this form for unprocessed input files. HemeWeb will run a pre-processing script and allow you to configure the simulation after it is done.</p>
     </div>
   </div>
 </div>
@@ -43,7 +46,7 @@
   <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title">New job config</h2>
+        <h2 class="panel-title">Create new job from preprocessed inputs</h2>
       </div>
       <div class="panel-body">
           <form method="post" action="{% url 'jobs:add' %}" enctype="multipart/form-data">
@@ -58,6 +61,8 @@
             {% endfor %}
             <button class="btn btn-primary"> Submit </button>
           </form>
+          <hr />
+        <p>Use this form if your input files have been pre-processed. HemeWeb will read from the pre-processed files and allow you to configure the simulation.</p>
       </div>
     </div>
   </div>
@@ -67,7 +72,7 @@
   <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title">Use previous job's config</h2>
+        <h2 class="panel-title">Use previous HemeWeb job by ID</h2>
       </div>
       <div class="panel-body">
           <form method="post" enctype="multipart/form-data">
@@ -82,6 +87,8 @@
             {% endfor %}
             <button class="btn btn-primary"> Submit </button>
           </form>
+          <hr />
+        <p>Create a new job from past HemeWeb's job configuration. Specify the ID of the job, and HemeWeb will take care of copying all configurations and inputs from that simulation</p>
       </div>
     </div>
   </div>
@@ -89,7 +96,7 @@
   <div class="col-lg-3">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h2 class="panel-title">Use previous job's URL</h2>
+        <h2 class="panel-title">Use previous HemeWeb job by URL</h2>
       </div>
       <div class="panel-body">
           <form method="post" action="{% url 'jobs:add_from_url' %}" enctype="multipart/form-data">
@@ -104,6 +111,8 @@
             {% endfor %}
             <button class="btn btn-primary"> Submit </button>
           </form>
+          <hr />
+        <p>Create a new job from past HemeWeb's job configuration. Specify the URL of the job, and HemeWeb will take care of copying all configurations and inputs from that simulation</p>
       </div>
     </div>
   </div>

@@ -5,28 +5,43 @@
 {% block body_detail %}
 
 
-<div class="row">
-  <div class="col-lg-12">
-    <h2>Configure HemeLB execution</h2>
-  </div>
-</div>
-
+<br />
 
 
 <div class="row bottom-padding">
   <div class="col-lg-12">
-    <div id="editor">{{ config_file }}</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Configure HemeLB execution
+      </div>
+      <div class="panel-body">
+        <p>The panel below contains content from the HemeLB configuration file you provided. You can modify the content of the file and save it back before proceeding to the next step.</p>
+        <div id="editor">{{ config_file }}</div>
+
+        <br />
+
+        <div class="row bottom-padding ">
+          <div class="col-lg-2">
+            <button class="btn btn-primary" id="save"> <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save (Ctrl+S)</button>
+          </div>
+          <div class="col-lg-2 col-lg-offset-8 right">
+            <a href="{% url 'jobs:configure2' job.id %}"class="btn btn-default">Next step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> </a>
+              </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-2 col-lg-offset-5 center">
+          <div class="alert alert-success hide-animate" role="alert"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> File saved</div>
+      </div>
+      </div>
+
+
+    </div>
   </div>
 </div>
 
-<div class="row bottom-padding ">
-  <div class="col-lg-2">
-    <button class="btn btn-primary" id="save"> <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save (Ctrl+S)</button>
-  </div>
-  <div class="col-lg-2 col-lg-offset-8 right">
-    <a href="{% url 'jobs:configure2' job.id %}"class="btn btn-default">Next step <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> </a>
-      </div>
-</div>
+
 
 
 {% endblock %}
@@ -60,7 +75,20 @@
 
   var csrftoken = getCookie('csrftoken'),
       objectId = "{{ job.id }}",
-      editor = ace.edit("editor");
+      editor = ace.edit("editor"),
+      $alert = $('.alert'),
+      alertTimeoutID;
+
+  function showAlert() {
+    clearTimeout(alertTimeoutID);
+
+    $alert.removeClass('hide-animate');
+
+    alertTimeoutID = setTimeout(function(){
+        $alert.addClass("hide-animate");
+    }, 1000);
+  }
+
 
   var saveContent = function(){
       var data = {content: editor.getValue()};
@@ -69,7 +97,8 @@
         url: "/" + objectId + "/configure_1",
         data: data,
         success: function(data) {
-          alert('HemeLB configuration saved');
+          showAlert();
+          //alert('HemeLB configuration saved');
           //editor.setValue(data.content);
         },
         error: function(request, status, error) {
