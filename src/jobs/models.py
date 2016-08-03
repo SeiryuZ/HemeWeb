@@ -128,11 +128,13 @@ class Job(models.Model):
     DONE = 3
     PREPROCESSING = 4
     PREVIOUS = 5
+    POSTPROCESSING = 6
     FAILED = 0
     STATUS_CHOICES = (
         (ADDED, 'Added'),
         (QUEUED, 'Queued'),
         (RUNNING, 'Running'),
+        (POSTPROCESSING, 'Running postprocessing scripts'),
         (DONE, 'Done'),
         (FAILED, 'Failed'),
         (PREPROCESSING, 'Preprocessing'),
@@ -281,6 +283,10 @@ class Job(models.Model):
                     raise ValueError("HemeLB job execution failed")
 
     def run_post_processing(self):
+        # Update job status first
+        self.status = self.POSTPROCESSING
+        self.save(update_fields=['status'])
+
         # Generate VTU
         command = "sudo /var/src/hemelb/virtualenv/bin/python \
         /var/src/hemelb/Tools/hemeTools/converters/GmyUnstructuredGridReader.py \
