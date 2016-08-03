@@ -21,8 +21,8 @@
       </div>
       <div class="panel-body">
         <p>
-        Input file(.gmy): <a target="_blank" href="{{ job.input_file.url }}">{{ job.input_file.name }} ({{ job.input_file.size | humanize }})</a><br/><br/>
-          Config file(.xml): {{ job.configuration_file.name }}
+        GMY geometry file(.gmy): <a target="_blank" href="{{ job.input_file.url }}">{{ job.input_file.name }} ({{ job.input_file.size | humanize }})</a><br/><br/>
+          HemeLB configuration file(.xml): {{ job.configuration_file.name }}
         </p>
         <div id="editor">{{ config_file }}</div>
       </div>
@@ -40,9 +40,9 @@
       </div>
       <div class="panel-body">
         <p>
-          Instance type:  {{ job.get_instance_type_display }} <br/> <br/>
-          Instance count: {{ job.instance_count }} <br/><br/>
-          Container Image: <a target="_blank" href="{{ job.get_container_image_url }}">{{ job.get_container_image_display }}</a>
+          Machine type:  {{ job.get_instance_type_display }} <br/> <br/>
+          How many machine: {{ job.instance_count }} <br/><br/>
+          HemeLB version: <a target="_blank" href="{{ job.get_container_image_url }}">{{ job.get_container_image_display }}</a>
         </p>
       </div>
     </div>

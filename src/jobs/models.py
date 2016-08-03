@@ -111,7 +111,8 @@ class Job(models.Model):
         (1, 'seiryuz/hemelb-core:0.0.2'),
         (2, 'seiryuz/hemelb-core:0.0.3'),
     )
-    container_image = models.IntegerField(choices=CONTAINER_CHOICES, default=1)
+    container_image = models.IntegerField(choices=CONTAINER_CHOICES, default=1,
+                                          verbose_name="HemeLB Version")
 
     INSTANCE_CHOICES = (
         (2, '2 Cores'),
@@ -119,8 +120,10 @@ class Job(models.Model):
         (8, '8 Cores'),
         (16, '16 Cores'),
     )
-    instance_type = models.IntegerField(choices=INSTANCE_CHOICES, default=2)
-    instance_count = models.IntegerField(default=1, validators=[MaxValueValidator(36)])
+    instance_type = models.IntegerField(choices=INSTANCE_CHOICES, default=2,
+                                        verbose_name="Machine Type")
+    instance_count = models.IntegerField(default=1, validators=[MaxValueValidator(36)],
+                                         verbose_name="How many machine")
 
     ADDED = 1
     QUEUED = 2

@@ -5,16 +5,19 @@
 
 {% block body_detail %}
 
+<br />
 
 <div class="row">
   <div class="col-lg-12">
-    <h2>Configure Job execution</h2>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-    <form method="post" enctype="multipart/form-data">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2 class="panel-title">Configure HemeWeb job execution</h2>
+      </div>
+      <div class="panel-body">
+        <p>Here, you can configure how the simulation will run. Configure the type of compute node and how many of it HemeWeb should start for the simulation. Also, specify the
+        HemeLB version to use. </p>
+        <br />
+      <form method="post" enctype="multipart/form-data">
 
       {% csrf_token %}
 
@@ -30,6 +33,8 @@
       <button class="btn btn-primary"> <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save </button>
 
     </form>
+      </div>
+
   </div>
 </div>
 

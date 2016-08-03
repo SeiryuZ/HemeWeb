@@ -14,9 +14,11 @@ import requests
 
 class ConfigureJobForm(forms.ModelForm):
     instance_type = forms.ChoiceField(widget=forms.Select,
-                                      choices=Job.INSTANCE_CHOICES)
+                                      choices=Job.INSTANCE_CHOICES,
+                                      label='Machine type')
     container_image = forms.ChoiceField(widget=forms.Select,
-                                        choices=Job.CONTAINER_CHOICES)
+                                        choices=Job.CONTAINER_CHOICES,
+                                        label="HemeLB Version")
 
     class Meta:
         model = Job
