@@ -18,7 +18,7 @@ class ConfigureJobForm(forms.ModelForm):
                                       label='Machine type')
     container_image = forms.ChoiceField(widget=forms.Select,
                                         choices=Job.CONTAINER_CHOICES,
-                                        label="HemeLB Version")
+                                        label="HemeLB container Version")
 
     class Meta:
         model = Job
