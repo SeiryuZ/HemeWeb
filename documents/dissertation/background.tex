@@ -5,20 +5,65 @@
 
 \chapter[Background]{Background}
 
+In this chapter, I will discuss about various background information that are used as a basis for the work presented in this dissertation. I will discuss about how HemeLB currently works, High-Performance Computing (HPC) infrastructure, and docker.
+
+
 \section{Current HemeLB workflow}
-Running a blood flow simulation using HemeLB currently consists of multiple steps. To understand how the proposed project can improve the current conditions, I will elaborate on how HemeLB workflow currently work.
+
+Currently, running a blood flow simulation consists of multiple steps that needs to be run in sequence. These steps are done in a variety of interface, from command line to graphical user interface. Additionally, these steps also require various level of computing resources to work efficiently. In order to understand how the proposed work will improve the current conditions, I will elaborate on how HemeLB currently work. Also, discussion on computing resources and interface for each steps will be provided.
+
+%Running a blood flow simulation using HemeLB currently consists of multiple steps. To understand how the proposed project can improve the current conditions, I will elaborate on how HemeLB workflow currently work based on the work on my proposal\cite{Steven:2016aa}.
+
+
 
 \vspace{1cm}
 
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.5]{../resources/images/HemeLB-workflow.png}
+  \includegraphics[keepaspectratio=true,scale=0.6]{../resources/images/HemeLB-workflow.png}
  }
 \captionof{figure}{Current HemeLB workflow taken from \cite{Steven:2016aa}}\label{fig:hemelb-workflow}%      only if needed  
 \end{minipage}
 
 \vspace{1cm}
+
+
+Figure \ref{fig:hemelb-workflow} illustrates steps involved in running HemeLB workflow. These steps will be discussed in details below:
+
+\begin{enumerate}
+
+\item{\textbf{Geometrical model reconstruction}}
+
+In this step, a 3D model of vascular system is constructed from the raw microscopic image of it. Alternatively, the 3D model can also be constructed from CT scan with its 3D imaging data. From this step, a 3D geometry file are generated in the form of .stl file. This process can run in a regular workstation just fine. However, it is highly problem dependent as the tools needed to parse and generate the 3D model are dependent to the problem experts try to simulate.
+
+\item{\textbf{Domain definition}}
+
+3D geometry model generated from the previous step is now used as an input for the domain definition step. In this step, a graphical user interface is used to add domain information to the 3D model. Information like blood viscosity, inlet outlet placement, and blood pressure will determine how the simulation will run. The HemeLB setup tool was developed for this particular needs. The setup tool provides a graphical user interface for domain experts to add these parameters. All parameters are then saved in a profile file with .pr2 format. This step can run on standalone commodity hardware and should not require a highly parallel computing resources.
+
+\item{\textbf{Geometry generation}}
+
+This step will take the encoded information from domain definition step and the 3D model of the vascular system to generate files that can be understood by the main HemeLB program. These files contain similar information with the previous 3D model and the profile file. However, both of them are now formatted in a HemeLB parseable format, an XML configuration file and a GMY geometry file. This geometry generation step can also run on a commodity hardware. However, it requires users to use command line interface to operate with the files. The process is done with piping the input files to a python script which is part of HemeLB setup tools.
+
+\item{\textbf{HemeLB simulation}}
+
+The main heavy computations of the workflow are done in this step.  Configuration and geometry files that are generated in the previous step are feed into the HemeLB binary as input files. HemeLB will then run calculations that govern how blood will flow inside the provided vascular system for a number of iterative steps. The number of steps is defined in the configuration file that is generated in the domain definition steps. 
+
+As observed in the proposal of this work \citep{Steven:2016aa}, HemeLB can scale up from 1 up to 32,000 cores in running the simulation \citep{groen2013analysing}. This means that a typical problem could run in a commodity hardware with a small number of cores. However, bigger and scientifically challenging problems will require a higher number of cores that requires high-performance computing resources as portrayed in \cite{franco2016non, franco2015dynamic} and \cite{bernabeu2015characterization}. In addition to that, users of HemeLB have to use command line interface to configure, run HemeLB simulation, and interact with the output files. 
+
+Output files generated by this step are written in parallel into output directory which is set when running the simulation. These output files represent the state of blood flow in the vascular system at a given step count. The interval in which HemeLB writes an output is also set from the domain definition step.
+
+\item{\textbf{Post processing}}
+
+The output files generated by the HemeLB simulations are not easily viewed by domain experts. The files are generated in a fashion that is efficient to write in parallel, however, it will need further conversion to make it easy to be interpreted. This is where the post-processing step comes in.  
+
+In this step, the output files are piped into two python scripts that are included in HemeLB tools to convert them into a .VTU files. These .VTU files are viewable in a separate software called ParaView. With it, domain experts could visualize the result of the simulation in a graphical user interface which ParaView provided. This step can be run on commodity hardware without problems. However, to do this step, users will require to interact with command line interface.
+
+\end{enumerate}
+
+All of these steps requires users to configure and install the tools required for each step by themselves. However, the target audience of HemeLB are biologists, clinician, researchers, and medical professionals, which might not have the capabilities and the technical know-how to do it. This is one of the motivating reasons for the proposed work in this thesis.
+
+
 
 
 \section{Cloud computing}
