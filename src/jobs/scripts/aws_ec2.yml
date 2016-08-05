@@ -79,7 +79,7 @@
         container_ips: "{% for host in groups['worker_nodes'] %}{{ hostvars[host]['container_ip']['stdout'] }} {% endfor %}"
 
     - name: Pause to give time for ssh in container to work
-      pause: seconds=5
+      pause: seconds=10
 
     - name: Run HemeLB job
       shell: docker exec {{ container_instance_id.stdout }} mpirun.openmpi --mca btl_tcp_if_include eth0  -np {{ core_count }}  --host {{ container_ips | trim | replace(' ', ',') }} hemelb -in {{ input }} -out {{ output }} 1> {{ log_file }} 2>&1
