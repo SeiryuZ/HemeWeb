@@ -8,6 +8,11 @@ How to use
 
 ```bash
 
+# Make sure that on your EC2 account, you have created keypairs named hemeweb
+
+# Change permission on the keypairs downloaded
+chmod 400 <path to private key>
+
 
 # Credentials stuff
 export AWS_ACCESS_KEY_ID=<put access key>

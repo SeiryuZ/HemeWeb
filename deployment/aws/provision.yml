@@ -7,7 +7,7 @@
     - master_node_count: 1
     - worker_node_count: 0
     - master_instance_type: m3.large
-    - worker_instance_type: m4.xlarge
+    - worker_instance_type: c4.xlarge
 
   tasks:
 
