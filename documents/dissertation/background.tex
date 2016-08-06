@@ -8,7 +8,9 @@
 In this chapter, I will discuss about various background information that are used as a basis for the work presented in this dissertation. I will discuss about how HemeLB currently works, High-Performance Computing (HPC) infrastructure, and docker.
 
 
-\section{Current HemeLB workflow}
+\section{Usability of complex applications}
+
+\subsection{Current HemeLB workflow}
 
 Currently, running a blood flow simulation consists of multiple steps that needs to be run in sequence. These steps are done in a variety of interface, from command line to graphical user interface. Additionally, these steps also require various level of computing resources to work efficiently. In order to understand how the proposed work will improve the current conditions, I will elaborate on how HemeLB currently work. Also, discussion on computing resources and interface for each steps will be provided.
 
@@ -64,7 +66,7 @@ In this step, the output files are piped into two python scripts that are includ
 All of these steps requires users to configure and install the tools required for each step by themselves. However, the target audience of HemeLB are biologists, clinician, researchers, and medical professionals, which might not have the capabilities and the technical know-how to do it. This is one of the motivating reasons for the proposed work in this thesis.
 
 
-\section{High performance computing infrastructure}
+\subsection{High performance computing infrastructure}
 
 Researchers increasingly use complex mathematical and computational approaches in doing their research. In understanding complex phenomenon, researchers use interdisciplinary approaches in providing insight into the problem \citep{huerta2000nih}. Bioinformatics and computational biology are examples of this interdisciplinary discipline. 
 
@@ -97,7 +99,7 @@ In addition to the above problem, most research that tackles biological and biom
 
 
 
-\section{Cloud computing}
+\subsection{Cloud computing}
 
 
 To answer the huge demand for computation powers by researchers and academics,  a concept called grid computing was born in the 1990s \citep{berman2003grid, foster2003grid}. This concept treats computing resources like utility grid. Computing resources should be able to be acquired without users knowing how it was provided to them. This model caters mostly to the interest of researchers and academia that usually give CPU hours based on projects proposal \citep{foster2008cloud}. An example of this is TeraGrid which ended its operation at 2011 \footnote{https://www.xsede.org/tg-archives}.
@@ -124,7 +126,7 @@ Conditions above are also capitalized by cloud vendors like Amazon by attracting
 
 
 
-\section{Other High Performance Computing researches}
+\subsection{How other HPC applications tackle usability issues}
 
 In this section, I will discuss how similar HPC applications solve problems like HemeLB faces. Recently, some complex HPC software packages have been deployed to the cloud. Their experience in deploying the software and their approach to solving similar problems will be indispensable for the work that I proposed.
 
@@ -132,7 +134,7 @@ The first project that tackles a similar problem like HemeLB is Nekkloud. In thi
 
 This usability problem coupled with the fact that users have to get access to HPC infrastructure, might not be a viable option for everyone. In order to answer these problems, Nekkloud project was hatched. Nekkloud was developed to make the software configuration invisible to the users. It uses a web application to provide an easy to use and learn interface for the domain experts. This allows people without computing expertise to actually run Nektar++ without having to be troubled with configurations. In addition to solving the usability problems, Nekkloud also uses public cloud vendors, alleviating concerns with regards to having dedicated HPC infrastructures from users. 
 
-Galaxy is another project that is trying to tackle similar problems. It described itself as a web-based reproducible research platform and ran on public cloud infrastructure. With Galaxy, researchers can run various HPC applications that are compatible with an easy to use web interface. Users do not have to worry about the configurations and working in command lines, only worry about the software executions.
+Galaxy \citep{goecks2010galaxy} is another project that is trying to tackle similar problems. It described itself as a web-based reproducible research platform and ran on public cloud infrastructure. With Galaxy, researchers can run various HPC applications that are compatible with an easy to use web interface. Users do not have to worry about the configurations and working in command lines, only worry about the software executions.
 
 Developers of Galaxy developed a super-resolution spark (SRS) model to illustrate its use case. This model is an example of HPC application that requires a highly parallel computing resources like a supercomputer to run efficiently. However, running the SRS model in the cloud via Galaxy is observed to be a viable alternative. In addition to that, Galaxy provides an easy to use interface to run this model for the users. Making it easy for them to run their experiments and share it with their peers.
 
@@ -143,19 +145,37 @@ Developers of Galaxy developed a super-resolution spark (SRS) model to illustrat
 %
 %Another project that is tackling similar space is Galaxy [27]. Galaxy, a web-based reproducible research platform, uses cloud infrastructure to run its HPC applications. In illustrating its use, the developers have developed a super-resolution spark (SRS) model. This modeling process needs a supercomputing resources to execute the cloud infrastructure provides. These capabilities are also encapsulated in an easy to use web interfaces, making it easy for scientists to run, and share simulations.
 
-Above examples illustrate that a web application can be a viable alternative interface for complex applications. However, this implementation on the cloud also has a negative impact on the applications. Raw performance is lower than dedicated HPC infrastructures. These performance penalty was observed in the projects mentioned already [24, 25, 26]. Nekkloud authors considered the performance penalty acceptable, because the cloud infrastructures allow flexibility. This flexibility and the benefit of making it more usable will sometimes outweigh the performance penalty.
+Nekkloud and Galaxy projects illustrate that web interface is a viable alternative interface for complex HPC applications. With the correct application and design, it will allow domain experts to operate the underlying HPC application with relative ease. However,  the change of the underlying infrastructure from dedicated HPC infrastructure to the public cloud have some negative impacts.
 
-Pros and cons of web application for complex HPC projects are area that are often discussed. But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment.
+One notable drawback is the lower performance of the HPC applications. It has been studied that running HPC applications on the public cloud means performance degradation compared to the dedicated HPC infrastructure. This performance penalty was observed in the mentioned project like Nekkloud, NASA HPC application, and Galaxy. However, this penalty is not so significant that it outweighs the benefit of making the HPC application more usable to the users.
 
-Deploying HPC applications is considered as a time-intensive process [28]. For example, the ARCHER support team has 36 members [29] to support this process. One approach to reduce these problems is software containerization. Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use Docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
+%Above examples illustrate that a web application can be a viable alternative interface for complex applications. However, this implementation on the cloud also has a negative impact on the applications. Raw performance is lower than dedicated HPC infrastructures. These performance penalty was observed in the projects mentioned already [24, 25, 26]. Nekkloud authors considered the performance penalty acceptable, because the cloud infrastructures allow flexibility. This flexibility and the benefit of making it more usable will sometimes outweigh the performance penalty.
+%
+%Pros and cons of web application for complex HPC projects are area that are often discussed. But, deployment scenario for these HPC projects in cloud infrastructure are rarely discussed. More specifically, the use of containerization technology in helping tools deployment.
+%
+%Deploying HPC applications is considered as a time-intensive process [28]. For example, the ARCHER support team has 36 members [29] to support this process. One approach to reduce these problems is software containerization. Containerization technology is developed to run applications or tools in an isolated environment within a kernel. It is more lightweight than traditional virtualization technology that use hypervisors to manage virtual machines [30]. Containerization technology has been discussed in high performance computing area. For example how Docker, one of the more popular implementation of containerization technology, is abstracting software environment in the HPC infrastructure [31] and used to build virtual HPC clusters [32]. Also, the shifter project [33] is trying to unleash Docker on HPC infrastructure. Meaning, allowing their HPC infrastructure to use Docker capabilities. To date, I am not aware of any discussion on the effect of containerization in running HPC application in cloud.
+%
+%One of the above projects, Galaxy, support containerization technology for their tools packaging. They used Docker, one implementation of linux container software. Galaxy claimed that using Docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB. Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed in the literature.
 
-One of the above projects, Galaxy, support containerization technology for their tools packaging. They used Docker, one implementation of linux container software. Galaxy claimed that using Docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB. Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed in the literature.
+\section{Reproducibility and Auditability of software}
+
+In this section, I will discuss the problem of reproducibility and auditability and how the proposed components try to solve it
+
+\subsection{Reproducibility problem in computational research}
+
+American Physical Society \citep{APS:aa} describes science as "the systematic enterprise of gathering knowledge about the universe and organizing and condensing that knowledge into testable laws and theories". For theories and experiments to be testable, it has to be independently reproducible by peers. However, a recent study \citep{open2015estimating}  that many published studies  are not reproducible.
+
+With the recent study highlighting a reproducibility problem of a research, previous pushes\citep{donoho2010invitation, sandve2013ten} for reproducibility in studies become more relevant than ever. Especially, computational research. Computational research involves complex computation that produces results that are important to the discipline involved. However, this complexity become a barrier for peers to validating theories and results presented, making the result looks less credible. 
+
+These problems lead to reproducibility being hard to be done by independent peers. While science values rigorous testing and testable results, complexity in reproducing study and results hinder that. This is also one of the driving reason why Galaxy project come into development \citep{goecks2010galaxy}.  Galaxy, produce automatic metadata that record the execution of an analysis. This metadata consists of all the input files, configurations, and outputs of an analysis which are required to reproduce it. Galaxy also enables users to share the analysis with their peers that also ease the process of reproducibility in an analysis.
 
 
-\section{Reproducibility problem in computational research}
+\subsection{Containerization Technology and HPC application}
 
+Another problem in reproducing or replicating complex studies, especially in computational research discipline is configurations. Complex software package required for said HPC application to run often requires computer expertise for it to be set up correctly. However, most domain experts that use the HPC application often does not have the required expertise, making it a barrier for them to reproduce a study.
 
-\section{Containerization Technology}
+Containerization technology is something that can be used to address that problem. 
+
 
 
 
