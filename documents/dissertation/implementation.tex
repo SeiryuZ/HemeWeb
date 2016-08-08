@@ -3,35 +3,59 @@
  
 %!TEX root =  dissertation.tex
 
-\chapter[Implementation]{Implementation}
+\chapter[Design \& Implementation]{Design \& Implementation}
 
-In this chapter, I will discuss HemeWeb's project implementation. This will consist on how the HemeLB core container is developed, how it is deployed, and how the web application itself is being implemented.
+In this chapter, I will discuss HemeWeb's development and implementation. This will consist on how the HemeLB core docker container is developed, how it is deployed, and how the web application is developed.
 
 
 \section{HemeLB core docker container}
-In this section I will explain how I developed the HemeLB core docker container. This part is the most straightforward of the project. There has been effort to make HemeLB portable by packaging it with the setup tools and a portable desktop environment using docker. It is done with the rationale to be shared with peers without having them to configure their work station too much. 
 
-In this phase, I modified the previous available image to handle few problems I found when trying to run HemeLB with it. 1) The size is big because it consists of the setup tools, not only the HemeLB binary, and 2) It cannot be run as a daemon. To solve this issue, I used a different base image than the previous. I used the ubuntu base provided by phusion. This image handle services correctly and allow the container to be ran as a daemon with SSH service running. This allows HemeLB to run with multiple containers. Also, I purged all package that are not needed for the container, resulting in a minimal sized container image.
+HemeLB core is a docker container that consists of essential software and services needed to run HemeLB simulation. It is the main component that runs the HemeLB simulation on the cloud. Calculations will be done on the container which will be started on the compute nodes of the HemeWeb architecture. 
+
+Previously, there was an effort to make HemeLB software package portable by creating its own container package\footnote{\url{https://github.com/mobernabeu/docker-hemelb}}. It has all the tools needed for HemeLB simulation workflow. Setup tools, post-processing scripts, and a VNC server that allows users to interact with the container's desktop using a browser. It is a step in a right direction towards making HemeLB portable and for peers to replicate and reproduce results of a simulation. However, HemeWeb will not require all those tools installed.
+
+In this phase, I took the previous container and modify the dockerfile, the instructions file to build the container. It is a straightforward process of stripping out the tools not needed by the compute node to run HemeLB simulation. Once all the tools are removed, I modified the base image of the docker container from base ubuntu provided by docker, to base ubuntu provided by phusion. This change of base image allows the container to correctly start SSH service. It is needed to start SSH for the purpose of multi-container HemeLB simulation executions. The original base image has the problem in starting up services and the workaround is more troublesome than just changing the base image. The resulting container is a minimal container that contains only the HemeLB binary and SSH service running.
+
+The modification of the dockerfile of the container is the initial part to make HemeLB core container created correctly. To correctly create the HemeLB container, this dockerfile needs to be integrated into the development workflow of HemeLB. Currently, the modified dockerfile still live under the HemeWeb codebase\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/hemelb_docker}}. HemeLB development should trigger an automated build of HemeLB core containers with each version of the software it pushes to the public GitHub repositories. In addition, the development team also needs to create a consistent tag naming in order for the HemeLB core containers to be created correctly.
 
 
-\section{Deployment}
+\section{Deployment script}
 
-In addition to have a working prototype available. I also wanted to make sure that the process of deploying the web application is as painless as possible. Therefore, I developed a deployment script for automatically configuring the architecture with minimal manual intervention. The script is made with the help of a configuration management and orchestration tools called ansible (https://www.ansible.com).
+After creating the HemeLB core container, I proceed to create a deployment script to configure the overall software architecture. It contains many moving parts and configuring the architecture by hand will soon be unmanageable. Deployment script that I created tries to alleviate the pain of deployment by provisioning and configuring the architecture with minimal manual intervention. It is created using a configuration management and orchestration tools called ansible\footnote{\url{https://www.ansible.com}}.
 
-The goal of the script are as follow:
-1. Provision the required master instance
-2. Configure the master instances with the correct security and network settings
-3. Configure and Install the HemeWeb correctly
-4. Configure and install all the services needed by HemeWeb
-5. Provision required compute instance
-6. Configure the compute instances with the correct security and network settings
-7. Configure the compute instances to run HemeLB core docker container
+The basic goals of the script are as follow:
+\begin{enumerate}
+\item Provision the required master instance from cloud vendors
+\item Configure the master instance with the correct security and network settings
+\item Configure and install all the services needed by HemeWeb
+\item Provision required compute instances from cloud vendors
+\item Configure the compute instances with the correct security and network settings
+\item Configure the compute instances to run HemeLB core docker container
+\end{enumerate}
 
-In the development of the script, I faced few problems in regard of orchestrating the infrastructure. Mainly with regards to cloud vendors having non-similar application programming interface to access or control the resources. This led to some part of the deployment needing manual intervention. One of this part is creating an image from the running instance so the master instance can request a new pre-configured instance instead of configuring from the start.
+The development of the script is straightforward. I used various modules that are available to ansible, including cloud vendors module, to automate the process as much as possible. The script can provision instances easily, provided with the correct authentication credentials for each cloud vendors. After provisioning, the script will configure the instances until it is ready to be used for running HemeLB in the cloud.
 
-I developed the script as modular as I can so that it can be refactored easily. I separated the cloud vendor specific instruction into its own folder for each vendor. This part mainly deal with the provisioning, security, and network configurations. The more common part, like installing softwares and services needed, are abstracted into the common scripts that are called by the vendor specific script after provisioning instances are done. With this in mind, I had been able to run the deployment script on three different cloud vendors. They are Google Cloud Platform, Amazon Web Service, and Digital Ocean. After the deployment script is done, the architecture will be ready to run HemeLB simulation on the cloud.
+Modularity is one of the concerns when the deployment script was developed. The deployment script should be able to be extended easily. That's why some common functionalities are gathered into its own module that can be called from specific script. These common functionalities are mostly the software installation and configuration part that have no difference between cloud vendors. However, for each specific cloud vendors, the deployment script have different entry path. This deals mainly with the platform-specific way to provision and configures the server instances from the cloud vendors. After this platform-specific deployment script is done, it will then call the common module to configure the instances as required. With this in mind, the deployment script has been developed to be able to be run for three cloud vendors. They are Digital Ocean\footnote{\url{https://www.digitalocean.com}}, Amazon Web Service\footnote{\url{http://aws.amazon.com}}, and Google Cloud Platform\footnote{\url{https://cloud.google.com}}.
 
-This script is online as part of the codebase that is published on github. It is available on https://github.com/SeiryuZ/HemeWeb/tree/master/deployment .
+The deployment script described in this section is available online at the HemeWeb repository under the deployment folder\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/deployment }}.
+
+\subsection{Challenge in developing the deployment script}
+The challenge in developing the deployment script is the difference of cloud vendors' API and features.  This has led to some problems when trying to create a common API to do a certain task. One notable problem is that the absence of image creation from running instance feature from one of the cloud vendors. Image creation feature is not an essential requirement of the project. However, with an image creation, the compute nodes that will be requested by the web application can be configured much quicker because all the pre-configuration that are done during the deployment phase. However, one of the cloud vendors does not have this feature. This creates a situation where there is no elegant way to create image with the deployment script and users are asked to manually created the image on the web interface
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.4]{../resources/images/hemeweb-challenge-1.png}
+ }
+\captionof{figure}{Manual image creation instead of automatic}\label{fig:hemeweb-challenge-1}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+Figure \ref{fig:hemeweb-challenge-1} shows how users are instructed to manually create an image from running instance. Users have to go the web interface of specific cloud vendors, right-click on the running instance, and create the image from it. This is a simple workaround which is less complicated compared to accommodating different or missing features and API from different cloud vendors.
+
 
 
 \section{HemeWeb}
@@ -218,22 +242,6 @@ However, the post-processing steps are not done until converting the output. The
 In this section, I will try to outline and discuss the challenges in implementing this project, and if any, the solution that I choose.
 
 \subsubsection{Cloud vendors features and API difference}
-
-Cloud vendors each have their own API and features. This has led to some problems when trying to create a common API to do certain task. One notable problem is that the absence of image creation from running instance task from one of the cloud vendors.
-
-\vspace{1cm}
-
-\noindent%
-\begin{minipage}{\linewidth}% to keep image and caption on one page
-\makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.4]{../resources/images/hemeweb-challenge-1.png}
- }
-\captionof{figure}{Manual image creation}\label{fig:hemeweb-challenge-1}%      only if needed  
-\end{minipage}
-
-\vspace{1cm}
-
-Figure \ref{fig:hemeweb-challenge-1} shows how I decided to solve the problem. By instructing users to manually create image from running instance. Users have to go the web interface of cloud vendors, right-click on the running instance, and create image from it. This is a simple workaround which is less complicated than accommodating different features and API from different cloud vendors. 
 
 
 Another problem is time constraint. Due to the time constraint, I cannot achieve full compatibility with all cloud vendors. The development time is mainly focused on amazon web service because it has all the features HemeWeb need. However this means that the codebase is currently tied to one cloud vendors. Features like automatically reading past simulation files from cloud storage and uploading simulation files are tied to amazon infrastructure. It is possible to refactor this functionalities out to become more generic, however for the interest of time, I decided not to.
