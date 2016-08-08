@@ -39,28 +39,12 @@ Modularity is one of the concerns when the deployment script was developed. The 
 
 The deployment script described in this section is available online at the HemeWeb repository under the deployment folder\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/deployment }}.
 
-\subsection{Challenge in developing the deployment script}
-The challenge in developing the deployment script is the difference of cloud vendors' API and features.  This has led to some problems when trying to create a common API to do a certain task. One notable problem is that the absence of image creation from running instance feature from one of the cloud vendors. Image creation feature is not an essential requirement of the project. However, with an image creation, the compute nodes that will be requested by the web application can be configured much quicker because all the pre-configuration that are done during the deployment phase. However, one of the cloud vendors does not have this feature. This creates a situation where there is no elegant way to create image with the deployment script and users are asked to manually created the image on the web interface
-
-\vspace{1cm}
-
-\noindent%
-\begin{minipage}{\linewidth}% to keep image and caption on one page
-\makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.4]{../resources/images/hemeweb-challenge-1.png}
- }
-\captionof{figure}{Manual image creation instead of automatic}\label{fig:hemeweb-challenge-1}%      only if needed  
-\end{minipage}
-
-\vspace{1cm}
-
-Figure \ref{fig:hemeweb-challenge-1} shows how users are instructed to manually create an image from running instance. Users have to go the web interface of specific cloud vendors, right-click on the running instance, and create the image from it. This is a simple workaround which is less complicated compared to accommodating different or missing features and API from different cloud vendors.
 
 
 
-\section{HemeWeb}
+\section{HemeWeb web application}
 
-This section will discuss the bulk of the work that is developed for the project. The main interface for users to interface with HemeWeb, the web application.  I developed this web application using django web framework for my familiarity with the framework, so I can focus my time on developing the web application.
+In this section, I will discuss the bulk of the work of this project which is developing the web application component. The web application component will be the interface for users to interface with HemeLB simulation workflow and is an essential part of this project. It is developed using Python 2.7 and Django web framework\footnote{\url{https://www.djangoproject.com}}. I chose Django web framework due to my previous experience with the web framework and also the existing codebase have tools written in python. Using Django web framework is to make sure that the codebase in HemeLB software package is done mostly consistent with Python. Additionally, using Django also allow me to focus on the development instead of learning the framework due to my past experience with it.
 
 
 
@@ -100,11 +84,11 @@ This section will discuss the bulk of the work that is developed for the project
 
 \vspace{1cm}
 
-Figure \ref{fig:hemeweb-components} above illustrate how HemeWeb interacts with the other components on the master instances. HemeWeb, a django web application, lives on the master instance with various components that it interacts with.
+Figure \ref{fig:hemeweb-components} above illustrate how HemeWeb  application process interacts with the other components inside the master instance. It also illustrates how user's HTTP request start a chain of events inside the master master instance that will eventually return a response to the user's browser.
 
-User's browser will send a HTTP request to the master instance, in which nginx frontend will handle.  It will act as a reverse proxy, and proxy those Http request towards the web application server process, which is handled by green unicorn python library. This library will run the HemeWeb python code to process the HTTP request by the user, it will server a static HTTP response, or handle job related logic that might interact with the PostgreSQL database service. The database will persist job information locally on the instance and will be wiped out when the master instance is terminated.
+To start, user's browser will send an HTTP request to the master instance. This request will be captured by Nginx process that will act as a reverse proxy.  Nginx\footnote{\url{https://www.nginx.com}} will proxy the HTTP request towards the correct web application server process or serve static files depending on the requested URL. If the request is routed to the web application, HemeWeb web application which is handled by green unicorn\footnote{\url{http://gunicorn.org}} HTTP server will accept the request. This library will run the HemeWeb python code to process the HTTP request by the user. Depending on the type and path of the request, the web application will serve a static HTML as a response, or handle job-related logic that might interact with another part of the system. One of the components the web application might interact with is the PostgreSQL database\footnote{\url{https://www.postgresql.org}}. The database will persist job information locally on the instance to provide persistent information between HTTP request. However, it will be wiped out when the master instance is terminated and is not shared between HemeWeb instances.
 
-Another way the HemeWeb application can interact is to submit a job into the queue which use Redis datastore as the queue backend. HemeWeb use third party library called django-rq that handles asynchronous background tasks handling. It uses the pub / sub mechanism that Redis has to create a light weight background job workers. It will store the function to be executed, the job instance, and parameters to used by the function. A background worker that is called using cronjob at an interval will look at the queue and work on a job if there's any. The worker will execute the function and update the instance with relevant job execution result. The worker then will go back to idle until next invocation.
+Another part of the master instance the HemeWeb application can interact is with the queuing system. HemeWeb can submit a job into the queue which uses Redis datastore\footnote{\url{http://redis.io}} as the queue backend. HemeWeb uses third party library called Django-rq that handles asynchronous background tasks handling using Redis backend. It uses the pub / sub mechanism of Redis to create a lightweight background job workers. HemeWeb process will store the function to be executed, the job instance and parameters to used by the function into the Redis backend. A background worker will look at the queue at an interval and work on a job if there's any in the queue. The worker will execute the function and update the instance with relevant job execution result. Finally, the worker will go back to being idle waiting for next job to be executed.
 
 \subsubsection{Docker components}
 
@@ -242,6 +226,22 @@ However, the post-processing steps are not done until converting the output. The
 In this section, I will try to outline and discuss the challenges in implementing this project, and if any, the solution that I choose.
 
 \subsubsection{Cloud vendors features and API difference}
+
+The challenge in developing the deployment script is the difference of cloud vendors' API and features.  This has led to some problems when trying to create a common API to do a certain task. One notable problem is that the absence of image creation from running instance feature from one of the cloud vendors. Image creation feature is not an essential requirement of the project. However, with an image creation, the compute nodes that will be requested by the web application can be configured much quicker because all the pre-configuration that are done during the deployment phase. However, one of the cloud vendors does not have this feature. This creates a situation where there is no elegant way to create image with the deployment script and users are asked to manually created the image on the web interface
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.4]{../resources/images/hemeweb-challenge-1.png}
+ }
+\captionof{figure}{Manual image creation instead of automatic}\label{fig:hemeweb-challenge-1}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+Figure \ref{fig:hemeweb-challenge-1} shows how users are instructed to manually create an image from running instance. Users have to go the web interface of specific cloud vendors, right-click on the running instance, and create the image from it. This is a simple workaround which is less complicated compared to accommodating different or missing features and API from different cloud vendors.
 
 
 Another problem is time constraint. Due to the time constraint, I cannot achieve full compatibility with all cloud vendors. The development time is mainly focused on amazon web service because it has all the features HemeWeb need. However this means that the codebase is currently tied to one cloud vendors. Features like automatically reading past simulation files from cloud storage and uploading simulation files are tied to amazon infrastructure. It is possible to refactor this functionalities out to become more generic, however for the interest of time, I decided not to.
