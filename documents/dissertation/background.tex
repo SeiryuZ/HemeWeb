@@ -163,18 +163,45 @@ In this section, I will discuss the problem of reproducibility and auditability 
 
 \subsection{Reproducibility problem in computational research}
 
-American Physical Society \citep{APS:aa} describes science as "the systematic enterprise of gathering knowledge about the universe and organizing and condensing that knowledge into testable laws and theories". For theories and experiments to be testable, it has to be independently reproducible by peers. However, a recent study \citep{open2015estimating}  that many published studies  are not reproducible.
+American Physical Society \citep{APS:aa} describes science as "the systematic enterprise of gathering knowledge about the universe and organizing and condensing that knowledge into testable laws and theories". For theories and experiments to be testable, it has to be independently reproducible or replicable by peers. However, a recent study \citep{open2015estimating} highlights  that some published psychology studies are not replicable to the same significance as reported. In machine learning conferences \citep{drummond2009replicability}, a similar sentiment is being shared. Being not replicable does not necessarily means that the result of those studies is wrong. However, it shows how much the academia do not prioritize verification of results. The novelty of idea is seen as better than verifying what we already know.
 
-With the recent study highlighting a reproducibility problem of a research, previous pushes\citep{donoho2010invitation, sandve2013ten} for reproducibility in studies become more relevant than ever. Especially, computational research. Computational research involves complex computation that produces results that are important to the discipline involved. However, this complexity become a barrier for peers to validating theories and results presented, making the result looks less credible. 
+With the recent study highlighting a reproducibility problem of a research, previous pushes \citep{donoho2010invitation, sandve2013ten} for reproducibility in studies become more relevant than ever. This is especially crucial in a discipline like computational research. Computational research discipline like bioinformatics and computational physics involves complex computation that requires huge computational power depending on the problem size. The complexity of  configuration, algorithm, and execution process actually become a barrier for peers to replicate and reproduce works of studies of this discipline. Making results produced have less weight than it could be
 
-These problems lead to reproducibility being hard to be done by independent peers. While science values rigorous testing and testable results, complexity in reproducing study and results hinder that. This is also one of the driving reason why Galaxy project come into development \citep{goecks2010galaxy}.  Galaxy, produce automatic metadata that record the execution of an analysis. This metadata consists of all the input files, configurations, and outputs of an analysis which are required to reproduce it. Galaxy also enables users to share the analysis with their peers that also ease the process of reproducibility in an analysis.
+This complexity is also one of the reasons why Galaxy project came into development \citep{goecks2010galaxy}. While science values rigorous testing, replicable, and reproducible results, the complexity of HPC software package hinders that.  Galaxy tries to solve that by producing automatic metadata that record the execution of an analysis done by tools on Galaxy platform. It records all the input files, configurations, and outputs of an analysis and makes it available for the users to view and copy. This metadata information enables users to share the analysis with their peers. Allowing peers, to replicate or reproduce the analysis results independent of the original researcher's. Galaxy allows the ease of reproducibility and replicability for the domain experts. 
+
 
 
 \subsection{Containerization Technology and HPC application}
 
-Another problem in reproducing or replicating complex studies, especially in computational research discipline is configurations. Complex software package required for said HPC application to run often requires computer expertise for it to be set up correctly. However, most domain experts that use the HPC application often does not have the required expertise, making it a barrier for them to reproduce a study.
 
-Containerization technology is something that can be used to address that problem. 
+
+
+One of the main problems with replicating or even reproducing results of studies with complex software package is configurations. A complex software package like HPC application often requires hands-on configuration by the users for it to run correctly. This complex configuration coupled with complex usage become barriers for an independent party to verify results of a study.
+
+Containerization technology can help with the issue above. It is a technology that is developed on top of Linux Containers (LXC) which allow application virtualization. Containers, allow applications to be securely placed in its own environment that shares the kernel with its host. Unlike full virtualization, containerization does not require a full operating system installed on the virtual environment so the application could run. Docker\footnote{https://www.docker.com/} is arguably the most popular containerization technology currently. It is built on LXC and added features that allow an application to be deployed easily. It handles container image creation, versioning, sharing and archiving in addition to running the image like LXC does. On top of that, there is also a web application called docker hub\footnote{https://hub.docker.com} that allows Dockerfile, a text file that contains the commands to build a container, to be inspected publicly if set correctly. It allows interested peers to audit a container and make changes to it for their own container.
+
+Using containerization technology like docker can help with reproducing results of studies. Complex configuration process can be hidden with the containerization technology. Studies can package the complete software package in a docker container to be shared with peers for independent replication and reproduction of an analysis. In addition to that, the versioning feature of docker also allows the software package to continuously developed and for an analysis tied down to an older version of the package. An analysis can be replicated even if the software is currently way ahead compared to the time an analysis is made. It  also creates a good opportunity for the study to be reproduced, an analysis could have different results if it is running with the new version of the package. Hence, containerization technology enabling reproducibility of results.
+
+This is also the reason why Galaxy project supports docker in its toolsets. Galaxy ecosystem uses docker to create a secure, isolated environment for the tools and its dependencies \citep{moreews2015curated}. Tools are versioned, archived, and shared with docker containers so peers can download and audit all the tools. This openness is also important for the tools to be trusted.
+
+HemeLB as a complex HPC application is also actively developed. While development is ongoing, it is often used as part of a research. Docker can help with the recording of the version used for a study by its versioning feature. In addition to that, configuration work is also taken out of the hands of the peer because it is done initially during the packaging of the application. Containerization technology sounds appropriate to be used for HemeWeb to enable easy reproduction, replication, and audit for HemeLB simulation.
+
+
+
+
+
+
+%Another problem in reproducing or replicating complex studies, especially in computational research discipline is configurations. Complex software package required for said HPC application to run often requires computer expertise for it to be set up correctly. However, most domain experts that use the HPC application often does not have the required expertise, making it a barrier for them to reproduce a study.
+%
+%Containerization technology is something that can be used to address that problem.  Container technology use a linux LXC container, that allows a separate environment to be created. This environment is contained in a container that can be easily shared and moved. Users usually configure the container with the software package they are interested in reproducing in other hardware and share them with their peers. This take the work of configuration out of the peers.
+%
+%Docker is one of the most popular and has the most easy to use interface. Not only for creating containers, docker also have their own web application counterpart that enables user to list, upload, and download container easily. With the social aspect of the web application, using docker is quite easy.
+%
+%Galaxy, also is documented to support containerization technology. They use docker to containerized the tools they support on the web application. It is argued that docker has allowed efficiency, isolation, and portability of their tools.  These traits have made docker a good tools to support reproducibility of a computation research. However, there are
+
+%One of the above projects, Galaxy, support containerization technology for their tools packaging. They used Docker, one implementation of linux container software. Galaxy claimed that using Docker allow efficiency, isolation, and portability of their tools [34]. These are good traits that could also be helpful for HemeLB. Docker, in particular, are often discussed as a promising technology to support reproducible research [35]. Usage of containerization technology, however, are sparsely detailed in the literature.
+
+%HemeLB as described before has some configuration complexity. It is a prime candidate to be distributed to the peer using docker.
 
 
 
