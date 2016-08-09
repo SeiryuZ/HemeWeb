@@ -169,17 +169,31 @@ A Job instance is preserved with this job directory structure. This allows job i
 
 \vspace{1cm}
 
-Figure \ref{fig:hemeweb-implementation} illustrate how the HemeWeb web application works. it consists of mainly 4 core activity that will be discussed in details in the following section.
+Figure \ref{fig:hemeweb-implementation} illustrates how the HemeWeb web application works. HemeWeb currently consists of 4 core activities that will be discussed in details in the following section.
 
 \subsubsection{Pre-processing}
 
-HemeWeb handle pre-processing of inputs that are needed so that HemeLB simulation can parse the files. User provide a geometry file (.stl) and a profile file (.pr2) to the web application. HemeWeb will then create a job instance with these two files, save them locally on master instances and queue the pre-processing job.
+In this step, HemeWeb handles pre-processing of inputs that are needed so that HemeLB simulation can parse the files. The user provides a geometry file (.stl) and a profile file (.pr2) to the web application for processing. HemeWeb will then create a job instance with these two files, save them locally on master instances and queue the pre-processing job.
 
-The asynchronous worker on master instance will then pick up the job whenever they are free. It will run the pre-processing python script to generate the geometry files and HemeLB configuration file. These files will then be saved on the master instance, and HemeWeb will track these files by recording the path to these files on the job instance. Now the job instance is ready for the next step. of the workflow.
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.4]{../resources/images/pre-processing}
+ }
+\captionof{figure}{HemeWeb pre-processing form}\label{fig:hemeweb-pre-processing}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+
+Figure \ref{fig:hemeweb-pre-processing} shows HemeWeb user interface to upload the unprocessed files.  After submission of both files and job being queued, the asynchronous worker on the master instance will work on the job whenever they are free. It will run the pre-processing python script to generate the geometry files and HemeLB configuration file. These files will then be saved to the master instance, and HemeWeb will track these files by recording the path to these files on the job instance. Now the job instance is ready for the next step. of the workflow.
 
 \subsubsection{Job configuration}
 
-In this step, HemeWeb application will take a job instance with correctly set geometry file (.gmy) and HemeLB configuration (.xml). However, there are multiple ways that HemeWeb can get this correctly set job instance. As illustrated on Figure \ref{fig:hemeweb-implementation} , there are 4 possible entry points for this step. They are:
+In this step, HemeWeb application will take a job instance with correctly set geometry file (.gmy) and HemeLB configuration (.xml). However, there are multiple ways that HemeWeb can get this correctly set job instance. As illustrated on Figure \ref{fig:hemeweb-implementation} , there are 4 possible entry points for this step. The web interface for these 4 entry points are also shown on Figure \ref{fig:hemeweb-pre-processing} They are:
 
 \begin{itemize}
     \item \textbf{From the post-processing step.}
@@ -197,27 +211,69 @@ In this step, HemeWeb application will take a job instance with correctly set ge
 \end{itemize}
 
 
-After the job instance is created from one of the four way possible discussed above, HemeWeb will then ask users for the job configuration. This entails on configuring how many instances should be started, what are the type of the instance, and the hemelb-core container version.  After configuring all these parameters, then the user can queue the job into the queue system.	
+After the job instance is created from one of the four way possible discussed above, HemeWeb will then ask users for the job configuration. 
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.3]{../resources/images/configure1}
+ }
+\captionof{figure}{HemeWeb HemeLB configuration form}\label{fig:hemeweb-configure1}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+Figure \ref{fig:hemeweb-configure1} shows the interface where users are asked to configure the HemeLB simulation parameter. In this page, an online XML editor will be provided for the user to directly edit the .xml file that is provided by the users or from the  pre-processing step. Users can directly edit values that affect simulation execution like inlet pressure, outlet pressure, blood viscosity, and etc. After configuring the simulation parameter it will then be redirected to job configuration page.
+
+
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.3]{../resources/images/configure2}
+ }
+\captionof{figure}{HemeWeb Job configuration form}\label{fig:hemeweb-configure2}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+Figure \ref{fig:hemeweb-configure2} shows the job configuration page. This page asks users about the parameter in which the simulation will be run with. These parameters are instance count, instance type, and HemeLB core container version. Instance count will determine how many compute node will be provisioned for this simulation by HemeWeb. Instance type will determine what type of compute node will be started, and the HemeLB core container version will determine what version of the container the compute node will use to run HemeLB simulation. After all of these parameters are set, users will be asked to confirm the job execution in the overview page. In the page, the user can then finally queue the job into the queue system.
 
 
 
 \subsubsection{HemeLB simulation}
 
-Once job instance are queued into the simulation queue, free asynchronous workers will pop the queue and run the job. The worker will start up the configured amount and type of server instance from the cloud provider. These instances will then be further reconfigured by an ansible script so that it points to the correct master instance address. Next, input files are shared via Networked File System(NFS), the compute units will mount the input folders to their instance. 
+Once job instance is queued into the simulation queue, a free asynchronous worker will pop the queue and run the job. The worker will start up the configured amount and type of server instance from the cloud provider. These instances will then be further reconfigured by an ansible script so that it points to the correct master instance address. Next, input files are shared via Networked File System(NFS), the compute units will mount the input folders to their instance. 
 
-HemeLB core container will be pulled from docker hub in the next step. This step will skip the download if the container asked are already cached in the image for compute unit which are prepared on the deployment part. After all of these are done, then the simulation can finally begin. Master node will issue an mpi command to be run by the leader of compute nodes. The leader of compute node then will run this mpi command in the docker container. This command will be run on multiple compute node if it is configured as such in the previous steps. 
+The correct HemeLB core container version will be pulled from docker hub in the next step. This step will skip the download if the container asked are already cached in the image for compute units which are prepared on the deployment part. After all of these are done, then the simulation can finally begin. Master node will issue an MPI command to be run by the leader of compute nodes. The leader of compute node then will run this MPI command in the docker container. This command will be run on multiple compute node if it is configured as such in the previous steps. 
 
 The HemeLB simulation will run until outputs are produced. The output will be written back to the correct output folder in the shared folder. This means that the master instance will have access to the outputs file and can do further processing. This step ends with the termination of the instances.
+
+\vspace{1cm}
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.3]{../resources/images/output}
+ }
+\captionof{figure}{HemeWeb Job logs}\label{fig:hemeweb-output}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+Figure \ref{fig:hemeweb-output} shows how the Job execution will produce logs that can be viewed on HemeWeb web application. During simulation, logs are written to the respective job folder and are served to the browser by the HemeWeb app. Showing the logs allows users to easily view the progress of the job or even debug failed job.
 
 
 \subsubsection{Post-processing}
 
-After HemeLB simulation is done, HemeWeb web app will do some post-processing steps to make sure the output files can be viewed easily. The output from HemeLB simulation is structured in such a way that makes it efficient to write in parallel. However, these output cannot be viewed by visualization system like Paraview. What HemeWeb will do is to pipe the output to two scripts that will format the output into a format that can be understood by paraview.
+After HemeLB simulation is finished, HemeWeb web app will do some post-processing steps to make sure the output files can be viewed easily. The outputs from HemeLB simulation are structured in such a way that makes it efficient to write in parallel. However, these outputs cannot be viewed by visualization system like Paraview. What HemeWeb will do is to pipe the output files to two python scripts that will format the output into a format that can be understood by ParaView.
 
 
-However, the post-processing steps are not done until converting the output. There are further steps that HemeWeb took to make sure that the simulation files, configurations, and results are preserverd. HemeWeb will package the job directory, compressed it, and upload it into persistent storage that cloud vendors provide. As the time of writing, HemeWeb only support amazon S3. The simulation file are uploaded to this storage and made available for public for other HemeWeb instance to use. Also, with the job files persisted on persistent storage. The next HemeWeb instance deployed can take advantage of these files that it can download them as previous job available.
-
-
+However, the post-processing steps are not done yet. There are further steps that HemeWeb took to make sure that the simulation files, configurations, and results are preserved externally. HemeWeb will package the job directory, compressed it, and upload it into persistent storage that cloud vendors provide. As the time of writing, HemeWeb only supports amazon simple storage service. The simulation files are uploaded to this storage and made accessible to the public so other HemeWeb instance can use them. Also, with the job files persisted on persistent storage, the next HemeWeb instance deployed can take advantage of these files that it can use it as previous jobs to be used on current deployment
 
 
 
