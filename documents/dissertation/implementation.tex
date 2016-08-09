@@ -46,6 +46,8 @@ The deployment script described in this section is available online at the HemeW
 
 In this section, I will discuss the bulk of the work of this project which is developing the web application component. The web application component will be the interface for users to interface with HemeLB simulation workflow and is an essential part of this project. It is developed using Python 2.7 and Django web framework\footnote{\url{https://www.djangoproject.com}}. I chose Django web framework due to my previous experience with the web framework and also the existing codebase have tools written in python. Using Django web framework is to make sure that the codebase in HemeLB software package is done mostly consistent with Python. Additionally, using Django also allow me to focus on the development instead of learning the framework due to my past experience with it.
 
+All the source code for HemeWeb web application is available online at my GitHub's public repository\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/src}}.
+
 
 
 %
@@ -114,15 +116,17 @@ To start the simulation, the HemeLB core containers requires the job directories
 
 
 \subsubsection{Job instance structure}
-HemeWeb use django python library to handle the heavy weightlifting with regards to web functionalities. The way job instance is created is also dependent on django's model hierarchy. \textbf{Job} is a class that represent one instance of job simulation. It inherits from django.db.models.Model class that exist within django infrastructure. Django's model class handles the interaction with the database and with the django environment and HemeWeb's job class only need to extend this class to add its own functionality.
+
+As mentioned above, HemeWeb uses Django web framework to handle web functionalities. Django framework follows the object-oriented principle where everything is modeled as an object. Job information that is handled by HemeWeb is also modeled as an object that is derived from object class of Django. Literally named \textbf{Job}, is a class that represents simulation information. Each instance of this class will contains information specific to a simulation instance. \textbf{Job} class inherits from \textit{django.db.models.Model} class that is included within Django framework. HemeWeb \textbf{Job} class extends this basic class and add functionalities specifically related to job information.
+
 
 HemeWeb's Job class has the following attributes:
 \begin{itemize}
-    \item id:  This is a unique UUID field that represent the Job ID. UUID field was chosen because it is appropriate for the possibility of sharing the job simulation files between different deployment of HemeWeb. UUID can prevent clashes of ID between these instances.
-    \item input\_file, stl\_file, profile\_file, output\_file, configuration\_file:  These attribute keep track of the files that are used by the job. It is stored as path to the file in the local file system, but with django functionalities HemeWeb can work with the file as an object.
-    \item container\_image:  This attribute determine which container of HemeLB core will be used in the simulation. Currently, this field is set manually on the code. 
+    \item id:  This is a unique UUID field that represents the Job ID. UUID field was chosen because it is appropriate for the possibility of sharing the job simulation files between different deployment of HemeWeb. UUID can prevent clashes of job ID between these instances.
+    \item input\_file, stl\_file, profile\_file, output\_file, configuration\_file:  These attributes keep track of the files that are used by the job. It is stored as the path to the file in the local filesystem, but with Django functionalities, HemeWeb can work with the file as an object.
+    \item container\_image:  This attribute determines which container of HemeLB core will be used in the simulation. Currently, the choice of the field's value is set manually in the codebase. 
     \item instance\_type: This determines which compute node type will be started for the simulation. 
-    \item instance\_count: This attribute determines how many compute node will be started for the simulation. Currently, this is also set manually on the code. 
+    \item instance\_count: This attribute determines how many compute node will be started for the simulation. Currently, this is also set manually in the source code. 
     \item status: The attribute to determine Job's status, whether it is \textit{queued, added, done, failed, etc}
     \item created: Attribute to keep track when the job is created
     \item updated: Attribute to keep track when the job is updated 
@@ -130,11 +134,10 @@ HemeWeb's Job class has the following attributes:
 
 
 
+\subsubsection{Job directory structure}
 
+Each simulation done with HemeWeb have its own job directory. These directories are located in the master instance and are shared with the compute node. To provide a clearer picture how the application package and work with the job's files, I will discuss how HemeWeb structure each job's files.
 
-\subsubsection{Job instance directory structure}
-
-HemeWeb structure each job's files and configurations into its own folder. I will discuss how it is structure to provide clearer picture on how the application package and work with the job's files.
 
 \begin{lstlisting}
 <UPLOAD_FOLDER_DIR>/<JOB_ID>
@@ -144,11 +147,13 @@ HemeWeb structure each job's files and configurations into its own folder. I wil
 <UPLOAD_FOLDER_DIR>/<JOB_ID>/metadata
 \end{lstlisting}
 
-HemeWeb installation can change the upload folder directory as the basis of all job's folder will be located.  Job ID will be generated by the web application using UUID4 scheme, so ID's generated by different instances of HemeWeb should theoretically have really low chance of clashing. This is also why adding previous job to the HemeWeb instance is not problematic, because using auto increment ID will be a problem for multiple installation.
+Listing above illustrates the structure of a job instance's directory structure.  The first component of all job instance's directory is the UPLOAD\_FOLDER\_DIR. This is the path to a directory in which HemeWeb will upload all files. To change this parameter, one should change the path in the HemeWeb settings file and restart the web application so the changes took place.
 
-Next, we have the inputs folder inside the job folder. This is where all the inputs and configurations are stored by the web application. There's also logs folder, where the job stdout, stderr, and HemeLB logs are stored. The web application will read from this folder and make it available on the web interface. Outputs folder will be used by the HemeLB simulation to output files on this folder. One final file is the metadata file. This file is used by the web application to store the state of the job. The job is pickled into this metadata file so when it is downloaded, the web application can unpickle the state of the job instance and it is preserved, ready to be used for another simulation.
+The next part of the directory structure is the job folder named with its ID. The ID will be generated by HemeWeb using Universally Unique Identifier (UUID) scheme. More specifically, UUID Version 4 that depends on the random number. Using UUID is important for HemeWeb because it is accurately approximated to have a really low chance of producing duplicate ID. Hence, HemeWeb does not have to take care of the possibility of jobs having duplicate ID.
 
+Next, we have the inputs folder inside the job folder. This is where all the inputs and configurations are stored by the web application. There's also logs folder, where the job stdout, stderr, and HemeLB logs are stored. The web application will read from this folder and make it available on the web interface. Outputs folder will be used by the HemeLB simulation to write output files in this folder. One final file is the metadata file. This file is used by the web application to store the state of the job. The job is pickled into this metadata file so when it is downloaded, the web application can unpickle the state of the job instance and it is preserved, ready to be used for another simulation.
 
+A Job instance is preserved with this job directory structure. This allows job information to be preserved in an external storage that can be used for backup. HemeWeb currently supports uploading job directory to amazon simple storage service (S3). However, backup is not the only purpose for this functionalities. By making job directory files available to the public, independent peers can download these files and run the simulation with correct files and configurations. It allows peers to replicate a simulation exactly or with modifications.
 
 \subsection{Simulation workflow}
 
