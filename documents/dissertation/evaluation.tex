@@ -78,17 +78,17 @@ In addition to the above questions, testers also will be asked to list the most 
 
 The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like a supercomputer. This could have an interesting impact on the performance of the system because cloud vendors, being much more easily accessible and provisioned, have an underlying infrastructure difference with the stand-alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
 
-The performance benchmark will be done by the internal tooling that is baked inside HemeLB. Every HemeLB simulation will produce a report file that measures the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on four different scenarios to measure the performance impact on having HemeLB simulation on the cloud with docker containers. They are:
+The performance benchmark will be done by the internal tooling that is baked inside HemeLB. Every HemeLB simulation will produce a report file that measures the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on four different scenarios to measure the performance impact on having HemeLB simulation on the cloud with Docker containers. They are:
 \begin{itemize}
 	\item{ARCHER supercomputer}
 	\item{Highly parallel computing resources}
-	\item{Cloud computing with docker}
-	\item{Cloud computing without docker}
+	\item{Cloud computing with Docker}
+	\item{Cloud computing without Docker}
 \end{itemize}
 
 The benchmark on ARCHER supercomputer will be the gold standard of the performance. It's a gold standard because the infrastructure has a clear purpose of being used for the HPC application. It has the necessary resources and components that are tailored for it. It should be the ideal performance scenario. Next, the local computing infrastructure. This paints a picture if how HemeLB will perform on a private local infrastructure which is built to run highly parallel jobs. This will be the measure that can be used if HemeLB is to run on private infrastructure.
 
-The next two benchmark will be done to measure the performance of HemeLB simulation compared to the local infrastructure. Cloud computing vendors have an underlying difference with regards towards how the infrastructures are structured and connected together. This could have an inherent performance different with a standalone infrastructure. However, an analysis will be made with regards to running HemeLB simulation with another overhead, which is docker. While docker is used for easily swapping of the HemeLB version, it might affect the performance of HemeLB simulation. With this benchmark, we can answer whether the flexibility of docker container can justify the performance that we get. It is also interesting to see whether there are performance penalties that we incur when using docker.
+The next two benchmark will be done to measure the performance of HemeLB simulation compared to the local infrastructure. Cloud computing vendors have an underlying difference with regards towards how the infrastructures are structured and connected together. This could have an inherent performance different with a standalone infrastructure. However, an analysis will be made with regards to running HemeLB simulation with another overhead, which is Docker. While Docker is used for easily swapping of the HemeLB version, it might affect the performance of HemeLB simulation. With this benchmark, we can answer whether the flexibility of Docker container can justify the performance that we get. It is also interesting to see whether there are performance penalties that we incur when using Docker.
 
 
 
