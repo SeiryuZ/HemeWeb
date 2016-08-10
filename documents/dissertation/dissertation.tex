@@ -63,6 +63,56 @@
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{listings}
+\usepackage[dvipsnames]{xcolor}
+
+
+% Update listing settings
+\definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
+\lstset{numbers=left,backgroundcolor=\color{light-gray}, breaklines=true}
+
+
+%%%%%%% DO NOT TOUCH  BELOW THIS %%%%%%%
+%%% YAML Syntax for code listing
+
+\newcommand\YAMLcolonstyle{\color{red}\mdseries}
+\newcommand\YAMLkeystyle{\color{black}\bfseries}
+\newcommand\YAMLvaluestyle{\color{blue}\mdseries}
+
+\makeatletter
+
+% here is a macro expanding to the name of the language
+% (handy if you decide to change it further down the road)
+\newcommand\language@yaml{yaml}
+
+\expandafter\expandafter\expandafter\lstdefinelanguage
+\expandafter{\language@yaml}
+{
+  keywords={true,false,null,y,n},
+  keywordstyle=\color{darkgray}\bfseries,
+  basicstyle=\YAMLkeystyle,                                 % assuming a key comes first
+  sensitive=false,
+  comment=[l]{\#},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\YAMLvaluestyle\ttfamily,
+  moredelim=[l][\color{orange}]{\&},
+  moredelim=[l][\color{magenta}]{*},
+  moredelim=**[il][\YAMLcolonstyle{:}\YAMLvaluestyle]{:},   % switch to value style at :
+  morestring=[b]',
+  morestring=[b]",
+  literate =    {---}{{\ProcessThreeDashes}}3
+                {>}{{\textcolor{red}\textgreater}}1     
+                {|}{{\textcolor{red}\textbar}}1 
+                {\ -\ }{{\mdseries\ -\ }}3,
+}
+
+% switch to key style at EOL
+\lst@AddToHook{EveryLine}{\ifx\lst@language\language@yaml\YAMLkeystyle\fi}
+\makeatother
+
+\newcommand\ProcessThreeDashes{\llap{\color{cyan}\mdseries-{-}-}}
+
+%%%%%%% DO NOT TOUCH  ABOVE THIS %%%%%%%
 
 
 \setcounter{tocdepth}{4}
@@ -138,7 +188,7 @@ I would like to thank Indonesian Government, specifically Indonesian Endowment F
 %% Any appendices should go here. The appendix files should look just like the
 %% chapter files.
 \appendix
-\include{appendix1}
+\include{appendix_deployment_scripts}
 %% ... etc...
 
 %% Choose your favourite bibliography style here.

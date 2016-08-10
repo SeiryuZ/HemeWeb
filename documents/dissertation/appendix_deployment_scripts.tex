@@ -1,0 +1,99 @@
+% Activate the following line by filling in the right side. If for example the name of the root file is Main.tex, write
+% "...root = Main.tex" if the chapter file is in the same directory, and "...root = ../Main.tex" if the chapter is in a subdirectory.
+ 
+%!TEX root =  dissertation.tex
+\chapter[Deployment Script]{Deployment Script}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cloud vendor specific provisioning scripts}
+
+\lstinputlisting[language=yaml, caption=Amazon web service specific provisioning script]{../../deployment/aws/provision.yml}
+
+\lstinputlisting[language=yaml, caption=Digital ocean specific provisioning script]{../../deployment/digital_ocean/provision.yml}
+
+\lstinputlisting[language=yaml, caption=Google cloud platform specific provisioning script]{../../deployment/google_cloud/provision.yml}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Cloud vendor specific deployment scripts}
+
+\lstinputlisting[language=yaml, caption=Amazon web service specific deployment script]{../../deployment/aws/deploy.yml}
+
+\lstinputlisting[language=yaml, caption=Digital ocean specific deployment script]{../../deployment/digital_ocean/deploy.yml}
+
+\lstinputlisting[language=yaml, caption=Google cloud platform specific deployment script]{../../deployment/google_cloud/deploy.yml}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Common deployment script}
+
+\lstinputlisting[language=yaml, caption=deploy.yml]{../../deployment/deploy.yml}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Common role}
+
+\lstinputlisting[language=yaml, caption=roles/common/tasks/main.yml]{../../deployment/roles/common/tasks/main.yml}
+
+\subsubsection{SSH specific common role}
+\lstinputlisting[language=yaml, caption=roles/common/tasks/ssh.yml]{../../deployment/roles/common/tasks/ssh.yml}
+
+\subsubsection{Package manager specific common role}
+\lstinputlisting[language=yaml, caption=roles/common/tasks/apt.yml]{../../deployment/roles/common/tasks/apt.yml}
+
+
+\subsubsection{Host specific common role}
+\lstinputlisting[language=yaml, caption=roles/common/tasks/hosts.yml]{../../deployment/roles/common/tasks/hosts.yml}
+
+\lstinputlisting[caption=roles/common/templates/hosts.j2]{../../deployment/roles/common/templates/hosts.j2}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Redis role}
+
+\lstinputlisting[language=yaml, caption=roles/redis/tasks/main.yml]{../../deployment/roles/redis/tasks/main.yml}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Nginx role}
+
+\lstinputlisting[language=yaml, caption=roles/nginx/tasks/main.yml]{../../deployment/roles/nginx/tasks/main.yml}
+
+
+\lstinputlisting[caption=roles/nginx/templates/default.j2]{../../deployment/roles/nginx/templates/default.j2}
+
+\lstinputlisting[caption=roles/nginx/templates/nginx.j2]{../../deployment/roles/nginx/templates/nginx.j2}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Postgresql role}
+\lstinputlisting[language=yaml, caption=roles/postgresql/tasks/main.yml]{../../deployment/roles/postgresql/tasks/main.yml}
+
+\lstinputlisting[caption=roles/postgresql/templates/pg\_hba.j2]{../../deployment/roles/postgresql/templates/pg_hba.j2}
+
+
+
+
+

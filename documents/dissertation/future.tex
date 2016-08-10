@@ -5,26 +5,37 @@
 
 \chapter[Future work]{Future work}
 
-To better support HemeLB simulation workflow, HemeWeb can be further improved. I suggest the followings area to be further developed in the future:
+To better support HemeLB simulation workflow, HemeWeb can be further improved. I suggest the following areas to be further developed in the future:
 
 \begin{enumerate}
-	\item Handle geometry generation step of HemeLB simulation workflow
-	
-	There are some steps which are not included in this project due to time constraints. One of them is the profile generation step. In this step, the domain experts should generate a profile file by pointing out how the simulation will run. They need to point where the blood will flow into the 3D  model of the vascular system, where it will flow out, the blood viscosity, and other various parameters that will affect the simulation result. This process will most likely require a graphical user interface for the domain experts to interact with.
-	
-	\item Viewing simulation result on the browser.
-	
-	HemeLB simulation outputs are  in a format that is viewable by a third party tool, ParaView. It will be ideal if HemeWeb can be one stop solution for HemeLB simulation that domain experts do not have to bother with all other tools to view the output of it. A ParaView integration can be done in the next step of the development so that simulation result can be directly viewed on the browser so users do not have to bother with an extra tool to configure and install.
-	
-	\item HemeLB simulation security
-	
-	As outlined in the implementation challenge of the project, security was not the main focus of this project. However, if this project is to be an essential part of the future medical decision, security will need to be addressed seriously. After all, the patient's private health information will be used for the simulation. A system using such highly private information should be better secured.
-	
-	\item Cloud vendor abstraction on web application
-	
-	One challenge of the project was the difference between cloud vendors. Due to the time constraint, the developed web application is tied down to amazon web services only. It would be ideal if HemeWeb could work on any cloud vendors with minimal changes. This is going to be more of a reconciling the difference between cloud vendors and make an abstraction layers that HemeWeb will need to call whenever it needs to interact with the cloud vendors' feature.
+    \item Handle geometry generation step of HemeLB simulation workflow
+    
+    There are some steps which are not included in this project due to time constraints. One of them is the profile generation step. In this step, the domain experts should generate a profile file by pointing out how the simulation will run. They need to point where the blood will flow into the 3D  model of the vascular system, where it will flow out, the blood viscosity, and other various parameters that will affect the simulation result. This process will most likely require a graphical user interface for the domain experts to interact with.
+    
+    \item Viewing simulation result on the browser.
+    
+    HemeLB simulation outputs are  in a format that is viewable by a third party tool, ParaView. It will be ideal if HemeWeb can be one stop solution for HemeLB simulation that domain experts do not have to bother with all other tools to view the output of it. A ParaView integration can be done in the next step of the development so that simulation result can be directly viewed on the browser so users do not have to bother with an extra tool to configure and install.
+    
+    \item HemeLB simulation security
+    
+    As outlined in the implementation challenge of the project, security was not the main focus of this project. However, if this project is to be an essential part of the future medical decision, security will need to be addressed seriously. After all, the patient's private health information will be used for the simulation. A system using such highly private information should be better secured.
+
+  Also, in line with the simulation security. HemeWeb instance should be better protected. Currently, HemeWeb does not have protected user area. Individuals without correct credentials can just run the simulation by entering the address of the application on their browser. This is not ideal because this simulation costs money. It should be better protected by having appropriate security measures against unauthorized access.
+
+   \item HemeWeb notification
+
+   Currently, users are asked to wait until simulation is done to get the output. The user had to keep the page open or checking back in an interval to see whether it is finished. It would be a better experience for users to be notified when a simulation is finished. The user can leave the web application and get back to it when notification is sent.
+
+
+   \item Better interface to configure HemeLB parameters. 
+
+      Echoing the suggestions that are collected during the evaluation of HemeWeb, there should be a better interface to configure HemeLB parameters. Currently, HemeWeb provides an online XML editor for users to update the HemeLB parameter directly. However, this process is prone to error and might not be the best interface for new users to configure HemeLB simulation. A better solution can be in the form of an automatic web form building from the XML file. With it, users can use the easier web form to select and specify the parameters for HemeLB simulation. This is currently not done because the active development cycle of HemeLB means that the format of XML is also actively developed and could create complications in the building in the form if the format is changed.
+    
+    \item Cloud vendor abstraction on web application
+    
+    One challenge of the project was the difference between cloud vendors. Due to the time constraint, the developed web application is tied down to amazon web services only. It would be ideal if HemeWeb could work on any cloud vendors with minimal changes. This is going to be more of a reconciling the difference between cloud vendors and make an abstraction layer that HemeWeb will need to call whenever it needs to interact with the cloud vendors' feature.
     
     The project did achieve cloud vendor abstraction for the deployment scripts. The infrastructure can be deployed to three different cloud vendors easily. They are google cloud platform, amazon web service, and digital ocean. However, the web application needs more work to achieve the similar feat. Infrastructure can be deployed on these infrastructures, but HemeWeb still cannot work.
-	
+    
 \end{enumerate}
 

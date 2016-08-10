@@ -10,12 +10,12 @@ In this chapter, I will discuss on the system's evaluation. Success will be meas
     \item Can users run a simulation using our system ?
     \item Can users reproduce past simulations using our system ?
     \item Are users satisfied in using our system ?
-    \item Are users more likely to run a simulation using our system compared to command line ?
+    \item Are users more likely to run a simulation using our system compared to the command line ?
     \item How does it perform compared to the existing infrastructure ?
 \end{itemize}
 
 
-In answering above questions, I conduct two sets of evaluation. First, an online questionnaire was conducted to measure user's experience and system's usability. And secondly, a performance analysis comparing the performance of HemeLB between dedicated hardware against cloud vendor's. Questionnaire will answer most of the questions related to user experience and usability above, while the performance benchmark will be the basis for performance evaluation and justification in using HemeWeb.
+In answering questions above, I conduct two sets of evaluation. First, an online questionnaire was conducted to measure user's experience and system's usability. And secondly, a performance analysis comparing the performance of HemeLB between dedicated hardware against cloud vendors. The questionnaire will answer most of the questions related to user experience and usability above, while the performance benchmark will be the basis for performance evaluation and justification in using HemeWeb.
 
 %These questions will be answered in two different evaluations. First, an online questionnaire was sent to the target audience of HemeWeb. In the questionnaire, testers will be asked to run two scenarios and answer questions to measure their experience. These answers will be the basis for answering most of the questions above. In addition to the questionnaire, I will measure the performance of HemeWeb in running HemeLB simulation by running benchmarks and comparing the raw performance number. These benchmarks will be the basis of the performance measure of the evaluation.
 
@@ -76,7 +76,7 @@ In addition to the above questions, testers also will be asked to list the most 
 
 \section{Performance benchmarks}
 
-The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like a supercomputer. This could have an interesting impact on the performance of the system because cloud vendors, being much more easily accessible and provisioned, have an underlying difference with the stand-alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
+The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like a supercomputer. This could have an interesting impact on the performance of the system because cloud vendors, being much more easily accessible and provisioned, have an underlying infrastructure difference with the stand-alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
 
 The performance benchmark will be done by the internal tooling that is baked inside HemeLB. Every HemeLB simulation will produce a report file that measures the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on four different scenarios to measure the performance impact on having HemeLB simulation on the cloud with docker containers. They are:
 \begin{itemize}
