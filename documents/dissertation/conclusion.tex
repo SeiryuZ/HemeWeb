@@ -5,3 +5,19 @@
 
 \chapter[Conclusion]{Conclusion}
 
+
+Computational bioinformatic applications like HemeLB is complex. Domain experts, whose knowledge in the subject is invaluable, often face difficulties in using the software package. This creates a barrier for them to run a study or even an exploratory one with it. In this project, I  alleviate this pain by providing an alternative interface for HemeLB. With it, I provide another example to the likes of Nekkloud and Galaxy projects on how a web application can be used as an alternative interface to complex application. In addition, this web application when coupled with Docker enables it to provide a reproducible research platform for complex applications which is valuable to science in general.
+
+
+I design and implemented HemeWeb, a web-based interface to interact with HemeLB simulation workflow. It is developed to answer the problems above. Originally, users are required to use command line interface, but HemeWeb allows them to use a web browser to configure and run HemeLB simulation. 
+
+In developing HemeWeb, I managed to produce 3 results. These results are HemeLB core Docker container, HemeWeb deployment scripts, and HemeWeb web application. In the spirit of being open, all of these components are open-sourced and publicly available on the public repository of this project. HemeLB core Docker container is also published on the Docker hub. All of these enables an interested party to get their hands on the project to experiment or work with it.
+
+The deployment scripts can configure HemeLB ready infrastructure on three cloud vendors. They are Digital Ocean, Amazon Web Service, and Google Cloud Platform. With it, users can configure cloud platform's instances to handle multi-host HemeLB simulation via command line interface. However, the HemeWeb web application can only be deployed with Amazon Web Service. This is caused by an abstraction layer that currently only supports Amazon Web Service for a certain feature like simulation files persistence.
+
+The HemeWeb web application itself allows domain experts to use the familiar interface of clicking on a web form to configure and run HemeLB simulation. Users can provide pre-processed input files or even unprocessed input files to the web app, and it will allow users to configure the job and run it within few clicks. In addition to that, HemeWeb also allows users to use past simulation information, both owned locally or remotely, to create a new simulation. This capability allows users to either replicate or reproduce a simulation.
+
+
+
+
+

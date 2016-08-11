@@ -9,3 +9,21 @@
 
 
 \section{Performance result and analysis}
+
+
+\begin{table}[]
+\centering
+\caption{Performance comparison HemeLB on Indy2 vs AWS EC2}
+\label{table:perf}
+\begin{tabular}{|c|c|c|}
+\hline
+\multicolumn{1}{|l|}{}            & \multicolumn{2}{c|}{Performance in seconds}               \\ \hline
+\multicolumn{1}{|l|}{\# of Cores} & \multicolumn{1}{l|}{Indy2} & \multicolumn{1}{l|}{AWS EC2} \\ \hline
+36                                & 24.7                       & 36.3                         \\ \hline
+72                                & 12.7                       & 29.9                         \\ \hline
+144                               & 7.08                       &                              \\ \hline
+288                               & 3.44                       &                              \\ \hline
+576                               & 1.81                       &                              \\ \hline
+1152                              & 1.58                       &                              \\ \hline
+\end{tabular}
+\end{table}
