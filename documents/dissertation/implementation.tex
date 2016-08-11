@@ -23,25 +23,38 @@ After switching the base image of the Docker container with Phusion's Ubuntu (Li
 The modification of the Dockerfile of the container is the initial part to make HemeLB core container created correctly. To correctly create the HemeLB container, this Dockerfile needs to be integrated into the development workflow of HemeLB. Currently, the modified Dockerfile still live under the HemeWeb codebase\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/hemelb_docker}}. HemeLB development should trigger an automated build of HemeLB core containers with each version of the software it pushes to the public GitHub repositories. In addition, the development team also needs to create a consistent tag naming in order for the HemeLB core containers to be created correctly.
 
 
-\section{Deployment script}
+\section{Deployment scripts}
 
-After creating the HemeLB core container, I proceed to create a deployment script to configure the overall software architecture. It contains many moving parts and configuring the architecture by hand will soon be unmanageable. Deployment script that I created tries to alleviate the pain of deployment by provisioning and configuring the architecture with minimal manual intervention. It is created using a configuration management and orchestration tools called ansible\footnote{\url{https://www.ansible.com}}.
+The next step of the implementation is to develop deployment scripts to configure the overall software architecture. Due to the nature of the architecture that consists of many moving parts, manual configuration is not considered a manageable solution. I decided to create deployment scripts that alleviate the pain of deployment by provisioning and configuring the architecture with minimal manual intervention.  The scripts are created using a configuration management and orchestration tools called Ansible\footnote{\url{https://www.ansible.com}}.
 
-The basic goals of the script are as follow:
+Ansible is arguably the most popular tools in IT infrastructure automation space\citep{mohaan2014learning}. It is a python-based open source tool that is used for provisioning, configuring, and orchestration of IT infrastructure. Moreover, it is an agentless software that allows it to work without installing client-side software on the hosts it manages. I decided to use Ansible for deploying HemeWeb's infrastructure because it is developed in Python and also an agentless software\citep{mohaan2014learning}. Ansible being an agentless software is really useful because there is one less moving part that HemeWeb have to worry about. Another reason is because it uses YAML(YAML Ain't Markup Language\footnote{\url{http://yaml.org}}) syntax for the configuration management language which is described by the team as "easier for humans to read and write than other common data formats like XML or JSON"\footnote{\url{http://docs.ansible.com/ansible/YAMLSyntax.html}}. I find YAML is easy to work with in developing the scripts.  Finally, there are a lot of community contributed components that are included with Ansible that makes developing the deployment scripts much faster. For example, there are modules that enable a script to provision instances from cloud vendors like Amazon Web Service, Google Cloud Platform, and Digital Ocean.  
+
+
+
+
+At the current time of writing, the deployment process consists of multiple files, templates, and configuration scripts that are modularly assembled to be run as a set of instructions to build the infrastructure. These deployment scripts can be divided into two separate distinct functions, which are:
+
 \begin{enumerate}
-\item Provision the required master instance from cloud vendors
-\item Configure the master instance with the correct security and network settings
-\item Configure and install all the services needed by HemeWeb
-\item Provision required compute instances from cloud vendors
-\item Configure the compute instances with the correct security and network settings
-\item Configure the compute instances to run HemeLB core Docker container
+\item Provision instances and configure cloud vendor specific settings
+\item Configure the provisioned instances to produce correctly set architecture
 \end{enumerate}
 
-The development of the script is straightforward. I used various modules that are available to ansible, including cloud vendors module, to automate the process as much as possible. The script can provision instances easily, provided with the correct authentication credentials for each cloud vendors. After provisioning, the script will configure the instances until it is ready to be used for running HemeLB in the cloud.
+I will discuss the deployment script in details in the following sections.
 
-Modularity is one of the concerns when the deployment script was developed. The deployment script should be able to be extended easily. That's why some common functionalities are gathered into its own module that can be called from specific script. These common functionalities are mostly the software installation and configuration part that have no difference between cloud vendors. However, for each specific cloud vendors, the deployment script have different entry path. This deals mainly with the platform-specific way to provision and configures the server instances from the cloud vendors. After this platform-specific deployment script is done, it will then call the common module to configure the instances as required. With this in mind, the deployment script has been developed to be able to be run for three cloud vendors. They are Digital Ocean\footnote{\url{https://www.digitalocean.com}}, Amazon Web Service\footnote{\url{http://aws.amazon.com}}, and Google Cloud Platform\footnote{\url{https://cloud.google.com}}.
 
-The deployment script described in this section is available online at the HemeWeb repository under the deployment folder\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/deployment }}.
+\subsection{Provision instances and configure cloud vendor specific settings}
+
+In this phase, the scripts are mainly responsible for provisioning master and compute instances for the infrastructure. The script will request instances from the cloud vendors based on the number and type of instances set in the script. Because cloud vendors have their own interface to interact with their platform, I decided to separate the scripts into their own directories for each cloud vendors. This is due to the fact that in Ansible, to interact with each vendor, it needs to use a different module.
+
+At the time of writing, I developed the provisioning script for 3 different cloud vendors. They are Digital Ocean, Amazon Web Service, and Google Cloud Platform. Each script has slightly different YAML syntax due to the difference in the module that is used. In addition, there are a different model of provisioning that needs to be adhered to by the scripts. The most notable one is the Amazon Web Service one. The script has to be able to create a correct security settings for each instances or it will not allow the instances to be connected remotely. Without this ability, the deployment script will not be able to configure the instances correctly for the infrastructure.
+
+\subsection{Configure the provisioned instances to produce correctly set architecture}
+
+%The development of the script is straightforward. I used various modules that are available to ansible, including cloud vendors module, to automate the process as much as possible. The script can provision instances easily, provided with the correct authentication credentials for each cloud vendors. After provisioning, the script will configure the instances until it is ready to be used for running HemeLB in the cloud.
+%
+%Modularity is one of the concerns when the deployment script was developed. The deployment script should be able to be extended easily. That's why some common functionalities are gathered into its own module that can be called from specific script. These common functionalities are mostly the software installation and configuration part that have no difference between cloud vendors. However, for each specific cloud vendors, the deployment script have different entry path. This deals mainly with the platform-specific way to provision and configures the server instances from the cloud vendors. After this platform-specific deployment script is done, it will then call the common module to configure the instances as required. With this in mind, the deployment script has been developed to be able to be run for three cloud vendors. They are Digital Ocean\footnote{\url{https://www.digitalocean.com}}, Amazon Web Service\footnote{\url{http://aws.amazon.com}}, and Google Cloud Platform\footnote{\url{https://cloud.google.com}}.
+%
+%The deployment script described in this section is available online at the HemeWeb repository under the deployment folder\footnote{\url{https://github.com/SeiryuZ/HemeWeb/tree/master/deployment }}.
 
 
 
