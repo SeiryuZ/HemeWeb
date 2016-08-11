@@ -119,6 +119,7 @@ class Job(models.Model):
         (4, '4 Cores'),
         (8, '8 Cores'),
         (16, '16 Cores'),
+        (36, '36 Cores'),
     )
     instance_type = models.IntegerField(choices=INSTANCE_CHOICES, default=2,
                                         verbose_name="Machine Type")
@@ -214,6 +215,8 @@ class Job(models.Model):
             return 'c4.2xlarge'
         elif int(self.instance_type) == 16:
             return 'c4.4xlarge'
+        elif int(self.instance_type) == 36:
+            return 'c4.8xlarge'
 
     def get_core_count(self):
         return int(self.instance_count) * int(self.instance_type)
