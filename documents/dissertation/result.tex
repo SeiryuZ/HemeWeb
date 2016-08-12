@@ -7,6 +7,9 @@
 
 \section{Usability result and analysis}
 
+Usability evaluation is done using online survey hosted by Google Form\footnote{\url{https://goo.gl/forms/toYsRwnGIGumMBUD2}}. Respondents are given 2 tasks to complete, which are to run a simulation and reproduce past simulation. I analyze respondent's answers with regards to HemeWeb's usability.
+
+
 \subsection{Demography}
 
 
@@ -15,9 +18,9 @@
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.6]{../resources/evaluation/usability/career.png}
+  \includegraphics[keepaspectratio=true,scale=0.8]{../resources/evaluation/usability/career.png}
  }
-\captionof{figure}{Career distribution} \label{fig:survey-career}%      only if needed  
+\captionof{figure}{Career stage distribution} \label{fig:survey-career}%      only if needed  
 \end{minipage}
 
 \vspace{1cm}
@@ -27,10 +30,15 @@
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.6]{../resources/evaluation/usability/discipline.png}
+  \includegraphics[keepaspectratio=true,scale=0.8]{../resources/evaluation/usability/discipline.png}
  }
 \captionof{figure}{Career discipline} \label{fig:survey-discipline}%      only if needed  
 \end{minipage}
+
+\vspace{1cm}
+
+
+The survey was filled by 16 respondents over the period of 10 days (3rd August 2016 - 10th August 2016). However, because 1 of the respondent are unable to run the tasks, we remove the reponse because it will not add any meaningful information. In the end we have 15 valid respondents. We can classify the respondents with their career stage and discipline. From here, we can classify the respondents from informatics / computer science related discipline or not. From figure \ref{fig:survey-career} and \ref{fig:survey-discipline}, around 62.5\% of the respondents are either informatics or computational scientists, while 37.3\% can be considered domain experts (Biologist, Clinician, and Biophysicist)
 
 \vspace{1cm}
 
@@ -57,12 +65,16 @@
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.8]{../resources/evaluation/usability/browser.png}
+  \includegraphics[keepaspectratio=true,scale=0.8]{../resources/evaluation/usability/hemelb.png}
  }
 \captionof{figure}{Familiarity with CFD tools like HemeLB} \label{fig:survey-hemelb}%      only if needed  
 \end{minipage}
 
 \vspace{1cm}
+
+
+We can also further classify the respondents based on the familiarity with browsers, computational fluid dynamic tools, and installing software from source code. All of this are shown in Figure \ref{fig:survey-source}, \ref{fig:survey-browser}, and \ref{fig:survey-hemelb}.
+
 
 
 
@@ -270,3 +282,9 @@ In general, the performance of HemeLB with cloud infrastructure is worse when co
 ARCHER supercomputer has slower simulation time compared to Indy2, because of the difference of processors used in the compute node. ARCHER used a three-year-old 2.7 GHz, 12-core E5-2697 v2 Ivy Bridge processor. Compared to Indy2 which boasts the newer Broadwell-based Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz. The number of thread inside those processors also differ, ARCHER has 24 while Indy2 has 36. This makes the performance difference. On the other hand for this evaluation, we use Amazon's c4.8xlarge EC2 instance which has Haswell-based E5-2666 v3 processor that has 36 virtual CPU cores. All these difference contributes toward the speed difference oh the simulation results.
 
 The scaling of the performance is where HemeWeb took a dive. It is apparent that with increased compute node, the network activity between the nodes become a bottleneck in the HemeWeb's case. The performance dip when we started the simulation using 4 compute nodes which have 144 cores that it is slower than just using 1 compute node. However, the performance improves as we add more compute nodes. This is not seen in the case of Indy2, where it scales very well and reach a diminishing return on the performance after using more than 1,000 cores.
+
+
+
+
+\section {Limitation of the evaluations}
+
