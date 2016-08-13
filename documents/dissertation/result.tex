@@ -169,6 +169,8 @@ Our hypothesis is that domain experts would most likely find CLI a barrier to ru
 \subsection{Overall usability}
 
 
+Here, I will discuss the overall usability of the system using the post study system usability questionnaire as the basis. This questionnaire consists of 19 questions and can be divided into measuring three different part. They are system usefulness, information quality, and the interface quality. I will discuss each of them in details.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  SYSTEM USEFULNESS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -191,6 +193,8 @@ I believe I became productive quickly using this system                         
 }
 \end{center}
 \vspace{1cm}
+
+Table \ref{table:overall-usability} shows the respondents sentiment towards the system usefulness. Generally, we can see the distribution that people tend to agree to the 9 statements presented to them. If we convert the response into a numerical value, we can get the score of 4.27 of system usefulness, which is quite high. However, there are still some improvements that can be made, and it is apparent in the feedbacks of the system we got. In addition, there are respondents that respond to the statement by answering Not applicable. It is mostly on the framing of the simulation as a 'work'. Respondents might have no point of reference whether using the HemeLb via HemeWeb is quicker or efficiently because they are new to the system. It is apparent that from their background they don't  have familiarity with HemeLB.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -216,6 +220,8 @@ It is easy to find the information I needed                                     
 \end{center}
 \vspace{1cm}
 
+On the information quality side of things, we also find similar results with regards to the sentiment of the respondents. From the 7 statements that we presented, most respondents to agree that the information quality tends to be good. However, There are a lot of respondents filling in Not applicable. However the overall sentiment is good. When we convert it to the number, we got 4.0 average score that tells that overall respondents find the information quality quite good. The organization of information,  the ease to find such information tends to be generally good.
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -230,11 +236,28 @@ It is easy to find the information I needed                                     
 The interface of this system is pleasant                                                                          & 1                                                           & 1        & 1       & 7     & 5                                                        & 0                                                        \\ \hline
 I like using the interface of this system                                                                         & 0                                                           & 2        & 1       & 8     & 4                                                        & 0                                                        \\ \hline
 \begin{tabular}[c]{@{}l@{}}This system has all the functions and\\  capabilities I expect it to have\end{tabular} & 1                                                           & 2        & 1       & 4     & 4                                                        & 3                                                        \\ \hline
-Overall, I am satisfied with this system                                                                          & 0                                                           & 0        & 2       & 7     & 6                                                        & 0                                                        \\ \hline
 \end{tabular}
 }
 \end{center}
 \vspace{1cm}
+
+
+On the interface quality, we started to see respondents answering with strongly disagree with positive statements about the interface. While in general, respondents find the interface of the system is good, some find it not. When we see the answer of this particular response, it seemed that the respondent had trouble with the interface not rendering correctly in firefox. This means that the user interface might not achieve web browser compatibility yet. However, in general, we find more people gravitates toward agreeing about the interface being good. All of this can be seen in Table \ref{table:overall-interface-quality}
+
+
+\begin{center}
+\captionof{table}{Overall user satisfaction quality}\label{table:overall-satisfaction}
+\scalebox{0.75}{
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+                                         & \begin{tabular}[c]{@{}l@{}}Strongly\\ disagree\end{tabular} & Disagree               & Neutral                & Agree                  & \begin{tabular}[c]{@{}l@{}}Strongly\\ agree\end{tabular} & \begin{tabular}[c]{@{}l@{}}Not\\ applicable\end{tabular} \\ \hline
+Overall, I am satisfied with this system & \multicolumn{1}{c|}{0}                                      & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{2} & \multicolumn{1}{c|}{7} & \multicolumn{1}{c|}{6}                                   & \multicolumn{1}{c|}{0}                                   \\ \hline
+\end{tabular}
+}
+\end{center}
+\vspace{1cm}
+
+The last part of the question is the overall perceived satisfaction that the user has in using the system. The distribution of the response can be found in Table \ref{table:overall-satisfaction}. Most of the respondents gravitate towards agreeing and strongly agreeing that they are satisfied with the system. When we convert it into a numerical mean, it is 4.26, which is between agree and strongly agree. To get the overall user satisfaction score of the study, we average the numerical score between the 19 questions and we got 4.1. This means that the respondents mostly agree that they are satisfied with how the system performs, inform, and looks like.
 
 \section{Performance result and analysis}
 
@@ -269,13 +292,13 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 \hline
 \multicolumn{1}{|l|}{}            & \multicolumn{1}{c|}{Performance in seconds}               \\ \hline
 \multicolumn{1}{|l|}{\# of Cores} & \multicolumn{1}{c|}{ARCHER}  \\ \hline
-24                                & 24.7                                           \\ \hline
-48                                & 12.7                                         \\ \hline
-96                               & 7.08                                       \\ \hline
-192                               & 3.44                                           \\ \hline
-384                               & 1.81                                               \\ \hline
-768                              & 1.58                                              \\ \hline
-1536                              & 1.58                                              \\ \hline
+24                                & 29.2                                           \\ \hline
+48                                & 21.5                                         \\ \hline
+96                               & 15.7                                       \\ \hline
+192                               & 37.3                                           \\ \hline
+384                               & 38.5                                               \\ \hline
+768                              & 12                                              \\ \hline
+1536                              & 16.1                                              \\ \hline
 \end{tabular}
 \end{center}
 
@@ -295,11 +318,17 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 
 In general, the performance of HemeLB with cloud infrastructure is worse when compared to ARCHER and Indy2. On each simulation instances with a different number of cores, we see slower simulation execution result when compared to the likes of the Indy2 machine and ARCHER supercomputer as observed on table \ref{table:perf}, \ref{table:perf-archer} and figure \ref{fig:hemelb-perf-overview}.
 
-ARCHER supercomputer has slower simulation time compared to Indy2, because of the difference of processors used in the compute node. ARCHER used a three-year-old 2.7 GHz, 12-core E5-2697 v2 Ivy Bridge processor. Compared to Indy2 which boasts the newer Broadwell-based Intel(R) Xeon(R) CPU E5-2695 v4 @ 2.10GHz. The number of thread inside those processors also differ, ARCHER has 24 while Indy2 has 36. This makes the performance difference. On the other hand for this evaluation, we use Amazon's c4.8xlarge EC2 instance which has Haswell-based E5-2666 v3 processor that has 36 virtual CPU cores. All these difference contributes toward the speed difference oh the simulation results.
+ARCHER supercomputer has slower simulation time compared to Indy2, because of the difference of processors used in the compute node. ARCHER used a three-year-old 2.7 GHz, 12-core E5-2697 v2 Ivy Bridge processor. Compared to Indy2 which boasts the newer Broadwell-based Intel Xeon CPU E5-2695 v4 @ 2.10GHz. The number of thread inside those processors also differ, ARCHER has 24 while Indy2 has 36. This makes the performance difference. On the other hand for this evaluation, we use Amazon's c4.8xlarge EC2 instance which has Haswell-based E5-2666 v3 processor that has 36 virtual CPU cores. All these difference contributes toward the speed difference oh the simulation results.
 
 The scaling of the performance is where HemeWeb took a dive. It is apparent that with increased compute node, the network activity between the nodes become a bottleneck in the HemeWeb's case. The performance dip when we started the simulation using 4 compute nodes which have 144 cores that it is slower than just using 1 compute node. However, the performance improves as we add more compute nodes. This is not seen in the case of Indy2, where it scales very well and reach a diminishing return on the performance after using more than 1,000 cores.
 
+\subsection{Price performance analysis}
 
+To analyze the performance even further, we can compare the performance we get with the price we have to pay to run the infrastructure. In running the simulation for benchmark, we used c4.8xlarge linux instances on EU Ireland region which at the time of writing costs GBP 1.51\footnote{USD 1.96 converted to GBP on https://\url{www.oanda.com/currency/converter/} at 13th August 2016} per hour\footnote{\url{https://aws.amazon.com/ec2/pricing/}}. Phase 2 XC30 ARCHER supercomputer give access to screened project by compute hour which has the price of GBP 0.56 for research council which are partnered and GBP 1.33 for  non-partnered research council\footnote{Calculated on \url{http://archer.ac.uk/access/au-calculator/}}. Indy2 however have no public pricing released by the EPCC yet.
+
+With these pricing information, we can deduce that using AWS EC2 is 2.69 times more expensive compared to using ARCHER with partnership and 1.13 times more expensive without partnership. With more costs, using HemeWeb has lower performance but comparable to the ARCHER supercomputer.  However, because there are no price information yet on INDY2, we cannot make any price performance comparison between AWS-EC2 with INDY2 that has bigger performance gap.
+
+All of this performance pricing analysis however have to take into account of the model of business of the governing institution. On using Amazon's resources, one does not have to submit a proposal or go to a resource allocation community, he / she just need a credit cards and access will be given. In addition to that, Amazon employ the pay-as-you-go pricing scheme so it is very flexible in changing requirements or usage compared to ARCHER which allocate the resources at the start of the project. 
 
 
 \section {Limitation of the evaluations}
@@ -338,4 +367,6 @@ Another limitation of the study is the way the study compare the experience of d
 \subsection{Performance evaluation}
 
 On running the HemeLB simulation on the three systems compared, we cannot fully isolate the infrastructure from various system load the infrastructure is handling. The performance might be affected by other jobs running in the system, which is apparent in the case of ARCHER supercomputer where many jobs are executing at the same moment. The same case with Indy2. The performance benchmark might be not as accurate as a completely isolated environment, however it paints a pretty good picture of performance you get when using cloud vendors compared to the dedicated infrastructure. 
+
+Also another limitation on the performance evaluation is that we cannot get more than 20 instances of c4.8xlarge instances on AWS. This causes the evaluation for AWS-EC2 cannot be done for the 1,152 cores to compare it directly with Indy2. Another problem is that on ARCHER, it has 24 cores in 1 compute node compared to 36 in Indy2 and AWS-EC2. We wanted to measure the full load of the compute node, therefore we cannot get an exact apple to apple comparison. However, it could help in painting the general trend of the scaling capabilities and measure based on that.
  
