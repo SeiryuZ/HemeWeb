@@ -80,6 +80,9 @@ We can also further classify the respondents based on the familiarity with brows
 
 \subsection{Scenario 1: Run a simulation}
 
+To measure the usability of HemeWeb for users to run a simulation, respondents were asked to run a  scenario. Instructions to run a HemeLB simulation were provided and they were asked to follow it to produce a simulation. Respondents then were asked to state their agreement with three statements which are provided. These three questions measure how usable HemeWeb is to them. 
+
+
 \vspace{1cm}
 
 \noindent%
@@ -89,6 +92,15 @@ We can also further classify the respondents based on the familiarity with brows
  }
 \captionof{figure}{Scenario 1 usability} \label{fig:survey-s1-usability}%      only if needed  
 \end{minipage}
+
+On Figure \ref{fig:survey-s1-usability}, the responses is shown. Generally, respondents tend to agree that HemeWeb are usable to run a simulation from the three statements. However, one respondent fill out Not applicable towards the statement that says they are satisfied with support information HemeWeb give them. This could means that the respondent doesn't feel the scenario give enough information for them to agree or disagree with the statements.
+
+Based on the responses, we can also deduce the system's usability in running a simulation by calculating the After Scenario Questionnare score, or ASQ score. We assign an integer value, 1 for Strongly disagree, 2 for disagree, 3 for neutral, 4 for Agree, and 5 for strongly disagree. Next, we take the mean of the values for each questions and ignore the answer with Not Applicable to determine a single ASQ score for that respondent. With this schema we can determine that for the respondents tend to agree that they are satisfied with the usability of the system with the overall ASQ score of 4.36
+
+Our hypothesis is that users will generally find using web interface is usable and the data seemed to support that. It is much easier for user to complete a task when using point and click interface rather than requiring them to recall commands to do the tasks, especially when they are not familiar with the tools.
+
+
+Next, respondents are given a high overview of replicating the tasks done in HemeWeb but using command line interface. Respondents are not asked to run the scenario in their command line interface because we cannot make sure the necessary tools are installed on respondent's computer.
 
 \vspace{1cm}
 
@@ -111,6 +123,10 @@ We can also further classify the respondents based on the familiarity with brows
 \end{minipage}
 
 \vspace{1cm}
+
+Figure \ref{fig:survey-s1-cli} and \ref{fig:survey-s1-cli-barrier} shows the general sentiment of users in running the simulation but in the command line. From the data, respondents are generally open to the likelihood of them running the simulation using command line, if we quantify the response, it got the score of 3.46, somewhere between neutral and likely. However, when we realize that the the 62.5\% of the respondent has background in informatics / computational scientists who deal a lot with command line, this become clearer.
+
+Our hypothesis is that domain experts would most likely find CLI a barrier to run a simulation and ess likely to run simulation with it.
 
 
 
@@ -162,15 +178,15 @@ We can also further classify the respondents based on the familiarity with brows
 
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-                                                            & \begin{tabular}[c]{@{}l@{}}Strongly\\  disagree\end{tabular} & Disagree & Neutral & Agree & \begin{tabular}[c]{@{}l@{}}Strongly\\  agree\end{tabular} & \begin{tabular}[c]{@{}l@{}}Not \\ applicable\end{tabular} \\ \hline
-how easy it is to use this system                           & 0                                                            & 0        & 0       & 8     & 7                                                         & 0                                                         \\ \hline
-It was simple to use this system                            & 0                                                            & 0        & 0       & 2     & 13                                                        & 0                                                         \\ \hline
-I can effectively complete my work using this system        & 1                                                            & 1        & 2       & 3     & 4                                                         & 4                                                         \\ \hline
-I am able to complete my work quickly using this system     & 0                                                            & 1        & 3       & 3     & 6                                                         & 2                                                         \\ \hline
-I am able to efficiently complete my work using this system & 0                                                            & 2        & 2       & 4     & 5                                                         & 2                                                         \\ \hline
-I feel comfortable using this system                        & 1                                                            & 1        & 0       & 3     & 10                                                        & 0                                                         \\ \hline
-It was easy to learn to use this system                     & 0                                                            & 0        & 2       & 0     & 13                                                        & 0                                                         \\ \hline
-I believe I became productive quickly using this system     & 0                                                            & 1        & 2       & 3     & 5                                                         & 4                                                         \\ \hline
+                                                                                                          & \begin{tabular}[c]{@{}l@{}}Strongly \\ disagree\end{tabular} & Disagree & Neutral & Agree & \begin{tabular}[c]{@{}l@{}}Strongly \\ agree\end{tabular} & \begin{tabular}[c]{@{}l@{}}Not \\ applicable\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Overall, I am satisfied with\\  how easy it is to use this system\end{tabular} & 0                                                            & 0        & 0       & 8     & 7                                                         & 0                                                         \\ \hline
+It was simple to use this system                                                                          & 0                                                            & 0        & 0       & 2     & 13                                                        & 0                                                         \\ \hline
+I can effectively complete my work using this system                                                      & 1                                                            & 1        & 2       & 3     & 4                                                         & 4                                                         \\ \hline
+I am able to complete my work quickly using this system                                                   & 0                                                            & 1        & 3       & 3     & 6                                                         & 2                                                         \\ \hline
+I am able to efficiently complete my work using this system                                               & 0                                                            & 2        & 2       & 4     & 5                                                         & 2                                                         \\ \hline
+I feel comfortable using this system                                                                      & 1                                                            & 1        & 0       & 3     & 10                                                        & 0                                                         \\ \hline
+It was easy to learn to use this system                                                                   & 0                                                            & 0        & 2       & 0     & 13                                                        & 0                                                         \\ \hline
+I believe I became productive quickly using this system                                                   & 0                                                            & 1        & 2       & 3     & 5                                                         & 4                                                         \\ \hline
 \end{tabular}
 }
 \end{center}
@@ -288,3 +304,38 @@ The scaling of the performance is where HemeWeb took a dive. It is apparent that
 
 \section {Limitation of the evaluations}
 
+\subsection{Usability evaluation}
+
+When observing the evaluation, one might argue that 5 point scale used in the questionnaire is not enough as pointed out by Kraig Finstad \cite{finstad2010response}. In his research, he argued that 5 point scale for a questionnaire allows more room for respondents to interpolate their response. He compared the same version of usability study but with five-point and seven-point scale and found out that 3\% of the respondents answer to five point scale actually are interpolation, while the seven point scale have no interpolation. He concluded that administering usability study using seven point scale will achieve greater accuracy. However, I decided to use the five point scale of the questionnaire because of the limitation of google survey platform. 
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.35]{../resources/images/google-limitation.png}
+ }
+\captionof{figure}{Google form hiding some options on 7 point scale} \label{fig:google-limit}%      only if needed  
+\end{minipage}
+
+
+\vspace{1cm}
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.35]{../resources/images/google-limitation2.png}
+ }
+\captionof{figure}{Google form render 5 point scale rating better} \label{fig:google-limit2}%      only if needed  
+\end{minipage}
+
+\vspace{1cm}
+
+
+Figure \ref{fig:google-limit} show the limitation of the platform. The response options are not rendered in complete, as in some are hidden in a scrolling element of the page. This leads to respondents have to scroll left and right to see the options and answers. I find this is a detriment to the respondents to do more work in answering the question so I decided to use 5 point scale to make sure everything is rendered better like shown in Figure \ref{fig:google-limit2}.
+
+
+Another limitation of the study is the way the study compare the experience of doing the scenarios in the questionnaire between using web browser and using command line.  When measuring the usability of HemeWeb, respondents are asked to do the task in the web browser, compared to the task in command line where it is just described in an overview. This decision is made because we cannot make sure the respondents have the necessary tools to run or reproduce a simulation in their computers.  In addition, in order to run the scenario in command line interface, respondents have to install tools on their computer which are timely and prone to errors. I believe this will affect their sentiment in answering the survey questionnaire and decided against it.
+
+
+\subsection{Performance evaluation}
+
+On running the HemeLB simulation on the three systems compared, we cannot fully isolate the infrastructure from various system load the infrastructure is handling. The performance might be affected by other jobs running in the system, which is apparent in the case of ARCHER supercomputer where many jobs are executing at the same moment. The same case with Indy2. The performance benchmark might be not as accurate as a completely isolated environment, however it paints a pretty good picture of performance you get when using cloud vendors compared to the dedicated infrastructure. 
+ 
