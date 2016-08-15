@@ -2,7 +2,7 @@
 %% Sample use of the infthesis class to prepare a thesis. This can be used as 
 %% a template to produce your own thesis.
 %%
-%% The title, abstract and so on are taken from Martin Reddy's csthesis class
+%% The title, abstract and so on are taken from Martin Reddy's 	 class
 %% documentation.
 %%
 %% MEF, October 2002
@@ -66,7 +66,6 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{pdfpages}
 
-
 % Update listing settings
 \definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
 \lstset{numbers=left,backgroundcolor=\color{light-gray}, breaklines=true}
@@ -119,7 +118,6 @@
 \setcounter{tocdepth}{4}
 
 
-
 %% Information about the title, etc.
 \title{HemeWeb: Blood flow simulation in the cloud using Docker}
 \author{Steven Steven}
@@ -132,9 +130,8 @@
 % \graduationdate{February 1786}
 
 %% Specify the abstract here.
-\abstract{%
-    This master thesis will present the results of my work into the
-    reanimation of lifeless human tissues.
+\abstract{
+
 }
 
 %% Now we start with the actual document.
@@ -146,10 +143,28 @@
 %% This creates the title page
 \maketitle
 
+\begin{pabstract}
+
+In this dissertation, we developed HemeWeb, an alternative interface to HemeLB, a complex computational fluid dynamic tools. This web application is developed to enable domain experts to use HemeLB simulation software without worrying about configurations of the software and the simulation. To measure the system, we run a usability evaluation and a performance benchmark. On the usability evaluation, respondents have to run a HemeLB simulation and reproduce past simulation, in which after both scenario, they will be asked to answer some questions. Respondents generally find the system subjectively satisfying to use and usable in doing the tasks given. On the performance benchmark, we compare the performance  of HemeLB simulation on HemeWeb using cloud platforms compared to dedicated HPC infrastructure. We found out that HemeWeb perform worst and costs more while offering more flexibility in running the simulation.
+
+
+\end{pabstract}
+
+
 %% Acknowledgements
 \begin{acknowledgements}
 
-I would like to thank Indonesian Government, specifically Indonesian Endowment Fund for Education ( \textit{Lembaga  Pengelola Dana Pendidikan / LPDP} ) of Ministy of Finance. With their help, I can study in University of Edinburgh from start to end without any problems.
+I would like to thank both of my supervisors, Dr. Miguel O. Bernabeu and Dr. Rupert Nash, for allowing me to work on this interesting project. I would also thank them for helping me throughout the dissertation period with their numerous advice, guidances, and supports. Without them, this work would not have been possible.
+
+\vspace{1cm}
+
+Next, I would like to extend thanks to my dearest friends in Holyrood Residence Hall - Holyrood North.  Alex, Henrique, Linn, Susanne, Tami, Eveline, Aisyah, Gil, Paskasius, Faisal, Caroline, and the others that are too many to be listed for providing a conducive environment for the dissertation. I am thankful to have met you guys and work together on our dissertations during our late night sessions.
+
+
+
+\vspace{1cm}
+
+Finally, I would like to thank Indonesian Government, specifically Indonesian Endowment Fund for Education ( \textit{Lembaga  Pengelola Dana Pendidikan / LPDP} ). With their support, I can study at the University of Edinburgh from start to end without any problems whatsoever. 
 \end{acknowledgements}
 
 %% Next we need to have the declaration.
