@@ -1,0 +1,74 @@
+<hemelbsettings version="3">
+  <simulation>
+    <step_length units="s" value="9.62e-10" />
+    <steps units="lattice" value="500" />
+    <stresstype value="1" />
+    <voxel_size units="m" value="3.3333e-07" />
+    <origin units="m" value="(-1.56566857229e-07,-3.5224964629e-07,-1.14997991702e-05)" />
+  </simulation>
+  <geometry>
+    <datafile path="990_Example2-skeleton_corrected_tubed_smoothed.gmy" />
+  </geometry>
+  <inlets>
+    <inlet>
+      <condition subtype="cosine" type="pressure">
+        <amplitude units="mmHg" value="45.0" />
+        <mean units="mmHg" value="0.0" />
+        <phase units="rad" value="0.0" />
+        <period units="s" value="1" />
+      </condition>
+      <normal units="dimensionless" value="(0.574837835699,0.818267354016,-2.08425869156e-15)" />
+      <position units="m" value="(8.45432716902e-06,6.07165744613e-05,0.0)" />
+    </inlet>
+  </inlets>
+  <outlets>
+    <outlet>
+      <condition subtype="cosine" type="pressure">
+        <amplitude units="mmHg" value="0.0" />
+        <mean units="mmHg" value="0.0" />
+        <phase units="rad" value="0.0" />
+        <period units="s" value="1" />
+      </condition>
+      <normal units="dimensionless" value="(0.628855924853,0.777521849068,-1.64214321153e-15)" />
+      <position units="m" value="(0.000109190064653,9.06897681761e-06,0.0)" />
+    </outlet>
+  </outlets>
+  <visualisation>
+    <centre units="m" value="(0.0,0.0,0.0)" />
+    <orientation>
+      <longitude units="deg" value="45.0" />
+      <latitude units="deg" value="45.0" />
+    </orientation>
+    <display brightness="0.03" zoom="1.0" />
+    <range>
+      <maxvelocity units="m/s" value="0.1" />
+      <maxstress units="Pa" value="0.1" />
+    </range>
+  </visualisation>
+  <initialconditions>
+    <pressure>
+      <uniform units="mmHg" value="0.0" />
+    </pressure>
+  </initialconditions>
+<monitoring>
+  <incompressibility />
+  <steady_flow_convergence terminate="false" tolerance="1e-5">
+    <criterion type="velocity" units="m/s" value="0.001" />
+  </steady_flow_convergence>
+</monitoring>
+<properties>
+  <propertyoutput file="surface-tractions.xtr" period="150">
+    <geometry type="surface" />
+    <field type="traction" />
+    <field type="tangentialprojectiontraction" />
+  </propertyoutput>
+  <propertyoutput file="surface-pressure.xtr" period="150">
+    <geometry type="surface" />
+    <field type="pressure" />
+  </propertyoutput>
+  <propertyoutput file="wholegeometry-velocity.xtr" period="150">
+    <geometry type="whole" />
+    <field type="velocity" />
+  </propertyoutput>
+</properties>
+</hemelbsettings>
