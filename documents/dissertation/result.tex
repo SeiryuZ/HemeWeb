@@ -294,7 +294,12 @@ The last part of the question is the overall perceived satisfaction that the use
 
 \section{Performance result and analysis}
 
-In this section, I will discuss the performance benchmark of HemeLB simulation done in ARCHER supercomputer, INDY2 HPC cluster, and AWS EC2 where HemeWeb is deployed to. HemeLB produced a report files that can be used to benchmark the performance of the simulation execution. I made sure that on each infrastructure, the input file we used is the same. I took the simulation total time result from that files and compare the value between infrastructure.
+In this section, I will discuss the performance benchmark of HemeLB simulation done in ARCHER supercomputer, INDY2 HPC cluster, and AWS EC2. Understanding the difference in performance is essential for HemeWeb project. In order to get the flexibility that the cloud vendors provide, we have to analyze what performance penalty we are incurring because of this design decision. 
+
+In order to do this benchmark, we are going to rely on the report file that HemeLB produced. It is produced after each simulation is done and contains performance metric of each simulation like how many seconds are spent on communication, initializations, reading input files, and most importantly total simulation time. We are going to take a look at the total simulation time because it is the metric that captures the difference in the infrastructure better. We ran the simulation each time with the exact same configuration and input files. On each infrastructure, the simulations are done with an increasing number of compute node to measure the scaling of HemeLB.  From the produced output, then we can measure the performance difference between architecture.
+
+
+
 
 
 \begin{center}
@@ -303,7 +308,7 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 
 \begin{tabular}{|c|c|c|}
 \hline
-\multicolumn{1}{|l|}{}            & \multicolumn{2}{c|}{Simulation total in seconds}               \\ \hline
+\multicolumn{1}{|l|}{}            & \multicolumn{2}{c|}{Total simulation time in seconds}               \\ \hline
 \multicolumn{1}{|c|}{\# of Cores (\# compute nodes)} & \multicolumn{1}{c|}{INDY2} & \multicolumn{1}{c|}{AWS EC2} \\ \hline
 36 (1)                                & 24.7                       & 36.3                         \\ \hline
 72 (2)                                & 12.7                       & 29.9                         \\ \hline
@@ -323,7 +328,7 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 \captionof{table}{HemeLB performance on ARCHER supercomputer}\label{table:perf-archer}
 \begin{tabular}{|c|c|c|}
 \hline
-\multicolumn{1}{|l|}{}            & \multicolumn{1}{c|}{Simulation total in seconds}               \\ \hline
+\multicolumn{1}{|l|}{}            & \multicolumn{1}{c|}{Total simulation time in seconds}               \\ \hline
 \multicolumn{1}{|l|}{\# of Cores (\# compute nodes)} & \multicolumn{1}{c|}{ARCHER}  \\ \hline
 24 (1)                                & 33.6                                           \\ \hline
 48 (2)                                & 22.1                                         \\ \hline
@@ -341,7 +346,7 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.75]{../resources/evaluation/performance/overview.png}
+  \includegraphics[keepaspectratio=true,scale=0.55]{../resources/evaluation/performance/overview.png}
  }
 \captionof{figure}{HemeLB performance comparison} \label{fig:hemelb-perf-overview}%      only if needed  
 \end{minipage}
@@ -349,7 +354,8 @@ In this section, I will discuss the performance benchmark of HemeLB simulation d
 \vspace{0.5cm}
 
 
-In general, the performance of HemeLB with cloud infrastructure is worse when compared to ARCHER and INDY2. On each simulation instances with a different number of cores, we see slower simulation execution result when compared to the likes of the INDY2 machine and ARCHER supercomputer as observed on table \ref{table:perf}, \ref{table:perf-archer} and figure \ref{fig:hemelb-perf-overview}.
+Table \ref{table:perf} shows the performance comparison between HemeLB total simulation time at AWS-EC2 with INDY2. This shows that AWS-EC2 performance is much slower compared to the dedicated infrastructure likes INDY2. Table \ref{table:perf-archer} shows the HemeLB performance in ARCHER supercomputer. We cannot make a direct comparison between the performance of AWS-EC2 and INDY2 because ARCHER has a different number of cores in one compute node. ARCHER has 24, while AWS-EC2 and INDY2 have 36. Figure \ref{fig:hemelb-perf-overview} shows the performance difference and the scaling trend in a chart. 
+
 
 For the simulation, we use an input file which has 4,520,681 fluid sites\footnote{Available online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/deployment/roles/hemeweb_master/files/990_Example2-skeleton_corrected_tubed_smoothed.gmy}}  \footnote{Config for the simulation can be found online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/documents/resources/evaluation/performance/config.xml}}. According to the performance analysis by Groen et al. \citep{groen2013analysing}, HemeLB scales up near-linearly up to 32,768 cores. It also performs near its maximum efficiency when using 5,000 to 500,000 sites per core. This means that for the problem size we use, HemeLB should perform near maximum efficiency when using 9 cores up to 900 cores. Above that core counts, HemeLB simulation will incur a performance penalty.
 
