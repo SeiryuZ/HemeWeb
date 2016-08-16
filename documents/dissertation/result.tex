@@ -7,7 +7,7 @@
 
 \section{Usability result and analysis}
 
-Usability evaluation is done using online survey hosted by Google Form\footnote{\url{https://goo.gl/forms/toYsRwnGIGumMBUD2}}. Respondents are given 2 tasks to complete, which are to run a simulation and reproduce past simulation. I analyze respondent's answers with regards to HemeWeb's usability.
+In evaluating HemeWeb's usability and capability to run and reproduce simulation, I conducted a usability evaluation via an online survey hosted by Google Form\footnote{\url{https://goo.gl/forms/toYsRwnGIGumMBUD2}}. Respondents are given 2 tasks to complete, which are to run a simulation and reproduce past simulation. After the tasks, they are given statements to respond to. Based on the answers, I analyze respondent's answers with regards to HemeWeb's usability.
 
 
 \subsection{Demography}
@@ -18,7 +18,7 @@ Usability evaluation is done using online survey hosted by Google Form\footnote{
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
 \makebox[\linewidth]{
-  \includegraphics[keepaspectratio=true,scale=0.8]{../resources/evaluation/usability/career.png}
+  \includegraphics[keepaspectratio=true,scale=0.7]{../resources/evaluation/usability/career.png}
  }
 \captionof{figure}{Career stage distribution} \label{fig:survey-career}%      only if needed  
 \end{minipage}
@@ -38,7 +38,10 @@ Usability evaluation is done using online survey hosted by Google Form\footnote{
 \vspace{0.5cm}
 
 
-The survey was filled by 16 respondents over the period of 10 days (3rd August 2016 - 10th August 2016). However, because 1 of the respondent are unable to run the tasks, we remove the reponse because it will not add any meaningful information. In the end we have 15 valid respondents. We can classify the respondents with their career stage and discipline. From here, we can classify the respondents from informatics / computer science related discipline or not. From figure \ref{fig:survey-career} and \ref{fig:survey-discipline}, around 62.5\% of the respondents are either informatics or computational scientists, while 37.3\% can be considered domain experts (Biologist, Clinician, and Biophysicist)
+The survey was filled by 16 respondents over the period of 10 days (3rd August 2016 - 10th August 2016)\footnote{Raw and compiled responses can be found at \url{https://github.com/SeiryuZ/HemeWeb/tree/master/documents/resources/evaluation/usability}}. From all the responses, one of the respondent were unable to run both of the tasks, citing errors preventing him to run the scenarios which we cannot reproduce. Due to this problem, we have to remove this particular response from our analysis because it will not add meaningful information about the usability of the system when the scenarios are not run. In total, we got 15 valid responses out of the questionnaire period.
+
+Figure \ref{fig:survey-career} and \ref{fig:survey-discipline} illustrates the distribution of career stage and discipline of our participants. Based on this distribution, we can further analyze the response we get on the survey questions based on their background. One meaningful comparison we can make is when we classify respondents based on their informatics-related discipline. 10 of our respondents, or 2 out of 3, are related to informatics background, while 5 of the respondents can be considered as domain experts which consists of Biologist, Clinician, and Biophysicist.
+
 
 \vspace{0.5cm}
 
@@ -73,14 +76,14 @@ The survey was filled by 16 respondents over the period of 10 days (3rd August 2
 \vspace{0.5cm}
 
 
-We can also further classify the respondents based on the familiarity with browsers, computational fluid dynamic tools, and installing software from source code. All of this are shown in Figure \ref{fig:survey-source}, \ref{fig:survey-browser}, and \ref{fig:survey-hemelb}.
+We can also further classify analyze the respondents' response based on the familiarity with browsers, computational fluid dynamic tools, and installing software from source code. All of this are shown in Figure \ref{fig:survey-source}, \ref{fig:survey-browser}, and \ref{fig:survey-hemelb}.
 
 
 
+\subsection{Scenario 1: Run a HemeLB simulation}
 
-\subsection{Scenario 1: Run a simulation}
+In this scenario, respondents are provided with two input files necessary for running a simulation. Respondents are asked to download the files beforehand and follow the instructions provided in the online questionnaire to run a HemeLB simulation using HemeWeb.  After running the simulation, Respondents are then asked to state agreement with three positive statements about HemeWeb that will measure their satisfaction with HemeWeb in running a HemeLB simulation scenario. 
 
-To measure the usability of HemeWeb for users to run a simulation, respondents were asked to run a  scenario. Instructions to run a HemeLB simulation were provided and they were asked to follow it to produce a simulation. Respondents then were asked to state their agreement with three statements which are provided. These three questions measure how usable HemeWeb is to them. 
 
 
 \vspace{0.5cm}
@@ -95,14 +98,16 @@ To measure the usability of HemeWeb for users to run a simulation, respondents w
 \vspace{0.5cm}
 
 
-On Figure \ref{fig:survey-s1-usability}, the responses is shown. Generally, respondents tend to agree that HemeWeb are usable to run a simulation from the three statements. However, one respondent fill out Not applicable towards the statement that says they are satisfied with support information HemeWeb give them. This could means that the respondent doesn't feel the scenario give enough information for them to agree or disagree with the statements.
+Figure \ref{fig:survey-s1-usability} show the responses for the three positive statements about HemeWeb. From the 15 valid responses we get, all of them did not skip the instructions to run the simulation. From the responses, respondents tend to agree that they are satisfied with HemeWeb in running a HemeLB simulation. Respondents tend to equally agree on the three positive statements about the ease of completing a task, time to complete, and supporting information available to help complete the task. However, one respondent fills out "Not Applicable" towards the statement about HemeWeb giving them enough support information. This could mean that the scenario undertook to give enough information to agree or disagree with the statements.
 
-Based on the responses, we can also deduce the system's usability in running a simulation by calculating the After Scenario Questionnare score, or ASQ score. We assign an integer value, 1 for Strongly disagree, 2 for disagree, 3 for neutral, 4 for Agree, and 5 for strongly disagree. Next, we take the mean of the values for each questions and ignore the answer with Not Applicable to determine a single ASQ score for that respondent. With this schema we can determine that for the respondents tend to agree that they are satisfied with the usability of the system with the overall ASQ score of 4.36
-
-Our hypothesis is that users will generally find using web interface is usable and the data seemed to support that. It is much easier for user to complete a task when using point and click interface rather than requiring them to recall commands to do the tasks, especially when they are not familiar with the tools.
+In addition to the general sentiment of the respondents, we can also put a number value to the responses to further measure the satisfaction objectively. We can calculate the After Scenario Questionnaire(ASQ) score. To do this, we assign an integer value for each response; 1 for "Strongly disagree", 2 for "Disagree", 3 for "Neutral", 4 for "Agree", and 5 for "Strongly agree". With this value, we can take the mean of the response for each question as a single ASQ score for the respondent. If a respondent skips a question, we can take the average of the remaining responses as the score. With this mechanism, we can determine the respondent's average ASQ score, which is 4.36. This score falls between "Agree" and "Strongly agree", therefore, we can conclude that in general respondents tend to agree that they are satisfied with HemeWeb with regards to running a HemeLB simulation.
 
 
-Next, respondents are given a high overview of replicating the tasks done in HemeWeb but using command line interface. Respondents are not asked to run the scenario in their command line interface because we cannot make sure the necessary tools are installed on respondent's computer.
+
+%Our hypothesis is that users will generally find using web interface is usable and the data seemed to support that. It is much easier for user to complete a task when using point and click interface rather than requiring them to recall commands to do the tasks, especially when they are not familiar with the tools.
+%
+%
+%Next, respondents are given a high overview of replicating the tasks done in HemeWeb but using command line interface. Respondents are not asked to run the scenario in their command line interface because we cannot make sure the necessary tools are installed on respondent's computer.
 
 \vspace{0.5cm}
 
@@ -126,9 +131,13 @@ Next, respondents are given a high overview of replicating the tasks done in Hem
 
 \vspace{0.5cm}
 
-Figure \ref{fig:survey-s1-cli} and \ref{fig:survey-s1-cli-barrier} shows the general sentiment of users in running the simulation but in the command line. From the data, respondents are generally open to the likelihood of them running the simulation using command line, if we quantify the response, it got the score of 3.46, somewhere between neutral and likely. However, when we realize that the the 62.5\% of the respondent has background in informatics / computational scientists who deal a lot with command line, this become clearer.
+After the above sentiments about using HemeWeb to run a HemeLB simulation, respondents were asked about their sentiment about using command line interface(CLI) to do the same activity. Figure \ref{fig:survey-s1-cli} and \ref{fig:survey-s1-cli-barrier} shows the respondent's inclination in using CLI. Respondents are generally open to the likelihood of them running a simulation using CLI. If we quantify the results like we did with the ASQ score, we get 3.46, which is somewhere between neutral and likely. 
 
-Our hypothesis is that domain experts would most likely find CLI a barrier to run a simulation and ess likely to run simulation with it.
+The distribution of the responses also is quite spread out, that respondents fill out all possible responses with   the highest frequency being "Extremely Likely" with 5 responses. However, we have to keep it mind the general background of the respondents that may explain the highest frequency answer being "Extremely Likely", which is about familiarity with installing software with source code. To build software with source code, one will interact with the command line interface quite often. 14 of our respondents answered at least somewhat familiar with building software from source code, that can explain that our respondents are mostly quite competent in operating command line interface and would not shy away in using the command line interface. In addition to that, 2 out of 3 respondents has backgrounds in informatics and computational science. This could in effect explains why the respondents feel they are likely and extremely likely to do the same in CLI. 
+
+However, not all respondents who are at least somewhat familiar with building software from source code skew towards to the likely side of using CLI. There are respondents that, while familiar with the interface, running a HemeLB simulation using CLI is unlikely to be done by them. These responses might be explained by respondents' sentiment in using command line interface. This is further supported by the response of CLI being a barrier for the respondents. While 6 of the respondents think it is not a barrier at all to use CLI, 9 of the respondents answered at least it is somewhat a barrier. With 6 of the 9 respondents, feel it is a moderate barrier, and 1 of the 9 feel it as an Extreme barrier. From these results, we can safely say that using command line interface is a form of a barrier to run HemeLB for almost two-third of the respondents.
+
+
 
 
 
@@ -150,6 +159,8 @@ Similar to the first scenario, respondents to be satisfied with the reproducing 
 Based on the responses above, we can also convert the response into a numerical score like we did in scenario 1. In doing that we get score of 4.31, which means that users mostly agree on the positive statements that we present to represent the system. That respondent is satisfied with support information, time to complete, and the ease of completing task. With that score, the overall sentiment is that respondents answer between agree and strongly agree mostly.
 
 Same as the first scenario, respondents are then asked to reproduce past simulation using command line. They are given a overview of the steps needed to reproduce past simulation in command line interface and then asked two questions to measure their sentiment about it.
+
+\vspace{0.5cm}
 
 \noindent%
 \begin{minipage}{\linewidth}% to keep image and caption on one page
