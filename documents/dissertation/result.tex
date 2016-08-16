@@ -38,7 +38,7 @@ In evaluating HemeWeb's usability and capability to run and reproduce simulation
 \vspace{0.5cm}
 
 
-The survey was filled by 16 respondents over the period of 10 days (3rd August 2016 - 10th August 2016)\footnote{Raw and compiled responses can be found at \url{https://github.com/SeiryuZ/HemeWeb/tree/master/documents/resources/evaluation/usability}}. From all the responses, one of the respondent were unable to run both of the tasks, citing errors preventing him to run the scenarios which we cannot reproduce. Due to this problem, we have to remove this particular response from our analysis because it will not add meaningful information about the usability of the system when the scenarios are not run. In total, we got 15 valid responses out of the questionnaire period.
+The survey was filled by 16 respondents over the period of 10 days (3rd August 2016 - 10th August 2016)\footnote{Raw and compiled responses can be found at \url{https://github.com/SeiryuZ/HemeWeb/tree/master/documents/resources/evaluation/usability} \label{footnote:response}}. From all the responses, one of the respondent were unable to run both of the tasks, citing errors preventing him to run the scenarios which we cannot reproduce. Due to this problem, we have to remove this particular response from our analysis because it will not add meaningful information about the usability of the system when the scenarios are not run. In total, we got 15 valid responses out of the questionnaire period.
 
 Figure \ref{fig:survey-career} and \ref{fig:survey-discipline} illustrates the distribution of career stage and discipline of our participants. Based on this distribution, we can further analyze the response we get on the survey questions based on their background. One meaningful comparison we can make is when we classify respondents based on their informatics-related discipline. 10 of our respondents, or 2 out of 3, are related to informatics background, while 5 of the respondents can be considered as domain experts which consists of Biologist, Clinician, and Biophysicist.
 
@@ -184,7 +184,7 @@ Also, similar to the first scenario, one respondent fills out "Not Applicable" t
 
 \vspace{0.5cm}
 
-Respondents are then given steps in high-level to reproduce past simulation using the command line interface.  Figure \ref{fig:survey-s2-cli} and \ref{fig:survey-s2-cli-barrier} shows the respondent's response. Similar to the first scenario, the respondents are generally open to the idea of operating command line interface to do their tasks. However, the scenario to reproduce past simulation provides a bit difference in the distribution of the answers. While in the first scenario the highest frequency of the answer is "Extremely likely", the highest one in this scenario is "Likely". 
+Respondents are then given high-level steps to reproduce past simulation using the command line interface.  Figure \ref{fig:survey-s2-cli} and \ref{fig:survey-s2-cli-barrier} shows the respondent's response. Similar to the first scenario, the respondents are generally open to the idea of operating command line interface to do their tasks. However, the scenario to reproduce past simulation provides a bit difference in the distribution of the answers. While in the first scenario the highest frequency of the answer is "Extremely likely", the highest one in this scenario is "Likely". 
 
 This change of the highest frequency might be because there are extra step which might complicate the scenario to reproduce past simulation. respondents are more hesitant to answer "Extremely likely". However, the general nuance of the answer is still the same, respondents are generally not afraid of using command line interface to do this task. If we convert the answers into a numerical form like we did before, we got 3.2, which is between neutral and likely. 
 
@@ -194,7 +194,7 @@ In addition, same observation as the first scenario can be made. While some resp
 \subsection{Overall usability}
 
 
-Here, I will discuss the overall usability of the system using the post study system usability questionnaire as the basis. This questionnaire consists of 19 questions and can be divided into measuring three different part. They are system usefulness, information quality, and the interface quality. I will discuss each of them in details.
+Here, I will discuss the overall usability of the system using the Post Study System Usability Questionnaire(PSSUQ) as the basis. This part of the questionnaire consists of 19 questions that can be divided into measuring three different component of the systems. These are system usefulness, information quality, and the interface quality. I will discuss each of them in details.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %  SYSTEM USEFULNESS 
@@ -219,7 +219,9 @@ It was easy to learn to use this system                                         
 \end{center}
 \vspace{0.5cm}
 
-Table \ref{table:overall-usability} shows the respondents sentiment towards the system usefulness. Generally, we can see the distribution that people tend to agree to the 9 statements presented to them. If we convert the response into a numerical value, we can get the score of 4.27 of system usefulness, which is quite high. However, there are still some improvements that can be made, and it is apparent in the feedbacks of the system we got. In addition, there are respondents that respond to the statement by answering Not applicable. It is mostly on the framing of the simulation as a 'work'. Respondents might have no point of reference whether using the HemeLb via HemeWeb is quicker or efficiently because they are new to the system. It is apparent that from their background they don't  have familiarity with HemeLB.
+Table \ref{table:overall-usability} shows the respondents sentiment towards positive statements about the system usefulness. Generally, we can see the distribution of respondents mostly agreeing with the statements presented. Ignoring the respondents that answered with "Not applicable", we can find the distribution is skewed to the agreeing side of the statements. There are respondents that disagree or even strongly disagree with some questions. However, the frequency is much lower compared towards the frequency of people agreeing to the statements. 
+
+Converting  the response into a numerical value, we can get the score of 4.27 of system usefulness, which is quite high. However, there are still some improvements that can be made, and it is apparent in the feedbacks\footnote{See raw survey response - Footnote \ref{footnote:response}} of the system we got. In addition, there are respondents that respond to the statement by answering Not applicable. It is mostly on the framing of the simulation as a 'work'. Respondents might have no point of reference whether using the HemeLb via HemeWeb is quicker or efficiently because they are new to the system. This is apparent from their background that they don't  have familiarity with HemeLB.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -245,7 +247,10 @@ It is easy to find the information I needed                                     
 \end{center}
 \vspace{0.5cm}
 
-On the information quality side of things, we also find similar results with regards to the sentiment of the respondents. From the 7 statements that we presented, most respondents to agree that the information quality tends to be good. However, There are a lot of respondents filling in Not applicable. However the overall sentiment is good. When we convert it to the number, we got 4.0 average score that tells that overall respondents find the information quality quite good. The organization of information,  the ease to find such information tends to be generally good.
+Table \ref{table:overall-info-quality} gives more insight on the respondents sentiment on HemeWeb's information quality. This includes information like error messages, documentation, the organization of this information, and etc. From seven positive statements that we presented. most respondents tend to agree that the information quality is good. The overall sentiment is more towards agreeing compared to disagreeing. If we convert the sentiment into a score, it will get 4.0 average score, Which falls under "Agree" sentiment.  
+
+However, there are more respondents answering "Not applicable" in this part of the questionnaire. This led to the remaining answer having more contribution towards the average sentiment because many of the answers are not counted. For example, there are 6 ignored responses on the first statement about error messages. This is likely because the scenario given to the respondents will not give out an error message if they are correct the first time.  In the end, however, respondents tend to agree that information quality of HemeWeb is good.
+
 
 
 
@@ -267,7 +272,10 @@ I like using the interface of this system                                       
 \vspace{0.5cm}
 
 
-On the interface quality, we started to see respondents answering with strongly disagree with positive statements about the interface. While in general, respondents find the interface of the system is good, some find it not. When we see the answer of this particular response, it seemed that the respondent had trouble with the interface not rendering correctly in firefox. This means that the user interface might not achieve web browser compatibility yet. However, in general, we find more people gravitates toward agreeing about the interface being good. All of this can be seen in Table \ref{table:overall-interface-quality}
+Table \ref{table:overall-interface-quality} shows the respondents sentiment with regards to HemeWeb's interface quality. In it, we see respondents strongly disagree and disagree with positive statements about the interface. While in general, most respondents tend to agree that the interface is good, some disagree. When we see this particular response, it seemed that the respondent had trouble with the interface not rendering correctly in firefox. This feedback means that the browser compatibility of HemeWeb should be improved. There are parts of the interface which are broken if it is viewed on firefox. There are other respondents who dislike the XML editor based on their feedbacks. However, all this are subjective in nature and further testing of the interface is needed.
+
+However, if we convert the respondents answer to a numerical value, we got 3.84, which is between neutral and agree. It shows that while some respondents find the interface quality is not up to their standards, some find it good enough although a lot can be improved. Browser compatibility, web form choice, user experience, and etc should be improved on the next iteration of HemeWeb.
+
 
 
 \begin{center}
@@ -282,7 +290,7 @@ Overall, I am satisfied with this system & \multicolumn{1}{c|}{0}               
 \end{center}
 \vspace{0.5cm}
 
-The last part of the question is the overall perceived satisfaction that the user has in using the system. The distribution of the response can be found in Table \ref{table:overall-satisfaction}. Most of the respondents gravitate towards agreeing and strongly agreeing that they are satisfied with the system. When we convert it into a numerical mean, it is 4.26, which is between agree and strongly agree. To get the overall user satisfaction score of the study, we average the numerical score between the 19 questions and we got 4.1. This means that the respondents mostly agree that they are satisfied with how the system performs, inform, and looks like.
+The last part of the question is the overall perceived satisfaction that the user has in using the system. The distribution of the response can be found in Table \ref{table:overall-satisfaction}. Most of the respondents gravitate towards agreeing and strongly agreeing that they are satisfied with the system. When we convert it into a numerical mean, it is 4.26, which is between "Agree" and "Strongly agree". To get the overall user satisfaction score of the study, we average the numerical score between the 19 questions and we got 4.1. This means that the respondents mostly agree that they are satisfied with how the system performs,  inform, and looks like.
 
 \section{Performance result and analysis}
 
