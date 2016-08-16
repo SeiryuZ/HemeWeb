@@ -143,6 +143,9 @@ However, not all respondents who are at least somewhat familiar with building so
 
 \subsection{Scenario 2: Reproduce past simulation}
 
+In the second scenario, respondents are asked to reproduce past simulation with HemeWeb. They are given instructions in the online questionnaire to create a HemeLB simulation job from past simulation. They have to enter a URL that contains past simulation job and modifies the simulation parameters to avoid only replicating the past simulation without changes. After reproducing past simulation, respondents are then asked to state agreement with the same questions like they had in the first scenario. These questions will also measure their satisfaction with HemeLB in reproducing past simulation.
+
+
 \vspace{0.5cm}
 
 \noindent%
@@ -154,11 +157,10 @@ However, not all respondents who are at least somewhat familiar with building so
 \end{minipage}
 \vspace{0.5cm}
 
-Similar to the first scenario, respondents to be satisfied with the reproducing past simulation scenario experience.  However, same with the first scenario, one respondent fill not applicable for support information that means they feel that the support information is missing for them to be able to decide on. However, from the distribution of the answer, we can see that respondents generally find HemeWeb satisfying to run past simulation.
+Figure \ref{fig:survey-s2-usability} shows the general sentiment to the three statements that we provided. Generally, the response tends to skew towards agreeing that respondents are satisfied with HemeWeb with regards to reproducing past simulation. However, it has to be noted that 1 of the respondent skipped the instructions. This particular respondent did not give out any comments about encountering any problems, so we cannot deduce whether his skipping the instruction is due to usability problems or he just wants to skip it. Without further information, we cannot deduce why he skips the instructions.
 
-Based on the responses above, we can also convert the response into a numerical score like we did in scenario 1. In doing that we get score of 4.31, which means that users mostly agree on the positive statements that we present to represent the system. That respondent is satisfied with support information, time to complete, and the ease of completing task. With that score, the overall sentiment is that respondents answer between agree and strongly agree mostly.
+Also, similar to the first scenario, one respondent fills out "Not Applicable" to support information statement. Once again, this could mean that the scenario does not provide the respondent with enough information to fill out their agreement to the statement. In a nutshell, respondents tend to agree that HemeWeb is satisfying to use for the purpose of reproducing past simulation. If we convert the responses to a numerical value, we will get 4.31 of ASQ score. Which is in line with the sentiment that I described. The ASQ score falls between agreeing and strongly agree towards the positive statements we provided.
 
-Same as the first scenario, respondents are then asked to reproduce past simulation using command line. They are given a overview of the steps needed to reproduce past simulation in command line interface and then asked two questions to measure their sentiment about it.
 
 \vspace{0.5cm}
 
@@ -182,9 +184,11 @@ Same as the first scenario, respondents are then asked to reproduce past simulat
 
 \vspace{0.5cm}
 
-From Figure \ref{fig:survey-s2-cli} and \ref{fig:survey-s2-cli-barrier}, respondents are mostly lukewarm about the likelihood of them using command line interface to reproduce a simulation. While one respondent find it extremely unlikely to reproduce a simulation by command line interface, the distribution of the response is more or less neutral. More respondents find it is likely or extremely likely for them to do it in CLI. However, when averaged, respondents are generally on the neutral, veering towards likely.
+Respondents are then given steps in high-level to reproduce past simulation using the command line interface.  Figure \ref{fig:survey-s2-cli} and \ref{fig:survey-s2-cli-barrier} shows the respondent's response. Similar to the first scenario, the respondents are generally open to the idea of operating command line interface to do their tasks. However, the scenario to reproduce past simulation provides a bit difference in the distribution of the answers. While in the first scenario the highest frequency of the answer is "Extremely likely", the highest one in this scenario is "Likely". 
 
-However, while respondents are mostly neutral towards the likelihood of them using command line interface, most of the respondents feed that using CLI is at least somewhat a barrier. 5 respondents feel that it is not a barrier at all, while 7 people it is a moderate barrier to reproduce a simulation. It is apparent that while respondents could tolerate using command line interface for complex application like HemeLB, it is at least a barrier for them to reproduce past simulation. 
+This change of the highest frequency might be because there are extra step which might complicate the scenario to reproduce past simulation. respondents are more hesitant to answer "Extremely likely". However, the general nuance of the answer is still the same, respondents are generally not afraid of using command line interface to do this task. If we convert the answers into a numerical form like we did before, we got 3.2, which is between neutral and likely. 
+
+In addition, same observation as the first scenario can be made. While some respondents are likely to reproduce past simulations, there are those who are not likely to reproduce past simulations even with their background that have dealt with building software from source code. This can be explained by Figure \ref{fig:survey-s2-cli-barrier} where only 5 of the respondents did not feel that using CLI is a barrier at all. 2 of the respondents feel using CLI is somewhat a barrier, 7 feel it as a moderate barrier, and  1 feels it as an extreme barrier. This means that this 10 respondent agree that CLI is a form of barrier to them, however small.
 
 
 \subsection{Overall usability}
