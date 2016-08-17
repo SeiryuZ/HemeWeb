@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <report>
 	<configuration>
-		<file>/shared/122bd9883ff54a42aa5012b09edf8f9a/inputs/config.xml</file>
+		<file>/shared/d4cd884d4f6b4374bbe25cfc35e55b6e/inputs/config.xml</file>
 		<steps>500</steps>
 		<resolution>
 			<timestep>0.000000</timestep>
@@ -915,150 +915,150 @@
 	<timings>
 		<timer>
 			<name>Total</name>
-			<local>49</local>
-			<min>48.7</min>
-			<mean>48.9</mean>
-			<max>49</max>
+			<local>16.3</local>
+			<min>16.2</min>
+			<mean>16.3</mean>
+			<max>16.3</max>
 		</timer>
 		<timer>
 			<name>Seed Decomposition</name>
-			<local>0.00388</local>
-			<min>0.00255</min>
-			<mean>0.00397</mean>
-			<max>0.00724</max>
+			<local>0.00377</local>
+			<min>0.00183</min>
+			<mean>0.00318</mean>
+			<max>0.00479</max>
 		</timer>
 		<timer>
 			<name>Domain Decomposition</name>
-			<local>9.67</local>
-			<min>9.64</min>
-			<mean>11.4</mean>
-			<max>13.7</max>
+			<local>4.33</local>
+			<min>4.06</min>
+			<mean>4.49</mean>
+			<max>5.08</max>
 		</timer>
 		<timer>
 			<name>File Read</name>
-			<local>6.1</local>
-			<min>2.07</min>
-			<mean>4.39</mean>
-			<max>6.14</max>
+			<local>1.15</local>
+			<min>0.414</min>
+			<mean>0.998</mean>
+			<max>1.42</max>
 		</timer>
 		<timer>
 			<name>Re Read</name>
-			<local>5.29</local>
-			<min>0.625</min>
-			<mean>3.34</mean>
-			<max>5.42</max>
+			<local>1.17</local>
+			<min>0.676</min>
+			<mean>1.43</mean>
+			<max>2.4</max>
 		</timer>
 		<timer>
 			<name>Unzip</name>
-			<local>0.0131</local>
-			<min>0.013</min>
-			<mean>0.0324</mean>
-			<max>0.0596</max>
+			<local>0.0104</local>
+			<min>0.0104</min>
+			<mean>0.0266</mean>
+			<max>0.0497</max>
 		</timer>
 		<timer>
 			<name>Moves</name>
-			<local>0.00304</local>
-			<min>0.00187</min>
-			<mean>0.00617</mean>
-			<max>0.0204</max>
+			<local>0.00314</local>
+			<min>0.00139</min>
+			<mean>0.00381</mean>
+			<max>0.0115</max>
 		</timer>
 		<timer>
 			<name>Parmetis</name>
-			<local>4.12</local>
-			<min>3.98</min>
-			<mean>5.79</mean>
-			<max>8.14</max>
+			<local>1.86</local>
+			<min>1.6</min>
+			<mean>1.99</mean>
+			<max>2.62</max>
 		</timer>
 		<timer>
 			<name>Lattice Data initialisation</name>
-			<local>15.9</local>
-			<min>15.9</min>
-			<mean>16</mean>
-			<max>16.1</max>
+			<local>5.58</local>
+			<min>5.57</min>
+			<mean>5.59</mean>
+			<max>5.64</max>
 		</timer>
 		<timer>
 			<name>Lattice Boltzmann</name>
-			<local>2.32</local>
-			<min>1.7</min>
-			<mean>2.01</mean>
-			<max>2.43</max>
+			<local>2.01</local>
+			<min>0.923</min>
+			<mean>1.62</mean>
+			<max>2.33</max>
 		</timer>
 		<timer>
 			<name>LB calc only</name>
-			<local>2.3</local>
-			<min>1.64</min>
-			<mean>1.93</mean>
-			<max>2.38</max>
+			<local>2</local>
+			<min>0.863</min>
+			<mean>1.55</mean>
+			<max>2.22</max>
 		</timer>
 		<timer>
 			<name>Visualisation</name>
-			<local>0.0824</local>
-			<min>0.00745</min>
-			<mean>0.0286</mean>
-			<max>0.278</max>
+			<local>0.0545</local>
+			<min>0.00423</min>
+			<mean>0.0115</mean>
+			<max>0.0545</max>
 		</timer>
 		<timer>
 			<name>Monitoring</name>
-			<local>0.000499</local>
-			<min>0.000499</min>
-			<mean>0.12</mean>
-			<max>0.175</max>
+			<local>0.000387</local>
+			<min>0.000387</min>
+			<mean>0.0934</mean>
+			<max>0.129</max>
 		</timer>
 		<timer>
 			<name>MPI Send</name>
-			<local>0.164</local>
-			<min>0.0117</min>
-			<mean>0.267</mean>
-			<max>0.585</max>
+			<local>0.00732</local>
+			<min>0.00711</min>
+			<mean>0.0993</mean>
+			<max>0.312</max>
 		</timer>
 		<timer>
 			<name>MPI Wait</name>
-			<local>25.7</local>
-			<min>25.2</min>
-			<mean>27.3</mean>
-			<max>29.9</max>
+			<local>5.38</local>
+			<min>2.93</min>
+			<mean>5.37</mean>
+			<max>8.47</max>
 		</timer>
 		<timer>
 			<name>Simulation total</name>
-			<local>32.6</local>
-			<min>32.2</min>
-			<mean>32.4</mean>
-			<max>32.6</max>
+			<local>10.4</local>
+			<min>10.3</min>
+			<mean>10.3</mean>
+			<max>10.4</max>
 		</timer>
 		<timer>
 			<name>Reading communications</name>
-			<local>8.52</local>
-			<min>0.44</min>
-			<mean>5.29</mean>
-			<max>8.9</max>
+			<local>0.976</local>
+			<min>0.42</min>
+			<mean>1.59</mean>
+			<max>2.47</max>
 		</timer>
 		<timer>
 			<name>Parsing</name>
-			<local>0.0647</local>
-			<min>0.0451</min>
-			<mean>0.164</mean>
-			<max>0.359</max>
+			<local>0.0456</local>
+			<min>0.0361</min>
+			<mean>0.125</mean>
+			<max>0.255</max>
 		</timer>
 		<timer>
 			<name>Read IO</name>
-			<local>0.284</local>
+			<local>0.464</local>
 			<min>0</min>
-			<mean>0.00526</mean>
-			<max>0.319</max>
+			<mean>0.00786</mean>
+			<max>0.464</max>
 		</timer>
 		<timer>
 			<name>Read Blocks prelim</name>
-			<local>0.589</local>
-			<min>0.0156</min>
-			<mean>0.38</mean>
-			<max>0.702</max>
+			<local>0.531</local>
+			<min>0.0114</min>
+			<mean>0.444</mean>
+			<max>0.581</max>
 		</timer>
 		<timer>
 			<name>Read blocks all</name>
-			<local>8.95</local>
-			<min>0.6</min>
-			<mean>5.48</mean>
-			<max>9.04</max>
+			<local>1.55</local>
+			<min>0.53</min>
+			<mean>1.75</mean>
+			<max>2.63</max>
 		</timer>
 		<timer>
 			<name>Steering Client Wait</name>
@@ -1069,52 +1069,52 @@
 		</timer>
 		<timer>
 			<name>Move Forcing Counts</name>
-			<local>0.0206</local>
-			<min>0.000705</min>
-			<mean>0.0252</mean>
-			<max>0.0429</max>
+			<local>0.00981</local>
+			<min>0.00136</min>
+			<mean>0.0075</mean>
+			<max>0.0132</max>
 		</timer>
 		<timer>
 			<name>Move Forcing Data</name>
-			<local>0.00218</local>
-			<min>0.00016</min>
-			<mean>0.00787</mean>
-			<max>0.0159</max>
+			<local>0.000302</local>
+			<min>8.58e-05</min>
+			<mean>0.00267</mean>
+			<max>0.00787</max>
 		</timer>
 		<timer>
 			<name>Block Requirements</name>
-			<local>0.0163</local>
-			<min>0.00476</min>
-			<mean>0.0192</mean>
-			<max>0.0312</max>
+			<local>0.00989</local>
+			<min>0.00349</min>
+			<mean>0.0098</mean>
+			<max>0.015</max>
 		</timer>
 		<timer>
 			<name>Move Counts Sending</name>
-			<local>0.0177</local>
-			<min>0.00385</min>
-			<mean>0.0228</mean>
-			<max>0.225</max>
+			<local>0.00544</local>
+			<min>0.00191</min>
+			<mean>0.00548</mean>
+			<max>0.014</max>
 		</timer>
 		<timer>
 			<name>Move Data Sending</name>
-			<local>0.108</local>
-			<min>0.0105</min>
-			<mean>0.245</mean>
-			<max>0.632</max>
+			<local>0.00535</local>
+			<min>0.000473</min>
+			<mean>0.0554</mean>
+			<max>0.48</max>
 		</timer>
 		<timer>
 			<name>Populating moves list for decomposition optimisation</name>
-			<local>0.172</local>
-			<min>0.0675</min>
-			<mean>0.33</mean>
-			<max>0.709</max>
+			<local>0.035</local>
+			<min>0.0291</min>
+			<mean>0.0877</mean>
+			<max>0.517</max>
 		</timer>
 		<timer>
 			<name>Initial geometry reading</name>
-			<local>0.0494</local>
-			<min>0.0337</min>
-			<mean>0.0897</mean>
-			<max>0.214</max>
+			<local>0.042</local>
+			<min>0.02</min>
+			<mean>0.0619</mean>
+			<max>0.174</max>
 		</timer>
 		<timer>
 			<name>Colloid initialisation</name>
@@ -1160,10 +1160,10 @@
 		</timer>
 		<timer>
 			<name>Extraction writing</name>
-			<local>3.93</local>
-			<min>0.229</min>
-			<mean>2.72</mean>
-			<max>4.59</max>
+			<local>2.79</local>
+			<min>0.144</min>
+			<mean>3.1</mean>
+			<max>4.85</max>
 		</timer>
 	</timings>
 </report>
