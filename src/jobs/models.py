@@ -60,15 +60,15 @@ def run_job(job_instance):
 
         job_instance.run_hemelb()
 
-        # job_instance.run_post_processing()
-        # job_instance.package_output()
+        job_instance.run_post_processing()
+        job_instance.package_output()
 
         job_instance.status = job_instance.DONE
         job_instance.save(update_fields=['status'])
 
         # Only upload job if it is successful, and queue it again so another
         # worker in lower priority can take over
-        # upload_job.delay(job_instance)
+        upload_job.delay(job_instance)
 
 
 @job
