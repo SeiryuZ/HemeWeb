@@ -21,7 +21,7 @@ In answering questions above, I conduct two sets of evaluation. First, an online
 
 \section{Questionnaire}
 
-In measuring user's experience, I created a questionnaire for HemeWeb using google form. The questionnaire was live for a week, from 3rd of August 2016 until 10th of August 2016.
+In measuring user's experience, I created a questionnaire for HemeWeb using google form. The questionnaire was live for 10 days, from 3rd of August 2016 until 12th of August 2016.
 
 %I created a questionnaire that will measure user's experience in using HemeWeb. This questionnaire was created and shared using google forms. It ran online for 10 days from 1st August 2016 - 10th August 2016.
 
@@ -76,15 +76,30 @@ In addition to the above questions, testers also will be asked to list the most 
 
 \section{Performance benchmarks}
 
-The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like a supercomputer. This could have an interesting impact on the performance of the system because cloud vendors, being much more easily accessible and provisioned, have an underlying infrastructure difference with the stand-alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
+The second part of the evaluation is the performance benchmark. HemeWeb is running HemeLB simulation outside its original scope of being used on a highly parallel computing resources like a supercomputer. This could have an interesting impact on the performance of the system because cloud vendors, while being easily accessible and provisioned, have an underlying infrastructure difference with the stand-alone infrastructure. This performance benchmarks will then measure whether the impact on the performance justify the claimed usability benefit that we measure on the first half of the evaluation.
 
-The performance benchmark will be done by the internal tooling that is baked inside HemeLB. Every HemeLB simulation will produce a report file that measures the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on four different scenarios to measure the performance impact on having HemeLB simulation on the cloud with Docker containers. They are:
+The performance benchmark will be done by the internal tooling that is available inside HemeLB. Every HemeLB simulation will produce a report file that measures the performance of said simulation. On this evaluation, I will compare the performance of HemeLB simulation on three different infrastructure to measure the performance impact on having HemeLB simulation on the cloud with Docker containers. 
+
+They are:
 \begin{itemize}
 	\item{ARCHER supercomputer}
 	\item{INDY2 HPC Cluster}
 	\item{Cloud computing infrastructure with AWS EC2}
 \end{itemize}
 
-The benchmark on ARCHER supercomputer will be the gold standard of the performance. It's a gold standard because the infrastructure has a clear purpose of being used for the HPC application. It has the necessary resources and components that are tailored for it. It should be the ideal performance scenario. Next, the local computing infrastructure. This paints a picture if how HemeLB will perform on a private local infrastructure which is built to run highly parallel jobs. This will be the measure that can be used if HemeLB is to run on private infrastructure.
+On these three infrastructure,  ARCHER supercomputer has the oldest processor architecture. It use a three-year old 2.7 GHz, 12-core E5-2697 v2 Ivy Bridge processor as the basis of its compute node. Each compute node consist of this two processors. INDY2 is a newly installed HPC infrastructure on EPCC that is currently in early-access testing. It has the newer Broadwell-based 18-core Intel Xeon CPU E5-2695 v4 @ 2.10GHz. Lastly, for AWS-EC2, we use Amazon's c4.8xlarge EC2 instance which has Haswell-based E5-2666 v3 processor that has 18 virtual cores\footnote{\url{https://aws.amazon.com/ec2/virtualcores/}} or 36 vCPU with hyperthreading\footnote{\url{https://aws.amazon.com/ec2/instance-types/}}. Essentially, we will be using 18 core on AWS-EC2 instance for the simulation, because HemeLB is a compute bound task that do not benefit from hyperthreading. 
 
-The last benchmark will be done to measure the performance of HemeLB simulation compared to the local infrastructure. Cloud computing vendors have an underlying difference with regards towards how the infrastructures are structured and connected together. This could have an inherent performance different with a standalone infrastructure. This benchmark will measure this difference.
+Next, the three different architecture also have different networking interface that could contribute to the performance difference. While AWS-EC2 offer 10 Gigabit per second interface, ARCHER use a Cray Aries router interconnectivity that provides higher network throughput (ranging from 12.5 Gigabit per second to 14 Gigabit per second) throughout the infrastructure. Finally, INDY2 has FDR InfiniBand network interface connected to each compute node that provides 54.5 Gigabit per second. 
+
+
+For the simulation, we used an input file which has 4,520,681 fluid sites\footnote{Available online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/deployment/roles/hemeweb_master/files/990_Example2-skeleton_corrected_tubed_smoothed.gmy}}  \footnote{Config for the simulation can be found online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/documents/resources/evaluation/performance/config.xml}}. With these files, we are going to do a strong scaling analysis, where we keep the problem size the same while we increase the core count. According to the performance analysis by Groen et al. \citep{groen2013analysing}, HemeLB scales up near-linearly up to 32,768 cores. It also performs near its maximum efficiency when using 5,000 to 500,000 sites per core. This means that for the problem size we use, HemeLB should perform near maximum efficiency when using 9 cores up to 900 cores. Above that core counts, HemeLB simulation will incur a performance penalty.
+
+
+The benchmark on ARCHER supercomputer will be the gold standard of the performance. It's a gold standard because the infrastructure has a clear purpose of being used for the HPC application. It has the necessary resources and components that are tailored for it. It should be the ideal performance scenario. Next, the INDY2 as the locally installed and managed HPC infrastructure. INDY2's performance will paints a picture if how HemeLB will perform on a private local infrastructure which is built to run highly parallel jobs. Based on all these infrastructure difference, our hypothesis is that AWS-EC2 will provide slower performance compared to INDY2 and ARCHER.
+
+
+In running the simulation, I had help from Dr. Rupert Nash to run HemeLB simulation on ARCHER and INDY2. I need help because I did not have access to both of these infrastructures. On AWS-EC2 infrastructure, however, I run the HemeLB scenario myself. HemeLB simulation was run using the HemeWeb interface on AWS.
+
+
+
+

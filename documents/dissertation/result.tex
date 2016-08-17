@@ -336,15 +336,51 @@ In order to do this benchmark, we are going to rely on the report file that Heme
 \vspace{0.5cm}
 
 
-Table \ref{table:perf} shows the performance comparison between HemeLB total simulation time at AWS-EC2 with INDY2. This shows that AWS-EC2 performance is much slower compared to the dedicated infrastructure likes INDY2. Table \ref{table:perf-archer} shows the HemeLB performance in ARCHER supercomputer. We cannot make a direct comparison between the performance of AWS-EC2 and ARCHER because ARCHER has a different number of cores in one compute node. ARCHER has 24, while AWS-EC2 and INDY2 have 36. Figure \ref{fig:hemelb-perf-overview} shows the performance difference and the scaling trend in a chart. 
+Table \ref{table:perf} shows the performance comparison between HemeLB total simulation time at AWS-EC2 with INDY2 and ARCHER. This shows that AWS-EC2 performance is much slower compared to the dedicated infrastructure likes INDY2. Table \ref{table:perf-archer} shows the HemeLB performance in ARCHER supercomputer. We cannot make a direct comparison between the performance of AWS-EC2 and ARCHER because ARCHER has a different number of cores in one compute node. ARCHER has 24, while AWS-EC2 and INDY2 have 36. Figure \ref{fig:hemelb-perf-overview} shows the performance difference and the scaling trend in a chart. 
 
 
 For the simulation, we use an input file which has 4,520,681 fluid sites\footnote{Available online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/deployment/roles/hemeweb_master/files/990_Example2-skeleton_corrected_tubed_smoothed.gmy}}  \footnote{Config for the simulation can be found online at \url{https://github.com/SeiryuZ/HemeWeb/blob/master/documents/resources/evaluation/performance/config.xml}}. According to the performance analysis by Groen et al. \citep{groen2013analysing}, HemeLB scales up near-linearly up to 32,768 cores. It also performs near its maximum efficiency when using 5,000 to 500,000 sites per core. This means that for the problem size we use, HemeLB should perform near maximum efficiency when using 9 cores up to 900 cores. Above that core counts, HemeLB simulation will incur a performance penalty.
+
+
+
 
 The simulation time of INDY2 as observed in Figure \ref{fig:hemelb-perf-overview} follows this performance model accurately. It scales almost linearly up to 576 cores, and finally hit a performance degradation on 1152 cores. However, the result on AWS-EC2 shows that HemeLB hits performance degradation much early that it does not follow the performance models. The reason being is that the infrastructure has an underlying difference in the networking capabilities. AWS-EC2 offer 10 Gigabit per second interface \footnote{\url{https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/}} while dedicated HPC infrastructure often uses InfiniBand or Cray Aries router interconnectivity which provides higher throughput \cite{Quan:2014aa}. This result is in line with the benchmark that Mehrotra et al. did on NASA's HPC application \citep{mehrotra2012performance}. The performance degradation comes from the network and the virtualization overhead that this cloud platform has.  ARCHER supercomputer in this benchmark, however, shows the performance that does not follow the performance model closely. As we increase the core number, the simulation time decreases, but not near linearly. In addition, there is some dip in performance at 384 cores. This erratic results might be due to the random nature of the workload on ARCHER. 
 
 
 ARCHER supercomputer has slower simulation time compared to INDY2, because of the difference of processors used in the compute node. ARCHER used a three-year-old 2.7 GHz, 12-core E5-2697 v2 Ivy Bridge processor. Compared to INDY2 which boasts the newer Broadwell-based 18-core Intel Xeon CPU E5-2695 v4 @ 2.10GHz. The number of threads inside those processors also differ, ARCHER has 24 while INDY2 has 36. This makes up the performance difference. On the other hand for this evaluation, we use Amazon's c4.8xlarge EC2 instance which has Haswell-based E5-2666 v3 processor that has 36 virtual CPU cores. All these difference contributes toward the speed difference of the simulation results.
+
+\begin{center}
+
+\captionof{table}{HemeLB parallel efficiency table of INDY2 vs ARCHER vs AWS EC2}\label{table:eff}
+
+\scalebox{0.75}{
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{3}{|c|}{INDY2}      & \multicolumn{3}{c|}{ARCHER}      & \multicolumn{3}{c|}{AWS-EC2}     \\ \hline
+Core & Speedup     & Efficiency  & Core & Speedup     & Efficiency  & Core & Speedup     & Efficiency  \\ \hline
+36   & 1           & 1           & 24   & 1           & 1           & 18   & 1           & 1           \\
+72   & 1.94488189  & 0.972440945 & 48   & 1.520361991 & 0.760180995 & 36   & 1.43495935  & 0.717479675 \\
+144  & 3.488700565 & 0.872175141 & 96   & 2.507462687 & 0.626865672 & 72   & 2.101190476 & 0.525297619 \\
+288  & 7.180232558 & 0.89752907  & 192  & 3.425076453 & 0.428134557 & 144  & 3.069565217 & 0.383695652 \\
+576  & 13.64640884 & 0.852900552 & 384  & 3.38028169  & 0.211267606 & 288  & 3.427184466 & 0.214199029 \\
+1152 & 15.63291139 & 0.488528481 & 768  & 3.485477178 & 0.108921162 & N/A  & N/A         & N/A         \\ \hline
+\end{tabular}
+}
+
+\end{center}
+
+\vspace{0.5cm}
+
+
+\noindent%
+\begin{minipage}{\linewidth}% to keep image and caption on one page
+\makebox[\linewidth]{
+  \includegraphics[keepaspectratio=true,scale=0.70]{../resources/evaluation/performance/efficiency.png}
+ }
+\captionof{figure}{HemeLB parallel efficiency plot} \label{fig:hemelb-eff-plot}%      only if needed  
+\end{minipage}
+
+\vspace{0.5cm}
 
 The scaling of the performance is where HemeWeb took a dive. It is apparent that with increased compute node, the network activity between the nodes become a bottleneck in the HemeWeb's case. The performance started to dip when we use 4 compute nodes which have 144 cores which perform worse than just using 1 compute node. However, the performance improves as we add more compute nodes. Roughly speaking, HemeWeb runs HemeLB simulation in AWS-EC2 1.46 times slower and up to 11.27 times slower at its worst when compared to the INDY2's performance. The performance difference is more apparent when INDY2 scale really well with larger cores, while in AWS-EC2, it didn't.
 
