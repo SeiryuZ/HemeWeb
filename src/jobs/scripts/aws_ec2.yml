@@ -76,7 +76,7 @@
 
     - name: Set fact
       set_fact:
-        container_ips: "{% for host in groups['worker_nodes'] %}{% for iteration in range({{ physical_core_count }}) %}{{ hostvars[host]['container_ip']['stdout'] }} {% endfor %}{% endfor %}"
+        container_ips: "{% for host in groups['worker_nodes'] %}{% for iteration in range(physical_core_count) %}{{ hostvars[host]['container_ip']['stdout'] }} {% endfor %}{% endfor %}"
 
     - name: Pause to give time for ssh in container to work
       pause: seconds=10
