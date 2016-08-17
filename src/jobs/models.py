@@ -115,11 +115,11 @@ class Job(models.Model):
                                           verbose_name="HemeLB Version")
 
     INSTANCE_CHOICES = (
-        (2, '2 Cores'),
-        (4, '4 Cores'),
-        (8, '8 Cores'),
-        (16, '16 Cores'),
-        (36, '36 Cores'),
+        (2, '2 Virtual Cores'),
+        (4, '4 Virtual Cores'),
+        (8, '8 Virtual Cores'),
+        (16, '16 Virtual Cores'),
+        (36, '36 Virtual Cores'),
     )
     instance_type = models.IntegerField(choices=INSTANCE_CHOICES, default=2,
                                         verbose_name="Machine Type")
