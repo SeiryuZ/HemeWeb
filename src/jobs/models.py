@@ -60,15 +60,15 @@ def run_job(job_instance):
 
         job_instance.run_hemelb()
 
-        job_instance.run_post_processing()
-        job_instance.package_output()
+        # job_instance.run_post_processing()
+        # job_instance.package_output()
 
         job_instance.status = job_instance.DONE
         job_instance.save(update_fields=['status'])
 
         # Only upload job if it is successful, and queue it again so another
         # worker in lower priority can take over
-        upload_job.delay(job_instance)
+        # upload_job.delay(job_instance)
 
 
 @job
@@ -218,8 +218,12 @@ class Job(models.Model):
         elif int(self.instance_type) == 36:
             return 'c4.8xlarge'
 
-    def get_core_count(self):
+    def get_total_virtual_core_count(self):
         return int(self.instance_count) * int(self.instance_type)
+
+    def get_physical_core_count(self):
+        # On AWS it is vCPU, 2 of them share the same 1 physical core
+        return int(self.instance_type) / 2
 
     def get_output(self, log_type, force=False):
         key = "{}:log:{}".format(self.id.hex, log_type)
@@ -251,7 +255,7 @@ class Job(models.Model):
         -u ubuntu \
         --extra-vars 'image={} master_ip={} worker_node_count={}  \
         instance_tags={} input={} output={} \
-        worker_instance_type={} log_file={} core_count={} container_image={}' \
+        worker_instance_type={} log_file={} physical_core_count={} container_image={}' \
         jobs/scripts/aws_ec2.yml\
         ".format(
             settings.AWS_SECRET_ACCESS_KEY,
@@ -264,7 +268,7 @@ class Job(models.Model):
             self.get_result_directory_path(),
             self.get_instance_id(),
             self.get_log_file_path('hemelb'),
-            self.get_core_count(),
+            self.get_physical_core_count(),
             self.get_container_image_display(),
         )
 
