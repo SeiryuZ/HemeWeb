@@ -7,7 +7,7 @@
 
 In this chapter, I will discuss HemeWeb's development and implementation. This will consist on how the HemeLB core Docker container is developed, how it is deployed, and how the web application is developed.
 
-\section{Overall architecture}
+\section{Development phases}
 
 The development process is divided into 5 phases. The planned phases are as follow:
 
@@ -20,29 +20,6 @@ The development process is divided into 5 phases. The planned phases are as foll
 \end{enumerate}
 
 The development process loosely follows the agile method in which I regularly meet with the stakeholders every week to give an update and gather feedback on the project. The phases are designed in such a way to minimize the risk of having nothing at all during the end of the project phase. This is due to that HemeWeb can work on its own after finishing step 3. The HemeLB simulation can be done on its own. The rest of the steps are there to extend the functionalities of the HemeWeb to cover more functionalities.
-
-During the first week of the development, I focused more on stripping the HemeLB core container into its own. I researched on how Docker and Dockerfile work, and finding out what are the issues with the current container. After identifying the issues, which are ssh service and full of functionalities which are not essential, I stripped down the image and changed the base image so that the container could avoid the mentioned problems. I end up with smaller container size and it is available online on https://hub.docker.com.
-
-However, one particular issue with what I have currently is that the Dockerfile is published as a part of the HemeWeb source code. It should be tied down to the HemeLB development instead of HemeWeb. Currently, the development model of HemeLB is that there is an internal private repository where the less than stable build is pushed to it, and there are public repositories where only stable builds are pushed into. The release process should include adding the Dockerfile towards the core HemeLB source code repository and tagging the release correctly. HemeLB core containers should then be built automatically on Docker hub with regards to additional tags being pushed to the public repository.
-
-
-After the development of HemeLB core container, I then focused on how the architecture could be primed for the HemeLB simulation. It involves on configuring the servers and all supporting infrastructures on cloud vendors to be ready for HemeLB simulation. Network configuration, security configuration, Docker configuration, and other should be handled automatically. I elect to choose ansible orchestration software because it is closely related to python language that I used. 
-
-In this phase, I successfully achieve the provision and deployment process that with the correct credentials and authorization, the script could provision and configure the architecture correctly so it is ready for HemeLB simulation. In addition to that, I successfully created the script so that it will be cloud vendors agnostic. I can deploy the architecture to google cloud vendors, amazon web service, and digital ocean.
-
-However, it is to be noted that the deployment process that I achieve can only run HemeLB simulation from the command line. I have not considered the web application installation and configuration at this point of the deployment. I only considered the infrastructure being built and configured for HemeLB simulation.
-
-
-Next, I started developing HemeWeb web application. I choose Django web application framework due to my experience with it. I created a basic interface, where job simulation is listed on the index page on the home interface. After that, I added a basic interface to add new job with a geometry file and HemeLB configuration file. The web application will then add those input files into a newly created job instance and configure the job instance in the job configuration step. The job will then be submitted. 
-
-Here I developed a separate ansible script that will be called when a queued job is being worked at. The ansible script is responsible for starting up compute nodes needed by the job and executing HemeLB simulation. After the simulation is done, the script is also responsible for correctly terminating the compute node.
-
-After the basic HemeWeb web application is achieved, I extend it to handle pre-processing. I added an extra form in the adding new job form to handle a profile file and geometry file. These two files will be converted into a geometry file and HemeLb configuration file that the job configuration steps expect. In addition to adding the interface, I also added a new function on the job instance that will run this pre-processing step on the background. 
-
-Lastly, due to the limited time, I can only manage to run a small post-processing step on HemeWeb. What I did was adding post-processing step that converts the Extracted results from HemeLB output into a format that can be viewed by third party software, ParaView. The results are piped into two scripts that will output a .vtu that is compatible with ParaView. This is done during the background activity after simulation result is outputted. However, currently, this is done on the master node.
-
-In addition to that, I also managed to add persistence capability to HemeWeb application. What I did was to package the job simulation folder into a compressed archive and upload it to persistent storage service of cloud vendors. These archives can be queried by another instance of HemeWeb to get previous job IDs available for the particular cloud vendor account used to deploy HemeWeb.  Also, the job simulation file URL is also showed on the web interface. Making it easy for the users to share the simulation file with their peers.
-
 
 
 \section{HemeLB core Docker container}

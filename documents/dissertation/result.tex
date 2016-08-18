@@ -135,13 +135,13 @@ After the above sentiments about using HemeWeb to run a HemeLB simulation, respo
 
 The distribution of the responses also is quite spread out, that respondents fill out all possible responses with   the highest frequency being "Extremely Likely" with 5 responses. However, we have to keep it mind the general background of the respondents that may explain the highest frequency answer being "Extremely Likely", which is about familiarity with installing software with source code. To build software with source code, one will interact with the command line interface quite often. Thirteen of our respondents answered at least somewhat familiar with building software from source code, that can explain that our respondents are mostly quite competent in operating command line interface and would not shy away in using the command line interface. In addition to that, two out of three respondents has backgrounds in informatics and computational science. This could in effect explains why the respondents feel they are likely and extremely likely to do the same in CLI. 
 
-However, not all respondents who are at least somewhat familiar with building software from source code skew towards to the likely side of using CLI. There are respondents that, while familiar with the interface, running a HemeLB simulation using CLI is unlikely to be done by them. These responses might be explained by respondents' sentiment in using command line interface. This is further supported by the response of CLI being a barrier for the respondents. While six of the respondents think it is not a barrier at all to use CLI, eight of the respondents answered at least it is somewhat a barrier. With five of the nine respondents, feel it is a moderate barrier, and one of the nine feel it as an Extreme barrier. From these results, we can safely say that using command line interface is a form of a barrier to run HemeLB for almost two-third of the respondents.
+However, not all respondents who are at least somewhat familiar with building software from source code skew towards to the likely side of using CLI. There are respondents that, while familiar with the interface, running a HemeLB simulation using CLI is unlikely to be done by them. These responses might be explained by respondents' sentiment in using command line interface. This is further supported by the response of CLI being a barrier for the respondents. While six of the respondents think it is not a barrier at all to use CLI, eight of the respondents answered at least it is somewhat a barrier. With five of the nine respondents, feel it is a moderate barrier, and one of the nine feel it as an Extreme barrier. From these results, we can safely say that using command line interface is a form of a barrier to run HemeLB for almost 60\% of the respondents, with this figure going up to 75\% when only the answers of the domain experts are considered.
 
 
 
 
 
-\subsection{Scenario 2: Reproduce past simulation}
+\subsection{Scenario 2: Reproduce a past simulation}
 
 In the second scenario, respondents are asked to reproduce past simulation with HemeWeb. They are given instructions in the online questionnaire to create a HemeLB simulation job from past simulation. They have to enter a URL that contains past simulation job and modifies the simulation parameters to avoid only replicating the past simulation without changes. After reproducing past simulation, respondents are then asked to state agreement with the same questions like they had in the first scenario. These questions will also measure their satisfaction with HemeLB in reproducing past simulation.
 
@@ -307,7 +307,7 @@ In this benchmark, we are going to rely on the report file that HemeLB produced.
 
 \begin{center}
 
-\captionof{table}{HemeLB performance on INDY2 vs ARCHER vs AWS EC2}\label{table:perf}
+\captionof{table}{HemeLB performance on INDY2 vs ARCHER vs AWS EC2. Results for ARCHER and INDY2 run provided by Dr. Rupert Nash}\label{table:perf}
 
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -333,13 +333,18 @@ In this benchmark, we are going to rely on the report file that HemeLB produced.
 \makebox[\linewidth]{
   \includegraphics[keepaspectratio=true,scale=0.70]{../resources/evaluation/performance/overview.png}
  }
-\captionof{figure}{HemeLB performance comparison} \label{fig:hemelb-perf-overview}%      only if needed  
+\captionof{figure}{HemeLB performance comparison. Results for ARCHER and INDY2 run provided by Dr. Rupert Nash} \label{fig:hemelb-perf-overview}%      only if needed  
 \end{minipage}
 
 \vspace{0.5cm}
 
 
-Table \ref{table:perf} shows the performance comparison between HemeLB total simulation time between AWS-EC2, INDY2, and ARCHER. This shows that AWS-EC2 performance is much slower compared to the dedicated infrastructure likes INDY2 and ARCHER. AWS-EC2 is slower 3~25\% compared to ARCHER, and 42~469\% compared to INDY2 on various compute node size. However, it has to be noted  that on each infrastructure, one compute node have different core count. This could affect the performance difference we got from this result.
+Table \ref{table:perf} shows the performance comparison between HemeLB total simulation time between AWS-EC2, INDY2, and ARCHER. It shows that AWS-EC2 perform relatively well in lower amount of cores used. At 36 cores, AWS-EC2 perform even slightly better compared to INDY2. It has to be noted that AWS-EC2 has lower core count in a single compute node compared to ARCHER that makes direct comparison impossible. However, we can see from the simulation time that AWS-EC2 perform relatively well compared to ARCHER's performance because it has small difference of the performance despite the lower core count. 
+
+
+Another observation that can be made from the performance information, is that AWS-EC2 performance experienced a bigger performance degradation on increased core counts compared to the other two infrastructures.  This shows that while the raw performance of the compute cores are very respectable, the parallel scalability of AWS EC2 is not as good as the other two infrastructures.
+
+% This shows that AWS-EC2 performance is much slower compared to the dedicated infrastructure likes INDY2 and ARCHER. AWS-EC2 is slower 3-25\% compared to ARCHER, and 42-469\% compared to INDY2 on various compute node size. However, it has to be noted  that on each infrastructure, one compute node have different core count. This could affect the performance difference we got from this result.
 
 Figure \ref{fig:hemelb-perf-overview} also shows the difference in performance between the three infrastructure. INDY2 performed much faster than the other infrastructures. In addition, its performance also scales almost linearly up to 576 cores and had a performance degradation on 1152 cores. This closely follows the performance analysis by Groen et al. \citep{groen2013analysing}. 
 
@@ -349,7 +354,7 @@ Finally, AWS-EC2 perform slower on each compute nodes count we tested. The perfo
 
 \begin{center}
 
-\captionof{table}{HemeLB parallel efficiency table of INDY2 vs ARCHER vs AWS EC2}\label{table:eff}
+\captionof{table}{HemeLB parallel efficiency table of INDY2 vs ARCHER vs AWS EC2. ARCHER and INDY2 result is based on the data provided by Dr. Rupert Nash}\label{table:eff}
 
 \scalebox{0.75}{
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
@@ -375,15 +380,19 @@ Core & Speedup     & Efficiency  & Core & Speedup     & Efficiency  & Core & Spe
 \makebox[\linewidth]{
   \includegraphics[keepaspectratio=true,scale=0.70]{../resources/evaluation/performance/efficiency.png}
  }
-\captionof{figure}{HemeLB parallel efficiency plot} \label{fig:hemelb-eff-plot}%      only if needed  
+\captionof{figure}{HemeLB parallel efficiency plot. ARCHER and INDY2 result is based on the data provided by Dr. Rupert Nash} \label{fig:hemelb-eff-plot}%      only if needed  
 \end{minipage}
 
 \vspace{0.5cm}
 
 
-From the raw performance information above, we can calculate the parallel scalability of HemeLB on all three infrastructure. Table \ref{table:eff} and Figure \ref{fig:hemelb-eff-plot} shows the difference of the parallel scalability on the three infrastructures. INDY2 has the best parallel scalability that it has the efficiency nearest to the ideal parallel scalability. However, the last data point produces a much slower speedup compared to other points that reduce its efficiency at 1,152 cores. 
+From the raw performance information above, we can calculate the parallel scalability of HemeLB on all three infrastructure. Table \ref{table:eff} and Figure \ref{fig:hemelb-eff-plot} shows the difference of the parallel scalability on the three infrastructures with the basis of the smallest number of core used on each infrastructure. INDY2 has the best parallel scalability that it has the efficiency nearest to the ideal parallel scalability. However, the last data point produces a much slower speedup compared to other points that reduce its efficiency at 1,152 cores. 
 
-ARCHER also perform better than AWS-EC2 in this evaluation. However, the parallel efficiency is still far below the level of INDY2 because of the utilization of the system. AWS-EC2 has the lowest parallel scalability as expected. This shows that running HemeLB on Amazon's infrastructure might not scale as well as using dedicated HPC infrastructure. However, on lower compute node count, AWS-EC2 provide a comparable parallel scalability (5\% difference) and performance compared to ARCHER under very high utilization. This result concludes that our hypothesis is correct, that AWS-EC2 would provide slower performance in running HemeLB simulation.  
+ARCHER also perform better than AWS-EC2 in this evaluation. However, the parallel efficiency is still far below the level of INDY2 because of the utilization of the system. AWS-EC2 has the lowest parallel scalability as expected. This shows that running HemeLB on Amazon's infrastructure might not scale as well as using dedicated HPC infrastructure. However, on lower compute node count, AWS-EC2 provide a comparable parallel scalability (5\% difference) and performance compared to ARCHER under very high utilization. 
+
+
+From the observations above, we can conclude  that that AWS-EC2 perform comparably to dedicated HPC infrastructure, especially on lower core count. However AWS-EC2 infrastructure does not scale as well as the dedicated HPC infrastructure. Based on this finding, we can further conclude that a small problem size that can be run on lower core count is an ideal use-case for HemeWeb because it will run with comparable performance with dedicated HPC infrastructure with the flexibility of cloud vendors.
+
 
 
 \subsection{Simulation cost analysis}
@@ -405,19 +414,18 @@ Calculating simulation time can be done by taking the performance of compute nod
  Simulation\ time\ ratio=\ simulation\ time\ /\ base\ time
 \end{displaymath}
 
-\newpage
 \begin{center}
-\captionof{table}{HemeLB simulation cost on AWS-EC2 vs ARCHER}\label{table:cost}
+\captionof{table}{HemeLB simulation cost on AWS-EC2 vs ARCHER. ARCHER and INDY2 result is based on the data provided by Dr. Rupert Nash}\label{table:cost}
 \scalebox{0.75}{
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 Compute node & \begin{tabular}[c]{@{}c@{}}ARCHER time \\ difference ratio\end{tabular} & \begin{tabular}[c]{@{}c@{}}ARCHER-partner \\ simulation cost\end{tabular} & \begin{tabular}[c]{@{}c@{}}ARCHER-nonpartner\\ simulation cost\end{tabular} & \begin{tabular}[c]{@{}c@{}}AWS-EC2 time\\ difference ratio\end{tabular} & \begin{tabular}[c]{@{}c@{}}AWS-EC2\\ simulation cost\end{tabular} \\ \hline
-1            & 1                                                                       & 0.2                                                                       & 0.48                                                                        & 1.050595238                                                                       & 1.58639881                                                              \\
-2            & 0.657738095                                                             & 0.263095238                                                               & 0.631428571                                                                 & 0.732142857                                                             & 2.211071429                                                       \\
-4            & 0.398809524                                                             & 0.319047619                                                               & 0.765714286                                                                 & 0.5                                                              & 3.02                                                       \\
-8            & 0.291964286                                                             & 0.467142857                                                               & 1.121142857                                                                 & 0.342261905                                                             & 4.13452381                                                       \\
-16           & 0.295833333                                                             & 0.946666667                                                               & 2.272                                                                       & 0.306547619                                                             & 7.406190476                                                       \\
-32           & 0.286904762                                                             & 1.836190476                                                               & 4.406857143                                                                 & N/A                                                                     & N/A                                                               \\ \hline
+1            & 1                                                                       & 0.2                                                                       & 0.48                                                                        & 1.05                                                                       & 1.59                                                              \\
+2            & 0.66                                                             & 0.26                                                               & 0.63                                                                 & 0.73                                                             & 2.2                                                       \\
+4            & 0.40                                                             & 0.32                                                               & 0.77                                                                 & 0.5                                                              & 3.02                                                       \\
+8            & 0.30                                                             & 0.47                                                               & 1.12                                                                 & 0.34                                                             & 4.13                                                       \\
+16           & 0.30                                                             & 0.95                                                               & 2.27                                                                       & 0.31                                                             & 7.41                                                       \\
+32           & 0.29                                                             & 1.84                                                               & 4.41                                                                 & N/A                                                                     & N/A                                                               \\ \hline
 \end{tabular}
 }
 
@@ -431,12 +439,12 @@ Compute node & \begin{tabular}[c]{@{}c@{}}ARCHER time \\ difference ratio\end{ta
 \makebox[\linewidth]{
   \includegraphics[keepaspectratio=true,scale=0.90]{../resources/evaluation/performance/cost.png}
  }
-\captionof{figure}{HemeLB  simulation cost difference} \label{fig:hemelb-cost-plot}%      only if needed  
+\captionof{figure}{HemeLB  simulation cost difference. ARCHER and INDY2 result is based on the data provided by Dr. Rupert Nash} \label{fig:hemelb-cost-plot}%      only if needed  
 \end{minipage}
 
 \vspace{0.5cm}
 
-Table \ref{table:cost} shows the breakdown of simulation cost between AWS-EC2 with ARCHER with partner institutions and non-partner. From the calculation, AWS-EC2 is 682\% up to 846\% more costly compared to ARCHER with partner pricing. When we compare to the price of a non-research partner, we get 230\% to 290\% more cost to run a simulation. 
+Table \ref{table:cost} shows the breakdown of simulation cost between AWS-EC2 with ARCHER with partner institutions and non-partner. From the calculation, AWS-EC2 is 680\% up to 850\% more costly compared to ARCHER with partner pricing. When we compare to the price of a non-research partner, we get 230\% to 290\% more cost to run a simulation. 
 
 
 This result is as expected because, with slower performance, we are going to use compute nodes for longer. Longer usage means more cost to be paid by the users. In addition, cloud platform on AWS-EC2 rent out their services with a premium that allows a certain flexibility that dedicated HPC infrastructure like ARCHER cannot afford. This flexibility like the amount of time needed to first start running a simulation or running an exploratory experiments.
