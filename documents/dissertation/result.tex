@@ -383,7 +383,7 @@ From the raw performance information above, we can calculate the parallel scalab
 ARCHER also perform better than AWS-EC2 in this evaluation. However, the parallel efficiency is still far below the level of INDY2 because of the utilization of the system. AWS-EC2 has the lowest parallel scalability as expected. This shows that running HemeLB on Amazon's infrastructure might not scale as well as using dedicated HPC infrastructure. However, on lower compute node count, AWS-EC2 provide a comparable parallel scalability (5\% difference) and performance compared to ARCHER under very high utilization. This result concludes that our hypothesis is correct, that AWS-EC2 would provide slower performance in running HemeLB simulation.  
 
 
-\subsection{Price performance analysis}
+\subsection{Simulation cost analysis}
 
 In addition to performance analysis, we can further analyze the notional cost of a simulation job. For this, we need to come up with the way to calculate the simulation cost. This can be done by multiplying simulation time with cost per unit of time on that infrastructure.
 
