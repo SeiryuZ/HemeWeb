@@ -2,13 +2,13 @@
 % "...root = Main.tex" if the chapter file is in the same directory, and "...root = ../Main.tex" if the chapter is in a subdirectory.
  
 %!TEX root =  dissertation.tex
-\chapter[Appendix: Deployment Script]{Appendix: Deployment Script}
+\chapter[Appendix: Deployment Script]{Appendix: Deployment Script}\label{app:deploy}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Cloud vendor specific provisioning scripts}
+\section{Cloud vendor specific provisioning scripts}\label{app:deploy1}
 
 \lstinputlisting[language=yaml, caption=Amazon web service specific provisioning script]{../../deployment/aws/provision.yml}
 
@@ -20,7 +20,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Cloud vendor specific deployment scripts}
+\section{Cloud vendor specific deployment scripts}\label{app:deploy2}
 
 \lstinputlisting[language=yaml, caption=Amazon web service specific deployment script]{../../deployment/aws/deploy.yml}
 
@@ -36,7 +36,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Common deployment script}
+\section{Common deployment script}\label{app:deploy3}
 
 \lstinputlisting[language=yaml, caption=deploy.yml]{../../deployment/deploy.yml}
 
